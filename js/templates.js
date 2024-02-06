@@ -5,9 +5,9 @@ function getSignUpTemplate() {
             <h1>Sign up</h1>
             <div class="underline"></div>
         </div>
-        <form class="input-container" onsubmit="signIn(event)">
+        <form class="input-container" onsubmit="signIn()">
             <div class="input">
-                <input placeholder="Name" type="text" required name="name">
+                <input placeholder="Name" type="text" required>
                 <img src="./img/person.svg">
             </div>
             <div class="input">
@@ -23,7 +23,9 @@ function getSignUpTemplate() {
                 <img src="./img/lock.svg">
             </div>
             <div class="checkbox">
-                <div><input type="checkbox" style="cursor: pointer;"></div>
+                <div>
+                    <input class="checkbox-input" type="checkbox" type="checkbox" required>
+                </div>
                 <span>I accept the<span class="blue"> privacy Policy</span></span>
             </div>
             <div class="style-btns">

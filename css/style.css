@@ -159,3 +159,7 @@ a:hover {
 .blue {
     color: #29ABE2;
 }
+
+.checkbox-input{
+    cursor: pointer;
+}

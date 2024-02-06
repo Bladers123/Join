@@ -1,0 +1,165 @@
+body{
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.aot {
+    background-color: #F6F7F8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+
+.logo{
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    width: 100px;
+}
+
+.sign-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    gap: 35px;
+    top: 55px;
+    right: 55px;
+
+}
+
+.container {
+    width: 650px;
+    height: 500px;
+    background-color: white;
+    border-radius: 24px;
+    box-shadow: 0px 0px 14px 3px #0000000A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 32px;
+    padding: 48px 115px 48px 115px;
+    box-sizing: border-box;
+}
+
+.head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 61px;
+}
+
+.underline {
+    height: 3px;
+    background-color: #29ABE2;
+    width: 150px;
+}
+
+input {
+    width: 100%;
+    border: unset;
+    font-size: 24px;
+    color: #D1D1D1;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    width: 420px;
+    border: 1px solid lightgray;
+    border-radius: 13px;
+    gap: 8px;
+    padding: 12px 21px;
+}
+
+.checkbox {
+    display: flex;
+    height: 24px;
+    width: 420px;
+    gap: 8px;
+    align-items: center;
+    padding: 12px 21px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+button {
+    text-align: center;
+    border-radius: 8px;
+    height: 48px;
+    width: 110px;
+    font-weight: bold;
+    font-size: 21px;
+    cursor: pointer;
+    border-style: solid;
+}
+
+.dark-btn {
+    background-color: #2A3647;
+    color: white;
+    width: 110px;
+    height: 48px;
+}
+
+.light-btn {
+    background-color: white;
+    color: #2A3647;
+    height: 48px;
+    width: 177px;
+    border-color: #2A3647;
+}
+
+.style-btns {
+    display: flex;
+    gap: 35px;
+    padding-bottom: 24px;
+}
+
+footer {
+    position: fixed;
+    bottom: 10%;
+    left: 50%;
+    font-size: 16px;
+    transform: translate(-50%);
+    display: flex;
+    gap: 32px;
+}
+
+a {
+    text-decoration: none;
+    color: #A8A8A8;
+    transition: transform 100ms ease-in-out;
+}
+
+a:hover {
+    color: #29ABE2;
+    transform: scale(1.1);
+}
+
+.h650 {
+    height: 650px !important;
+}
+
+.blue {
+    color: #29ABE2;
+}

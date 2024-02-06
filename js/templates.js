@@ -11,11 +11,11 @@ function getSignUpTemplate() {
                 <img src="./img/person.svg">
             </div>
             <div class="input">
-                <input placeholder="E-Mail" type="email" required>
+                <input id="email" placeholder="E-Mail" type="email" required>
                 <img src="./img/mail.svg">
             </div>
             <div class="input">
-                <input placeholder="Password" type="password" required>
+                <input id="password" placeholder="Password" type="password" required>
                 <img src="./img/lock.svg">
             </div>
             <div class="input">
@@ -29,7 +29,7 @@ function getSignUpTemplate() {
                 <span>I accept the<span class="blue"> privacy Policy</span></span>
             </div>
             <div class="style-btns">
-                <button class="dark-btn">Sign in</button>
+                <button id="registerBtn" class="dark-btn">Sign in</button>
             </div>
         </form>
    `;

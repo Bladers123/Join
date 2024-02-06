@@ -1,26 +1,25 @@
 function getSignUpTemplate() {
     return /*html*/`
-    <div>
         <img onclick="backToLogIn()" src="./img/arrow.svg">
         <div class="head">
             <h1>Sign up</h1>
             <div class="underline"></div>
         </div>
-        <div class="input-container">
+        <form class="input-container" onsubmit="signIn(event)">
             <div class="input">
-                <input placeholder="Name" type="email">
+                <input placeholder="Name" type="text" required name="name">
                 <img src="./img/person.svg">
             </div>
             <div class="input">
-                <input placeholder="E-Mail" type="email">
+                <input placeholder="E-Mail" type="email" required>
                 <img src="./img/mail.svg">
             </div>
             <div class="input">
-                <input placeholder="Password" type="password">
+                <input placeholder="Password" type="password" required>
                 <img src="./img/lock.svg">
             </div>
             <div class="input">
-                <input placeholder="Confirm password" type="password">
+                <input placeholder="Confirm password" type="password" required>
                 <img src="./img/lock.svg">
             </div>
             <div class="checkbox">
@@ -30,7 +29,6 @@ function getSignUpTemplate() {
             <div class="style-btns">
                 <button class="dark-btn">Sign in</button>
             </div>
-        </div>
-    </div> 
+        </form>
    `;
 }

@@ -1,10 +1,10 @@
 body {
     margin: 0;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
 }
 
 .aot {
-    background-color: #F6F7F8;
+    background-color: #f6f7f8;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +15,6 @@ body {
     right: 0;
     z-index: -1;
 }
-
 
 .logo {
     position: absolute;
@@ -32,7 +31,6 @@ body {
     gap: 35px;
     top: 55px;
     right: 55px;
-
 }
 
 .container {
@@ -40,7 +38,7 @@ body {
     height: 493px;
     background-color: white;
     border-radius: 30px;
-    box-shadow: 0px 0px 14px 3px #0000000A;
+    box-shadow: 0px 0px 14px 3px #0000000a;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,7 +67,7 @@ h1 {
 
 .underline {
     height: 3px;
-    background-color: #29ABE2;
+    background-color: #29abe2;
     width: 150px;
 }
 
@@ -77,11 +75,11 @@ input {
     width: 100%;
     border: unset;
     font-size: 24px;
-    color: #2A3647;
+    color: #2a3647;
 }
 
 ::placeholder {
-    color: #D1D1D1;
+    color: #d1d1d1;
 }
 
 .input {
@@ -124,7 +122,7 @@ button {
 }
 
 .dark-btn {
-    background-color: #2A3647;
+    background-color: #2a3647;
     color: white;
     width: 110px;
     height: 48px;
@@ -132,10 +130,10 @@ button {
 
 .light-btn {
     background-color: white;
-    color: #2A3647;
+    color: #2a3647;
     height: 48px;
     width: 177px;
-    border-color: #2A3647;
+    border-color: #2a3647;
 }
 
 .style-btns {
@@ -156,17 +154,17 @@ footer {
 
 a {
     text-decoration: none;
-    color: #A8A8A8;
+    color: #a8a8a8;
     transition: transform 100ms ease-in-out;
 }
 
 a:hover {
-    color: #29ABE2;
+    color: #29abe2;
     transform: scale(1.1);
 }
 
 .blue {
-    color: #29ABE2;
+    color: #29abe2;
 }
 
 .checkbox-input {
@@ -185,10 +183,9 @@ a:hover {
 }
 
 .bg-animate {
-    
     top: 0;
     bottom: 0;
-    background-color: #F6F7F8;
+    background-color: #f6f7f8;
     right: 0;
     left: 0;
     opacity: 0;
@@ -238,7 +235,6 @@ a:hover {
     }
 }
 
-
 @media (max-width: 750px) {
     .container {
         width: 90%;
@@ -278,6 +274,8 @@ a:hover {
     footer {
         top: 869px;
         gap: 8px;
+        position: fixed;
+        bottom: 0px;
     }
 
     .sign-header {
@@ -293,7 +291,6 @@ a:hover {
 }
 
 @media (max-width: 550px) {
-
     .input {
         width: 70%;
     }

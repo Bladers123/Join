@@ -1,5 +1,5 @@
 function getLogInTemplate() {
-    return `            
+    return /*html*/ `            
         <div class="head">
             <h1>Log in</h1>
             <div class="underline"></div>
@@ -8,12 +8,12 @@ function getLogInTemplate() {
         <div class="input-container">
             <div class="input">
                 <input placeholder="E-Mail" type="email">
-                <img src="../img/mail.svg">
+                <img src="../../img/mail.svg">
             </div>
 
             <div class="input">
                 <input placeholder="Password" type="password">
-                <img src="../img/lock.svg">
+                <img src="../../img/lock.svg">
             </div>
 
             <div class="checkbox">
@@ -39,19 +39,19 @@ function getSignUpTemplate() {
         <form class="input-container" onsubmit="signIn()">
             <div class="input">
                 <input placeholder="Name" type="text" required>
-                <img src="../img/person.svg">
+                <img src="../../img/person.svg">
             </div>
             <div class="input">
                 <input id="email" placeholder="E-Mail" type="email" required>
-                <img src="../img/mail.svg">
+                <img src="../../img/mail.svg">
             </div>
             <div class="input">
                 <input id="password" placeholder="Password" type="password" required>
-                <img src="../img/lock.svg">
+                <img src="../../img/lock.svg">
             </div>
             <div class="input">
                 <input placeholder="Confirm password" type="password" required>
-                <img src="../img/lock.svg">
+                <img src="../../img/lock.svg">
             </div>
             <div class="checkbox">
                 <div>

@@ -179,9 +179,65 @@ a:hover {
     top: 10%;
     cursor: pointer;
 }
+
 .d-none {
     display: none;
 }
+
+.bg-animate {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: #F6F7F8;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    animation: 6s animate-opa ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-animate {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    animation: moveAndFreeze 6s forwards;
+    margin-left: 50px;
+    margin-top: 61px;
+    z-index: 2;
+}
+
+@keyframes moveAndFreeze {
+    0% {
+        left: 50%;
+        top: 50%;
+        width: 400px;
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    100% {
+        left: 32px;
+        top: 32px;
+        width: 100px;
+        margin-left: 50px;
+        margin-top: 61px;
+    }
+}
+
+@keyframes animate-opa {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
 
 @media (max-width: 750px) {
     .container {
@@ -201,6 +257,7 @@ a:hover {
     .underline {
         width: 88px;
     }
+
     .input-container {
         gap: 16px;
     }
@@ -244,9 +301,11 @@ a:hover {
     .checkbox {
         width: 70%;
     }
+
     .sign-header {
         gap: 21px;
     }
+
     .fs16 {
         font-size: 16px !important;
     }

@@ -2,6 +2,7 @@ let users = [];
 
 
 async function init(){
+    loadHomepage();
     logIn();
     // loadUsers();
 }

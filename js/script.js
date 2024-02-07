@@ -1,6 +1,14 @@
 const STORAGE_TOKEN = "HEBY7BJY7CQ0IQVYI4ONXU7EY6B8UWVM7BGO8RTP";
 const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 
+
+function loadHomepage() {
+        setTimeout(function () {
+            let loading = document.getElementById('loading');
+        }, 7000); 
+    
+}
+
 function logIn() {
     let container = document.getElementById('container');
     container.innerHTML = getLogInTemplate();

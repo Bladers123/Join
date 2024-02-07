@@ -1,11 +1,7 @@
 let users = [];
 
 
-async function init(){
-    loadHomepage();
-    logIn();
-    // loadUsers();
-}
+
 
 async function loadUsers() {
     try {

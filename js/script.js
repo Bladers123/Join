@@ -23,7 +23,7 @@ function backToLogIn() {
 }
 
 function guestLogIn() {
-    window.location.href = '../html/add_task.html';
+    window.location.href = '../../html/add_task.html';
 }
 
 async function setItem(key, value) {

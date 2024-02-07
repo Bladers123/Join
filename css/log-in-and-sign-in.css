@@ -204,6 +204,7 @@ a:hover {
     margin-left: 50px;
     margin-top: 61px;
     z-index: 2;
+    animation-delay: 2s;
 }
 
 @keyframes moveAndFreeze {

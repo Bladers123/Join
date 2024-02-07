@@ -11,7 +11,6 @@ function loadHomepage() {
     setTimeout(function () {
         let loading = document.getElementById('loading');
     }, 7000);
-
 }
 
 function navToSignIn() {

@@ -1,9 +1,22 @@
 const STORAGE_TOKEN = "HEBY7BJY7CQ0IQVYI4ONXU7EY6B8UWVM7BGO8RTP";
 const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 
+function logIn() {
+    let container = document.getElementById('container');
+    container.innerHTML = getLogInTemplate();
+}
+
 function signUp() {
     let container = document.getElementById("container");
     container.innerHTML = getSignUpTemplate();
+}
+
+function backToLogIn() {
+    logIn();
+}
+
+function guestLogIn() {
+    window.location.href = '../html/add_task.html';
 }
 
 async function setItem(key, value) {
@@ -23,7 +36,6 @@ async function getItem(key) {
         });
 }
 
-function backToLogIn() {}
 
 async function includeHTML() {
     let includeElements = document.querySelectorAll("[w3-include-html]");

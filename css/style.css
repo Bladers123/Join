@@ -48,6 +48,7 @@ body{
     gap: 32px;
     padding: 48px 115px 48px 115px;
     box-sizing: border-box;
+    position: relative;
 }
 
 .head {
@@ -72,8 +73,12 @@ input {
     width: 100%;
     border: unset;
     font-size: 24px;
-    color: #D1D1D1;
+    color: #2A3647;
 }
+
+::placeholder {
+    color: #D1D1D1;
+  }
 
 .input {
     display: flex;
@@ -162,4 +167,21 @@ a:hover {
 
 .checkbox-input{
     cursor: pointer;
+}
+
+.arrow {
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    cursor: pointer;
+}
+
+@media (max-width: 750px) {
+    .container {
+        width: 90%;
+        
+    }
+    .input {
+        width: 80%;
+    }
 }

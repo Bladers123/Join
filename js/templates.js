@@ -1,6 +1,38 @@
+function getLogInTemplate() {
+    return `            
+        <div class="head">
+            <h1>Log in</h1>
+            <div class="underline"></div>
+        </div>
+
+        <div class="input-container">
+            <div class="input">
+                <input placeholder="E-Mail" type="email">
+                <img src="../img/mail.svg">
+            </div>
+
+            <div class="input">
+                <input placeholder="Password" type="password">
+                <img src="../img/lock.svg">
+            </div>
+
+            <div class="checkbox">
+                <div><input type="checkbox" style="cursor: pointer;"></div>
+                <span>Remember me</span>
+            </div>
+
+            <div class="style-btns">
+                <button class="dark-btn">Log in</button>
+                <button onclick="guestLogIn()" class="light-btn">Guest Log in</button>
+            </div>
+        </div>
+    `;
+}
+
+
 function getSignUpTemplate() {
     return /*html*/`
-        <img onclick="backToLogIn()" src="../img/arrow.svg">
+        <img class="arrow" onclick="backToLogIn()" src="../img/arrow.svg">
         <div class="head">
             <h1>Sign up</h1>
             <div class="underline"></div>

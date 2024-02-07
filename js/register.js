@@ -1,25 +1,22 @@
 let users = [];
 
-async function loadUsers() {
-    try {
-        users = JSON.parse(await getItem("users"));
-    } catch (e) {
-        console.log("Loading error:", e);
-    }
+async function initRegister() {
+    await loadUsers();
 }
 
-async function signIn() {
-    registerBtn.disabled = true;
-    users.push({
-        email: email.value,
-        password: password.value,
+async function register() {
+    let user = [];
+    user.push({
+        name: inputName.value,
+        email: inputEmail.value,
+        password: inputPassword.value,
     });
-    await setItem("users", JSON.stringify(users));
-    resetForm();
+
+    await setItem('users', JSON.stringify(user));
 }
 
-function resetForm() {
-    email.value = "";
-    password.value = "";
-    registerBtn.disabled = false;
+async function loadUsers(){
+    users = JSON.parse(await getItem('users'));
+    console.log(users);
 }
+

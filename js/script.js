@@ -4,11 +4,15 @@ const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 function logIn() {
     let container = document.getElementById('container');
     container.innerHTML = getLogInTemplate();
+    document.getElementById('sign-header').classList.remove('d-none');
+    document.getElementById('container').classList.remove('sign-height');
 }
 
 function signUp() {
     let container = document.getElementById("container");
     container.innerHTML = getSignUpTemplate();
+    document.getElementById('sign-header').classList.add('d-none');
+    document.getElementById('container').classList.add('sign-height');
 }
 
 function backToLogIn() {

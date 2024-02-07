@@ -22,8 +22,8 @@ function getLogInTemplate() {
             </div>
 
             <div class="style-btns">
-                <button class="dark-btn">Log in</button>
-                <button onclick="guestLogIn()" class="light-btn">Guest Log in</button>
+                <button class="dark-btn w180">Log in</button>
+                <button onclick="guestLogIn()" class="light-btn w180">Guest Log in</button>
             </div>
         </div>
     `;

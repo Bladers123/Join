@@ -1,4 +1,4 @@
-body{
+body {
     margin: 0;
     font-family: 'Inter', sans-serif;
 }
@@ -17,7 +17,7 @@ body{
 }
 
 
-.logo{
+.logo {
     position: absolute;
     top: 32px;
     left: 32px;
@@ -36,10 +36,10 @@ body{
 }
 
 .container {
-    width: 650px;
-    height: 650px;
+    width: 652px;
+    height: 493px;
     background-color: white;
-    border-radius: 24px;
+    border-radius: 30px;
     box-shadow: 0px 0px 14px 3px #0000000A;
     display: flex;
     justify-content: center;
@@ -49,6 +49,10 @@ body{
     padding: 48px 115px 48px 115px;
     box-sizing: border-box;
     position: relative;
+}
+
+.sign-height {
+    height: 630px;
 }
 
 .head {
@@ -78,7 +82,7 @@ input {
 
 ::placeholder {
     color: #D1D1D1;
-  }
+}
 
 .input {
     display: flex;
@@ -165,7 +169,7 @@ a:hover {
     color: #29ABE2;
 }
 
-.checkbox-input{
+.checkbox-input {
     cursor: pointer;
 }
 
@@ -175,13 +179,81 @@ a:hover {
     top: 10%;
     cursor: pointer;
 }
+.d-none {
+    display: none;
+}
 
 @media (max-width: 750px) {
     .container {
         width: 90%;
-        
+        padding: 16px;
+        height: 515px;
     }
+
+    .sign-height {
+        height: 596px;
+    }
+
+    h1 {
+        font-size: 47px;
+    }
+
+    .underline {
+        width: 88px;
+    }
+    .input-container {
+        gap: 16px;
+    }
+
     .input {
         width: 80%;
+    }
+
+    .style-btns {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .w180 {
+        width: 180px;
+    }
+
+    footer {
+        top: 869px;
+        gap: 8px;
+    }
+
+    .sign-header {
+        top: 778px;
+        left: 70px;
+    }
+
+    .logo {
+        width: 64px;
+        top: 37px;
+        left: 38px;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .input {
+        width: 70%;
+    }
+
+    .checkbox {
+        width: 70%;
+    }
+    .sign-header {
+        gap: 21px;
+    }
+    .fs16 {
+        font-size: 16px !important;
+    }
+}
+
+@media (max-width: 300px) {
+    span {
+        font-size: 16px;
     }
 }

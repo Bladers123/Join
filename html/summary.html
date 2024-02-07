@@ -1,19 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="../css/template.css" />
-        <link rel="stylesheet" href="../fonts" />
-        <script src="../js/script.js"></script>
-    </head>
-    <body onload="includeHTML()">
-        <div class="grid">
-            <div w3-include-html="../template/sidebar.html"></div>
-            <div class="rightContainer">
-                <div w3-include-html="../template/navbar.html"></div>
-                <div id="renderContent"></div>
-            </div>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/template.css" />
+    <link rel="stylesheet" href="../fonts" />
+    <script src="../js/script.js"></script>
+    <link rel="stylesheet" href="../css/summary.css">
+</head>
+
+<body onload="includeHTML()">
+    <div class="grid">
+        <div w3-include-html="../template/sidebar.html"></div>
+        <div class="rightContainer">
+            <div w3-include-html="../template/navbar.html"></div>
+            <div id="renderContent"></div>
         </div>
-    </body>
+    </div>
+
+    <div class="headline">
+        <h2>Join 360</h2>
+        <div class="breakline"></div>
+        <span class="keymetrics">Key Metrics at a Glance</span>
+    </div>
+
+    <div class="main-container">
+        <div class="">
+            <div class="section1">
+                <div class="cycle"><img src="../img/pencil.svg"></div>
+                <div class="flex-column">
+                    <h3>2</h3>
+                    <span>To-do</span>
+                </div>
+            </div>
+
+            <div class="section1">
+                <div class="cycle"><img src="../img/check.svg"></div>
+                <div class="flex-column">
+                    <h3>5</h3>
+                    <span>Done</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div>
+            <div class="cycle" style="background-color: #FF3D00;"><img src="../img/arrowup.svg"><img src="../img/arrowup.svg"></div>
+        </div>
+
+
+        <div class="section3">
+            <h3>5</h3>
+            <span>Tasks in Board</span>
+        </div>
+
+        <div class="section3">
+            <h3>5</h3>
+            <span>Taskss in Progress</span>
+        </div>
+
+        <div class="section3">
+            <h3>5</h3>
+            <span>Awaiting Feedback</span>
+        </div>
+
+    </div>
+
+</body>
+
 </html>

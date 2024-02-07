@@ -185,7 +185,7 @@ a:hover {
 }
 
 .bg-animate {
-    position: absolute;
+    
     top: 0;
     bottom: 0;
     background-color: #F6F7F8;
@@ -202,7 +202,6 @@ a:hover {
     left: 50%;
     position: absolute;
     top: 50%;
-    transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     animation: moveAndFreeze 6s forwards;
     margin-left: 50px;
@@ -230,6 +229,7 @@ a:hover {
 
 @keyframes animate-opa {
     from {
+        position: absolute;
         opacity: 1;
     }
 

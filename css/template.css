@@ -99,18 +99,30 @@ nav {
     height: 96px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
-h4 {
+.navbarMobile {
+    display: none;
+    width: 100vw;
+    height: 96px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.productLabel {
     font-weight: 500;
+    margin-left: 20px;
 }
 
 .avatarWrapper {
     display: flex;
     align-items: center;
     gap: 16px;
+    margin-right: 20px;
 }
 
 .question {
@@ -165,4 +177,65 @@ h4 {
 
 .dropdown:hover .dropbtn {
     background-color: #2d3153;
+}
+
+.mobileHeaderLogo {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 0px 0px;
+        grid-template-areas: ". .";
+    }
+
+    .sidebar {
+        width: 100vw;
+        height: 80px;
+        position: fixed;
+        bottom: 0;
+        flex-direction: row;
+    }
+
+    nav {
+        width: 100vw;
+        height: 80px;
+    }
+
+    .mobileHeaderLogo {
+        display: block;
+        margin-left: 20px;
+    }
+
+    .productLabel {
+        display: none;
+    }
+
+    .legal {
+        display: none;
+    }
+
+    img {
+        display: none;
+    }
+
+    .navigationLinks {
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+    }
+
+    .linkText {
+        font-size: 14px;
+    }
+
+    .linkWrapper {
+        flex-direction: column;
+        justify-content: center;
+        width: auto;
+        gap: 4px;
+    }
 }

@@ -29,9 +29,8 @@ function getLogInTemplate() {
     `;
 }
 
-
 function getSignUpTemplate() {
-    return /*html*/`
+    return /*html*/ `
         <img class="arrow" onclick="backToLogIn()" src="../img/arrow.svg">
         <div class="head">
             <h1>Sign up</h1>

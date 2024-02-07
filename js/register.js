@@ -1,8 +1,5 @@
 let users = [];
 
-
-
-
 async function loadUsers() {
     try {
         users = JSON.parse(await getItem("users"));

@@ -1,64 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Join</title>
-        <!-- <link rel="stylesheet" href="../fonts">  -->
-        <link rel="stylesheet" href="../../css/log-in -and-sign-in.css" />
-        <script src="../../js/script.js"></script>
-        <script src="../../js/templates.js"></script>
-        <script src="../../js/register.js"></script>
-    </head>
 
-    <body onload="init()">
-        <img id="loading" class="logo-animate" src="../img/logo.svg" />
-        <div class="bg-animate"></div>
-        <div class="aot">
-            <!--    <img class="logo" src="../img/logo.svg" />-->
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join</title>
+    <!-- <link rel="stylesheet" href="../fonts">  -->
+    <link rel="stylesheet" href="../../css/log-in -and-sign-in.css" />
+    <script src="../../js/script.js"></script>
+    <script src="../../js/templates.js"></script>
+    <script src="../../js/register.js"></script>
+</head>
 
-            <div class="sign-header" id="sign-header">
-                <span style="font-size: 20px" class="fs16">Not a Join user?</span>
-                <button onclick="signUp()" class="dark-btn" style="font-size: 16px">Sign up</button>
-            </div>
+<body onload="init()">
+    <img id="loading" class="logo-animate" src="../../img/logo.svg" />
+    <div class="bg-animate"></div>
+    <div class="aot">
+        <!--    <img class="logo" src="../img/logo.svg" />-->
 
-            <div class="container" id="container">
-                function getLogInTemplate() {
-                    return /*html*/`            
-                        <div class="head">
-                            <h1>Log in</h1>
-                            <div class="underline"></div>
-                        </div>
-                
-                        <div class="input-container">
-                            <div class="input">
-                                <input placeholder="E-Mail" type="email">
-                                <img src="../../img/mail.svg">
-                            </div>
-                
-                            <div class="input">
-                                <input placeholder="Password" type="password">
-                                <img src="../../img/lock.svg">
-                            </div>
-                
-                            <div class="checkbox">
-                                <div><input type="checkbox" style="cursor: pointer;"></div>
-                                <span>Remember me</span>
-                            </div>
-                
-                            <div class="style-btns">
-                                <button class="dark-btn w180">Log in</button>
-                                <button onclick="guestLogIn()" class="light-btn w180">Guest Log in</button>
-                            </div>
-                        </div>
-                    `;
-                }
-            </div>
+        <div class="sign-header" id="sign-header">
+            <span style="font-size: 20px" class="fs16">Not a Join user?</span>
+            <button onclick="navToSignIn()" class="dark-btn" style="font-size: 16px">Sign up</button>
         </div>
 
-        <footer>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Legal notice</a>
-        </footer>
-    </body>
+        <div class="container" id="container">
+            <div class="head">
+                <h1>Log in</h1>
+                <div class="underline"></div>
+            </div>
+
+            <div class="input-container">
+                <div class="input">
+                    <input placeholder="E-Mail" type="email">
+                    <img src="../../img/mail.svg">
+                </div>
+
+                <div class="input">
+                    <input placeholder="Password" type="password">
+                    <img src="../../img/lock.svg">
+                </div>
+
+                <div class="checkbox">
+                    <div><input type="checkbox" style="cursor: pointer;"></div>
+                    <span>Remember me</span>
+                </div>
+
+                <div class="style-btns">
+                    <button class="dark-btn w180">Log in</button>
+                    <button onclick="guestLogIn()" class="light-btn w180">Guest Log in</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Legal notice</a>
+    </footer>
+</body>
+
 </html>

@@ -2,35 +2,24 @@ const STORAGE_TOKEN = "HEBY7BJY7CQ0IQVYI4ONXU7EY6B8UWVM7BGO8RTP";
 const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 
 
-async function init(){
+async function init() {
     loadHomepage();
-    logIn();
     // loadUsers();
 }
 
 function loadHomepage() {
-        setTimeout(function () {
-            let loading = document.getElementById('loading');
-        }, 7000); 
-    
+    setTimeout(function () {
+        let loading = document.getElementById('loading');
+    }, 7000);
+
 }
 
-function logIn() {
-    let container = document.getElementById('container');
-    container.innerHTML = getLogInTemplate();
-    document.getElementById('sign-header').classList.remove('d-none');
-    document.getElementById('container').classList.remove('sign-height');
-}
-
-function signUp() {
-    let container = document.getElementById("container");
-    container.innerHTML = getSignUpTemplate();
-    document.getElementById('sign-header').classList.add('d-none');
-    document.getElementById('container').classList.add('sign-height');
+function navToSignIn() {
+    window.location.href = 'sign-in.html';
 }
 
 function backToLogIn() {
-    logIn();
+    window.location.href = 'log-in.html';
 }
 
 function guestLogIn() {

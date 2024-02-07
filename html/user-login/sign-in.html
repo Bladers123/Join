@@ -1,37 +1,53 @@
-
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/log-in-and-sign-in.css" />
-        <script src="../../js/script.js"></script>
-        <script src="../../js/templates.js"></script>
-        <script src="../../js/register.js"></script>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/templates.js"></script>
+    <script src="../../js/register.js"></script>
     <title>Document</title>
 </head>
+
 <body>
-    <img class="arrow" onclick="backToLogIn()" src="../../img/arrow.svg">
-        <div class="head">
-            <h1>Sign up</h1>
-            <div class="underline"></div>
+    <img id="loading" class="logo-animate" src="../../img/logo.svg" />
+    <div class="bg-animate"></div>
+    <div class="aot">
+        <!--    <img class="logo" src="../img/logo.svg" />-->
+
+        <div class="sign-header" id="sign-header">
+            <span style="font-size: 20px" class="fs16">Not a Join user?</span>
+            <button onclick="signIn()" class="dark-btn" style="font-size: 16px">Sign up</button>
         </div>
-        <form class="input-container" onsubmit="signIn()">
+
+        <div class="container container-sign-in" id="container">
+            <img class="arrow" onclick="backToLogIn()" src="../../img/arrow.svg">
+            <div class="head">
+                <h1>Sign up</h1>
+                <div class="underline"></div>
+            </div>
+
             <div class="input">
                 <input placeholder="Name" type="text" required>
                 <img src="../../img/person.svg">
             </div>
+
             <div class="input">
                 <input id="email" placeholder="E-Mail" type="email" required>
                 <img src="../../img/mail.svg">
             </div>
+
             <div class="input">
                 <input id="password" placeholder="Password" type="password" required>
                 <img src="../../img/lock.svg">
             </div>
+
             <div class="input">
                 <input placeholder="Confirm password" type="password" required>
                 <img src="../../img/lock.svg">
             </div>
+
             <div class="checkbox">
                 <div>
                     <input class="checkbox-input" type="checkbox" type="checkbox" required>
@@ -41,6 +57,14 @@
             <div class="style-btns">
                 <button id="registerBtn" class="dark-btn">Sign in</button>
             </div>
-        </form>
+        </div>
+    </div>
+    </div>
+
+    <footer>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Legal notice</a>
+    </footer>
 </body>
+
 </html>

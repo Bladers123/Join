@@ -3,14 +3,7 @@ const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 
 
 async function init() {
-    loadHomepage();
     // loadUsers();
-}
-
-function loadHomepage() {
-    setTimeout(function () {
-        let loading = document.getElementById('loading');
-    }, 7000);
 }
 
 function navToSignIn() {
@@ -56,3 +49,4 @@ async function includeHTML() {
         }
     }
 }
+

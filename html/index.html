@@ -1,65 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Join</title>
+        <!-- <link rel="stylesheet" href="../fonts">  -->
+        <link rel="stylesheet" href="../css/style.css" />
+        <script src="./js/script.js"></script>
+        <script src="./js/templates.js"></script>
+        <script src="./js/register.js"></script>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join</title>
-    <!-- <link rel="stylesheet" href="../fonts">  -->
-    <link rel="stylesheet" href="../css/style.css">
-    <script src="../js/script.js"></script>
-    <script src="../js/templates.js"></script>
-    <script src="../js/register.js"></script>
-</head>
+    <body onload="init()">
+        <div class="aot">
+            <img class="logo" src="../img/logo.svg" />
 
-<body onload="init()">
-
-    <div class="aot"><img class="logo" src="../img/logo.svg">
-
-        <div class="sign-header">
-            <span style="font-size: 20px;">Not a Join user?</span>
-            <button onclick="signUp()" class="dark-btn" style="font-size: 16px;">Sign up</button>
-        </div>
-
-        <div class="container" id="container">
-            <div class="head">
-                <h1>Log in</h1>
-                <div class="underline"></div>
+            <div class="sign-header">
+                <span style="font-size: 20px">Not a Join user?</span>
+                <button onclick="signUp()" class="dark-btn" style="font-size: 16px">Sign up</button>
             </div>
 
-            <div class="input-container">
-                <div class="input">
-                    <input placeholder="E-Mail" type="email">
-                    <img src="../img/mail.svg">
+            <div class="container" id="container">
+                <div class="head">
+                    <h1>Log in</h1>
+                    <div class="underline"></div>
                 </div>
 
-                <div class="input">
-                    <input placeholder="Password" type="password">
-                    <img src="../img/lock.svg">
-                </div>
+                <div class="input-container">
+                    <div class="input">
+                        <input placeholder="E-Mail" type="email" />
+                        <img src="../img/mail.svg" />
+                    </div>
 
-                <div class="checkbox">
-                    <div><input type="checkbox" style="cursor: pointer;"></div>
-                    <span>Remember me</span>
-                </div>
+                    <div class="input">
+                        <input placeholder="Password" type="password" />
+                        <img src="../img/lock.svg" />
+                    </div>
 
-                <div class="style-btns">
-                    <button class="dark-btn">Log in</button>
-                    <button class="light-btn">Guest Log in</button>
+                    <div class="checkbox">
+                        <div><input type="checkbox" style="cursor: pointer" /></div>
+                        <span>Remember me</span>
+                    </div>
+
+                    <div class="style-btns">
+                        <button class="dark-btn">Log in</button>
+                        <button class="light-btn">Guest Log in</button>
+                    </div>
                 </div>
             </div>
-
-
         </div>
-    </div>
 
-    <footer>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Legal notice</a>
-    </footer>
-
-
-
-</body>
-
+        <footer>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Legal notice</a>
+        </footer>
+    </body>
 </html>

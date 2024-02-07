@@ -1,17 +1,16 @@
 let users = [];
 
-async function init(){
+async function init() {
     // loadUsers();
 }
 
-async function loadUsers(){
+async function loadUsers() {
     try {
-        users = JSON.parse(await getItem('users'));
-    } catch(e){
-        console.log('Loading error:', e);
+        users = JSON.parse(await getItem("users"));
+    } catch (e) {
+        console.log("Loading error:", e);
     }
 }
-
 
 async function signIn() {
     registerBtn.disabled = true;
@@ -19,12 +18,12 @@ async function signIn() {
         email: email.value,
         password: password.value,
     });
-    await setItem('users', JSON.stringify(users));
+    await setItem("users", JSON.stringify(users));
     resetForm();
 }
 
 function resetForm() {
-    email.value = '';
-    password.value = '';
+    email.value = "";
+    password.value = "";
     registerBtn.disabled = false;
 }

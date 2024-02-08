@@ -18,11 +18,9 @@ h2 {
 }
 
 .container-position {
-    position: absolute;
     gap: 30px;
-    top: 206px;
-    left: 328px;
-    right: 69px;
+    margin: 56px;
+
 }
 
 .curs-pointer {

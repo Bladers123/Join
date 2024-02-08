@@ -32,6 +32,7 @@ body {
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .navigation {
@@ -109,6 +110,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: white;
 }
 
 .navbarMobile {

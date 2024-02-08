@@ -5,12 +5,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/template.css" />
-    <link rel="stylesheet" href="../fonts" />
+    <link rel="stylesheet" href="../../css/fonts.css" />
     <script src="../js/script.js"></script>
     <link rel="stylesheet" href="../css/summary.css">
+    <link rel="icon" type="image/x-icon" href="../img/logo.svg">
 </head>
 
-<body onload="includeHTML()">
+<body onload="init()">
     <div class="grid">
         <div w3-include-html="../template/sidebar.html"></div>
         <div class="rightContainer">
@@ -85,7 +86,7 @@
     </div>
 
     <div class="greeting greet-animate">
-        <h5 class="blue">Good morning,</h5>
+        <h5 id="greet-time" class="blue">Good morning,</h5>
         <h3 class="light-blue">Tristan & Julian</h3>
     </div>
 

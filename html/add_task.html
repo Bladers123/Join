@@ -1,22 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="../css/template.css" />
-        <link rel="stylesheet" href="../../css/fonts.css">
-        <script src="../js/script.js"></script>
-        <link rel="icon" type="image/x-icon" href="../img/logo.svg">
-    </head>
-    <body onload="includeHTML()">
-        <div class="grid">
-            <div w3-include-html="../template/sidebar.html"></div>
-            <div class="rightContainer">
-                <div w3-include-html="../template/navbar.html"></div>
-                <div class="content">
-                    <div class="testBackground"></div>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/template.css" />
+    <link rel="stylesheet" href="../../css/fonts.css">
+    <link rel="stylesheet" href="../css/add-task.css">
+    <script src="../js/script.js"></script>
+    <script src="../js/addTask.js"></script>
+    <link rel="icon" type="image/x-icon" href="../../img/logo.svg">
+    <title>Add Task</title>
+</head>
+
+<body onload="includeHTML(); initTask()">
+    <div class="grid">
+        <div w3-include-html="../template/sidebar.html"></div>
+        <div class="rightContainer">
+            <div w3-include-html="../template/navbar.html"></div>
+            <div class="content">
+                <div class="all">
+                    <h1>Add Task</h1>
+                    <div class="task">
+                        <div class="taskLeftSide">
+                            <div>
+                                <p>Title*</p>
+                                <input class="inputs" type="text">
+                            </div>
+                            <div>
+                                <p>Description</p>
+                                <!-- <textarea class="textarea" name="" id="" cols="30" rows="10"></textarea> -->
+                                <input class="textarea" type="text">
+                            </div>
+                            <div id="list1" class="dropdown-check-list" tabindex="100">
+                                <span class="anchor">Assigned to</span>
+                                <ul class="items">
+                                    <li>Mike<input type="checkbox" /></li>
+                                    <li>Sabine<input type="checkbox" /></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="taskRightSide">
+                            <div>
+                                <p>Due date*</p>
+                                <input class="inputs" type="text">
+                            </div>
+                            <p>Prio</p>
+                            <div class="prioButtons">
+                                <button>Urgent</button>
+                                <button>Medium</button>
+                                <button>Low</button>
+                            </div>
+                            <div>
+                                <p>Category*</p>
+                                <input class="inputs" type="text">
+                            </div>
+                            <div>
+                                <p>Subtasks</p>
+                                <input class="inputs" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <footer></footer>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

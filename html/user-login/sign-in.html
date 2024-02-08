@@ -10,18 +10,12 @@
     <script src="../../js/storage.js"></script>
     <title>Sign Up</title>
 </head>
-<<<<<<< Updated upstream
 
 <body onload="initRegister()">
-    <img id="loading" class="logo-animate" src="../../img/logo.svg" />
-    <div class="bg-animate"></div>
+    <img class="logo" src="../../img/logo.svg" />
     <div class="aot">
         <!--    <img class="logo" src="../img/logo.svg" />-->
 
-        <div class="sign-header" id="sign-header">
-            <span style="font-size: 20px" class="fs16">Not a Join user?</span>
-            <button onclick="signIn()" class="dark-btn" style="font-size: 16px">Sign up</button>
-        </div>
 
         <form class="container container-sign-in" id="container" onsubmit="register(); return false;">
             <img class="arrow" onclick="backToLogIn()" src="../../img/arrow.svg">
@@ -29,37 +23,40 @@
                 <h1>Sign up</h1>
                 <div class="underline"></div>
             </div>
+            <div class="gap16">
+                <div class="input-container">
+                    <div class="input">
+                        <input id="inputName" placeholder="Name" type="text" required>
+                        <img src="../../img/person.svg">
+                    </div>
 
-            <div class="input">
-                <input id="inputName" placeholder="Name" type="text" required>
-                <img src="../../img/person.svg">
-            </div>
+                    <div class="input">
+                        <input id="inputEmail" placeholder="E-Mail" type="email" required>
+                        <img src="../../img/mail.svg">
+                    </div>
 
-            <div class="input">
-                <input id="inputEmail" placeholder="E-Mail" type="email" required>
-                <img src="../../img/mail.svg">
-            </div>
+                    <div class="input">
+                        <input id="inputPassword" placeholder="Password" type="password" required>
+                        <img src="../../img/lock.svg">
+                    </div>
 
-            <div class="input">
-                <input id="inputPassword" placeholder="Password" type="password" required>
-                <img src="../../img/lock.svg">
-            </div>
-
-            <div class="input">
-                <input id="inputConfirmPassword" placeholder="Confirm password" type="password" required>
-                <img src="../../img/lock.svg">
-            </div>
-
-            <div class="checkbox">
-                <div>
-                    <input class="checkbox-input" type="checkbox" required>
+                    <div class="input">
+                        <input id="inputConfirmPassword" placeholder="Confirm password" type="password" required>
+                        <img src="../../img/lock.svg">
+                    </div>
                 </div>
-                <span>I accept the<span class="blue"> privacy Policy</span></span>
+                <div class="checkbox">
+                    <div>
+                        <input class="checkbox-input" type="checkbox" required>
+                    </div>
+                    <span>I accept the<span class="blue"> privacy Policy</span></span>
+                </div>
             </div>
             <div class="style-btns">
                 <button id="registerBtn" class="dark-btn">Sign in</button>
             </div>
         </form>
+
     </div>
     </div>
 
@@ -67,10 +64,6 @@
         <a href="#">Privacy Policy</a>
         <a href="#">Legal notice</a>
     </footer>
-=======
-<body>
-
->>>>>>> Stashed changes
 </body>
 
 </html>

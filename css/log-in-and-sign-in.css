@@ -20,6 +20,7 @@ body {
     top: 32px;
     left: 32px;
     width: 100px;
+    z-index: 1;
 }
 
 .sign-header {
@@ -49,12 +50,11 @@ body {
 }
 
 .container-sign-in{
-    height: 650px;
+    height: 630px;
+    width: 598px;
+    padding: 48px 88px;
 }
 
-.sign-height {
-    height: 630px;
-}
 
 .head {
     display: flex;
@@ -110,7 +110,7 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 24px;
 }
 
 button {
@@ -142,7 +142,13 @@ button {
 .style-btns {
     display: flex;
     gap: 35px;
-    padding-bottom: 24px;
+    padding-bottom: 48px;
+}
+
+.gap16 {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 footer {
@@ -186,6 +192,7 @@ a:hover {
 }
 
 .bg-animate {
+    position: absolute;
     top: 0;
     bottom: 0;
     background-color: #f6f7f8;
@@ -196,6 +203,7 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: -1;
 }
 
 .logo-animate {
@@ -230,11 +238,12 @@ a:hover {
 
 @keyframes animate-opa {
     from {
-        position: absolute;
+        z-index: 3;
         opacity: 1;
     }
 
     to {
+        z-index: -1;
         opacity: 0;
     }
 }

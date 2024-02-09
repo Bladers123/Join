@@ -2,6 +2,7 @@
 function init() {
     includeHTML();
     welcomeGreeting();
+    
 }
 
 function navToSignIn() {
@@ -30,6 +31,37 @@ async function includeHTML() {
     }
 }
 
+function renderOldContacts() {
+    let singleContact = document.getElementById('single-contacts');
+    singleContact.innerHTML = '';
+
+    for (let i = 0; i < oldContacts.length; i++) {
+        const oldContact = oldContacts[i];
+        let name = oldContact['name'];
+        let mail = oldContact['email'];
+        let number = oldContact['tel'];
+        let initials = name.split(" ").map((n) => n[0]).join("");
+        
+        singleContact.innerHTML += `
+        <div class="name" onclick="openContact()">
+        <div class="initialCircle">${initials}</div>
+        <div class="contactWrapper">
+            <div class="fullName">${name}</div>
+            <div class="email">${mail}</div>
+        </div>
+        </div>`;
+
+        openContact(name, mail, number, initials, i);
+    }
+
+}
+
+function openContact(name, mail, number, initials) {
+    let contact = document.getElementById('open-contact');
+    contact.innerHTML = '';
+    contact.innerHTML += generateHTML(name, mail, number, initials);
+}
+
 
 function greetingTime() {
     let actualTime = new Date();
@@ -54,6 +86,14 @@ function welcomeGreeting() {
    
 }
 
+function openPopUp() {
+    document.getElementById('pop-up').classList.remove('d-none');
+    document.getElementById('pop-up').classList.add('d-flex');
+}
 
+function closePopUp() {
+    document.getElementById('pop-up').classList.add('d-none');
+    document.getElementById('pop-up').classList.remove('d-flex');
+}
 
 

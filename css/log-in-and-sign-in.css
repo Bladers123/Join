@@ -79,6 +79,7 @@ input {
     border: unset;
     font-size: 24px;
     color: #2a3647;
+    outline: none;
 }
 
 ::placeholder {

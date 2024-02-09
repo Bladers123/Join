@@ -25,6 +25,9 @@ body {
     height: 100vh;
     align-content: center;
     justify-content: space-around;
+    position: sticky;
+    top: 0;
+
 }
 
 .logoSidebar {

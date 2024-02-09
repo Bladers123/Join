@@ -1,102 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../css/template.css" />
+        <link rel="stylesheet" href="../../css/fonts.css" />
+        <script src="../js/script.js"></script>
+        <script src="../js/contact.js"></script>
+        <link rel="stylesheet" href="../css/summary.css" />
+        <link rel="icon" type="image/x-icon" href="../img/logo.svg" />
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/template.css" />
-    <link rel="stylesheet" href="../../css/fonts.css" />
-    <script src="../js/script.js"></script>
-    <link rel="stylesheet" href="../css/summary.css">
-    <link rel="icon" type="image/x-icon" href="../img/logo.svg">
-</head>
+    <body onload="init()">
+        <div class="grid">
+            <div w3-include-html="../template/sidebar.html"></div>
+            <div class="rightContainer">
+                <div w3-include-html="../template/navbar.html"></div>
+                <div id="renderContent">
+                    <div class="bg-animate"></div>
+                    <div class="mainwrapper">
+                        <div class="headline">
+                            <h2>Join 360</h2>
+                            <div class="breakline"></div>
+                            <span class="keymetrics">Key Metrics at a Glance</span>
+                        </div>
 
-<body onload="init()">
-    <div class="grid">
-        <div w3-include-html="../template/sidebar.html"></div>
-        <div class="rightContainer">
-            <div w3-include-html="../template/navbar.html"></div>
-            <div id="renderContent"></div>
+                        <div class="main-container">
+                            <div class="section1">
+                                <div class="box-of-section1">
+                                    <div class="cycle"><img class="d-block" src="../img/pencil.svg" /></div>
+                                    <div class="flex-column">
+                                        <h3>2</h3>
+                                        <span>To-do</span>
+                                    </div>
+                                </div>
 
-
-            <div class="complete-container">
-                <div class="headline">
-                    <h2>Join 360</h2>
-                    <div class="breakline"></div>
-                    <span class="keymetrics">Key Metrics at a Glance</span>
-                    <div class="bottom-breakline d-none"></div>
-                </div>
-
-                <div class="flex-row gap80">
-                    <div class="main-container flex-column">
-                        <div class="section1">
-
-                            <div class="box-of-section1">
-                                <div class="cycle"><img class="d-block" src="../img/pencil.svg"></div>
-                                <div class="flex-column">
-                                    <h3>2</h3>
-                                    <span>To-do</span>
+                                <div class="box-of-section1">
+                                    <div class="cycle"><img class="d-block" src="../img/check.svg" /></div>
+                                    <div class="flex-column">
+                                        <h3>5</h3>
+                                        <span>Done</span>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="box-of-section1">
-                                <div class="cycle"><img class="d-block" src="../img/check.svg"></div>
-                                <div class="flex-column">
+                            <div class="section2">
+                                <div class="urgent">
+                                    <div class="small-cycle">
+                                        <img class="d-block" src="../img/arrowup.svg" />
+                                    </div>
+                                    <div class="flex-column">
+                                        <h3>1</h3>
+                                        <span>Urgent</span>
+                                    </div>
+                                </div>
+
+                                <div class="breakline-grey"></div>
+
+                                <div class="date-section blue">
+                                    <h6>February 8, 2024</h6>
+                                    <p>Upcoming Deadline</p>
+                                </div>
+                            </div>
+                            <div class="section3">
+                                <div class="box-of-section3">
                                     <h3>5</h3>
-                                    <span>Done</span>
+                                    <span>Tasks in<br />Board</span>
                                 </div>
-                            </div>
 
-                        </div>
-
-                        <div class="section2">
-                            <div class="urgent">
-                                <div class="small-cycle">
-                                    <img class="d-block" src="../img/arrowup.svg">
+                                <div class="box-of-section3">
+                                    <h3>5</h3>
+                                    <span>Tasks in<br />Progress</span>
                                 </div>
-                                <div class="flex-column">
-                                    <h3>1</h3>
-                                    <span>Urgent</span>
+
+                                <div class="box-of-section3">
+                                    <h3>5</h3>
+                                    <span>Awaiting<br />Feedback</span>
                                 </div>
-                            </div>
-
-                            <div class="breakline-grey"></div>
-
-                            <div class="date-section blue">
-                                <h6>February 8, 2024</h6>
-                                <p>Upcoming Deadline</p>
-                            </div>
-                        </div>
-                        <div class="section3">
-                            <div class="box-of-section3">
-                                <h3>5</h3>
-                                <span>Tasks in<br>Board</span>
-                            </div>
-
-                            <div class="box-of-section3">
-                                <h3>5</h3>
-                                <span>Tasks in<br>Progress</span>
-                            </div>
-
-                            <div class="box-of-section3">
-                                <h3>5</h3>
-                                <span>Awaiting<br>Feedback</span>
                             </div>
                         </div>
                     </div>
-                    <div class="bg-animate"></div>
+
                     <div class="greeting greet-animate">
                         <h5 id="greet-time" class="blue">Good morning,</h5>
                         <h3 class="light-blue">Tristan & Julian</h3>
                     </div>
                 </div>
             </div>
-
         </div>
-    </div>
-
-
-
-</body>
-
+    </body>
 </html>

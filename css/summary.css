@@ -1,6 +1,5 @@
 .rightContainer {
-    background-color: #F6F7F8;
-
+    background-color: #f6f7f8;
 }
 
 .complete-container {
@@ -24,13 +23,13 @@ h2 {
 }
 
 .breakline {
-    background-color: #29ABE2;
+    background-color: #29abe2;
     height: 59px;
     width: 4px;
 }
 
 .bottom-breakline {
-    background-color: #29ABE2;
+    background-color: #29abe2;
     width: 59px;
     height: 3px;
 }
@@ -65,7 +64,7 @@ h2 {
 }
 
 .cycle {
-    background-color: #2A3647;
+    background-color: #2a3647;
     width: 69px;
     height: 69px;
     border-radius: 100%;
@@ -79,7 +78,6 @@ h3 {
     font-size: 64px;
     font-weight: 600;
 }
-
 
 .section2 {
     background-color: white;
@@ -96,7 +94,7 @@ h3 {
 }
 
 .small-cycle {
-    background-color: #FF3D00;
+    background-color: #ff3d00;
     width: 60px;
     height: 60px;
     border-radius: 100%;
@@ -154,15 +152,15 @@ span {
     font-size: 21px;
     font-weight: 400;
     text-align: center;
-    color: #2A3647;
+    color: #2a3647;
 }
 
 .blue {
-    color: #2A3647;
+    color: #2a3647;
 }
 
 .light-blue {
-    color: #29ABE2;
+    color: #29abe2;
 }
 
 .flex-column {
@@ -201,15 +199,14 @@ h5 {
 .box-of-section1:hover {
     cursor: pointer;
     box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1);
-    background-color: #29ABE2;
+    background-color: #29abe2;
     color: white;
-    transition: all 300ms ease-in-out
+    transition: all 300ms ease-in-out;
 }
 
 .box-of-section1:hover span {
     color: white;
 }
-
 
 .section2:hover {
     cursor: pointer;
@@ -219,7 +216,7 @@ h5 {
 .box-of-section3:hover {
     cursor: pointer;
     box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
-    transition: all 300ms ease-in-out
+    transition: all 300ms ease-in-out;
 }
 
 /* respnsiveness */
@@ -232,7 +229,6 @@ h5 {
         font-size: 56px;
     }
 }
-
 
 @media (max-width: 1505px) {
     h5 {
@@ -290,8 +286,6 @@ h5 {
     .bottom-breakline {
         display: block;
     }
-
-
 }
 
 @media (max-width: 900px) {
@@ -305,7 +299,6 @@ h5 {
 }
 
 @media (max-width: 700px) {
-
     .main-container {
         width: 396px;
         height: 384px;
@@ -334,7 +327,6 @@ h5 {
         gap: 10px;
         border-radius: 20px;
     }
-
 
     .section2 {
         height: 110px;
@@ -385,7 +377,6 @@ h5 {
         text-align: center;
     }
 
-
     .bg-animate {
         position: absolute;
         top: 0;
@@ -399,7 +390,6 @@ h5 {
         justify-content: center;
         align-items: center;
         z-index: -1;
-
     }
 
     .greet-animate {
@@ -453,8 +443,9 @@ h5 {
     .main-container {
         width: 360px;
     }
-    
-    .section1, .section3 {
+
+    .section1,
+    .section3 {
         gap: 20px;
         padding: 0;
     }
@@ -469,15 +460,14 @@ h5 {
         width: 300px;
     }
 
-.box-of-section1 {
-    padding: 0;
-}
+    .box-of-section1 {
+        padding: 0;
+    }
 
-.section2 {
-    gap: 0;
+    .section2 {
+        gap: 0;
+    }
 }
-}
-
 
 @media (max-width: 360px) {
     .complete-container {
@@ -509,9 +499,9 @@ h5 {
         font-size: 32px;
     }
 
-    .section1, .section3 {
+    .section1,
+    .section3 {
         gap: 10px;
-
     }
 
     .urgent {

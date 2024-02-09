@@ -25,6 +25,9 @@ body {
     height: 100vh;
     align-content: center;
     justify-content: space-around;
+    position: sticky;
+    top: 0;
+
 }
 
 .logoSidebar {
@@ -111,6 +114,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     background-color: white;
+    z-index: 2;
 }
 
 .navbarMobile {
@@ -197,7 +201,7 @@ nav {
     .grid {
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: 1fr;
         gap: 0px 0px;
         grid-template-areas: ". .";
     }
@@ -228,7 +232,7 @@ nav {
         display: none;
     }
 
-    img {
+    .navBarLogo {
         display: none;
     }
 

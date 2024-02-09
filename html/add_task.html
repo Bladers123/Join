@@ -29,15 +29,16 @@
                             </div>
                             <div>
                                 <p>Description</p>
-                                <!-- <textarea class="textarea" name="" id="" cols="30" rows="10"></textarea> -->
-                                <input class="textarea" type="text">
+                                <textarea class="textarea"></textarea>
                             </div>
-                            <div id="list1" class="dropdown-check-list" tabindex="100">
-                                <span class="anchor">Assigned to</span>
-                                <ul class="items">
-                                    <li>Mike<input type="checkbox" /></li>
-                                    <li>Sabine<input type="checkbox" /></li>
-                                </ul>
+
+                            <p>Assigned to</p>
+                            <div>
+                                <div class="combobox">
+                                    <p>Select contacts to assigned</p>
+                                    <img id="navigation" onclick="openCheckBoxArea()" src="../img/navigation.png" alt="navLogo">
+                                </div>
+                                <div id="checkBoxItems" class="checkBoxItems"></div>
                             </div>
                         </div>
                         <div class="divider"></div>

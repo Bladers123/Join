@@ -32,6 +32,7 @@ body {
 .addNewContact {
     display: flex;
     padding: 12px 12px;
+    width: 275px;
     justify-content: center;
     align-items: center;
     gap: 16px;
@@ -53,10 +54,14 @@ body {
     padding: 15px 24px;
     align-items: flex-start;
     gap: 35px;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .name:hover {
-    background-color: lightgray;
+    background-color: #2a3647;
+    color: white;
 }
 
 .nameWrapper {
@@ -275,7 +280,7 @@ body {
 
     .addNewContact {
         display: flex;
-        width: 56px;
+        width: 56px !important;
         height: 56px;
         padding: 12px 0px;
         justify-content: center;

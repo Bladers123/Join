@@ -194,11 +194,7 @@ nav {
     display: none;
 }
 
-<<<<<<< Updated upstream
 @media (max-width: 900px) {
-=======
-@media (max-width: 1050px) {
->>>>>>> Stashed changes
     .grid {
         display: grid;
         grid-template-columns: 1fr;

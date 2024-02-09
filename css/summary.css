@@ -1,6 +1,5 @@
 .rightContainer {
-    background-color: #F6F7F8;
-
+    background-color: #f6f7f8;
 }
 
 .complete-container {
@@ -19,41 +18,10 @@
     justify-content: center;
 }
 
-<<<<<<< Updated upstream
-=======
-.main-container {
-    width: 560px;
-    height: 562px;
-    top: 335px;
-    left: 328px;
-}
-
-.blue {
-    color: #2a3647;
-}
-
-.light-blue {
-    color: #29abe2;
-}
-
->>>>>>> Stashed changes
 h2 {
     font-size: 61px;
 }
 
-<<<<<<< Updated upstream
-=======
-span {
-    font-size: 20px;
-    text-align: center;
-    color: #2a3647;
-}
-
-p {
-    font-size: 16px;
-}
-
->>>>>>> Stashed changes
 .breakline {
     background-color: #29abe2;
     height: 59px;
@@ -61,7 +29,7 @@ p {
 }
 
 .bottom-breakline {
-    background-color: #29ABE2;
+    background-color: #29abe2;
     width: 59px;
     height: 3px;
 }
@@ -70,7 +38,6 @@ p {
     font-size: 27px;
 }
 
-<<<<<<< Updated upstream
 .main-container {
     gap: 30px;
     width: 560px;
@@ -96,8 +63,6 @@ p {
     width: 100%;
 }
 
-=======
->>>>>>> Stashed changes
 .cycle {
     background-color: #2a3647;
     width: 69px;
@@ -113,7 +78,6 @@ h3 {
     font-size: 64px;
     font-weight: 600;
 }
-
 
 .section2 {
     background-color: white;
@@ -140,96 +104,6 @@ h3 {
     flex-direction: column;
 }
 
-<<<<<<< Updated upstream
-=======
-h3 {
-    font-size: 64px;
-}
-
-h5 {
-    font-size: 47px;
-}
-
-h6 {
-    font-size: 21px;
-}
-
-.box-of-section1 {
-    width: 264px;
-    height: 168px;
-    border-radius: 30px;
-    padding: 38px 19px 38px 19px;
-    gap: 18px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    box-sizing: border-box;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-}
-
-.box-of-section1:hover {
-    cursor: pointer;
-    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1);
-}
-
-.section1 {
-    display: flex;
-    width: 100%;
-    height: 168px;
-    justify-content: space-between;
-}
-
-.section2 {
-    background-color: white;
-    width: 100%;
-    height: 168px;
-    border-radius: 30px;
-    padding: 28px 48px;
-    display: flex;
-    gap: 61px;
-    align-items: center;
-    justify-content: space-evenly;
-    position: absolute;
-    top: 196px;
-    box-sizing: border-box;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-}
-
-.section2:hover {
-    cursor: pointer;
-    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1);
-}
-
-.section3 {
-    display: flex;
-    width: 100%;
-    height: 170px;
-    position: absolute;
-    top: 392px;
-    justify-content: space-between;
-}
-
-.box-of-section3 {
-    width: 168px;
-    height: 168px;
-    border-radius: 30px;
-    padding: 25px 0 25px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    flex-direction: column;
-    box-sizing: border-box;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-}
-
-.box-of-section3:hover {
-    cursor: pointer;
-    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1);
-}
-
->>>>>>> Stashed changes
 .urgent {
     display: flex;
     align-items: center;
@@ -278,15 +152,15 @@ span {
     font-size: 21px;
     font-weight: 400;
     text-align: center;
-    color: #2A3647;
+    color: #2a3647;
 }
 
 .blue {
-    color: #2A3647;
+    color: #2a3647;
 }
 
 .light-blue {
-    color: #29ABE2;
+    color: #29abe2;
 }
 
 .flex-column {
@@ -325,16 +199,14 @@ h5 {
 .box-of-section1:hover {
     cursor: pointer;
     box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1);
-    background-color: #29ABE2;
+    background-color: #29abe2;
     color: white;
-    transition: all 300ms ease-in-out
+    transition: all 300ms ease-in-out;
 }
 
 .box-of-section1:hover span {
     color: white;
 }
-
-<<<<<<< Updated upstream
 
 .section2:hover {
     cursor: pointer;
@@ -344,7 +216,7 @@ h5 {
 .box-of-section3:hover {
     cursor: pointer;
     box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
-    transition: all 300ms ease-in-out
+    transition: all 300ms ease-in-out;
 }
 
 /* respnsiveness */
@@ -357,7 +229,6 @@ h5 {
         font-size: 56px;
     }
 }
-
 
 @media (max-width: 1505px) {
     h5 {
@@ -397,9 +268,6 @@ h5 {
 }
 
 @media (max-width: 1211px) {
-=======
-@media (max-width: 1350px) {
->>>>>>> Stashed changes
     .greeting {
         display: none;
     }
@@ -418,8 +286,6 @@ h5 {
     .bottom-breakline {
         display: block;
     }
-
-
 }
 
 @media (max-width: 900px) {
@@ -433,7 +299,6 @@ h5 {
 }
 
 @media (max-width: 700px) {
-
     .main-container {
         width: 396px;
         height: 384px;
@@ -462,7 +327,6 @@ h5 {
         gap: 10px;
         border-radius: 20px;
     }
-
 
     .section2 {
         height: 110px;
@@ -512,7 +376,6 @@ h5 {
         align-items: center;
         text-align: center;
     }
-
 
     .bg-animate {
         position: absolute;
@@ -571,7 +434,6 @@ h5 {
         }
     }
 }
-<<<<<<< Updated upstream
 
 @media (max-width: 500px) {
     .complete-container {
@@ -581,8 +443,9 @@ h5 {
     .main-container {
         width: 360px;
     }
-    
-    .section1, .section3 {
+
+    .section1,
+    .section3 {
         gap: 20px;
         padding: 0;
     }
@@ -597,15 +460,14 @@ h5 {
         width: 300px;
     }
 
-.box-of-section1 {
-    padding: 0;
-}
+    .box-of-section1 {
+        padding: 0;
+    }
 
-.section2 {
-    gap: 0;
+    .section2 {
+        gap: 0;
+    }
 }
-}
-
 
 @media (max-width: 360px) {
     .complete-container {
@@ -637,9 +499,9 @@ h5 {
         font-size: 32px;
     }
 
-    .section1, .section3 {
+    .section1,
+    .section3 {
         gap: 10px;
-
     }
 
     .urgent {
@@ -663,5 +525,3 @@ h5 {
         font-size: 14px;
     }
 }
-=======
->>>>>>> Stashed changes

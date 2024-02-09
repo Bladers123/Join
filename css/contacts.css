@@ -55,6 +55,10 @@ body {
     gap: 35px;
 }
 
+.name:hover {
+    background-color: lightgray;
+}
+
 .nameWrapper {
     display: flex;
     align-items: center;

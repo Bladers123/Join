@@ -19,12 +19,43 @@
     justify-content: center;
 }
 
+<<<<<<< Updated upstream
+=======
+.main-container {
+    width: 560px;
+    height: 562px;
+    top: 335px;
+    left: 328px;
+}
+
+.blue {
+    color: #2a3647;
+}
+
+.light-blue {
+    color: #29abe2;
+}
+
+>>>>>>> Stashed changes
 h2 {
     font-size: 61px;
 }
 
+<<<<<<< Updated upstream
+=======
+span {
+    font-size: 20px;
+    text-align: center;
+    color: #2a3647;
+}
+
+p {
+    font-size: 16px;
+}
+
+>>>>>>> Stashed changes
 .breakline {
-    background-color: #29ABE2;
+    background-color: #29abe2;
     height: 59px;
     width: 4px;
 }
@@ -39,6 +70,7 @@ h2 {
     font-size: 27px;
 }
 
+<<<<<<< Updated upstream
 .main-container {
     gap: 30px;
     width: 560px;
@@ -64,8 +96,10 @@ h2 {
     width: 100%;
 }
 
+=======
+>>>>>>> Stashed changes
 .cycle {
-    background-color: #2A3647;
+    background-color: #2a3647;
     width: 69px;
     height: 69px;
     border-radius: 100%;
@@ -96,7 +130,7 @@ h3 {
 }
 
 .small-cycle {
-    background-color: #FF3D00;
+    background-color: #ff3d00;
     width: 60px;
     height: 60px;
     border-radius: 100%;
@@ -106,6 +140,96 @@ h3 {
     flex-direction: column;
 }
 
+<<<<<<< Updated upstream
+=======
+h3 {
+    font-size: 64px;
+}
+
+h5 {
+    font-size: 47px;
+}
+
+h6 {
+    font-size: 21px;
+}
+
+.box-of-section1 {
+    width: 264px;
+    height: 168px;
+    border-radius: 30px;
+    padding: 38px 19px 38px 19px;
+    gap: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+}
+
+.box-of-section1:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1);
+}
+
+.section1 {
+    display: flex;
+    width: 100%;
+    height: 168px;
+    justify-content: space-between;
+}
+
+.section2 {
+    background-color: white;
+    width: 100%;
+    height: 168px;
+    border-radius: 30px;
+    padding: 28px 48px;
+    display: flex;
+    gap: 61px;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 196px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section2:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1);
+}
+
+.section3 {
+    display: flex;
+    width: 100%;
+    height: 170px;
+    position: absolute;
+    top: 392px;
+    justify-content: space-between;
+}
+
+.box-of-section3 {
+    width: 168px;
+    height: 168px;
+    border-radius: 30px;
+    padding: 25px 0 25px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    flex-direction: column;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+}
+
+.box-of-section3:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1);
+}
+
+>>>>>>> Stashed changes
 .urgent {
     display: flex;
     align-items: center;
@@ -210,6 +334,7 @@ h5 {
     color: white;
 }
 
+<<<<<<< Updated upstream
 
 .section2:hover {
     cursor: pointer;
@@ -272,6 +397,9 @@ h5 {
 }
 
 @media (max-width: 1211px) {
+=======
+@media (max-width: 1350px) {
+>>>>>>> Stashed changes
     .greeting {
         display: none;
     }
@@ -399,7 +527,6 @@ h5 {
         justify-content: center;
         align-items: center;
         z-index: -1;
-
     }
 
     .greet-animate {
@@ -444,6 +571,7 @@ h5 {
         }
     }
 }
+<<<<<<< Updated upstream
 
 @media (max-width: 500px) {
     .complete-container {
@@ -535,3 +663,5 @@ h5 {
         font-size: 14px;
     }
 }
+=======
+>>>>>>> Stashed changes

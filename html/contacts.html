@@ -9,11 +9,16 @@
         <link rel="stylesheet" href="../css/fonts.css" />
         <link rel="stylesheet" href="../../css/fonts.css" />
         <script src="../js/script.js"></script>
+        <script src="../js/storage.js"></script>
+        <script src="../js/register.js"></script>
+        <script src="../js/contactsJson.js"></script>
+        <script src="../js/templates.js"></script>
         <script src="../js/contact.js"></script>
+
 
         <link rel="icon" type="image/x-icon" href="../img/logo.svg" />
     </head>
-    <body onload="includeHTML()">
+    <body onload="includeHTML(); initRegister();">
         <div class="grid">
             <div w3-include-html="../template/sidebar.html"></div>
             <div class="rightContainer">
@@ -42,13 +47,7 @@
                                     <div class="Buchstabe">A</div>
                                     <div class="divider"></div>
                                 </div>
-                                <div onclick="openContact()" id="contactName" class="name">
-                                    <div class="initialCircle">AB</div>
-                                    <div class="contactWrapper">
-                                        <div class="fullName">Anton Mayer</div>
-                                        <div class="email">test@mail.de</div>
-                                    </div>
-                                </div>
+                                <div id="contactName"></div>
 
                                 <div class="letterWrapper">
                                     <div class="Buchstabe">B</div>

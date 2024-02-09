@@ -32,7 +32,7 @@ async function includeHTML() {
 }
 
 function renderOldContacts() {
-    let singleContact = document.getElementById('single-contacts');
+    let singleContact = document.getElementById('contactName');
     singleContact.innerHTML = '';
 
     for (let i = 0; i < oldContacts.length; i++) {
@@ -43,13 +43,13 @@ function renderOldContacts() {
         let initials = name.split(" ").map((n) => n[0]).join("");
         
         singleContact.innerHTML += `
-        <div class="name" onclick="openContact()">
+        <div onclick="openContact()" class="name">
         <div class="initialCircle">${initials}</div>
         <div class="contactWrapper">
             <div class="fullName">${name}</div>
             <div class="email">${mail}</div>
         </div>
-        </div>`;
+    </div>`;
 
         openContact(name, mail, number, initials, i);
     }

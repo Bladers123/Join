@@ -7,7 +7,7 @@ let oldContacts = [
     {
         "name": "Julian Fichtl",
         "email": "julian@gmail.com",
-        "tel": "017612312333",
+        "tel": "01529483027",
     },
     {
         "name": "Rabia Ürkmez",
@@ -27,12 +27,12 @@ let oldContacts = [
     {
         "name": "Dominik Emmerich",
         "email": "schimmelich@t-online.de",
-        "tel": "017612312333",
+        "tel": "015112314027",
     },
     {
         "name": "Erol Fleischer",
         "email": "fleischi@gmail.com",
-        "tel": "017612312333",
+        "tel": "017112954562",
     },
     {
         "name": "Frank Gül",
@@ -42,7 +42,7 @@ let oldContacts = [
     {
         "name": "Gustav Holm",
         "email": "hoelmchen@gmx.de",
-        "tel": "017612312333",
+        "tel": "01744975233",
     },
 
 

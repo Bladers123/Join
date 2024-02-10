@@ -39,11 +39,10 @@ function renderOldContacts() {
         const oldContact = oldContacts[i];
         let name = oldContact['name'];
         let mail = oldContact['email'];
-        let number = oldContact['tel'];
         let initials = name.split(" ").map((n) => n[0]).join("");
         
         singleContact.innerHTML += `
-        <div onclick="openContact()" class="name">
+        <div onclick="showContact(${i})" class="name">
         <div class="initialCircle">${initials}</div>
         <div class="contactWrapper">
             <div class="fullName">${name}</div>
@@ -51,16 +50,11 @@ function renderOldContacts() {
         </div>
     </div>`;
 
-        openContact(name, mail, number, initials, i);
+        showContact(i);
     }
 
 }
 
-function openContact(name, mail, number, initials) {
-    let contact = document.getElementById('open-contact');
-    contact.innerHTML = '';
-    contact.innerHTML += generateHTML(name, mail, number, initials);
-}
 
 
 function greetingTime() {

@@ -34,7 +34,7 @@ h1 {
 .combobox {
     width: 100%;
     padding: 8px;
-    margin: 8px 0;
+    margin-top: 8px;
     border: 1px solid rgba(95, 92, 92, 0.2);
     font-size: 16px;
     box-sizing: border-box;
@@ -99,6 +99,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: none;
 }
 
 .combobox img {
@@ -139,4 +140,21 @@ h1 {
 
 .checkbox{
     background-color: white;
+}
+
+.colored-star {
+    color: red; 
+  }
+
+  .initialCircle {
+    
+    width: 42px;
+    height: 100px;
+    flex-shrink: 0;
+    background-color: #ff7a00;
+    stroke-width: 2px;
+    stroke: white;
+    border-radius: 100px;
+    color: white;
+    font-size: 12px;
 }

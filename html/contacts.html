@@ -12,7 +12,6 @@
     <script src="../js/script.js"></script>
     <script src="../js/storage.js"></script>
     <script src="../js/register.js"></script>
-    <script src="../js/contactsJson.js"></script>
     <script src="../js/templates.js"></script>
     <script src="../js/contact.js"></script>
 
@@ -91,7 +90,7 @@
                                 <div class="initialCircleXL"><img src="../img/person.svg"></div>
 
                                 <div class="whitee">
-                                    <form onsubmit="createContact()">
+                                    <form onsubmit="createContact(); return false;">
                                         <div class="inputFields">
                                             <div class="singleInput">
                                                 <input required id="contact-name" placeholder="Name" type="text">

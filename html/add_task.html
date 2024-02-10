@@ -24,19 +24,21 @@
                     <div class="task">
                         <div class="taskLeftSide">
                             <div>
-                                <p>Title*</p>
-                                <input class="inputs" type="text">
+
+                                <p>Title<span class="colored-star">*</span></p>
+                                <input placeholder="Enter a title" class="inputs" type="text">
                             </div>
                             <div>
                                 <p>Description</p>
-                                <textarea class="textarea"></textarea>
+                                <textarea placeholder="Enter a Description" class="textarea"></textarea>
                             </div>
 
-                            <p>Assigned to</p>
-                            <div>
+                            
+                            <div><p>Assigned to</p>
                                 <div class="combobox">
                                     <p>Select contacts to assigned</p>
-                                    <img id="navigation" onclick="openCheckBoxArea()" src="../img/navigation.png" alt="navLogo">
+                                    <img id="navigation" onclick="openCheckBoxArea()" src="../img/navigation.png"
+                                        alt="navLogo">
                                 </div>
                                 <div id="checkBoxItems" class="checkBoxItems"></div>
                             </div>
@@ -44,8 +46,8 @@
                         <div class="divider"></div>
                         <div class="taskRightSide">
                             <div>
-                                <p>Due date*</p>
-                                <input class="inputs" type="text">
+                                <p>Due date<span class="colored-star">*</span></p>
+                                <input placeholder="dd/mm/yyyy" class="inputs" type="text">
                             </div>
                             <p>Prio</p>
                             <div class="prioButtons">
@@ -54,12 +56,12 @@
                                 <button>Low</button>
                             </div>
                             <div>
-                                <p>Category*</p>
+                                <p>Category<span class="colored-star">*</span></p>
                                 <input class="inputs" type="text">
                             </div>
                             <div>
                                 <p>Subtasks</p>
-                                <input class="inputs" type="text">
+                                <input placeholder="Add new subtask" class="inputs" type="text">
                             </div>
                         </div>
                     </div>

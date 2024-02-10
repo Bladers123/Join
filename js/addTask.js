@@ -28,7 +28,8 @@ function getCeckBoxAreaTemplate() {
     return items.map(item => {
         return /*html*/`
             <div class="item">
-                <img src="${item.imgUrl}" alt="Picture of ${item.name}">
+                <!-- <img src="${item.imgUrl}" alt="Picture of ${item.name}"> -->
+                <div class="initialCircleCircle"></div>
                 <label>${item.name}</label>
                 <input class="checkbox" type="checkbox">
             </div>

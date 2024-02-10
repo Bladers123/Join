@@ -1,8 +1,8 @@
 
-function init() {
+async function init() {
     includeHTML();
-    welcomeGreeting();
-    
+ //   await loadContacts();
+    renderOldContacts();
 }
 
 function navToSignIn() {
@@ -40,7 +40,7 @@ function renderOldContacts() {
         let name = oldContact['name'];
         let mail = oldContact['email'];
         let initials = name.split(" ").map((n) => n[0]).join("");
-        
+
         singleContact.innerHTML += `
         <div onclick="showContact(${i})" class="name">
         <div class="initialCircle">${initials}</div>
@@ -50,6 +50,7 @@ function renderOldContacts() {
         </div>
     </div>`;
 
+
         showContact(i);
     }
 
@@ -57,37 +58,8 @@ function renderOldContacts() {
 
 
 
-function greetingTime() {
-    let actualTime = new Date();
-    let time = actualTime.getHours();
 
-    if (time >= 5 && time < 12) {
-        return "Guten Morgen";
-    } else if (time >= 12 && time < 17) {
-        return "Guten Mittag";
-    } else if (time >= 17 && time < 24) {
-        return "Guten Abend";
-    } else {
-        return "Gute Nacht";
-    }
-    
-}
 
-function welcomeGreeting() {
-    let greet = document.getElementById('greet-time');
-    greet.innerHTML = '';
-    greet.innerHTML += greetingTime();
-   
-}
 
-function openPopUp() {
-    document.getElementById('pop-up').classList.remove('d-none');
-    document.getElementById('pop-up').classList.add('d-flex');
-}
-
-function closePopUp() {
-    document.getElementById('pop-up').classList.add('d-none');
-    document.getElementById('pop-up').classList.remove('d-flex');
-}
 
 

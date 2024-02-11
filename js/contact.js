@@ -160,6 +160,13 @@ function sortedAlphabetic() {
     let alphabet = oldContacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
+function deleteContact(i) {
+    oldContacts.splice(i, 1);
+    letters.splice(i, 1);
+
+    renderOldContacts();
+}
+
 
 
 /*async function loadContacts() {

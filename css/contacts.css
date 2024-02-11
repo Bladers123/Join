@@ -430,6 +430,10 @@ button img {
     cursor: pointer;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 
 @media (max-width: 1300px) {
     .buttonName {

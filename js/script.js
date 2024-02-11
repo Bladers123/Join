@@ -30,36 +30,3 @@ async function includeHTML() {
         }
     }
 }
-
-function renderOldContacts() {
-    let singleContact = document.getElementById('contactName');
-    singleContact.innerHTML = '';
-
-    for (let i = 0; i < oldContacts.length; i++) {
-        const oldContact = oldContacts[i];
-        let name = oldContact['name'];
-        let mail = oldContact['email'];
-        let initials = name.split(" ").map((n) => n[0]).join("");
-
-        singleContact.innerHTML += `
-        <div onclick="showContact(${i})" class="name">
-        <div class="initialCircle">${initials}</div>
-        <div class="contactWrapper">
-            <div class="fullName">${name}</div>
-            <div class="email">${mail}</div>
-        </div>
-    </div>`;
-
-
-        showContact(i);
-    }
-
-}
-
-
-
-
-
-
-
-

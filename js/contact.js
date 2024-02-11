@@ -15,6 +15,11 @@ let oldContacts = [
         "tel": "017612312333",
     },
     {
+        "name": "Agathe Bauer",
+        "email": "igotthe@bauer.com",
+        "tel": "071319991122",
+    },
+    {
         "name": "Bertold Cislewitz",
         "email": "familie@galgant.de",
         "tel": "017612312333",
@@ -45,6 +50,7 @@ let oldContacts = [
         "tel": "01744975233",
     },
 ];
+let letters = [];
 
 function openContact() {
     document.getElementById("contactOverlay").classList.remove("d-none");
@@ -54,6 +60,23 @@ function closeContact() {
     document.getElementById("contactOverlay").classList.add("d-none");
 }
 
+function renderOldContacts() {
+    let singleContact = document.getElementById('contactName');
+    singleContact.innerHTML = '';
+
+    for (let i = 0; i < oldContacts.length; i++) {
+        const oldContact = oldContacts[i];
+        let name = oldContact['name'];
+        let mail = oldContact['email'];
+        let initials = name.split(" ").map((n) => n[0]).join("");
+        
+        singleContact.innerHTML += sortContacts(name, mail, initials, i);
+
+        // sortedByFirstLetter();
+        showContact(i);
+    }
+
+}
 
 function showContact(i) {
     let selectedName = oldContacts[i];
@@ -61,20 +84,15 @@ function showContact(i) {
     let mail = selectedName['email'];
     let number = selectedName['tel'];
     let initials = name.split(" ").map((n) => n[0]).join("");
+    let letter = name.charAt(0);
 
+    letters.push(letter);
+    console.log(letter)
+    
     let contact = document.getElementById('open-contact');
     contact.innerHTML = '';
     contact.innerHTML += generateHTML(name, mail, number, initials);
-}
 
-function openPopUp() {
-    document.getElementById('pop-up').classList.remove('d-none');
-    document.getElementById('pop-up').classList.add('d-flex');
-}
-
-function closePopUp() {
-    document.getElementById('pop-up').classList.add('d-none');
-    document.getElementById('pop-up').classList.remove('d-flex');
 }
 
 async function createContact() {
@@ -89,8 +107,8 @@ async function createContact() {
     };
 
     oldContacts.push(newContact);
-    console.log(oldContacts)
- //   await setItem('oldContacts', JSON.stringify(newContact));
+
+    //   await setItem('oldContacts', JSON.stringify(newContact));
 
     renderOldContacts();
 
@@ -100,7 +118,49 @@ async function createContact() {
 
 }
 
+
+function sortedAlphabetic() {
+    let alphabet = oldContacts.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+function sortContacts(name, mail, initials, i) {
+    let sortedContacts = document.getElementById('sort-contacts');
+   // sortedContacts.innerHTML = '';
+
+    for (let l = 0; l < letters.length; l++) {
+        const oneLetter = letters[l];
+        // let register = letters.sort();
+        
+
+        sortedContacts.innerHTML += `
+    <div class="letterWrapper">
+        <div class="Buchstabe">${oneLetter}</div>
+        <div class="divider"></div>
+    </div>
+    <div onclick="showContact(${i})" class="name">
+        <div class="initialCircle">${initials}</div>
+        <div class="contactWrapper">
+            <div class="fullName">${name}</div>
+            <div class="email">${mail}</div>
+        </div>
+    </div>
+    `;
+    }
+
+}
+
 /*async function loadContacts() {
     oldContacts = JSON.parse(await getItem('oldContacts'));
 
 }*/
+
+function openPopUp() {
+    document.getElementById('pop-up').classList.remove('d-none');
+    document.getElementById('pop-up').classList.add('d-flex');
+}
+
+
+function closePopUp() {
+    document.getElementById('pop-up').classList.add('d-none');
+    document.getElementById('pop-up').classList.remove('d-flex');
+}

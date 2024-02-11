@@ -64,16 +64,21 @@ function renderOldContacts() {
     let singleContact = document.getElementById('contactName');
     singleContact.innerHTML = '';
 
+    sortedAlphabetic();
+    
+
     for (let i = 0; i < oldContacts.length; i++) {
         const oldContact = oldContacts[i];
         let name = oldContact['name'];
         let mail = oldContact['email'];
         let initials = name.split(" ").map((n) => n[0]).join("");
+        let sortedByLetter = name.charAt(0);
         
-        singleContact.innerHTML += sortContacts(name, mail, initials, i);
+        singleContact.innerHTML += sortContacts(sortedByLetter, name, mail, initials, i);
 
         // sortedByFirstLetter();
         showContact(i);
+        console.log(oldContact)
     }
 
 }
@@ -87,7 +92,7 @@ function showContact(i) {
     let letter = name.charAt(0);
 
     letters.push(letter);
-    console.log(letter)
+   // console.log(letter)
     
     let contact = document.getElementById('open-contact');
     contact.innerHTML = '';
@@ -123,8 +128,9 @@ function sortedAlphabetic() {
     let alphabet = oldContacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
-function sortContacts(name, mail, initials, i) {
+function sortContacts(sortedByLetter, name, mail, initials, i) {
     let sortedContacts = document.getElementById('sort-contacts');
+    
    // sortedContacts.innerHTML = '';
 
     for (let l = 0; l < letters.length; l++) {
@@ -137,14 +143,20 @@ function sortContacts(name, mail, initials, i) {
         <div class="Buchstabe">${oneLetter}</div>
         <div class="divider"></div>
     </div>
-    <div onclick="showContact(${i})" class="name">
-        <div class="initialCircle">${initials}</div>
-        <div class="contactWrapper">
-            <div class="fullName">${name}</div>
-            <div class="email">${mail}</div>
-        </div>
-    </div>
     `;
+
+    if (oneLetter !== sortedByLetter) {
+        sortedContacts.innerHTML += `    
+        <div onclick="showContact(${i})" class="name">
+            <div class="initialCircle">${initials}</div>
+            <div class="contactWrapper">
+                <div class="fullName">${name}</div>
+                <div class="email">${mail}</div>
+            </div>
+        </div>`;
+    } else {
+        console.log('gib nicht auf')
+    }
     }
 
 }

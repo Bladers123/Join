@@ -61,8 +61,9 @@ function closeContact() {
 }
 
 function renderOldContacts() {
-    let singleContact = document.getElementById('contactName');
-    singleContact.innerHTML = '';
+    let renderContact = document.getElementById('contactName');
+    let currentLetter = null;
+    renderContact.innerHTML = '';
 
     sortedAlphabetic();
     
@@ -74,11 +75,42 @@ function renderOldContacts() {
         let initials = name.split(" ").map((n) => n[0]).join("");
         let sortedByLetter = name.charAt(0);
         
-        singleContact.innerHTML += sortContacts(sortedByLetter, name, mail, initials, i);
-
-        // sortedByFirstLetter();
+        if (sortedByLetter !== currentLetter) {
+            renderContact.innerHTML += `
+            <div class="letterWrapper">
+                <div class="Buchstabe">${sortedByLetter}</div>
+                <div class="divider"></div>
+            </div>
+            `;
+        } else {
+            console.log('versuchs nochmal')
+            
+        }
+        sortContacts(renderContact, sortedByLetter, name, mail, initials, i);
         showContact(i);
-        console.log(oldContact)
+        
+    }
+
+}
+
+function sortContacts(renderContact, sortedByLetter, name, mail, initials, i) {
+
+    for (let l = 0; l < letters.length; l++) {
+        const oneLetter = letters[l];
+        
+
+        if (oneLetter !== sortedByLetter) {
+            renderContact.innerHTML += `    
+                <div onclick="showContact(${i})" class="name">
+                    <div class="initialCircle">${initials}</div>
+                        <div class="contactWrapper">
+                            <div class="fullName">${name}</div>
+                        <div class="email">${mail}</div>
+                    </div>
+                </div>`;
+        } else {
+            console.log('Heul leise')
+        }
     }
 
 }
@@ -128,38 +160,7 @@ function sortedAlphabetic() {
     let alphabet = oldContacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
-function sortContacts(sortedByLetter, name, mail, initials, i) {
-    let sortedContacts = document.getElementById('sort-contacts');
-    
-   // sortedContacts.innerHTML = '';
 
-    for (let l = 0; l < letters.length; l++) {
-        const oneLetter = letters[l];
-        // let register = letters.sort();
-        
-
-        sortedContacts.innerHTML += `
-    <div class="letterWrapper">
-        <div class="Buchstabe">${oneLetter}</div>
-        <div class="divider"></div>
-    </div>
-    `;
-
-    if (oneLetter !== sortedByLetter) {
-        sortedContacts.innerHTML += `    
-        <div onclick="showContact(${i})" class="name">
-            <div class="initialCircle">${initials}</div>
-            <div class="contactWrapper">
-                <div class="fullName">${name}</div>
-                <div class="email">${mail}</div>
-            </div>
-        </div>`;
-    } else {
-        console.log('gib nicht auf')
-    }
-    }
-
-}
 
 /*async function loadContacts() {
     oldContacts = JSON.parse(await getItem('oldContacts'));

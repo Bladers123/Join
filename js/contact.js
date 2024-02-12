@@ -65,7 +65,7 @@ function renderOldContacts() {
     let currentLetter = null;
     renderContact.innerHTML = '';
 
-    sortedAlphabetic();
+    oldContacts.sort((a, b) => a.name.localeCompare(b.name)); // sortiert das Array erst einmal alphabetisch
     
 
     for (let i = 0; i < oldContacts.length; i++) {
@@ -155,10 +155,6 @@ async function createContact() {
 
 }
 
-
-function sortedAlphabetic() {
-    let alphabet = oldContacts.sort((a, b) => a.name.localeCompare(b.name));
-}
 
 function deleteContact(i) {
     oldContacts.splice(i, 1);

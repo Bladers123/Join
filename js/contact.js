@@ -84,8 +84,20 @@ function renderOldContacts() {
                 <div class="divider"></div>
             </div>
             `;
+        } else {
+            console.log("versuchs nochmal");
         }
-        renderContact.innerHTML += `    
+        sortContacts(renderContact, sortedByLetter, name, mail, initials, i);
+        showContact(i);
+    }
+}
+
+function sortContacts(renderContact, sortedByLetter, name, mail, initials, i) {
+    for (let l = 0; l < letters.length; l++) {
+        const oneLetter = letters[l];
+
+        if (oneLetter !== sortedByLetter) {
+            renderContact.innerHTML += `    
                 <div onclick="showContact(${i})" class="name">
                     <div class="initialCircle">${initials}</div>
                         <div class="contactWrapper">
@@ -93,6 +105,9 @@ function renderOldContacts() {
                         <div class="email">${mail}</div>
                     </div>
                 </div>`;
+        } else {
+            console.log("Heul leise");
+        }
     }
 }
 

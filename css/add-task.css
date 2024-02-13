@@ -136,7 +136,7 @@ h1 {
     position: relative;
  }
 
- .checkBoxItems {
+ .items {
     position: absolute;
     top: 0; 
     left: 0; 
@@ -150,7 +150,7 @@ h1 {
     z-index: 1000;
 }
 
-.checkBoxItems .item {
+.items .item {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -189,19 +189,19 @@ h1 {
 
 
 
-.checkBoxItems img {
+.items img {
     height: 16px;
     width: auto;
     margin: 0 16px;
 }
 
-.checkBoxItems label {
+.items label {
     flex-grow: 1;
     margin-left: 8px;
     cursor: pointer;
 }
 
-.checkBoxItems input {
+.items input {
     margin-right: 16px;
 }
 

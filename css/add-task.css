@@ -90,30 +90,6 @@ h1 {
     width: 100%;
 }
 
-@media (min-width: 1650px) {
-    .content {
-        margin: 140px auto;
-    }
-}
-
-@media (max-width: 1000px) {
-    .task {
-        flex-direction: column;
-    }
-
-    .divider {
-        display: none;
-    }
-
-    .taskRightSide {
-        margin-top: 8px;
-    }
-
-    h1 {
-        text-align: center;
-    }
-}
-
 .combobox {
     height: 36px;
     box-sizing: border-box;
@@ -130,14 +106,14 @@ h1 {
     height: auto;
 }
 
- .position-context{
+.position-context {
     position: relative;
- }
+}
 
- .items {
+.items {
     position: absolute;
-    top: 0; 
-    left: 0; 
+    top: 0;
+    left: 0;
     width: 100%;
     border: 1px solid rgba(95, 92, 92, 0.2);
     border-radius: 10px;
@@ -158,12 +134,12 @@ h1 {
     margin-right: 10px;
 }
 
-.assigned-item{
+.assigned-item {
     cursor: pointer;
 }
 
-.assigned-item:hover{
-    background-color:#F6F7F8;
+.assigned-item:hover {
+    background-color: #F6F7F8;
 }
 
 .assigned-item.active {
@@ -171,12 +147,12 @@ h1 {
     color: white;
 }
 
-.category-item{
+.category-item {
     cursor: pointer;
 }
 
-.category-item:hover{
-    background-color:#F6F7F8;
+.category-item:hover {
+    background-color: #F6F7F8;
 }
 
 
@@ -209,16 +185,16 @@ h1 {
 }
 
 .initialCircle {
-    width: 24px; 
-    height: 24px; 
+    width: 24px;
+    height: 24px;
     background-color: #ff7a00;
-    border: 2px solid white; 
-    border-radius: 50%; 
+    border: 2px solid white;
+    border-radius: 50%;
     color: white;
     font-size: 12px;
     display: flex;
-    justify-content: center; 
-    align-items: center; 
+    justify-content: center;
+    align-items: center;
 }
 
 footer {
@@ -232,7 +208,7 @@ footer p {
     font-size: 12px;
 }
 
- .clear-and-create-button-container {
+.clear-and-create-button-container {
     display: flex;
     gap: 10px;
 }
@@ -262,12 +238,40 @@ footer button {
     height: 8px;
 }
 
- .create-image {
+.create-image {
     margin-left: 8px;
     height: 12px;
     filter: brightness(0) invert(1);
-}  
+}
 
-.selected-user-circle{
+.selected-user-circle {
     display: flex;
+}
+
+.margin-top {
+    margin-top: 8px;
+}
+
+@media (min-width: 1650px) {
+    .content {
+        margin: 140px auto;
+    }
+}
+
+@media (max-width: 1000px) {
+    .task {
+        flex-direction: column;
+    }
+
+    .divider {
+        display: none;
+    }
+
+    .taskRightSide {
+        margin-top: 8px;
+    }
+
+    h1 {
+        text-align: center;
+    }
 }

@@ -15,6 +15,8 @@ let categories = [
     { label: "User Story" }
 ];
 
+let task = [];
+
 document.addEventListener('DOMContentLoaded', function () {
     let buttons = document.querySelectorAll('.prioButtons button');
     buttons.forEach(function (button) {
@@ -26,6 +28,19 @@ document.addEventListener('DOMContentLoaded', function () {
             this.classList.add('active');
         });
     });
+});
+
+document.addEventListener('click', function (event) {
+    let withinAssignedCheckboxArea = event.target.closest('.combobox') !== null ||
+        event.target.closest('#checkBoxItemsAssigned') !== null ||
+        event.target.id === 'assigned-text';
+    let withinCategoryCheckboxArea = event.target.closest('.combobox') !== null ||
+        event.target.closest('#itemsCategory') !== null ||
+        event.target.id === 'category-text';
+    if (!withinAssignedCheckboxArea)
+        closeCheckBoxAreaForAssigned();
+    if (!withinCategoryCheckboxArea)
+        closeCheckBoxAreaForCategory();
 });
 
 function initTask() {
@@ -54,13 +69,11 @@ function openOrCloseCheckBoxAreaForCategory() {
 
 function getCeckBoxAreaTemplateForAssigned() {
     return assigneds.map(assigned => {
-        let isChecked = assigned.selected ? 'checked' : '';
-        let isActiveClass = assigned.selected ? 'active' : '';
         return /*html*/`
-            <div class="item assigned-item ${isActiveClass}" onclick="toggleActiveAssignedItem(this)">
-                <div class="initialCircle">${assigned.firstName.charAt(0)}${assigned.lastName.charAt(0)}</div>
+            <div class="item assigned-item ${assigned.selected ? 'active' : ''}" onclick="toggleActiveAssignedItem(this)">
+                <div class="initialCircle margin-top">${assigned.firstName.charAt(0)}${assigned.lastName.charAt(0)}</div>
                 <label>${assigned.firstName} ${assigned.lastName}</label>
-                <input class="checkbox" type="checkbox" ${isChecked}>
+                <input class="checkbox" type="checkbox" ${assigned.selected ? 'checked' : ''}>
             </div>
         `;
     }).join('');
@@ -85,11 +98,8 @@ function toggleActiveAssignedItem(element) {
         checkbox.checked = assignedUser.selected;
     }
     element.classList.toggle('active', assignedUser.selected);
-
     updateActiveInitialCircles();
 }
-
-
 
 function updateActiveInitialCircles() {
     let activeAssignedItems = document.querySelectorAll('.assigned-item.active');
@@ -100,8 +110,6 @@ function updateActiveInitialCircles() {
         targetContainer.appendChild(initialCircleClone);
     });
 }
-
-
 
 function selectedCategoryItem(element) {
     let selectedCategoryItem = element.querySelector('label');
@@ -118,10 +126,6 @@ function rotateIcon(id) {
         icon.style.transform = 'rotate(180deg)';
 }
 
-function createTask() {
-    window.location.href = '../../html/board.html';
-}
-
 function clearTask() {
     let inputs = document.getElementsByClassName('inputs');
     let textAreas = document.getElementsByClassName('textarea');
@@ -134,5 +138,56 @@ function clearTask() {
     document.getElementById('category-text').innerHTML = 'Select task category';
     priorityButtons.forEach(button => button.classList.remove('active'));
     mediumPriorityButton.classList.add('active');
+    document.getElementById('selectedUserCircle').innerHTML = '';
+    assigneds.forEach(assigned => assigned.selected = false);
+}
+
+//#region Nur für das Click-Event
+function closeCheckBoxAreaForAssigned() {
+    let checkBoxItems = document.getElementById('checkBoxItemsAssigned');
+    if (checkBoxItems.innerHTML.trim() !== '') {
+        checkBoxItems.innerHTML = '';
+        rotateIcon('nav-image-assigned');
+    }
+}
+
+function closeCheckBoxAreaForCategory() {
+    let checkBoxItems = document.getElementById('itemsCategory');
+    if (checkBoxItems.innerHTML.trim() !== '') {
+        checkBoxItems.innerHTML = '';
+        rotateIcon('nav-image-category');
+    }
+}
+
+//#endregion
+
+
+// todo
+// Vielleicht einem Konstruktor in board.js übergeben?
+function createTask() {
+    saveTask();
+    clearTask();
+    window.location.href = '../../html/board.html';
+}
+
+
+function saveTask() {
+    let title = document.getElementById('input-title').value;
+    let description = document.getElementById('textArea-description').value;
+    let dueDate = document.getElementById('input-due-date').value;
+    let priority = document.querySelector('.prioButtons button.active').textContent;
+    let category = document.getElementById('category-text').textContent;
+    let selectedAssigneds = assigneds.filter(assigned => assigned.selected).map(assigned => `${assigned.firstName} ${assigned.lastName}`);
+
+    currentTask = {
+        title,
+        description,
+        dueDate,
+        priority,
+        category,
+        assignedTo: selectedAssigneds
+    };
+  
+    console.log(currentTask);
 }
 

@@ -115,7 +115,6 @@ h1 {
     }
 }
 
-
 .combobox {
     height: 36px;
     box-sizing: border-box;
@@ -154,8 +153,10 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 10px 0;
+    margin: 2px 0;
     padding: 8px;
+    border-radius: 8px;
+    margin-right: 10px;
 }
 
 .assigned-item{
@@ -183,11 +184,6 @@ h1 {
 .display-none {
     display: none;
 }
-
-
-
-
-
 
 .items img {
     height: 16px;
@@ -272,3 +268,7 @@ footer button {
     height: 12px;
     filter: brightness(0) invert(1);
 }  
+
+.selected-user-circle{
+    display: flex;
+}

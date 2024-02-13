@@ -34,13 +34,13 @@
                             <div class="margin-bot">
                                 <p>Assigned to</p>
                                 <div class="combobox" onclick="openOrCloseCheckBoxAreaForAssigned()">
-                                    <p>Select contacts to assigned</p>
-                                    <img id="nav-image-assigned" src="../img/navigation.png"
-                                        alt="navLogo">
+                                    <p id="assigned-text">Select contacts to assigned</p>
+                                    <img id="nav-image-assigned" src="../img/navigation.png" alt="navLogo">
                                 </div>
                                 <div class="position-context">
                                     <div id="checkBoxItemsAssigned" class="items"></div>
                                 </div>
+                                <div id="selectedUserCircle" class="selected-user-circle"></div>
                             </div>
                         </div>
                         <div class="divider"></div>
@@ -61,8 +61,7 @@
                                 <p>Category<span class="colored-star">*</span></p>
                                 <div class="combobox" onclick="openOrCloseCheckBoxAreaForCategory()">
                                     <p id="category-text">Select task category</p>
-                                    <img id="nav-image-category" src="../img/navigation.png"
-                                        alt="navLogo">
+                                    <img id="nav-image-category" src="../img/navigation.png" alt="navLogo">
                                 </div>
                                 <div class="position-context">
                                     <div id="itemsCategory" class="items"></div>
@@ -77,7 +76,7 @@
                     <footer>
                         <p><span class="colored-star">*</span>This field is required</p>
                         <div class="clear-and-create-button-container">
-                            <button class="clear-button">Clear
+                            <button class="clear-button" onclick="clearTask()">Clear
                                 <img class="clear-image" src="../img/close.svg">
                             </button>
                             <button class="create-button" onclick="createTask()">Create Task

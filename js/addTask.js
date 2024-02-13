@@ -1,13 +1,13 @@
 let assigneds = [
-    { firstName: "Mike", lastName: "Spung" },
-    { firstName: "Sabine", lastName: "Rabs" },
-    { firstName: "Felix", lastName: "Goring" },
-    { firstName: "Lars", lastName: "Jabel" },
-    { firstName: "Charly", lastName: "Bauer" },
-    { firstName: "Ari", lastName: "Nasu" },
-    { firstName: "James", lastName: "Jamen" },
-    { firstName: "Sibi", lastName: "Oxin" },
-    { firstName: "Mia", lastName: "Jogo" },
+    { firstName: "Mike", lastName: "Spung", selected: false },
+    { firstName: "Sabine", lastName: "Rabs", selected: false },
+    { firstName: "Felix", lastName: "Goring", selected: false },
+    { firstName: "Lars", lastName: "Jabel", selected: false },
+    { firstName: "Charly", lastName: "Bauer", selected: false },
+    { firstName: "Ari", lastName: "Nasu", selected: false },
+    { firstName: "James", lastName: "Jamen", selected: false },
+    { firstName: "Sibi", lastName: "Oxin", selected: false },
+    { firstName: "Mia", lastName: "Jogo", selected: false },
 ];
 
 let categories = [
@@ -28,10 +28,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-
 function initTask() {
     rotateIcon('nav-image-assigned');
     rotateIcon('nav-image-category');
+    document.querySelector('.prio-urgent').classList.add('active');
 }
 
 function openOrCloseCheckBoxAreaForAssigned() {
@@ -54,11 +54,15 @@ function openOrCloseCheckBoxAreaForCategory() {
 
 function getCeckBoxAreaTemplateForAssigned() {
     return assigneds.map(assigned => {
+        // Bestimme, ob der Benutzer ausgewählt ist
+        let isChecked = assigned.selected ? 'checked' : '';
+        // Setze die Klasse 'active', wenn der Benutzer ausgewählt ist
+        let isActiveClass = assigned.selected ? 'active' : '';
         return /*html*/`
-            <div class="item assigned-item" onclick="toggleActiveAssignedItem(this)">
+            <div class="item assigned-item ${isActiveClass}" onclick="toggleActiveAssignedItem(this)">
                 <div class="initialCircle">${assigned.firstName.charAt(0)}${assigned.lastName.charAt(0)}</div>
                 <label>${assigned.firstName} ${assigned.lastName}</label>
-                <input class="checkbox" type="checkbox">
+                <input class="checkbox" type="checkbox" ${isChecked}>
             </div>
         `;
     }).join('');
@@ -74,13 +78,34 @@ function getCeckBoxAreaTemplateForCategory() {
     }).join('');
 }
 
-
 function toggleActiveAssignedItem(element) {
-    element.classList.toggle('active');
     let checkbox = element.querySelector('.checkbox');
-    if (checkbox)
-        checkbox.checked = !checkbox.checked;
+    let label = element.querySelector('label').textContent;
+    // Finden Sie den entsprechenden Benutzer im `assigneds` Array
+    let assignedUser = assigneds.find(assigned => `${assigned.firstName} ${assigned.lastName}` === label);
+    if (assignedUser) {
+        // Toggle den `selected` Status
+        assignedUser.selected = !assignedUser.selected;
+        checkbox.checked = assignedUser.selected;
+    }
+    element.classList.toggle('active', assignedUser.selected);
+
+    updateActiveInitialCircles();
 }
+
+
+
+function updateActiveInitialCircles() {
+    let activeAssignedItems = document.querySelectorAll('.assigned-item.active');
+    let targetContainer = document.getElementById('selectedUserCircle');
+    targetContainer.innerHTML = '';
+    activeAssignedItems.forEach(item => {
+        let initialCircleClone = item.querySelector('.initialCircle').cloneNode(true);
+        targetContainer.appendChild(initialCircleClone);
+    });
+}
+
+
 
 function selectedCategoryItem(element) {
     let selectedCategoryItem = element.querySelector('label');
@@ -97,7 +122,21 @@ function rotateIcon(id) {
         icon.style.transform = 'rotate(180deg)';
 }
 
-function createTask(){
+function createTask() {
     window.location.href = '../../html/board.html';
+}
+
+function clearTask() {
+    let inputs = document.getElementsByClassName('inputs');
+    let textAreas = document.getElementsByClassName('textarea');
+    let mediumPriorityButton = document.querySelector('.prio-medium');
+    let priorityButtons = document.querySelectorAll('.prioButtons button');
+    for (let i = 0; i < inputs.length; i++)
+        inputs[i].value = '';
+    for (let i = 0; i < textAreas.length; i++)
+        textAreas[i].value = '';
+    document.getElementById('category-text').innerHTML = 'Select task category';
+    priorityButtons.forEach(button => button.classList.remove('active'));
+    mediumPriorityButton.classList.add('active');
 }
 

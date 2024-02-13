@@ -23,49 +23,68 @@
                     <h1>Add Task</h1>
                     <div class="task">
                         <div class="taskLeftSide">
-                            <div>
-
+                            <div class="margin-bot">
                                 <p>Title<span class="colored-star">*</span></p>
                                 <input placeholder="Enter a title" class="inputs" type="text">
                             </div>
-                            <div>
+                            <div class="margin-bot">
                                 <p>Description</p>
                                 <textarea placeholder="Enter a Description" class="textarea"></textarea>
                             </div>
-
-                            
-                            <div><p>Assigned to</p>
-                                <div class="combobox">
+                            <div class="margin-bot">
+                                <p>Assigned to</p>
+                                <div class="combobox" onclick="openOrCloseCheckBoxAreaForAssigned()">
                                     <p>Select contacts to assigned</p>
-                                    <img id="navigation" onclick="openCheckBoxArea()" src="../img/navigation.png"
+                                    <img id="nav-image-assigned" src="../img/navigation.png"
                                         alt="navLogo">
                                 </div>
-                                <div id="checkBoxItems" class="checkBoxItems"></div>
+                                <div class="position-context">
+                                    <div id="checkBoxItemsAssigned" class="checkBoxItems"></div>
+                                </div>
                             </div>
                         </div>
                         <div class="divider"></div>
                         <div class="taskRightSide">
-                            <div>
+                            <div class="margin-bot">
                                 <p>Due date<span class="colored-star">*</span></p>
                                 <input placeholder="dd/mm/yyyy" class="inputs" type="text">
                             </div>
-                            <p>Prio</p>
-                            <div class="prioButtons">
-                                <button>Urgent</button>
-                                <button>Medium</button>
-                                <button>Low</button>
+                            <div class="margin-bot">
+                                <p>Prio</p>
+                                <div class="prioButtons">
+                                    <button class="prio-urgent">Urgent</button>
+                                    <button class="prio-medium">Medium</button>
+                                    <button class="prio-low">Low</button>
+                                </div>
                             </div>
-                            <div>
+                            <div class="margin-bot">
                                 <p>Category<span class="colored-star">*</span></p>
-                                <input class="inputs" type="text">
+                                <div class="combobox" onclick="openOrCloseCheckBoxAreaForCategory()">
+                                    <p id="category-text">Select task category</p>
+                                    <img id="nav-image-category" src="../img/navigation.png"
+                                        alt="navLogo">
+                                </div>
+                                <div class="position-context">
+                                    <div id="itemsCategory" class="checkBoxItems"></div>
+                                </div>
                             </div>
-                            <div>
+                            <div class="margin-bot">
                                 <p>Subtasks</p>
                                 <input placeholder="Add new subtask" class="inputs" type="text">
                             </div>
                         </div>
                     </div>
-                    <footer></footer>
+                    <footer>
+                        <p><span class="colored-star">*</span>This field is required</p>
+                        <div class="clear-and-create-button-container">
+                            <button class="clear-button">Clear
+                                <img class="clear-image" src="../img/close.svg">
+                            </button>
+                            <button class="create-button" onclick="createTask()">Create Task
+                                <img class="create-image" src="../img/check.png">
+                            </button>
+                        </div>
+                    </footer>
                 </div>
             </div>
         </div>

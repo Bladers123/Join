@@ -54,9 +54,7 @@ function openOrCloseCheckBoxAreaForCategory() {
 
 function getCeckBoxAreaTemplateForAssigned() {
     return assigneds.map(assigned => {
-        // Bestimme, ob der Benutzer ausgewählt ist
         let isChecked = assigned.selected ? 'checked' : '';
-        // Setze die Klasse 'active', wenn der Benutzer ausgewählt ist
         let isActiveClass = assigned.selected ? 'active' : '';
         return /*html*/`
             <div class="item assigned-item ${isActiveClass}" onclick="toggleActiveAssignedItem(this)">
@@ -81,10 +79,8 @@ function getCeckBoxAreaTemplateForCategory() {
 function toggleActiveAssignedItem(element) {
     let checkbox = element.querySelector('.checkbox');
     let label = element.querySelector('label').textContent;
-    // Finden Sie den entsprechenden Benutzer im `assigneds` Array
     let assignedUser = assigneds.find(assigned => `${assigned.firstName} ${assigned.lastName}` === label);
     if (assignedUser) {
-        // Toggle den `selected` Status
         assignedUser.selected = !assignedUser.selected;
         checkbox.checked = assignedUser.selected;
     }

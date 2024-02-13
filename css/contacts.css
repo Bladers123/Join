@@ -257,7 +257,6 @@ button {
 
 * {
     box-sizing: border-box;
-
 }
 
 .bg-pop-up {
@@ -304,7 +303,6 @@ button {
     filter: brightness(0) saturate(100%) invert(52%) sepia(98%) saturate(407%) hue-rotate(155deg) brightness(93%) contrast(90%);
 }
 
-
 .bluue {
     background-color: #2b3647;
     padding: 66px 48px 66px 48px;
@@ -344,7 +342,6 @@ button {
     margin-bottom: 8px;
 }
 
-
 form {
     display: flex;
     flex-direction: column;
@@ -364,7 +361,7 @@ form {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid #D1D1D1;
+    border: 1px solid #d1d1d1;
     border-radius: 10px;
     padding: 13px 21px 13px 21px;
     gap: 10px;
@@ -433,7 +430,6 @@ button img {
 .pointer {
     cursor: pointer;
 }
-
 
 @media (max-width: 1300px) {
     .buttonName {

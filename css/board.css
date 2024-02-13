@@ -171,6 +171,7 @@ button {
 
 .dragDropGlobalWrapper {
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-start;
     gap: 26px;
     flex-shrink: 0;

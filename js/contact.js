@@ -87,29 +87,22 @@ function renderOldContacts() {
         } else {
             console.log("versuchs nochmal");
         }
-        sortContacts(renderContact, sortedByLetter, name, mail, initials, i);
+
+        renderContact.innerHTML += `    
+            <div onclick="showContact(${i})" class="name">
+                <div class="initialCircle">${initials}</div>
+                    <div class="contactWrapper">
+                        <div class="fullName">${name}</div>
+                    <div class="email">${mail}</div>
+                </div>
+            </div>`;
+
+                    
         showContact(i);
     }
 }
 
-function sortContacts(renderContact, sortedByLetter, name, mail, initials, i) {
-    for (let l = 0; l < letters.length; l++) {
-        const oneLetter = letters[l];
 
-        if (oneLetter !== sortedByLetter) {
-            renderContact.innerHTML += `    
-                <div onclick="showContact(${i})" class="name">
-                    <div class="initialCircle">${initials}</div>
-                        <div class="contactWrapper">
-                            <div class="fullName">${name}</div>
-                        <div class="email">${mail}</div>
-                    </div>
-                </div>`;
-        } else {
-            console.log("Heul leise");
-        }
-    }
-}
 
 function showContact(i) {
     let selectedName = oldContacts[i];

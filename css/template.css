@@ -27,7 +27,6 @@ body {
     justify-content: space-around;
     position: sticky;
     top: 0;
-
 }
 
 .logoSidebar {
@@ -212,6 +211,7 @@ nav {
         position: fixed;
         bottom: 0;
         flex-direction: row;
+        top: unset;
     }
 
     nav {

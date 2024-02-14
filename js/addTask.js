@@ -161,7 +161,6 @@ function closeCheckBoxAreaForCategory() {
 
 //#endregion
 
-
 // todo
 // Vielleicht einem Konstruktor in board.js übergeben?
 function createTask() {
@@ -169,7 +168,6 @@ function createTask() {
     clearTask();
     window.location.href = '../../html/board.html';
 }
-
 
 function saveTask() {
     let title = document.getElementById('input-title').value;

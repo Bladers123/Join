@@ -15,8 +15,6 @@ let categories = [
     { label: "User Story" }
 ];
 
-let task = [];
-
 document.addEventListener('DOMContentLoaded', function () {
     let buttons = document.querySelectorAll('.prioButtons button');
     buttons.forEach(function (button) {
@@ -161,8 +159,6 @@ function closeCheckBoxAreaForCategory() {
 
 //#endregion
 
-// todo
-// Vielleicht einem Konstruktor in board.js übergeben?
 function createTask() {
     saveTask();
     clearTask();
@@ -176,6 +172,7 @@ function saveTask() {
     let priority = document.querySelector('.prioButtons button.active').textContent;
     let category = document.getElementById('category-text').textContent;
     let selectedAssigneds = assigneds.filter(assigned => assigned.selected).map(assigned => `${assigned.firstName} ${assigned.lastName}`);
+    let progress = "toDo";
 
     currentTask = {
         title,
@@ -183,9 +180,10 @@ function saveTask() {
         dueDate,
         priority,
         category,
-        assignedTo: selectedAssigneds
+        assignedTo: selectedAssigneds,
+        progress
     };
-  
-    console.log(currentTask);
+
+    localStorage.setItem('task', JSON.stringify(currentTask));
 }
 

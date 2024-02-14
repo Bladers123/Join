@@ -1,5 +1,5 @@
 let oldContacts = [
-        {
+    {
         name: "Barbara Müller",
         email: "baerbelchen@online.de",
         tel: "01629223027",
@@ -11,6 +11,16 @@ let oldContacts = [
     },
     {
         name: "Julian Fichtl",
+        email: "julian@gmail.com",
+        tel: "01529483027",
+    },
+    {
+        name: "Bulian Fichtl",
+        email: "julian@gmail.com",
+        tel: "01529483027",
+    },
+    {
+        name: "Culian Fichtl",
         email: "julian@gmail.com",
         tel: "01529483027",
     },
@@ -83,6 +93,7 @@ function renderOldContacts() {
         let sortedByLetter = name.charAt(0);
 
         if (sortedByLetter !== currentLetter) {
+            currentLetter = sortedByLetter;
             renderContact.innerHTML += `
             <div class="letterWrapper">
                 <div class="Buchstabe">${sortedByLetter}</div>
@@ -92,7 +103,6 @@ function renderOldContacts() {
         } else {
             console.log("versuchs nochmal");
         }
-        
 
         renderContact.innerHTML += `    
             <div onclick="showContact(${i})" class="name">
@@ -103,12 +113,9 @@ function renderOldContacts() {
                 </div>
             </div>`;
 
-                    
         showContact(i);
     }
 }
-
-
 
 function showContact(i) {
     let selectedName = oldContacts[i];
@@ -134,7 +141,7 @@ async function createContact() {
     let tel = document.getElementById("contact-tel");
 
     let newContact = {
-        name: name.value, 
+        name: name.value,
         mail: mail.value,
         tel: tel.value,
     };

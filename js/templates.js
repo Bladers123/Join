@@ -1,5 +1,3 @@
-
-
 function generateHTML(name, mail, number, initials, i) {
     return ` 
     <div class="contanctsHeader">
@@ -52,12 +50,11 @@ function generateHTML(name, mail, number, initials, i) {
 </div>
     <div class="emailWrapper">
     <p class="emailHeader">Email</p>
-    <a class="emailContacts" href="mailto:anton@gmail.com">${mail}</a>
+    <a class="emailContacts" href="mailto:${mail}">${mail}</a>
 </div>
 <div class="Phone">
     <p class="phoneHeader">Phone</p>
-    <a href="tel:+49 1111 111 11 1">${number}</a>
+    <a href="tel:${number}">${number}</a>
 </div>
     `;
 }
-

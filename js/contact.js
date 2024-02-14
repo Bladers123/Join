@@ -142,7 +142,7 @@ async function createContact() {
 
     let newContact = {
         name: name.value,
-        mail: mail.value,
+        email: email.value,
         tel: tel.value,
     };
 

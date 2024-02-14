@@ -1,3 +1,3 @@
-function animation(i) {
-    document.getElementById(`${link(i)}`).classList.add("active");
+function animation() {
+    document.querySelector("prio-urgent").classList.add("active");
 }

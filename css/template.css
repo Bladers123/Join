@@ -56,14 +56,6 @@ body {
     padding: 6px 0;
 }
 
-.prio-urgent.active {
-    background-color: #ff3d00;
-}
-
-.active {
-    background-color: #ff3d00;
-}
-
 .linkFullWidth:hover {
     background-color: #35455b;
 }
@@ -262,4 +254,8 @@ nav {
     width: 100%;
     height: 100%;
     background-color: #2d3153;
+}
+
+.background.active {
+    background-color: #FF3D00;
 }

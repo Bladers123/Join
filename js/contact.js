@@ -90,7 +90,7 @@ function renderOldContacts() {
             .split(" ")
             .map((n) => n[0])
             .join("");
-        let sortedByLetter = name.charAt(0).toUpperCase();
+        let sortedByLetter = name.charAt(0);
 
         if (sortedByLetter !== currentLetter) {
             currentLetter = sortedByLetter;
@@ -142,7 +142,7 @@ async function createContact() {
 
     let newContact = {
         name: name.value,
-        email: mail.value,
+        email: email.value,
         tel: tel.value,
     };
 

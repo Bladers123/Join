@@ -56,8 +56,12 @@ body {
     padding: 6px 0;
 }
 
+.prio-urgent.active {
+    background-color: #ff3d00;
+}
+
 .active {
-    background-color: black;
+    background-color: #ff3d00;
 }
 
 .linkFullWidth:hover {

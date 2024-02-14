@@ -1,4 +1,9 @@
 let oldContacts = [
+        {
+        name: "Barbara Müller",
+        email: "baerbelchen@online.de",
+        tel: "01629223027",
+    },
     {
         name: "Tristan Gehrig",
         email: "tristan@gmail.com",
@@ -87,6 +92,7 @@ function renderOldContacts() {
         } else {
             console.log("versuchs nochmal");
         }
+        
 
         renderContact.innerHTML += `    
             <div onclick="showContact(${i})" class="name">
@@ -116,7 +122,6 @@ function showContact(i) {
     let letter = name.charAt(0);
 
     letters.push(letter);
-    // console.log(letter)
 
     let contact = document.getElementById("open-contact");
     contact.innerHTML = "";
@@ -129,7 +134,7 @@ async function createContact() {
     let tel = document.getElementById("contact-tel");
 
     let newContact = {
-        name: name.value,
+        name: name.value, 
         mail: mail.value,
         tel: tel.value,
     };

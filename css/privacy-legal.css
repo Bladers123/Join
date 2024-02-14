@@ -44,7 +44,7 @@ p, ul, li {
     cursor: pointer;
 }
 
-a{
+.blue {
     text-decoration: none;
     color: #28abe2;
 }

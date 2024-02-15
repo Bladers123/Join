@@ -156,7 +156,6 @@ function closeCheckBoxAreaForCategory() {
         rotateIcon('nav-image-category');
     }
 }
-
 //#endregion
 
 function createTask() {

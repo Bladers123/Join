@@ -57,13 +57,13 @@ h1 {
     gap: 8px;
 }
 
-.prio-button-svg-conainer{
+.prio-button-svg-container{
     display: flex;
     flex-direction: column;
     margin-left: 8px;
 }
 
-.prio-button-svg-conainer svg{
+.prio-button-svg-container svg{
     width: 16px;
     height: auto;
 }
@@ -95,6 +95,13 @@ h1 {
     background-color: #7AE229;
     color: white;
 }
+
+.prio-urgent.active svg path,
+.prio-medium.active svg path,
+.prio-low.active svg path {
+    fill: #FFFFFF;
+}
+
 
 .divider {
     background-color: rgba(95, 92, 92, 0.2);

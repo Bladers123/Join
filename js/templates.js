@@ -1,7 +1,7 @@
-function generateHTML(name, mail, number, initials, i) {
+function generateHTML(name, mail, number,bg, initials,  i) {
     return ` 
     <div class="contanctsHeader">
-    <div class="initialCircleXL">${initials}</div>
+    <div class="initialCircleXL" style="background-color: ${bg};">${initials}</div>
     <div class="contactWrapper">
         <div class="fullNameSelectedWrapper">
             <p class="fullNameSelected">${name}</p>

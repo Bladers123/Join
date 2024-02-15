@@ -1,39 +1,11 @@
 //tasks for testing
-let tasks = [
-    {
-        id: 0,
-        title: "Putzen",
-        progress: "toDo",
-    },
-    {
-        id: 1,
-        title: "Kochen",
-        progress: "toDo",
-    },
-    {
-        id: 2,
-        title: "Einkaufen",
-        progress: "inProgress",
-    },
-    {
-        id: 3,
-        title: "Einkaufen",
-        progress: "feedback",
-    },
-    {
-        id: 4,
-        title: "Einkaufen",
-        progress: "done",
-    },
-];
-
-let task = [];
-
-document.addEventListener("DOMContentLoaded", initBoard);
+let tasks = [];
 
 function initBoard() {
     task = JSON.parse(localStorage.getItem("task")) || [];
+    tasks.push(task);
     console.log(task);
+    updateHTML();
 }
 
 function updateHTML() {
@@ -85,7 +57,8 @@ function allowDrop(ev) {
 }
 
 function moveTo(category) {
-    tasks[currentDraggedElement]["progress"] = category;
+    console.log(tasks[0]["progress"]["id"]);
+    // tasks[0]["progress"] = category;
     updateHTML();
 }
 

@@ -173,8 +173,10 @@ function saveTask() {
     let category = document.getElementById('category-text').textContent;
     let selectedAssigneds = assigneds.filter(assigned => assigned.selected).map(assigned => `${assigned.firstName} ${assigned.lastName}`);
     let progress = "toDo";
+    let id = new Date().getTime();
 
     currentTask = {
+        id, 
         title,
         description,
         dueDate,
@@ -186,4 +188,3 @@ function saveTask() {
 
     localStorage.setItem('task', JSON.stringify(currentTask));
 }
-

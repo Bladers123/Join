@@ -4,7 +4,6 @@ let tasks = [];
 function initBoard() {
     task = JSON.parse(localStorage.getItem("task")) || [];
     tasks.push(task);
-    console.log(task);
     updateHTML();
 }
 
@@ -44,6 +43,7 @@ function updateHTML() {
         const element = done[index];
         document.getElementById("done").innerHTML += generateTodoHTML(element);
     }
+    save();
 }
 
 let currentDraggedElement;
@@ -57,8 +57,7 @@ function allowDrop(ev) {
 }
 
 function moveTo(category) {
-    console.log(tasks[0]["progress"]["id"]);
-    // tasks[0]["progress"] = category;
+    tasks[0]["progress"] = category;
     updateHTML();
 }
 
@@ -107,4 +106,16 @@ function generateTodoHTML(element) {
          </div>
        </div>
     `;
+}
+
+function save() {
+    localStorage.setItem("localTasks", JSON.stringify(tasks));
+}
+
+function highlight(id) {
+    document.getElementById(id).classList.add("contentContainerHover");
+}
+
+function removeHighlight(id) {
+    document.getElementById(id).classList.remove("contentContainerHover");
 }

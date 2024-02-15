@@ -47,7 +47,7 @@
                                         <path d="M16 12.5755L8 12.5755" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
                                     </svg>
                                 </div>
-                                <div class="contentContainer drag-area" id="toDo" ondrop="moveTo('toDo')" ondragover="allowDrop(event)"></div>
+                                <div class="contentContainer drag-area" id="toDo" ondrop="moveTo('toDo')" ondragleave="removeHighlight('toDo')" ondragover="allowDrop(event); highlight('toDo')"></div>
                             </div>
                             <div id="collumnStyling">
                                 <div class="collumnHeaderWrapper">
@@ -58,7 +58,14 @@
                                         <path d="M16 12.5755L8 12.5755" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
                                     </svg>
                                 </div>
-                                <div class="contentContainer drag-area" id="inProgress" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)"></div>
+                                <div
+                                    class="contentContainer drag-area"
+                                    id="inProgress"
+                                    ondrop="moveTo('inProgress')"
+                                    ondragend="removeHighlight('inProgress')"
+                                    ondragleave="removeHighlight('inProgress')"
+                                    ondragover="allowDrop(event); highlight('inProgress')"
+                                ></div>
                             </div>
                             <div id="collumnStyling">
                                 <div class="collumnHeaderWrapper">
@@ -69,7 +76,7 @@
                                         <path d="M16 12.5755L8 12.5755" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
                                     </svg>
                                 </div>
-                                <div class="contentContainer drag-area" id="feedback" ondrop="moveTo('feedback')" ondragover="allowDrop(event)">No Feedback</div>
+                                <div class="contentContainer drag-area" id="feedback" ondrop="moveTo('feedback')" ondragleave="removeHighlight('feedback')" ondragover="allowDrop(event); highlight('feedback')">No Feedback</div>
                             </div>
                             <div id="collumnStyling">
                                 <div class="collumnHeaderWrapper">
@@ -80,7 +87,7 @@
                                         <path d="M16 12.5755L8 12.5755" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
                                     </svg>
                                 </div>
-                                <div class="contentContainer drag-area" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)"></div>
+                                <div class="contentContainer drag-area" id="done" ondrop="moveTo('done')" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')"></div>
                             </div>
                         </div>
                     </div>

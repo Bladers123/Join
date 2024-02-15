@@ -344,6 +344,10 @@ progress {
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
 }
 
+.contentContainerHover {
+    background: #a9a9a9;
+}
+
 .collumnHeadline {
     color: #42526e;
     font-family: Inter;

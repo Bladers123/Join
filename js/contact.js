@@ -200,18 +200,18 @@ function editContact(name, mail, number, bg, initials, i) {
         <form onsubmit="editContact(); return false;">
             <div class="inputFields">
                 <div class="singleInput">
-                    <input required id="contact-name" placeholder="Name" type="text">
-                    ${name}
+                    <input required id="contact-name" placeholder="${name}" type="text">
+                    
                     <img src="../img/person.svg">
                 </div>
                 <div class="singleInput">
-                    <input required id="contact-email" placeholder="Email" type="email">
-                    ${mail}
+                    <input required id="contact-email" placeholder="${mail}" type="email">
+                    
                     <img src="../img/mail.svg">
                 </div>
                 <div class="singleInput">
-                    <input required id="contact-tel" placeholder="Number" type="tel">
-                    ${number}
+                    <input required id="contact-tel" name="number" placeholder="${number}" type="tel">
+                    
                     <img src="../img/telephone.svg">
                 </div>
             </div>

@@ -184,7 +184,10 @@ function editContact(name, mail, number, bg, initials, i) {
     document.getElementById("edit-pop-up").classList.remove("d-none");
     document.getElementById("edit-pop-up").classList.add("d-flex");
 
-    console.log('mail');
+
+    let newName = document.getElementById("contact-name").value;
+
+    console.log(newName)
 
     let edit = document.getElementById("edit-pop-up");
     edit.innerHTML = '';

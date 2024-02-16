@@ -76,7 +76,6 @@ let letters = [];
 
 function openContact() {
     document.getElementById("open-contact").classList.remove("d-none");
-    document.getElementById("open-contact").classList.add("d-flex");
 
 }
 
@@ -193,5 +192,4 @@ function closePopUp() {
     document.getElementById("pop-up").classList.add("d-none");
     document.getElementById("pop-up").classList.remove("d-flex");
 }
-
 

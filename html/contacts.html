@@ -50,7 +50,55 @@
 
                         </div>
                     </div>
-                    <div class="contentRight">
+                    <!--Hier beginnt der Pop-Up-->
+                    <div id="pop-up" class="bg-pop-up d-none">
+                        <div class="wholePop">
+                            <div class="close">
+                                <img onclick="closePopUp()" src="../img/close.svg">
+                            </div>
+
+                            <div class="bluue">
+                                <img class="popUpJoinImg" src="../img/template-img/Capa 2.svg">
+                                <h2>Add contact</h2>
+                                <h3>Tasks are better with a team!</h3>
+                                <img class="blueUnderline" src="../img/blueUnderline.svg">
+                            </div>
+
+                            <div class="initialCircleXL light-grey"><img src="../img/personwhite.svg"></div>
+
+                            <div class="whitee">
+                                <form onsubmit="createContact(); return false;">
+                                    <div class="inputFields">
+                                        <div class="singleInput">
+                                            <input required id="contact-name" placeholder="Name" type="text">
+                                            <img src="../img/person.svg">
+                                        </div>
+                                        <div class="singleInput">
+                                            <input required id="contact-email" placeholder="Email" type="email">
+                                            <img src="../img/mail.svg">
+                                        </div>
+                                        <div class="singleInput">
+                                            <input required id="contact-tel" placeholder="Number" type="tel">
+                                            <img src="../img/telephone.svg">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="styleBtn">
+                                        <button type="button" onclick="closePopUp()" class="cancelBtn">Cancel <img
+                                                src="../img/close.svg"></button>
+                                        <button type="submit" class="createBtn">Create
+                                            contact <img src="../img/check.svg"></button>
+                                    </div>
+                                </form>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <!--Hier endet der Pop-Up-->
+                    <div class="contentRight" id="resize-contact">
                         <div class="contentRightWrapper">
                             <div class="contanctsHeader">
                                 <h1 class="contactsHeadline">Contacts</h1>
@@ -62,58 +110,8 @@
                             </div>
                             <div class="contact" id="open-contact">
                             </div>
-
-                            <!--Hier beginnt der Pop-Up-->
-
-
-                        </div>
-                        <div id="pop-up" class="bg-pop-up d-none">
-                            <div class="wholePop">
-                                <div class="close">
-                                    <img onclick="closePopUp()" src="../img/close.svg">
-                                </div>
-
-                                <div class="bluue">
-                                    <img src="../img/template-img/Capa 2.svg">
-                                    <h2>Add contact</h2>
-                                    <h3>Tasks are better with a team!</h3>
-                                    <img src="../img/blueUnderline.svg">
-                                </div>
-
-                                <div class="initialCircleXL light-grey"><img src="../img/personwhite.svg"></div>
-
-                                <div class="whitee">
-                                    <form onsubmit="createContact(); return false;">
-                                        <div class="inputFields">
-                                            <div class="singleInput">
-                                                <input required id="contact-name" placeholder="Name" type="text">
-                                                <img src="../img/person.svg">
-                                            </div>
-                                            <div class="singleInput">
-                                                <input required id="contact-email" placeholder="Email" type="email">
-                                                <img src="../img/mail.svg">
-                                            </div>
-                                            <div class="singleInput">
-                                                <input required id="contact-tel" placeholder="Number" type="tel">
-                                                <img src="../img/telephone.svg">
-                                            </div>
-                                        </div>
-
-
-                                        <div class="styleBtn">
-                                            <button type="button" onclick="closePopUp()" class="cancelBtn">Cancel <img
-                                                    src="../img/close.svg"></button>
-                                            <button type="submit" class="createBtn">Create
-                                                contact <img src="../img/check.svg"></button>
-                                        </div>
-                                    </form>
-                                </div>
-
-
-                            </div>
                         </div>
 
-                        <!--Hier endet der Pop-Up-->
                     </div>
                 </div>
             </div>

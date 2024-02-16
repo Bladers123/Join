@@ -109,6 +109,7 @@ button {
 
 .light-grey {
     background-color: #D1D1D1;
+    border: 4px solid white;
 }
 
 .email {
@@ -286,6 +287,7 @@ button {
     from {
         transform: translateX(200%);
     }
+
     to {
         transform: translateX(0);
     }
@@ -320,6 +322,12 @@ button {
     flex-direction: column;
     align-items: start;
     justify-content: center;
+}
+
+.blueUnderline {
+    width: 55.6px;
+    height: 66.4px;
+    margin-bottom: 8px;
 }
 
 .bluue img {
@@ -531,5 +539,72 @@ button img {
         position: absolute;
         bottom: 90px;
         right: 10px;
+    }
+
+    .wholePop {
+        flex-direction: column;
+        width: 396px;
+        height: 750px;
+    }
+
+    .close {
+        right: 25px;
+        top: 50px;
+        filter: invert(100%) brightness(100%);
+    }
+
+    form {
+        width: auto;
+        margin: 0;
+        margin-top: 10px;
+    }
+
+    .cancelBtn {
+        display: none;
+    }
+
+    .styleBtn {
+        justify-content: center;
+    }
+
+    .whitee {
+        margin-bottom: 50px;
+    }
+
+    .bluue {
+        border-top-right-radius: 30px;
+        border-bottom-left-radius: 0;
+        padding: 66px 48px 66px 48px;
+        width: 100%;
+        height: 48%;
+    }
+
+    .popUpJoinImg {
+        display: none;
+    }
+
+    .bluue img {
+        width: 90px;
+        margin: 0;
+        margin-top: -16px;
+    }
+
+    .bluue h2 {
+        font-size: 47px;
+        margin: 0;
+        margin-top: 48px;
+    }
+
+    .bluue h3 {
+        font-size: 20px;
+        margin: 0;
+        margin-top: -16px;
+        font-weight: 400;
+    }
+
+    .light-grey {
+        height: 120px;
+        width: 120px;
+        margin-top: -60px;
     }
 }

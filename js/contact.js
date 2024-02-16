@@ -209,17 +209,17 @@ function editContact(name, mail, number, bg, initials, i) {
         <form onsubmit="editContact(); return false;">
             <div class="inputFields">
                 <div class="singleInput">
-                    <input required id="contact-name" placeholder="${name}" type="text">
+                    <input required id="contact-name" value="${name}" placeholder="${name}" type="text">
                     
                     <img src="../img/person.svg">
                 </div>
                 <div class="singleInput">
-                    <input required id="contact-email" placeholder="${mail}" type="email">
+                    <input required id="contact-email" value="${mail}" placeholder="${mail}" type="email">
                     
                     <img src="../img/mail.svg">
                 </div>
                 <div class="singleInput">
-                    <input required id="contact-tel" name="number" placeholder="${number}" type="tel">
+                    <input required id="contact-tel" value="${number}" placeholder="${number}" type="tel">
                     
                     <img src="../img/telephone.svg">
                 </div>

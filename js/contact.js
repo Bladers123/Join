@@ -112,7 +112,7 @@ function renderOldContacts() {
         } else {
             console.log("versuchs nochmal");
         }
-
+        
         renderContact.innerHTML += `    
             <div onclick="showContact(${i})" class="name">
                 <div class="initialCircle" style="background-color: ${bg};">${initials}</div>
@@ -121,8 +121,8 @@ function renderOldContacts() {
                     <div class="email">${mail}</div>
                 </div>
             </div>`;
-
-        showContact(i);
+        
+        //showContact(i);
     }
 }
 
@@ -141,8 +141,10 @@ function showContact(i) {
     letters.push(letter);
 
     let contact = document.getElementById("open-contact");
+    contact.classList.remove("d-none");
     contact.innerHTML = "";
-    contact.innerHTML += generateHTML(name, mail, number, bg, initials);
+    contact.innerHTML += generateHTML(name, mail, number, bg, initials, i);
+
 }
 
 async function createContact() {
@@ -174,6 +176,9 @@ async function createContact() {
 function deleteContact(i) {
     oldContacts.splice(i, 1);
     letters.splice(i, 1);
+    
+    document.getElementById('open-contact').classList.add("d-none");
+    
 
     renderOldContacts();
 }

@@ -1,25 +1,33 @@
 let users = [];
 
-
 async function initRegister() {
     await loadUsers();
-
 }
 
 async function register() {
-    let user = [];
-    user.push({
+    let newUser = {
         name: inputName.value,
         email: inputEmail.value,
         password: inputPassword.value,
-    });
-
-    await setItem('users', JSON.stringify(user));
-
+    };
+    users.push(newUser);
+    await setItem('users', JSON.stringify(users));
+    await loadUsers();
 }
 
 async function loadUsers() {
-    users = JSON.parse(await getItem('users'));
-    console.log(users);
-}
+    try {
+        let loadedUsers = JSON.parse(await getItem('users'));
+        if (Array.isArray(loadedUsers)) {
+            users = loadedUsers;
+        } else {
+            console.log("Keine Benutzer gefunden, Initialisierung mit einem leeren Array.");
+            users = [];
+        }
+    } catch (error) {
+        console.error("Fehler beim Laden der Benutzer: ", error);
+        users = [];
+    }
 
+    console.log("Alle geladenen Benutzer: ", users);
+}

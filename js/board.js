@@ -1,9 +1,10 @@
 //tasks for testing
 let tasks = [];
 
-function initBoard() {
+async function initBoard() {
     task = JSON.parse(localStorage.getItem("task")) || [];
     tasks.push(task);
+    setItem(tasks, value)
     updateHTML();
 }
 

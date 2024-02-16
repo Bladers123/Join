@@ -7,15 +7,13 @@
     <title>Join</title>
     <link rel="stylesheet" href="../../css/fonts.css">
     <link rel="stylesheet" href="../../css/log-in-and-sign-in.css" />
-    <script src="../../js/script.js"></script>
-    <script src="../../js/templates.js"></script>
-    <script src="../../js/register.js"></script>
     <script src="../../js/login.js"></script>
+    <script src="../../js/storage.js"></script> 
     <link rel="icon" type="image/x-icon" href="../../img/logo.svg">
     <title>Login</title>
 </head>
 
-<body onload="init(); initLogIn()">
+<body onload="initLogIn()">
     <img id="loading" class="logo-animate" src="../../img/logo.svg" />
     <div class="bg-animate"></div>
     <div class="aot">
@@ -25,34 +23,34 @@
             <button onclick="navToSignIn()" class="dark-btn" style="font-size: 16px">Sign up</button>
         </div>
 
-        <div class="container" id="container">
+        <form class="container" id="container">
             <div class="head">
                 <h1>Log in</h1>
                 <div class="underline"></div>
             </div>
 
-            <form class="input-container" onsubmit="logIn()">
+            <div class="input-container">
                 <div class="input">
-                    <input placeholder="E-Mail" type="email" required>
+                    <input placeholder="E-Mail" type="email" id="emailInput" required>
                     <img src="../../img/mail.svg">
                 </div>
 
                 <div class="input">
-                    <input placeholder="Password" type="password" required>
+                    <input placeholder="Password" type="password" id="passwordInput" required>
                     <img src="../../img/lock.svg">
                 </div>
 
                 <div class="checkbox">
-                    <div><input type="checkbox" required style="cursor: pointer;"></div>
+                    <div><input class="checkbox-input" type="checkbox" required></div>
                     <span>Remember me</span>
                 </div>
 
                 <div class="style-btns">
-                    <button type="submit" class="dark-btn w180">Log in</button>
+                    <button onclick="logIn()" type="submit" class="dark-btn w180">Log in</button>
                     <button onclick="guestLogIn()" type="button" class="light-btn w180">Guest Log in</button>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 
     <footer>

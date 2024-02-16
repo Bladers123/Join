@@ -58,3 +58,48 @@ function generateHTML(name, mail, number, bg, initials, i) {
 </div>
     `;
 }
+
+
+function generateEditContactHTML(bg, initials, name, mail, number) {
+    return `
+    <div class="wholePop">
+    <div class="close">
+        <img onclick="closePopUp()" src="../img/close.svg">
+    </div>
+
+    <div class="bluue">
+        <img class="popUpJoinImg" src="../img/template-img/Capa 2.svg">
+        <h2>Edit contact</h2>
+        <img class="blueUnderline" src="../img/blueUnderline.svg">
+    </div>
+
+    <div class="initialCircleXL" style="background-color: ${bg};">${initials}</div>
+
+    <div class="whitee">
+        <form onsubmit="saveContact(); return false;">
+            <div class="inputFields">
+                <div class="singleInput">
+                    <input required id="old-name" value="${name}" placeholder="${name}" type="text">
+                    
+                    <img src="../img/person.svg">
+                </div>
+                <div class="singleInput">
+                    <input required id="old-email" value="${mail}" placeholder="${mail}" type="email">
+                    
+                    <img src="../img/mail.svg">
+                </div>
+                <div class="singleInput">
+                    <input required id="old-tel" value="${number}" placeholder="${number}" type="tel">
+                    
+                    <img src="../img/telephone.svg">
+                </div>
+            </div>
+            <div class="styleBtn">
+                <button type="button" onclick="closePopUp()" class="cancelBtn">Delete</button>
+                <button type="submit" class="createBtn">Save <img src="../img/check.svg"></button>
+            </div>
+        </form>
+    </div>
+</div>
+    `;
+}

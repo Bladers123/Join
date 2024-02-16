@@ -79,7 +79,6 @@ function initContacts(){
 }
 
 
-
 function openContact() {
     document.getElementById("open-contact").classList.remove("d-none");
 
@@ -181,62 +180,25 @@ async function createContact() {
 }
 
 function saveContact(){
-    let newName = document.getElementById('contact-namenn').value;
-    console.log('Neuer Kontakt: ', newName);
+    document.getElementById("edit-pop-up").classList.add("d-none");
+    document.getElementById("edit-pop-up").classList.remove("d-flex");
+
+    let newName = document.getElementById('old-name').value;
+    let newMail = document.getElementById('old-email').value;
+    let newTel = document.getElementById('old-tel').value;
+    
+
+    console.log('Neuer Kontakt: ', newName, newMail, newTel);
+    renderOldContacts();
 }
 
 function editContact(name, mail, number, bg, initials, i) {
     document.getElementById("edit-pop-up").classList.remove("d-none");
     document.getElementById("edit-pop-up").classList.add("d-flex");
-    console.log("editContact() wurde aufgerufen");
 
     let edit = document.getElementById("edit-pop-up");
     edit.innerHTML = '';
-    edit.innerHTML += `
-    <div class="wholePop">
-    <div class="close">
-        <img onclick="closePopUp()" src="../img/close.svg">
-    </div>
-
-    <div class="bluue">
-        <img class="popUpJoinImg" src="../img/template-img/Capa 2.svg">
-        <h2>Edit contact</h2>
-        <img class="blueUnderline" src="../img/blueUnderline.svg">
-    </div>
-
-    <div class="initialCircleXL" style="background-color: ${bg};">${initials}</div>
-
-    <div class="whitee">
-        <form onsubmit="saveContact(); return false;">
-            <div class="inputFields">
-                <div class="singleInput">
-                    <input required id="contact-namenn" value="${name}" placeholder="${name}" type="text">
-                    
-                    <img src="../img/person.svg">
-                </div>
-                <div class="singleInput">
-                    <input required id="contact-email" value="${mail}" placeholder="${mail}" type="email">
-                    
-                    <img src="../img/mail.svg">
-                </div>
-                <div class="singleInput">
-                    <input required id="contact-tel" value="${number}" placeholder="${number}" type="tel">
-                    
-                    <img src="../img/telephone.svg">
-                </div>
-            </div>
-
-
-            <div class="styleBtn">
-                <button type="button" onclick="closePopUp()" class="cancelBtn">Delete</button>
-                <button type="submit" class="createBtn">Save <img src="../img/check.svg"></button>
-            </div>
-        </form>
-    </div>
-
-
-</div>
-    `;
+    edit.innerHTML += generateEditContactHTML(bg, initials, name, mail, number);
 }
 
 function deleteContact(i) {

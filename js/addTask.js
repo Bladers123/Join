@@ -158,13 +158,16 @@ function closeCheckBoxAreaForCategory() {
 }
 //#endregion
 
-function createTask() {
+ function createTask() {
     saveTask();
+    document.getElementById('popup-container').innerHTML = getPopUpTemplate();
     clearTask();
-    window.location.href = '../../html/board.html';
+    setTimeout(function() {
+        window.location.href = '../../html/board.html';
+    }, 1000);
 }
 
-function saveTask() {
+ function saveTask() {
     let title = document.getElementById('input-title').value;
     let description = document.getElementById('textArea-description').value;
     let dueDate = document.getElementById('input-due-date').value;
@@ -174,8 +177,8 @@ function saveTask() {
     let progress = "toDo";
     let id = new Date().getTime();
 
-    currentTask = {
-        id, 
+    let currentTask = {
+        id,
         title,
         description,
         dueDate,
@@ -186,4 +189,16 @@ function saveTask() {
     };
 
     localStorage.setItem('task', JSON.stringify(currentTask));
+ }
+
+function getPopUpTemplate() {
+    return /*html*/`
+    <div class="overlay">
+       <div id="popup" class="popup">
+           <div class="popup-content">
+              <span>Task added to board</span>
+           </div>
+       </div>
+   </div> 
+`;
 }

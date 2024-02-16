@@ -180,14 +180,15 @@ async function createContact() {
     tel.value = "";
 }
 
+function saveContact(){
+    let newName = document.getElementById('contact-namenn').value;
+    console.log('Neuer Kontakt: ', newName);
+}
+
 function editContact(name, mail, number, bg, initials, i) {
     document.getElementById("edit-pop-up").classList.remove("d-none");
     document.getElementById("edit-pop-up").classList.add("d-flex");
-
-
-    let newName = document.getElementById("contact-name").value;
-
-    console.log(newName);
+    console.log("editContact() wurde aufgerufen");
 
     let edit = document.getElementById("edit-pop-up");
     edit.innerHTML = '';
@@ -206,10 +207,10 @@ function editContact(name, mail, number, bg, initials, i) {
     <div class="initialCircleXL" style="background-color: ${bg};">${initials}</div>
 
     <div class="whitee">
-        <form onsubmit="editContact(); return false;">
+        <form onsubmit="saveContact(); return false;">
             <div class="inputFields">
                 <div class="singleInput">
-                    <input required id="contact-name" value="${name}" placeholder="${name}" type="text">
+                    <input required id="contact-namenn" value="${name}" placeholder="${name}" type="text">
                     
                     <img src="../img/person.svg">
                 </div>

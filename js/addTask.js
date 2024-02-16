@@ -171,7 +171,7 @@ function closeCheckBoxAreaForCategory() {
     let title = document.getElementById('input-title').value;
     let description = document.getElementById('textArea-description').value;
     let dueDate = document.getElementById('input-due-date').value;
-    let priority = document.querySelector('.prioButtons button.active').textContent;
+    let priority = document.querySelector('.prioButtons button.active').innerText.trim();
     let category = document.getElementById('category-text').textContent;
     let selectedAssigneds = assigneds.filter(assigned => assigned.selected).map(assigned => `${assigned.firstName} ${assigned.lastName}`);
     let progress = "toDo";

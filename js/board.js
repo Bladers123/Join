@@ -4,7 +4,7 @@ let tasks = [];
 async function initBoard() {
     task = JSON.parse(localStorage.getItem("task")) || [];
     tasks.push(task);
-    setItem(tasks, value)
+    await setItem('tasks', JSON.stringify(tasks));
     updateHTML();
 }
 

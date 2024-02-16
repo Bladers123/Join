@@ -79,7 +79,13 @@ h1 {
     border-radius: 10px;
     border: none;
     cursor: pointer;
+    font-size: 20px;
 }
+
+.prioButtons button:hover{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
 
 .prio-urgent.active {
     background-color: #FF3D00;

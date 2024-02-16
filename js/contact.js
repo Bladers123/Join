@@ -187,7 +187,7 @@ function editContact(name, mail, number, bg, initials, i) {
 
     let newName = document.getElementById("contact-name").value;
 
-    console.log(newName)
+    console.log(newName);
 
     let edit = document.getElementById("edit-pop-up");
     edit.innerHTML = '';

@@ -1,20 +1,6 @@
 
 async function init() {
-    includeHTML();
-   // await loadContacts();
-    renderOldContacts();
-}
-
-function navToSignIn() {
-    window.location.href = 'sign-in.html';
-}
-
-function backToLogIn() {
-    window.location.href = 'log-in.html';
-}
-
-function guestLogIn() {
-    window.location.href = '../../html/add_task.html';
+   await includeHTML();
 }
 
 async function includeHTML() {

@@ -10,11 +10,12 @@
     <script src="../../js/script.js"></script>
     <script src="../../js/templates.js"></script>
     <script src="../../js/register.js"></script>
+    <script src="../../js/login.js"></script>
     <link rel="icon" type="image/x-icon" href="../../img/logo.svg">
     <title>Login</title>
 </head>
 
-<body onload="init()">
+<body onload="init(); initLogIn()">
     <img id="loading" class="logo-animate" src="../../img/logo.svg" />
     <div class="bg-animate"></div>
     <div class="aot">
@@ -30,27 +31,27 @@
                 <div class="underline"></div>
             </div>
 
-            <div class="input-container">
+            <form class="input-container" onsubmit="logIn()">
                 <div class="input">
-                    <input placeholder="E-Mail" type="email">
+                    <input placeholder="E-Mail" type="email" required>
                     <img src="../../img/mail.svg">
                 </div>
 
                 <div class="input">
-                    <input placeholder="Password" type="password">
+                    <input placeholder="Password" type="password" required>
                     <img src="../../img/lock.svg">
                 </div>
 
                 <div class="checkbox">
-                    <div><input type="checkbox" style="cursor: pointer;"></div>
+                    <div><input type="checkbox" required style="cursor: pointer;"></div>
                     <span>Remember me</span>
                 </div>
 
                 <div class="style-btns">
-                    <button class="dark-btn w180">Log in</button>
-                    <button onclick="guestLogIn()" class="light-btn w180">Guest Log in</button>
+                    <button type="submit" class="dark-btn w180">Log in</button>
+                    <button onclick="guestLogIn()" type="button" class="light-btn w180">Guest Log in</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 

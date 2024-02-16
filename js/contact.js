@@ -74,6 +74,12 @@ let oldContacts = [
 ];
 let letters = [];
 
+function initContacts(){
+    renderOldContacts();
+}
+
+
+
 function openContact() {
     document.getElementById("open-contact").classList.remove("d-none");
 

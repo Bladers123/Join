@@ -144,6 +144,7 @@ function showContact(i) {
     contact.classList.remove("d-none");
     contact.innerHTML = "";
     contact.innerHTML += generateHTML(name, mail, number, bg, initials, i);
+    
 
 }
 
@@ -173,6 +174,59 @@ async function createContact() {
     tel.value = "";
 }
 
+function editContact(bg, name, mail, number, initials, i) {
+    document.getElementById("edit-pop-up").classList.remove("d-none");
+    document.getElementById("edit-pop-up").classList.add("d-flex");
+
+    let edit = document.getElementById("edit-pop-up");
+    edit.innerHTML = '';
+    edit.innerHTML += `
+    <div class="wholePop">
+    <div class="close">
+        <img onclick="closePopUp()" src="../img/close.svg">
+    </div>
+
+    <div class="bluue">
+        <img class="popUpJoinImg" src="../img/template-img/Capa 2.svg">
+        <h2>Edit contact</h2>
+        <img class="blueUnderline" src="../img/blueUnderline.svg">
+    </div>
+
+    <div class="initialCircleXL" style="background-color: ${bg};">${initials}</div>
+
+    <div class="whitee">
+        <form onsubmit="editContact(); return false;">
+            <div class="inputFields">
+                <div class="singleInput">
+                    <input required id="contact-name" placeholder="Name" type="text">
+                    ${name}
+                    <img src="../img/person.svg">
+                </div>
+                <div class="singleInput">
+                    <input required id="contact-email" placeholder="Email" type="email">
+                    ${mail}
+                    <img src="../img/mail.svg">
+                </div>
+                <div class="singleInput">
+                    <input required id="contact-tel" placeholder="Number" type="tel">
+                    ${number}
+                    <img src="../img/telephone.svg">
+                </div>
+            </div>
+
+
+            <div class="styleBtn">
+                <button type="button" onclick="closePopUp()" class="cancelBtn">Delete</button>
+                <button type="submit" class="createBtn">Save <img src="../img/check.svg"></button>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+    `;
+}
+
 function deleteContact(i) {
     oldContacts.splice(i, 1);
     letters.splice(i, 1);
@@ -196,5 +250,7 @@ function openPopUp() {
 function closePopUp() {
     document.getElementById("pop-up").classList.add("d-none");
     document.getElementById("pop-up").classList.remove("d-flex");
+    document.getElementById("edit-pop-up").classList.add("d-none");
+    document.getElementById("edit-pop-up").classList.remove("d-flex");
 }
 

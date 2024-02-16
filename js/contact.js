@@ -75,7 +75,9 @@ let oldContacts = [
 let letters = [];
 
 function openContact() {
-    document.getElementById("contactOverlay").classList.remove("d-none");
+    document.getElementById("open-contact").classList.remove("d-none");
+    document.getElementById("open-contact").classList.add("d-flex");
+
 }
 
 function closeContact() {

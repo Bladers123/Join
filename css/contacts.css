@@ -100,12 +100,15 @@ button {
     width: 42px;
     height: 42px;
     flex-shrink: 0;
-    background-color: #ff7a00;
     stroke-width: 2px;
     stroke: white;
     border-radius: 100px;
     color: white;
     font-size: 12px;
+}
+
+.light-grey {
+    background-color: #D1D1D1;
 }
 
 .email {
@@ -212,6 +215,7 @@ button {
     display: flex;
     flex-direction: column;
     gap: 22px;
+    animation: slideIn 0.2s ease-in-out;
 }
 
 .Phone {
@@ -236,12 +240,6 @@ button {
     height: 1px;
     width: 100%;
     background-color: lightgray;
-}
-
-.divider {
-    height: 1px;
-    background-color: lightgrey;
-    width: 100%;
 }
 
 #contactName {
@@ -282,6 +280,15 @@ button {
     max-width: 1212px;
     position: relative;
     animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(200%);
+    }
+    to {
+        transform: translateX(0);
+    }
 }
 
 .close {
@@ -410,6 +417,11 @@ button img {
     cursor: pointer;
 }
 
+.cancelBtn img {
+    height: 15.49px;
+    width: 11.22px;
+}
+
 .createBtn {
     display: flex;
     align-items: center;
@@ -424,6 +436,11 @@ button img {
     border: none;
     border-radius: 10px;
     cursor: pointer;
+}
+
+.createBtn img {
+    height: 10.49px;
+    width: 10.49px;
 }
 
 .pointer {

@@ -80,6 +80,7 @@ h2 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1)
 }
 
 h3 {
@@ -125,6 +126,7 @@ h3 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1)
 }
 
 .urgent {
@@ -222,24 +224,56 @@ h5 {
 .box-of-section1:hover {
     cursor: pointer;
     box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1);
-    background-color: #29abe2;
+    transition: all 250ms ease-in-out;
+    background-color: #2A3647;
     color: white;
     transition: all 300ms ease-in-out;
+    transform: scale(1.05);
 }
 
 .box-of-section1:hover span {
     color: white;
 }
+.box-of-section1:hover .cycle{
+    background-color: white;
+}
+.box-of-section1:hover img {
+    filter: brightness(0) saturate(100%);
+    filter: invert(20%) sepia(8%) saturate(1944%) hue-rotate(176deg) brightness(90%) contrast(93%);
+}
 
 .section2:hover {
     cursor: pointer;
     box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    transition: all 250ms ease-in-out;
+    color: white;
+    background-color: #2A3647;
+    transform: scale(1.05);
+}
+
+.section2:hover span {
+    color: white;
+}
+
+.section2:hover h6 {
+    color: white;
+}
+
+.section2:hover .deadline{
+    color: white;
 }
 
 .box-of-section3:hover {
     cursor: pointer;
     box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
-    transition: all 300ms ease-in-out;
+    transition: all 250ms ease-in-out;
+    color: white;
+    background-color: #2A3647;
+    transform: scale(1.05);
+    
+}
+.box-of-section3:hover span{
+    color: white;
 }
 
 /* respnsiveness */

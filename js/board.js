@@ -1,15 +1,33 @@
-//tasks for testing
-let tasks = [];
+let todo = [
+    {
+        id: 0,
+        title: "Putzen",
+        progress: "toDo",
+        description: "Kochwelt Page",
+    },
+    {
+        id: 1,
+        title: "Kochen",
+        progress: "toDo",
+        description: "Join Page",
+    },
+    {
+        id: 2,
+        title: "Tristan Daten Sync bauen",
+        progress: "toDo",
+        description: "Array muss erstellt werden",
+    },
+];
 
 async function initBoard() {
     task = JSON.parse(localStorage.getItem("task")) || [];
     tasks.push(task);
-    await setItem('tasks', JSON.stringify(tasks));
+    await setItem("tasks", JSON.stringify(tasks));
     updateHTML();
 }
 
 function updateHTML() {
-    let toDo = tasks.filter((t) => t["progress"] == "toDo");
+    let toDo = todo.filter((t) => t["progress"] == "toDo");
 
     document.getElementById("toDo").innerHTML = "";
 
@@ -18,7 +36,7 @@ function updateHTML() {
         document.getElementById("toDo").innerHTML += generateTodoHTML(element);
     }
 
-    let inprogress = tasks.filter((t) => t["progress"] == "inProgress");
+    let inprogress = todo.filter((t) => t["progress"] == "inProgress");
 
     document.getElementById("inProgress").innerHTML = "";
 
@@ -27,7 +45,7 @@ function updateHTML() {
         document.getElementById("inProgress").innerHTML += generateTodoHTML(element);
     }
 
-    let feedback = tasks.filter((t) => t["progress"] == "feedback");
+    let feedback = todo.filter((t) => t["progress"] == "feedback");
 
     document.getElementById("feedback").innerHTML = "";
 
@@ -36,7 +54,7 @@ function updateHTML() {
         document.getElementById("feedback").innerHTML += generateTodoHTML(element);
     }
 
-    let done = tasks.filter((t) => t["progress"] == "done");
+    let done = todo.filter((t) => t["progress"] == "done");
 
     document.getElementById("done").innerHTML = "";
 
@@ -58,20 +76,20 @@ function allowDrop(ev) {
 }
 
 function moveTo(category) {
-    tasks[0]["progress"] = category;
+    todo[currentDraggedElement]["progress"] = category;
     updateHTML();
 }
 
 function generateTodoHTML(element) {
     return `
-    <div draggable="true" ondragstart="startDragging(${element["id"]})" class="toDoCard">
+    <div onclick="openCardModal('cardModal')" draggable="true" ondragstart="startDragging(${element["id"]})" class="toDoCard">
          <div class="toDoCardContent">
              <div class="badge">
-                 <p class="badgeText">UserStory</p>
+                 <p class="badgeText">${element["progress"]}</p>
              </div>
              <div class="cardTextWrapper">
-                 <p class="cardHeadline">Kochwelt Page & Recipe Recommender</p>
-                 <p class="cardDescription">Build start page with recipe recommendation...</p>
+                 <p class="cardHeadline">${element["title"]}</p>
+                 <p class="cardDescription">${element["description"]}</p>
              </div>
              <div class="subTaskWrapper">
                  <progress id="file" value="32" max="100">32%</progress>
@@ -119,4 +137,12 @@ function highlight(id) {
 
 function removeHighlight(id) {
     document.getElementById(id).classList.remove("contentContainerHover");
+}
+
+function openCardModal(id) {
+    document.getElementById(id).classList.remove("d-none");
+}
+
+function closeCardModal(id) {
+    document.getElementById(id).classList.add("d-none");
 }

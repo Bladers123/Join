@@ -27,7 +27,7 @@
                             <h1 class="contactsHeadline">Board</h1>
                             <div class="searchbarButtonWrapper">
                                 <input class="searchbarBoard" type="search" placeholder="Find Task" />
-                                <button>
+                                <button onclick="openCardModal('addTaskModal')">
                                     Add Task
                                     <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <mask id="mask0_5_1027" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="33">
@@ -96,16 +96,16 @@
                     </div>
                 </div>
             </div>
-            <div class="modalBackground d-none">
+            <div id="addTaskModal" class="modalBackground d-none">
                 <div class="ModalAddTask" w3-include-html="../template/addTaskOverlay.html"></div>
             </div>
-            <div class="openCardBackground d-none">
+            <div id="cardModal" class="openCardBackground d-none">
                 <div class="openTask">
                     <div class="cardHeader">
                         <div class="cardType">
                             <p class="cardTypeDescription">User Story</p>
                         </div>
-                        <svg class="closeIcon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg onclick="closeCardModal('cardModal')" class="closeIcon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <mask id="mask0_12_1578" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="4" y="4" width="24" height="24">
                                 <rect x="4" y="4" width="24" height="24" fill="#D9D9D9" />
                             </mask>

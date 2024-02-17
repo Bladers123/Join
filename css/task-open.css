@@ -10,6 +10,10 @@
     align-items: center;
 }
 
+.addTaskHeadline {
+    padding-bottom: 0;
+}
+
 .openTask {
     display: flex;
     width: 525px;
@@ -273,4 +277,15 @@
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
+}
+
+.addTaskHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.closeIcon {
+    cursor: pointer;
 }

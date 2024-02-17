@@ -60,7 +60,7 @@ function generateHTML(name, mail, number, bg, initials, i) {
 }
 
 
-function generateEditContactHTML(bg, initials, name, mail, number) {
+function generateEditContactHTML(bg, initials, name, mail, number, i) {
     return `
     <div class="wholePop">
     <div class="close">
@@ -76,7 +76,7 @@ function generateEditContactHTML(bg, initials, name, mail, number) {
     <div class="initialCircleXL" style="background-color: ${bg};">${initials}</div>
 
     <div class="whitee">
-        <form onsubmit="saveContact(); return false;">
+        <form onsubmit="saveContact(${i}); return false;">
             <div class="inputFields">
                 <div class="singleInput">
                     <input required id="old-name" value="${name}" placeholder="${name}" type="text">

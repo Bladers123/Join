@@ -73,6 +73,7 @@ let oldContacts = [
     },
 ];
 let letters = [];
+let selectedName;
 
 function initContacts(){
     renderOldContacts();
@@ -132,7 +133,7 @@ function renderOldContacts() {
 }
 
 function showContact(i) {
-    let selectedName = oldContacts[i];
+    selectedName = oldContacts[i];
     let name = selectedName["name"];
     let mail = selectedName["email"];
     let number = selectedName["tel"];
@@ -149,8 +150,6 @@ function showContact(i) {
     contact.classList.remove("d-none");
     contact.innerHTML = "";
     contact.innerHTML += generateHTML(name, mail, number, bg, initials, i);
-    
-
 }
 
 async function createContact() {
@@ -179,17 +178,22 @@ async function createContact() {
     tel.value = "";
 }
 
-function saveContact(){
+function saveContact(i){
     document.getElementById("edit-pop-up").classList.add("d-none");
     document.getElementById("edit-pop-up").classList.remove("d-flex");
 
     let newName = document.getElementById('old-name').value;
     let newMail = document.getElementById('old-email').value;
     let newTel = document.getElementById('old-tel').value;
+
+    oldContacts[i]["name"] = newName
+    oldContacts[i]["email"] = newMail
+    oldContacts[i]["tel"] = newTel
     
 
-    console.log('Neuer Kontakt: ', newName, newMail, newTel);
-    renderOldContacts();
+        showContact(i);
+        renderOldContacts();
+    
 }
 
 function editContact(name, mail, number, bg, initials, i) {
@@ -198,7 +202,7 @@ function editContact(name, mail, number, bg, initials, i) {
 
     let edit = document.getElementById("edit-pop-up");
     edit.innerHTML = '';
-    edit.innerHTML += generateEditContactHTML(bg, initials, name, mail, number);
+    edit.innerHTML += generateEditContactHTML(bg, initials, name, mail, number, i);
 }
 
 function deleteContact(i) {

@@ -27,6 +27,8 @@ body {
     justify-content: space-around;
     position: sticky;
     top: 0;
+    position: fixed;
+    width: 232px;
 }
 
 .logoSidebar {
@@ -257,5 +259,5 @@ nav {
 }
 
 .background.active {
-    background-color: #FF3D00;
+    background-color: #ff3d00;
 }

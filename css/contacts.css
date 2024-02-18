@@ -371,6 +371,10 @@ form {
     width: 422px;
 }
 
+input {
+    background-color: transparent !important;
+}
+
 .inputFields {
     height: 215px;
     display: flex;
@@ -462,7 +466,15 @@ button img {
     cursor: pointer;
 }
 
+.resize-d-none {
+    display: none;
+}
+
 @media (max-width: 1300px) {
+    .resize-d-none {
+        display: block;
+    }
+
     .buttonName {
         display: none;
     }
@@ -472,9 +484,9 @@ button img {
         flex-direction: column;
     }
 
-    .contentRight {
+/*    .contentRight {
         display: none;
-    }
+    }*/
 
     #addContactButton {
         position: absolute;
@@ -526,11 +538,11 @@ button img {
         top: 0;
         right: 0;
         left: 0;
-        background-color: white;
+        background-color: #F6F7F8;
         z-index: 100;
     }
 
-    .arrowBack {
+   /* .arrowBack {
         position: absolute;
         height: 20px;
         width: 20px;
@@ -538,7 +550,7 @@ button img {
         right: 10px;
         top: 10px;
         cursor: pointer;
-    }
+    }*/
 }
 
 @media (max-width: 1050px) {

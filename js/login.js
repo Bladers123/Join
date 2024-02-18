@@ -18,6 +18,7 @@ async function loadUsers() {
         let loadedUsers = JSON.parse(await getItem('users'));
         if (Array.isArray(loadedUsers)) {
             users = loadedUsers;
+            console.log("Alle geladenen Benutzer: ", users);
         } else {
             console.log("Keine Benutzer gefunden, Initialisierung mit einem leeren Array.");
             users = [];
@@ -26,18 +27,29 @@ async function loadUsers() {
         console.error("Fehler beim Laden der Benutzer: ", error);
         users = [];
     }
-
-    console.log("Alle geladenen Benutzer: ", users);
 }
 
 function logIn() {
     let email = document.getElementById('emailInput').value;
     let password = document.getElementById('passwordInput').value;
+
     let user = users.find(user => user.email === email && user.password === password);
 
     if (user) {
         console.log("Login erfolgreich für: ", user.name);
         window.location.href = '../../html/summary.html';
-    } else
+    } else {
+        let failureText = document.getElementById('failureTextInLogin');
+        failureText.innerHTML = 'Email or password are incorrect';
         console.log("Falsche E-Mail oder Passwort.");
+    }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    let inputs = document.getElementsByClassName('input');
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener('click', function () {
+            document.getElementById('failureTextInLogin').innerHTML = "";
+        });
+    }
+});

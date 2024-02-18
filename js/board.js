@@ -1,4 +1,4 @@
-let todo = [
+let tasks = [
     {
         id: 0,
         title: "Putzen",
@@ -8,7 +8,7 @@ let todo = [
     {
         id: 1,
         title: "Kochen",
-        progress: "toDo",
+        progress: "inProgress",
         description: "Join Page",
     },
     {
@@ -19,9 +19,10 @@ let todo = [
     },
 ];
 
-let tasks = [];
+let currentDraggedElement;
 
 async function initBoard() {
+    console.log(tasks);
     await loadTasks();
     updateHTML();
 }
@@ -30,60 +31,36 @@ async function loadTasks() {
     let newTask = JSON.parse(localStorage.getItem("task")) || [];
     console.log('Mein neuer Task aus dem local Storage: ', newTask);
 
-    if (newTask.length !== 0) {
-        tasks.push(newTask);
+    if (Array.isArray(newTask) && newTask.length) {
+        tasks = tasks.concat(newTask); // Korrekte Zusammenführung von Arrays
         console.log('Meinen neuen Task in Tasks gepusht: ', tasks);
-        await setItem('tasks', JSON.stringify(tasks));
-        console.log("Meine Tasks auf dem Server gespeichert.");
+        localStorage.setItem('tasks', JSON.stringify(tasks)); // Direkte Verwendung ohne await
+        console.log("Meine Tasks im Local Storage gespeichert.");
     }
 
-    loadedTasks = JSON.parse(await getItem('tasks'));
-    console.log('Meine Tasks vom Server geladen.', loadedTasks);
-
-    tasks = loadedTasks;
-    console.log('Die geladenen Tasks in tasks gespeichert.');
+    let loadedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+    if (loadedTasks.length) {
+        tasks = loadedTasks;
+        console.log('Die geladenen Tasks in tasks gespeichert.', tasks);
+    }
 }
 
 function updateHTML() {
-    let toDo = todo.filter((t) => t["progress"] == "toDo");
+    let sections = {
+        toDo: document.getElementById("toDo"),
+        inProgress: document.getElementById("inProgress"),
+        feedback: document.getElementById("feedback"),
+        done: document.getElementById("done")
+    };
 
-    document.getElementById("toDo").innerHTML = "";
+    Object.values(sections).forEach(section => section.innerHTML = "");
+    console.log(sections.toDo);
 
-    for (let index = 0; index < toDo.length; index++) {
-        const element = toDo[index];
-        document.getElementById("toDo").innerHTML += generateTodoHTML(element);
-    }
-
-    let inprogress = todo.filter((t) => t["progress"] == "inProgress");
-
-    document.getElementById("inProgress").innerHTML = "";
-
-    for (let index = 0; index < inprogress.length; index++) {
-        const element = inprogress[index];
-        document.getElementById("inProgress").innerHTML += generateTodoHTML(element);
-    }
-
-    let feedback = todo.filter((t) => t["progress"] == "feedback");
-
-    document.getElementById("feedback").innerHTML = "";
-
-    for (let index = 0; index < feedback.length; index++) {
-        const element = feedback[index];
-        document.getElementById("feedback").innerHTML += generateTodoHTML(element);
-    }
-
-    let done = todo.filter((t) => t["progress"] == "done");
-
-    document.getElementById("done").innerHTML = "";
-
-    for (let index = 0; index < done.length; index++) {
-        const element = done[index];
-        document.getElementById("done").innerHTML += generateTodoHTML(element);
-    }
-    save();
+    tasks.forEach(task => {
+        let elementHTML = generateTodoHTML(task);
+        sections[task.progress].innerHTML += elementHTML;
+    });
 }
-
-let currentDraggedElement;
 
 function startDragging(id) {
     currentDraggedElement = id;
@@ -94,20 +71,26 @@ function allowDrop(ev) {
 }
 
 function moveTo(category) {
-    todo[currentDraggedElement]["progress"] = category;
+    let foundIndex = tasks.findIndex(task => task.id === currentDraggedElement);
+    if (foundIndex !== -1)
+        tasks[foundIndex].progress = category;
+    else {
+        console.error('Element nicht gefunden in tasks');
+        return;
+    }
     updateHTML();
 }
 
 function generateTodoHTML(element) {
     return `
-    <div onclick="openCardModal('cardModal')" draggable="true" ondragstart="startDragging(${element["id"]})" class="toDoCard">
+    <div onclick="openCardModal('cardModal')" draggable="true" ondragstart="startDragging(${element.id})" class="toDoCard">
          <div class="toDoCardContent">
              <div class="badge">
-                 <p class="badgeText">${element["progress"]}</p>
+                 <p class="badgeText">${element.progress}</p>
              </div>
              <div class="cardTextWrapper">
-                 <p class="cardHeadline">${element["title"]}</p>
-                 <p class="cardDescription">${element["description"]}</p>
+                 <p class="cardHeadline">${element.title}</p>
+                 <p class="cardDescription">${element.description}</p>
              </div>
              <div class="subTaskWrapper">
                  <progress id="file" value="32" max="100">32%</progress>
@@ -143,10 +126,6 @@ function generateTodoHTML(element) {
          </div>
        </div>
     `;
-}
-
-function save() {
-    localStorage.setItem("localTasks", JSON.stringify(tasks));
 }
 
 function highlight(id) {

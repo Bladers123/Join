@@ -1,44 +1,10 @@
-let tasks = [
-    {
-        id: 0,
-        title: "Putzen",
-        progress: "toDo",
-        description: "Kochwelt Page",
-    },
-    {
-        id: 1,
-        title: "Kochen",
-        progress: "inProgress",
-        description: "Join Page",
-    },
-    {
-        id: 2,
-        title: "Tristan Daten Sync bauen",
-        progress: "toDo",
-        description: "Array muss erstellt werden",
-    },
-];
+let tasks = [];
 
 let currentDraggedElement;
 
 async function initBoard() {
-    await loadTasks();
+    tasks = JSON.parse(await getItem('tasks') || '[]');
     updateHTML();
-}
-
-async function loadTasks() {
-    let newTask = JSON.parse(localStorage.getItem("task")) || [];
-    console.log('Mein neuer Task aus dem local Storage: ', newTask);
-
-    tasks = tasks.concat(newTask);
-    console.log('Meinen neuen Task in Tasks gepusht: ', tasks);
-    
-    await setItem('tasks', JSON.stringify(tasks));
-    console.log("Meine Tasks im Local Storage gespeichert.");
-
-    let loadedTasks = JSON.parse(await getItem('tasks') || '[]');
-    tasks = loadedTasks;
-    console.log('Die geladenen Tasks in tasks gespeichert.', tasks);
 }
 
 function updateHTML() {
@@ -64,8 +30,8 @@ function startDragging(id) {
     currentDraggedElement = id;
 }
 
-function allowDrop(ev) {
-    ev.preventDefault();
+function allowDrop(event) {
+    event.preventDefault();
 }
 
 function moveTo(category) {
@@ -79,16 +45,16 @@ function moveTo(category) {
     updateHTML();
 }
 
-function generateTodoHTML(element) {
+function generateTodoHTML(task) {
     return `
-    <div onclick="openCardModal('cardModal')" draggable="true" ondragstart="startDragging(${element.id})" class="toDoCard">
+    <div onclick="openCardModal('cardModal')" draggable="true" ondragstart="startDragging(${task.id})" class="toDoCard">
          <div class="toDoCardContent">
              <div class="badge">
-                 <p class="badgeText">${element.progress}</p>
+                 <p class="badgeText">${task.progress}</p>
              </div>
              <div class="cardTextWrapper">
-                 <p class="cardHeadline">${element.title}</p>
-                 <p class="cardDescription">${element.description}</p>
+                 <p class="cardHeadline">${task.title}</p>
+                 <p class="cardDescription">${task.description}</p>
              </div>
              <div class="subTaskWrapper">
                  <progress id="file" value="32" max="100">32%</progress>

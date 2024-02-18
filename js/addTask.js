@@ -158,8 +158,8 @@ function closeCheckBoxAreaForCategory() {
 }
 //#endregion
 
- function createTask() {
-    saveTask();
+ async function createTask() {
+    await saveTask();
     document.getElementById('popup-container').innerHTML = getPopUpTemplate();
     clearTask();
     setTimeout(function() {
@@ -167,7 +167,7 @@ function closeCheckBoxAreaForCategory() {
     }, 1000);
 }
 
- function saveTask() {
+ async function saveTask() {
     let title = document.getElementById('input-title').value;
     let description = document.getElementById('textArea-description').value;
     let dueDate = document.getElementById('input-due-date').value;
@@ -188,7 +188,9 @@ function closeCheckBoxAreaForCategory() {
         progress
     };
 
-    localStorage.setItem('task', JSON.stringify(currentTask));
+     let tasks = JSON.parse(await getItem('tasks') || '[]');
+     tasks = tasks.concat(currentTask);
+     await setItem('tasks', JSON.stringify(tasks));
  }
 
 function getPopUpTemplate() {

@@ -53,8 +53,10 @@ function updateHTML() {
         done: document.getElementById("done")
     };
 
-    Object.values(sections).forEach(section => section.innerHTML = "");
-    console.log(sections.toDo);
+    document.getElementById("toDo").innerHTML = "";
+    document.getElementById("inProgress").innerHTML = "";
+    document.getElementById("feedback").innerHTML = "";
+    document.getElementById("done").innerHTML = "";
 
     tasks.forEach(task => {
         let elementHTML = generateTodoHTML(task);

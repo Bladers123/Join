@@ -4,10 +4,10 @@ let currentDraggedElement;
 
 async function initBoard() {
     tasks = JSON.parse(await getItem('tasks') || '[]');
-    updateHTML();
+    updateTasks();
 }
 
-function updateHTML() {
+function updateTasks() {
     let sections = {
         toDo: document.getElementById("toDo"),
         inProgress: document.getElementById("inProgress"),
@@ -21,8 +21,8 @@ function updateHTML() {
     document.getElementById("done").innerHTML = "";
 
     tasks.forEach(task => {
-        let elementHTML = generateTodoHTML(task);
-        sections[task.progress].innerHTML += elementHTML;
+        let taskTemplate = generateTodoHTML(task);
+        sections[task.progress].innerHTML += taskTemplate;
     });
 }
 
@@ -42,11 +42,13 @@ function moveTo(category) {
         console.error('Element nicht gefunden in tasks');
         return;
     }
-    updateHTML();
+    updateTasks();
 }
 
 function generateTodoHTML(task) {
-    return `
+    let circleTemplate = getCircleTemplate(task);
+
+    return /*html*/`
     <div onclick="openCardModal('cardModal')" draggable="true" ondragstart="startDragging(${task.id})" class="toDoCard">
          <div class="toDoCardContent">
              <div class="badge">
@@ -64,10 +66,8 @@ function generateTodoHTML(task) {
                  </div>
              </div>
              <div class="cardFooter">
-                 <div class="avatarWrapper">
-                     <div class="profileBadge">AM</div>
-                     <div class="profileBadge">AM</div>
-                     <div class="profileBadge">AM</div>
+                 <div id="userCircle" class="avatarWrapper">
+                    ${circleTemplate}
                  </div>
                  <svg width="18" height="8" viewBox="0 0 18 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                      <g clip-path="url(#clip0_5_843)">
@@ -90,6 +90,13 @@ function generateTodoHTML(task) {
          </div>
        </div>
     `;
+}
+
+function getCircleTemplate(task) {
+    return task.assignedTo.map(person => {
+        let initials = person.split(' ').map(namePart => namePart.charAt(0)).join('');
+        return `<div class="profileBadge">${initials}</div>`;
+    }).join('');  
 }
 
 function highlight(id) {

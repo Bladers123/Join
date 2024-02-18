@@ -20,7 +20,6 @@ let todo = [
 ];
 
 let tasks = [];
-let newTask = [];
 
 async function initBoard() {
     await loadTasks();
@@ -28,23 +27,21 @@ async function initBoard() {
 }
 
 async function loadTasks() {
-    newTask = JSON.parse(localStorage.getItem("task")) || [];
+    let newTask = JSON.parse(localStorage.getItem("task")) || [];
     console.log('Mein neuer Task aus dem local Storage: ', newTask);
+
     if (newTask.length !== 0) {
         tasks.push(newTask);
         console.log('Meinen neuen Task in Tasks gepusht: ', tasks);
-
         await setItem('tasks', JSON.stringify(tasks));
         console.log("Meine Tasks auf dem Server gespeichert.");
-
-        loadedTasks = JSON.parse(await getItem('tasks'));
-        console.log('Meine Tasks vom Server geladen.', loadedTasks);
-
-        tasks = loadedTasks;
-        console.log('Die geladenen Tasks in tasks gespeichert.');
-        
-        console.log(tasks[0]);
     }
+
+    loadedTasks = JSON.parse(await getItem('tasks'));
+    console.log('Meine Tasks vom Server geladen.', loadedTasks);
+
+    tasks = loadedTasks;
+    console.log('Die geladenen Tasks in tasks gespeichert.');
 }
 
 function updateHTML() {

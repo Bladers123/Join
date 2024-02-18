@@ -16,6 +16,7 @@
 
 <body onload="initRegister()">
     <img class="logo" src="../../img/logo.svg" />
+    <div id="popup-container"></div>
     <div class="aot">
         <form class="container container-sign-in" id="container" onsubmit="register(); return false;">
             <img class="arrow" onclick="backToLogIn()" src="../../img/arrow.svg">
@@ -40,11 +41,12 @@
                         <img src="../../img/lock.svg">
                     </div>
 
-                    <div class="input">
+                    <div id="confirm-password-container" class="input">
                         <input id="inputConfirmPassword" placeholder="Confirm password" type="password" required>
                         <img src="../../img/lock.svg">
                     </div>
                 </div>
+                <div id="failureText" class="passwordDontMatchText"></div>
                 <div class="checkbox">
                     <div>
                         <input class="checkbox-input" type="checkbox" required>

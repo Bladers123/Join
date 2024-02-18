@@ -75,19 +75,10 @@ let oldContacts = [
 let letters = [];
 let selectedName;
 
-function initContacts(){
+function initContacts() {
     renderOldContacts();
 }
 
-
-function openContact() {
-    document.getElementById("open-contact").classList.remove("d-none");
-
-}
-
-function closeContact() {
-    document.getElementById("contactOverlay").classList.add("d-none");
-}
 
 function renderOldContacts() {
     let renderContact = document.getElementById("contactName");
@@ -118,7 +109,7 @@ function renderOldContacts() {
         } else {
             console.log("versuchs nochmal");
         }
-        
+
         renderContact.innerHTML += `    
             <div onclick="showContact(${i})" class="name">
                 <div class="initialCircle" style="background-color: ${bg};">${initials}</div>
@@ -127,12 +118,13 @@ function renderOldContacts() {
                     <div class="email">${mail}</div>
                 </div>
             </div>`;
-        
+
         //showContact(i);
     }
 }
 
 function showContact(i) {
+    document.getElementById("resize-contact").classList.remove("d-none");
     selectedName = oldContacts[i];
     let name = selectedName["name"];
     let mail = selectedName["email"];
@@ -178,7 +170,7 @@ async function createContact() {
     tel.value = "";
 }
 
-function saveContact(i){
+function saveContact(i) {
     document.getElementById("edit-pop-up").classList.add("d-none");
     document.getElementById("edit-pop-up").classList.remove("d-flex");
 
@@ -189,11 +181,11 @@ function saveContact(i){
     oldContacts[i]["name"] = newName
     oldContacts[i]["email"] = newMail
     oldContacts[i]["tel"] = newTel
-    
 
-        showContact(i);
-        renderOldContacts();
-    
+
+    showContact(i);
+    renderOldContacts();
+
 }
 
 function editContact(name, mail, number, bg, initials, i) {
@@ -208,9 +200,9 @@ function editContact(name, mail, number, bg, initials, i) {
 function deleteContact(i) {
     oldContacts.splice(i, 1);
     letters.splice(i, 1);
-    
+
     document.getElementById('open-contact').classList.add("d-none");
-    
+
 
     renderOldContacts();
 }
@@ -232,3 +224,20 @@ function closePopUp() {
     document.getElementById("edit-pop-up").classList.remove("d-flex");
 }
 
+
+function openContactonResize() {
+
+    if (window.innerWidth >= 1300) {
+        console.log('Viel Spaß beim Resizen ;-)');
+        document.getElementById("resize-contact").classList.add("contentRightOverlay");
+    } else {
+        document.getElementById("resize-contact").classList.remove("d-none");
+    }
+}
+
+
+function closeContact() {
+    document.getElementById("resize-contact").classList.add("d-none");
+}
+
+window.onresize = openContactonResize;

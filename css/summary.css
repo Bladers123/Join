@@ -79,8 +79,19 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1)
+}
+
+.pencil {
+    background-image: url(../img/pencil.svg);
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+.check {
+    background-image: url(../img/check.svg);
+    background-repeat: no-repeat;
+    background-position: center;   
 }
 
 h3 {
@@ -236,10 +247,19 @@ h5 {
 }
 .box-of-section1:hover .cycle{
     background-color: white;
+    z-index: 0;
 }
-.box-of-section1:hover img {
-    filter: brightness(0) saturate(100%);
-    filter: invert(20%) sepia(8%) saturate(1944%) hue-rotate(176deg) brightness(90%) contrast(93%);
+
+.box-of-section1:hover .pencil {
+    background-image: url(../img/pencilblue.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.box-of-section1:hover .check {
+    background-image: url(../img/arrowblue.svg);
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .section2:hover {

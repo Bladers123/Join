@@ -6,7 +6,7 @@ let oldContacts = [
         bg: "rgb(255,122,0)"
     },
     {
-        name: "Tristan Gehrig",
+        name: "Tristan Gehring",
         email: "tristan@gmail.com",
         tel: "017612312333",
         bg: "rgb(255,187,43)"

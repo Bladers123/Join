@@ -22,7 +22,6 @@ let tasks = [
 let currentDraggedElement;
 
 async function initBoard() {
-    console.log(tasks);
     await loadTasks();
     updateHTML();
 }
@@ -31,18 +30,15 @@ async function loadTasks() {
     let newTask = JSON.parse(localStorage.getItem("task")) || [];
     console.log('Mein neuer Task aus dem local Storage: ', newTask);
 
-    if (Array.isArray(newTask) && newTask.length) {
-        tasks = tasks.concat(newTask); // Korrekte Zusammenführung von Arrays
-        console.log('Meinen neuen Task in Tasks gepusht: ', tasks);
-        localStorage.setItem('tasks', JSON.stringify(tasks)); // Direkte Verwendung ohne await
-        console.log("Meine Tasks im Local Storage gespeichert.");
-    }
+    tasks = tasks.concat(newTask);
+    console.log('Meinen neuen Task in Tasks gepusht: ', tasks);
+    
+    await setItem('tasks', JSON.stringify(tasks));
+    console.log("Meine Tasks im Local Storage gespeichert.");
 
-    let loadedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
-    if (loadedTasks.length) {
-        tasks = loadedTasks;
-        console.log('Die geladenen Tasks in tasks gespeichert.', tasks);
-    }
+    let loadedTasks = JSON.parse(await getItem('tasks') || '[]');
+    tasks = loadedTasks;
+    console.log('Die geladenen Tasks in tasks gespeichert.', tasks);
 }
 
 function updateHTML() {

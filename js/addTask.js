@@ -15,6 +15,8 @@ let categories = [
     { label: "User Story" }
 ];
 
+let subtaskId = 0;
+
 document.addEventListener('DOMContentLoaded', function () {
     let buttons = document.querySelectorAll('.prioButtons button');
     buttons.forEach(function (button) {
@@ -158,16 +160,16 @@ function closeCheckBoxAreaForCategory() {
 }
 //#endregion
 
- async function createTask() {
+async function createTask() {
     await saveTask();
     document.getElementById('popup-container').innerHTML = getPopUpTemplate();
     clearTask();
-    setTimeout(function() {
+    setTimeout(function () {
         window.location.href = '../../html/board.html';
     }, 1000);
 }
 
- async function saveTask() {
+async function saveTask() {
     let title = document.getElementById('input-title').value;
     let description = document.getElementById('textArea-description').value;
     let dueDate = document.getElementById('input-due-date').value;
@@ -188,10 +190,10 @@ function closeCheckBoxAreaForCategory() {
         progress
     };
 
-     let tasks = JSON.parse(await getItem('tasks') || '[]');
-     tasks = tasks.concat(currentTask);
-     await setItem('tasks', JSON.stringify(tasks));
- }
+    let tasks = JSON.parse(await getItem('tasks') || '[]');
+    tasks = tasks.concat(currentTask);
+    await setItem('tasks', JSON.stringify(tasks));
+}
 
 function getPopUpTemplate() {
     return /*html*/`
@@ -203,4 +205,41 @@ function getPopUpTemplate() {
        </div>
    </div> 
 `;
+}
+
+function addSubtask() {
+    let newSubtask = document.getElementById('newSubtask');
+    let displayedSubtasks = document.getElementById('subtasks');
+    let uniqueId = `subtask-${subtaskId++}`;
+
+    if (newSubtask.value.length > 0) {
+        displayedSubtasks.innerHTML += `
+        <div onclick="editSubTask('${uniqueId}')" class="new-sub-task-container" id="${uniqueId}">
+            <li class="new-subtask-text">${newSubtask.value}</li>
+            <div class="new-subtask-image-container">
+                <img onclick="editSubTask('${uniqueId}')" src="../img/edit.png" alt="edit">
+                <img onclick="deleteSubTask('${uniqueId}')" src="../img/trash.png" alt="delete">
+            </div>
+        </div>      
+        `;
+        newSubtask.value = "";
+    }
+}
+
+function editSubTask(id) {
+    let subtaskContainer = document.getElementById(id);
+    let subtaskTextElement = subtaskContainer.querySelector('.new-subtask-text');
+    let currentText = subtaskTextElement.innerText;
+    subtaskTextElement.innerHTML = `<input class="subtask-edit-field" type="text" value="${currentText}" onblur="saveEditedSubTask('${id}', this.value)">`;
+    subtaskTextElement.querySelector('input').focus();
+}
+
+function saveEditedSubTask(id, newText) {
+    let subtaskTextElement = document.getElementById(id).querySelector('.new-subtask-text');
+    subtaskTextElement.innerHTML = newText;
+}
+
+function deleteSubTask(id) {
+    let subtaskToRemove = document.getElementById(id);
+    subtaskToRemove.remove();
 }

@@ -356,3 +356,48 @@ footer button {
     }
 }
 
+.subtasks-input-container {
+    position: relative;
+    display: flex;
+    margin-bottom: 6px;
+}
+
+.subtasks-input-container svg {
+     position: absolute;
+     right: 5px; 
+     top: 44%; 
+     cursor: pointer;
+}
+
+.new-subtask-text{
+    
+    margin-left: 32px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+
+}
+
+.new-sub-task-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.new-sub-task-container img{
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.new-sub-task-container:hover{
+    background-color: #E5E5E5;
+}
+
+.subtasks-container{
+    max-height: 127px;
+    overflow-y: scroll;
+}
+
+.subtask-edit-field{
+    border: none; 
+    outline: none; 
+}

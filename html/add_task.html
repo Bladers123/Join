@@ -21,13 +21,13 @@
         <div class="rightContainer">
             <div w3-include-html="../template/navbar.html"></div>
             <div class="content">
-                <div class="all">
+                <form class="all" onsubmit="createTask(); return false;">
                     <h1>Add Task</h1>
                     <div class="task">
                         <div class="taskLeftSide">
                             <div class="margin-bot">
                                 <p>Title<span class="colored-star">*</span></p>
-                                <input id="input-title" placeholder="Enter a title" class="inputs" type="text">
+                                <input id="input-title" placeholder="Enter a title" class="inputs" type="text" required>
                             </div>
                             <div class="margin-bot">
                                 <p>Description</p>
@@ -50,12 +50,12 @@
                         <div class="taskRightSide">
                             <div class="margin-bot">
                                 <p>Due date<span class="colored-star">*</span></p>
-                                <input id="input-due-date" placeholder="dd/mm/yyyy" class="inputs" type="date">
+                                <input id="input-due-date" placeholder="dd/mm/yyyy" class="inputs" type="date" required>
                             </div>
                             <div class="margin-bot">
                                 <p>Prio</p>
                                 <div class="prioButtons">
-                                    <button class="prio-urgent">Urgent
+                                    <button type="button" class="prio-urgent">Urgent
                                         <div class="prio-button-svg-container">
                                             <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -76,7 +76,7 @@
                                             </svg>
                                         </div>
                                     </button>
-                                    <button class="prio-medium">Medium
+                                    <button type="button" class="prio-medium">Medium
                                         <div class="prio-button-svg-container">
                                             <svg width="21" height="8" viewBox="0 0 21 8" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -97,7 +97,7 @@
                                             </svg>
                                         </div>
                                     </button>
-                                    <button class="prio-low">Low
+                                    <button type="button" class="prio-low">Low
                                         <div class="prio-button-svg-container">
                                             <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -114,13 +114,21 @@
                             </div>
                             <div class="margin-bot">
                                 <p>Category<span class="colored-star">*</span></p>
-                                <div class="combobox" onclick="openOrCloseCheckBoxAreaForCategory()">
+                                <div id="combobox-category" class="combobox" onclick="openOrCloseCheckBoxAreaForCategory()">
                                     <p id="category-text">Select task category</p>
                                     <img id="nav-image-category" src="../img/navigation.png" alt="navLogo">
                                 </div>
+
+
+
+                                
+
+
+
                                 <div class="position-context">
                                     <div id="itemsCategory" class="items"></div>
                                 </div>
+                                <div id="failureCategory"></div>
                             </div>
                             <div class="margin-bot">
                                 <p>Subtasks</p>
@@ -140,10 +148,10 @@
                     <footer>
                         <p><span class="colored-star">*</span>This field is required</p>
                         <div class="clear-and-create-button-container">
-                            <button class="clear-button" onclick="clearTask()">Clear
+                            <button class="clear-button" type="button" onclick="clearTask()">Clear
                                 <img class="clear-image" src="../img/close.svg">
                             </button>
-                            <button class="create-button" onclick="createTask()">Create Task
+                            <button class="create-button" type="submit">Create Task
                                 <img class="create-image" src="../img/check.png">
                             </button>
                         </div>

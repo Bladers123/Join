@@ -118,6 +118,15 @@ function selectedCategoryItem(element) {
     openOrCloseCheckBoxAreaForCategory();
 }
 
+function isCategoryValidated(category) {
+    if (category === 'Technical Task' || category === 'User Story')
+        return true;
+    else {
+        document.getElementById('failureCategory').innerHTML = 'Bitte Category auswählen';
+        return false;
+    }
+}
+
 function rotateIcon(id) {
     let icon = document.getElementById(id);
     if (icon.style.transform === 'rotate(180deg)')
@@ -160,16 +169,29 @@ function closeCheckBoxAreaForCategory() {
 }
 //#endregion
 
+document.addEventListener('DOMContentLoaded', function () {
+    let comboboxCategory = document.getElementById('combobox-category');
+    comboboxCategory.addEventListener('click', function () {
+        document.getElementById('failureCategory').innerHTML = "";
+    })
+});
+
 async function createTask() {
-    await saveTask();
-    document.getElementById('popup-container').innerHTML = getPopUpTemplate();
-    clearTask();
-    setTimeout(function () {
-        window.location.href = '../../html/board.html';
-    }, 1000);
+    let currentTask = getTaskData();
+    let validate = isCategoryValidated(currentTask.category);
+    if (validate) {
+        let tasks = JSON.parse(await getItem('tasks') || '[]');
+        tasks = tasks.concat(currentTask);
+        await setItem('tasks', JSON.stringify(tasks));
+        document.getElementById('popup-container').innerHTML = getPopUpTemplate();
+        clearTask();
+        setTimeout(function () {
+            window.location.href = '../../html/board.html';
+        }, 1000);
+    }
 }
 
-async function saveTask() {
+function getTaskData() {
     let title = document.getElementById('input-title').value;
     let description = document.getElementById('textArea-description').value;
     let dueDate = document.getElementById('input-due-date').value;
@@ -190,9 +212,7 @@ async function saveTask() {
         progress
     };
 
-    let tasks = JSON.parse(await getItem('tasks') || '[]');
-    tasks = tasks.concat(currentTask);
-    await setItem('tasks', JSON.stringify(tasks));
+    return currentTask;
 }
 
 function getPopUpTemplate() {

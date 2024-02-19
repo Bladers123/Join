@@ -401,3 +401,9 @@ footer button {
     border: none; 
     outline: none; 
 }
+
+#failureCategory{
+    color: #FF4057;
+    font-size: 12px;
+    padding: 8px;
+}

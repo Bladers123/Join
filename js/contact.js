@@ -76,7 +76,7 @@ let letters = [];
 let selectedName;
 
 async function initContacts() {
-    await loadContacts();
+    oldContacts = JSON.parse(await getItem('oldContacts'));
     renderOldContacts();
 }
 
@@ -146,30 +146,25 @@ function showContact(i) {
 }
 
 async function createContact() {
-    let name = document.getElementById("contact-name");
-    let mail = document.getElementById("contact-email");
-    let tel = document.getElementById("contact-tel");
+    let name = document.getElementById("contact-name").value;
+    let mail = document.getElementById("contact-email").value;
+    let tel = document.getElementById("contact-tel").value;
     let x = Math.floor(Math.random() * 255) + 1;
     let y = Math.floor(Math.random() * 255) + 1;
     let z = Math.floor(Math.random() * 255) + 1;
 
     let newContact = {
-        name: name.value,
-        email: mail.value,
-        tel: tel.value,
+        name: name,
+        email: mail,
+        tel: tel,
         bg: `rgb(${x},${y},${z})`,
     };
 
-    oldContacts.push(newContact);
-
+    oldContacts = oldContacts.concat(newContact);
     await setItem('oldContacts', JSON.stringify(oldContacts));
-
     renderOldContacts();
-
-    name.value = "";
-    mail.value = "";
-    tel.value = "";
 }
+
 
 function saveContact(i) {
     document.getElementById("edit-pop-up").classList.add("d-none");
@@ -208,10 +203,7 @@ function deleteContact(i) {
     renderOldContacts();
 }
 
-async function loadContacts() {
-    oldContacts = JSON.parse(await getItem('oldContacts'));
 
-}
 
 function openPopUp() {
     document.getElementById("pop-up").classList.remove("d-none");

@@ -85,13 +85,13 @@ h2 {
 .pencil {
     background-image: url(../img/pencil.svg);
     background-repeat: no-repeat;
-    background-position: center; 
+    background-position: center;
 }
 
 .check {
     background-image: url(../img/check.svg);
     background-repeat: no-repeat;
-    background-position: center;   
+    background-position: center;
 }
 
 h3 {
@@ -245,7 +245,8 @@ h5 {
 .box-of-section1:hover span {
     color: white;
 }
-.box-of-section1:hover .cycle{
+
+.box-of-section1:hover .cycle {
     background-color: white;
     z-index: 0;
 }
@@ -279,7 +280,7 @@ h5 {
     color: white;
 }
 
-.section2:hover .deadline{
+.section2:hover .deadline {
     color: white;
 }
 
@@ -290,9 +291,10 @@ h5 {
     color: white;
     background-color: #2A3647;
     transform: scale(1.05);
-    
+
 }
-.box-of-section3:hover span{
+
+.box-of-section3:hover span {
     color: white;
 }
 
@@ -438,6 +440,14 @@ h5 {
         height: 16.74px;
     }
 
+    .check {
+        background-size: 17.36px;
+    }
+
+    .pencil {
+        background-size: 19.62px;
+    }
+
     .small-cycle,
     .cycle {
         width: 40px;
@@ -539,6 +549,11 @@ h5 {
     .section2 {
         gap: 10px;
     }
+
+    .breakline-grey {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 }
 
 @media (max-width: 430px) {
@@ -549,6 +564,14 @@ h5 {
 
     .section2 {
         gap: 0;
+    }
+    
+    .date-section {
+        margin-right: 10px;
+    }
+
+    .urgent {
+        margin-left: 10px;
     }
 }
 
@@ -606,4 +629,20 @@ h5 {
     p {
         font-size: 14px;
     }
+    
+}
+
+@media (max-width: 300px) {
+    .date-section {
+        text-align: center;
+    }
+
+    h6 {
+        font-size: 14px;
+    }
+
+    .deadline {
+        font-size: 12px;
+    }
+
 }

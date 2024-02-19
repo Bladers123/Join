@@ -169,12 +169,23 @@ function closeCheckBoxAreaForCategory() {
 }
 //#endregion
 
+
 document.addEventListener('DOMContentLoaded', function () {
+    // Überprüfe, ob das Element vorhanden ist, das spezifisch für addTask.html ist
     let comboboxCategory = document.getElementById('combobox-category');
-    comboboxCategory.addEventListener('click', function () {
-        document.getElementById('failureCategory').innerHTML = "";
-    })
+    if (comboboxCategory) {
+        comboboxCategory.addEventListener('click', function () {
+            document.getElementById('failureCategory').innerHTML = "";
+        });
+    }
+
+    // Weitere Logik, die spezifisch für board.html ist. wird relevant für die Taskseite in Board sein
+    let someOtherElementSpecificToBoardHtml = document.getElementById('some-element-id');
+    if (someOtherElementSpecificToBoardHtml) {
+        
+    }
 });
+
 
 async function createTask() {
     let currentTask = getTaskData();

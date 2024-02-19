@@ -80,10 +80,12 @@ function isPasswordConfirmed() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    if(document.getElementById('confirm-password-container')){
     document.getElementById('confirm-password-container').addEventListener('click', function() {
         this.style.border = "";
         document.getElementById('failureText').innerHTML = "";
     });
+}
 });
 
 

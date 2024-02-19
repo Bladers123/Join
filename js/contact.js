@@ -158,10 +158,10 @@ async function createContact() {
         tel: tel.value,
         bg: `rgb(${x},${y},${z})`,
     };
-
+    await loadContacts();
     oldContacts.push(newContact);
 
-    //   await setItem('oldContacts', JSON.stringify(newContact));
+       await setItem('oldContacts', JSON.stringify(newContact));
 
     renderOldContacts();
 
@@ -207,10 +207,10 @@ function deleteContact(i) {
     renderOldContacts();
 }
 
-/*async function loadContacts() {
+async function loadContacts() {
     oldContacts = JSON.parse(await getItem('oldContacts'));
 
-}*/
+}
 
 function openPopUp() {
     document.getElementById("pop-up").classList.remove("d-none");

@@ -75,7 +75,8 @@ let oldContacts = [
 let letters = [];
 let selectedName;
 
-function initContacts() {
+async function initContacts() {
+    await loadContacts();
     renderOldContacts();
 }
 
@@ -158,10 +159,10 @@ async function createContact() {
         tel: tel.value,
         bg: `rgb(${x},${y},${z})`,
     };
-    await loadContacts();
+
     oldContacts.push(newContact);
 
-       await setItem('oldContacts', JSON.stringify(newContact));
+    await setItem('oldContacts', JSON.stringify(oldContacts));
 
     renderOldContacts();
 

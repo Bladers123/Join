@@ -9,7 +9,7 @@ let oldContacts = [
         name: "Tristan Gehring",
         email: "tristan@gmail.com",
         tel: "017612312333",
-        bg: "rgb(255,187,43)"
+        bg: "rgb(0,190,232)"
     },
     {
         name: "Julian Fichtl",

@@ -171,18 +171,11 @@ function closeCheckBoxAreaForCategory() {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Überprüfe, ob das Element vorhanden ist, das spezifisch für addTask.html ist
     let comboboxCategory = document.getElementById('combobox-category');
     if (comboboxCategory) {
         comboboxCategory.addEventListener('click', function () {
             document.getElementById('failureCategory').innerHTML = "";
         });
-    }
-
-    // Weitere Logik, die spezifisch für board.html ist. wird relevant für die Taskseite in Board sein
-    let someOtherElementSpecificToBoardHtml = document.getElementById('some-element-id');
-    if (someOtherElementSpecificToBoardHtml) {
-        
     }
 });
 
@@ -211,6 +204,7 @@ function getTaskData() {
     let selectedAssigneds = assigneds.filter(assigned => assigned.selected).map(assigned => `${assigned.firstName} ${assigned.lastName}`);
     let progress = "toDo";
     let id = new Date().getTime();
+    let subtasks = Array.from(document.querySelectorAll('.new-subtask-text')).map(subtask => subtask.innerText || subtask.textContent);
 
     let currentTask = {
         id,
@@ -220,7 +214,8 @@ function getTaskData() {
         priority,
         category,
         assignedTo: selectedAssigneds,
-        progress
+        progress,
+        subtasks
     };
 
     return currentTask;

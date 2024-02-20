@@ -402,7 +402,7 @@ footer button {
     outline: none;
 }
 
-#failureCategory {
+.failure {
     color: #FF4057;
     font-size: 12px;
     padding: 8px;

@@ -239,7 +239,7 @@ function addSubtask() {
     let subtaskCount = displayedSubtasks.getElementsByClassName('new-sub-task-container').length;
 
     if (subtaskCount >= 2) {
-        console.log('Es können maximal 2 Subtasks erstellt werden.');
+        document.getElementById('subtasks-error-message').innerHTML = "Sie können maximal 2 Subtasks erstellen";
         return;
     }
 

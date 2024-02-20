@@ -236,6 +236,13 @@ function getPopUpTemplate() {
 function addSubtask() {
     let newSubtask = document.getElementById('newSubtask');
     let displayedSubtasks = document.getElementById('subtasks');
+    let subtaskCount = displayedSubtasks.getElementsByClassName('new-sub-task-container').length;
+
+    if (subtaskCount >= 2) {
+        console.log('Es können maximal 2 Subtasks erstellt werden.');
+        return;
+    }
+
     let uniqueId = `subtask-${subtaskId++}`;
 
     if (newSubtask.value.length > 0) {
@@ -251,6 +258,7 @@ function addSubtask() {
         newSubtask.value = "";
     }
 }
+
 
 function editSubTask(id) {
     let subtaskContainer = document.getElementById(id);

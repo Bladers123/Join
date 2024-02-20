@@ -48,7 +48,7 @@ function moveTo(category) {
 function generateTodoHTML(task) {
     let circleTemplate = getCircleTemplate(task);
     let prioSVG = getPrioSVG(task);
-
+    let progressValue = task.subtasks.length === 1 ? 50 : task.subtasks.length === 2 ? 100 : 0;
     return /*html*/`
     <div onclick="openCardModal('cardModal')" draggable="true" ondragstart="startDragging(${task.id})" class="toDoCard">
          <div class="toDoCardContent">
@@ -60,10 +60,10 @@ function generateTodoHTML(task) {
                  <p class="cardDescription">${task.description}</p>
              </div>
              <div class="subTaskWrapper">
-                 <progress id="file" value="32" max="100">32%</progress>
+                 <progress id="file" value="${progressValue}" max="100"></progress>
                  <div class="subtask">
-                     <p>1/2</p>
-                     <p>Subtask</p>
+                     <p>${task.subtasks.length}/2</p>
+                     <p>Subtasks</p>
                  </div>
              </div>
              <div class="cardFooter">

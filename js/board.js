@@ -5,7 +5,6 @@ let currentDraggedElement;
 async function initBoard() {
     tasks = JSON.parse(await getItem('tasks') || '[]');
     updateTasks();
-    testArray();
 }
 
 function updateTasks() {
@@ -149,12 +148,3 @@ function closeCardModal(id) {
     document.getElementById(id).classList.add("d-none");
 }
 
-function testArray() {
-    for (let t = 0; t < tasks.length; t++) {
-        const task = tasks[t];
-        progress = task['progress']
-
-        console.log(progress)
-    }
-   
-}

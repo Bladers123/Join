@@ -34,7 +34,7 @@ function allowDrop(event) {
     event.preventDefault();
 }
 
-function moveTo(category) {
+async function moveTo(category) {
     let foundIndex = tasks.findIndex(task => task.id === currentDraggedElement);
     if (foundIndex !== -1)
         tasks[foundIndex].progress = category;
@@ -43,6 +43,7 @@ function moveTo(category) {
         return;
     }
     updateTasks();
+    await setItem('tasks', JSON.stringify(tasks));
 }
 
 function generateTodoHTML(task) {

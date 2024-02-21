@@ -63,7 +63,6 @@ function showAmounts() {
                 break;
             default:
                 break;
-
         }
     }
 

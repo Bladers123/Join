@@ -168,6 +168,11 @@ function removeHighlight(id) {
     document.getElementById(id).classList.remove("contentContainerHover");
 }
 
+function openTask(){
+    document.getElementById('addTaskModal').classList.remove("d-none");
+    
+}
+
 function closeCardModal(id) {
     document.getElementById(id).classList.add("d-none");
 }

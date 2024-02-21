@@ -80,26 +80,28 @@ h1 {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+
 .prio-urgent.active {
-    background-color: #ff3d00;
+    background-color: #FF3D00;
     color: white;
 }
 
 .prio-medium.active {
-    background-color: #ffa800;
+    background-color: #FFA800;
     color: white;
 }
 
 .prio-low.active {
-    background-color: #7ae229;
+    background-color: #7AE229;
     color: white;
 }
 
 .prio-urgent.active svg path,
 .prio-medium.active svg path,
 .prio-low.active svg path {
-    fill: #ffffff;
+    fill: #FFFFFF;
 }
+
 
 .divider {
     background-color: rgba(95, 92, 92, 0.2);
@@ -238,6 +240,10 @@ footer p {
     gap: 10px;
 }
 
+.clearText{
+    color: black;
+}
+
 footer button {
     display: flex;
     align-items: center;
@@ -301,28 +307,7 @@ footer button {
     color: white;
 }
 
-.modalBackground {
-    background-color: rgba(0, 0, 0, 0.268);
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.ModalAddTask {
-    position: fixed;
-    background-color: white;
-    padding: 25px;
-    border-radius: 10px;
-}
-
-.d-none {
-    display: none;
-}
 
 @keyframes slideAndFade {
     0% {
@@ -362,4 +347,85 @@ footer button {
     h1 {
         text-align: center;
     }
+}
+
+
+.subtasks-input-container {
+    position: relative;
+    display: flex;
+    margin-bottom: 6px;
+}
+
+.subtasks-input-container svg {
+    position: absolute;
+    right: 5px;
+    top: 44%;
+    cursor: pointer;
+}
+
+.new-subtask-text {
+
+    margin-left: 32px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+
+}
+
+.new-sub-task-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.new-sub-task-container img {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.new-sub-task-container:hover {
+    background-color: #E5E5E5;
+}
+
+.subtasks-container {
+    max-height: 127px;
+    overflow-y: scroll;
+}
+
+.subtask-edit-field {
+    border: none;
+    outline: none;
+}
+
+.failure {
+    color: #FF4057;
+    font-size: 12px;
+    padding: 8px;
+}
+
+
+
+
+.ModalAddTask {
+    position: fixed;
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+
+.modalBackground {
+    background-color: rgba(0, 0, 0, 0.268);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.d-none {
+    display: none;
 }

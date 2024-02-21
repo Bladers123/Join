@@ -51,7 +51,7 @@ function generateTodoHTML(task) {
     let prioSVG = getPrioSVG(task);
     let progressValue = task.subtasks.length === 1 ? 50 : task.subtasks.length === 2 ? 100 : 0;
     return /*html*/`
-    <div onclick="openCardModal('cardModal')" draggable="true" ondragstart="startDragging(${task.id})" class="toDoCard">
+    <div onclick="openCardModal(this.getAttribute('data-task-id'))" data-task-id="${task.id}" draggable="true" ondragstart="startDragging(${task.id})" class="toDoCard">
          <div class="toDoCardContent">
              <div class="badge">
                  <p class="badgeText">${task.progress}</p>
@@ -168,22 +168,56 @@ function removeHighlight(id) {
     document.getElementById(id).classList.remove("contentContainerHover");
 }
 
-function openCardModal() {
-    document.getElementById('cardModalID').innerHTML = getTaskTemplate();
-
-}
-
 function closeCardModal(id) {
     document.getElementById(id).classList.add("d-none");
 }
 
-function getTaskTemplate(){
+function openCardModal(taskId) {
+    let task = tasks.find(task => task.id.toString() === taskId.toString());
+    if (task) { 
+        document.getElementById('cardModalID').innerHTML = getTaskTemplate(task);
+ 
+    }
+    else
+        console.error('Task nicht gefunden');
+}
+
+
+function getAssignedToTemplate(assignedTo) {
+    return assignedTo.map(person => {
+        let initials = person.split(' ').map(name => name[0]).join('');
+        return `
+            <div class="assignedContact">
+                <div class="nameCircleWrapper">
+                    <div class="nameCircle">${initials}</div>
+                    <p class="assignedName">${person}</p>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+function getSubtasksTemplate(subtasks) {
+    return subtasks.map(subtask => { 
+        return `
+            <div class="subtask">
+                <input class="checkbox" type="checkbox"/>
+                <div class="checkboxDescription">${subtask}</div>
+            </div>
+        `;
+    }).join('');
+}
+
+function getTaskTemplate(task){
+    let assignedToHtml = getAssignedToTemplate(task.assignedTo);
+    let subtasksHtml = getSubtasksTemplate(task.subtasks);
+    let prioSVG = getPrioSVG(task);
     return /*html*/`
         <div id="cardModal" class="openCardBackground">
                 <div class="openTask">
                     <div class="cardHeader">
                         <div class="cardType">
-                            <p class="cardTypeDescription">User Story</p>
+                            <p class="cardTypeDescription">${task.category}</p>
                         </div>
                         <svg onclick="closeCardModal('cardModal')" class="closeIcon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <mask id="mask0_12_1578" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="4" y="4" width="24" height="24">
@@ -197,53 +231,29 @@ function getTaskTemplate(){
                             </g>
                         </svg>
                     </div>
-                    <h1 class="cardHeadlineOverlay">Kochwelt Page & Recipe Recommender</h1>
-                    <p class="cardSubheadline">Build start page with recipe recommendation.</p>
+                    <h1 class="cardHeadlineOverlay">${task.title}</h1>
+                    <p class="cardSubheadline">${task.description}</p>
                     <div class="dateWrapper">
                         <p class="dateDescription">Due date:</p>
-                        <p class="date">10/05/2023</p>
+                        <p class="date">${task.dueDate}</p>
                     </div>
                     <div class="priorityWrapper">
                         <p class="priorityDescription">Priority:</p>
                         <div class="priority">
-                            <p class="priorityGrade">Medium</p>
-                            <img src="../img/prio-medium.svg" alt="" />
+                            <p class="priorityGrade">${task.priority}</p>
+                            ${prioSVG}
                         </div>
                     </div>
                     <div class="assignedToWrapper">
                         <p class="assignedToHeadline">Assigned To:</p>
                         <div class="assignedToNameWrapper">
-                            <div class="assignedContact">
-                                <div class="nameCircleWrapper">
-                                    <div class="nameCircle">EM</div>
-                                    <p class="assignedName">Emmanuel Mauer</p>
-                                </div>
-                            </div>
-                            <div class="assignedContact">
-                                <div class="nameCircleWrapper">
-                                    <div class="nameCircle">EM</div>
-                                    <p class="assignedName">Emmanuel Mauer</p>
-                                </div>
-                            </div>
-                            <div class="assignedContact">
-                                <div class="nameCircleWrapper">
-                                    <div class="nameCircle">EM</div>
-                                    <p class="assignedName">Emmanuel Mauer</p>
-                                </div>
-                            </div>
+                            ${assignedToHtml}
                         </div>
                     </div>
                     <div class="subtasksWrapper">
                         <p class="subtaskTitle">Subtask</p>
                         <div class="subtaskCheckboxWrapper">
-                            <div class="subtask">
-                                <input class="checkbox" type="checkbox" name="" id="" checked />
-                                <div class="checkboxDescription">Implement Recipe Recommendation</div>
-                            </div>
-                            <div class="subtask">
-                                <input class="checkbox" type="checkbox" name="" id="" />
-                                <div class="checkboxDescription">Start Page Layout</div>
-                            </div>
+                           ${subtasksHtml}
                         </div>
                     </div>
                     <div class="footerWrapper">

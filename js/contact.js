@@ -93,10 +93,8 @@ function renderOldContacts() {
         let name = oldContact["name"];
         let mail = oldContact["email"];
         let bg = oldContact["bg"];
-        let initials = name
-            .split(" ")
-            .map((n) => n[0])
-            .join("");
+        let initials = name.split(" ").map((n) => n[0]).join("");
+              
         let sortedByLetter = name.charAt(0);
 
         if (sortedByLetter !== currentLetter) {

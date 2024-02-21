@@ -132,6 +132,35 @@ function getPrioLowSVG() {
     `;
 }
 
+function handleSearchChange(searchText) {
+    if(searchText.trim() === "") {
+        updateTasks();
+    } else {
+        let filteredTasks = tasks.filter(task => task.title.toLowerCase().includes(searchText.toLowerCase()));
+        updateFilteredTasks(filteredTasks);
+    }
+}
+
+function updateFilteredTasks(filteredTasks) {
+    let sections = {
+        toDo: document.getElementById("toDo"),
+        inProgress: document.getElementById("inProgress"),
+        feedback: document.getElementById("feedback"),
+        done: document.getElementById("done")
+    };
+
+    Object.keys(sections).forEach(section => {
+        sections[section].innerHTML = "";
+    });
+
+    filteredTasks.forEach(task => {
+        let taskTemplate = generateTodoHTML(task);
+        if(sections[task.progress]) {
+            sections[task.progress].innerHTML += taskTemplate;
+        }
+    });
+}
+
 function highlight(id) {
     document.getElementById(id).classList.add("contentContainerHover");
 }

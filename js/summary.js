@@ -39,9 +39,14 @@ function showAmounts() {
     let feedbacks = [];
     let dones = [];
     let inProgresses = [];
+    let prioUrgent = [];
 
     for (let t = 0; t < tasks.length; t++) {
         const task = tasks[t];
+
+        if (task.priority === 'Urgent') {
+            prioUrgent.push(task.priority);
+        }
 
         switch (task.progress) {
             case 'toDo':
@@ -56,16 +61,17 @@ function showAmounts() {
             case 'inProgress':
                 inProgresses.push(task.progress);
                 break;
-
             default:
                 break;
 
         }
     }
+
     document.getElementById('to-do-amount').innerHTML = toDos.length;
     document.getElementById('done-amount').innerHTML = dones.length;
     document.getElementById('feedback-amount').innerHTML = feedbacks.length;
     document.getElementById('progress-amount').innerHTML = inProgresses.length;
     document.getElementById('tasks-amount').innerHTML = tasks.length;
+    document.getElementById('font-urgent-number').innerHTML = prioUrgent.length;
 }
 

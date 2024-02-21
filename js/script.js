@@ -1,7 +1,6 @@
 
 async function init() {
    await includeHTML();
-   showAmounts();
 }
 
 async function includeHTML() {

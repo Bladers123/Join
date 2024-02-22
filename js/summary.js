@@ -65,6 +65,6 @@ function showAmounts() {
     document.getElementById('font-urgent-number').innerHTML = prioUrgent.length;
     document.getElementById('earliest-due-date').innerHTML = earliestDueDate;
     document.getElementById('greet-time').innerHTML = getGreetingTime();
-    if (user.length > 0)
+    if (user.name)
         document.getElementById('greet-user').innerHTML = user.name;
 }

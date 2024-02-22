@@ -17,16 +17,17 @@ let categories = [
 
 let subtaskId = 0;
 
+
+
 document.addEventListener('DOMContentLoaded', function () {
-    let buttons = document.querySelectorAll('.prioButtons button');
-    buttons.forEach(function (button) {
-        button.addEventListener('click', function () {
-            buttons.forEach(function (btn) {
+    document.body.addEventListener('click', function (event) {
+        if (event.target.closest('.prioButtons button')) {
+            let button = event.target.closest('.prioButtons button');
+            document.querySelectorAll('.prioButtons button').forEach(btn => {
                 btn.classList.remove('active');
             });
-
-            this.classList.add('active');
-        });
+            button.classList.add('active');
+        }
     });
 });
 
@@ -154,7 +155,7 @@ function clearTask() {
 //#region Nur für das Click-Event
 function closeCheckBoxAreaForAssigned() {
     let checkBoxItems = document.getElementById('checkBoxItemsAssigned');
-    if (checkBoxItems.innerHTML.trim() !== '') {
+    if (checkBoxItems && checkBoxItems.innerHTML.trim() !== '') {
         checkBoxItems.innerHTML = '';
         rotateIcon('nav-image-assigned');
     }
@@ -162,13 +163,12 @@ function closeCheckBoxAreaForAssigned() {
 
 function closeCheckBoxAreaForCategory() {
     let checkBoxItems = document.getElementById('itemsCategory');
-    if (checkBoxItems.innerHTML.trim() !== '') {
+    if (checkBoxItems && checkBoxItems.innerHTML.trim() !== '') {
         checkBoxItems.innerHTML = '';
         rotateIcon('nav-image-category');
     }
 }
 //#endregion
-
 
 document.addEventListener('DOMContentLoaded', function () {
     let comboboxCategory = document.getElementById('combobox-category');
@@ -178,7 +178,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
-
 
 async function createTask() {
     let currentTask = getTaskData();

@@ -283,11 +283,12 @@ function getTaskTemplate(task) {
 }
 
 function loadAddTaskTemplate() {
-    document.getElementById("addTaskModalID").innerHTML = addTaskTemplate();
+    document.getElementById("addTaskModalIDDDD").innerHTML = addTaskTemplate();
 }
 
 function addTaskTemplate() {
-    return `
+    return /*html*/`
+    <div id="popup-container"></div>
     <div id="addTaskModal" class="modalBackground">      
     <div class="content">
             <form class="all" onsubmit="createTask(); return false;">

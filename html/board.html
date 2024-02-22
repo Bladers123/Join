@@ -6,12 +6,12 @@
         <link rel="stylesheet" href="../css/style.css" />
         <link rel="stylesheet" href="../css/template.css" />
         <link rel="stylesheet" href="../css/board.css" />
-        <link rel="stylesheet" href="../css/modal-add-task.css" />
-        <link rel="stylesheet" href="../css/task-open.css" />
-        <link rel="stylesheet" href="../../css/fonts.css" />
+        <link rel="stylesheet" href="../css/modal-add-task.css" /> 
+         <link rel="stylesheet" href="../css/task-open.css" /> 
+         <link rel="stylesheet" href="../../css/fonts.css" /> 
         <script src="../js/script.js"></script>
+         <script src="../js/addTask.js"></script> 
         <script src="../js/board.js"></script>
-        <script src="../js/addTask.js"></script>
         <script src="../js/storage.js"></script>
         <link rel="icon" type="image/x-icon" href="../img/logo.svg" />
         <title>Board</title>
@@ -27,7 +27,7 @@
                             <h1 class="contactsHeadline">Board</h1>
                             <div class="searchbarButtonWrapper">
                                 <input class="searchbarBoard" type="search" placeholder="Find Task" oninput="handleSearchChange(this.value)" />
-                                <button onclick="loadAddTaskTemplate()">
+                                <button class="add-task-button" onclick="loadAddTaskTemplate()">
                                     Add Task
                                     <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <mask id="mask0_5_1027" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="33">
@@ -97,7 +97,7 @@
                 </div>
             </div>
             <div id="cardModalID"></div>
-            <div id="addTaskModalID"></div>
-        </div>
+            <div id="addTaskModalIDDDD"></div>
+        </div>   
     </body>
 </html>

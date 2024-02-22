@@ -74,6 +74,8 @@ let oldContacts = [
 ];
 let letters = [];
 let selectedName;
+let openContact = false;
+let selectedContactIndex; 
 
 async function initContacts() {
     oldContacts = JSON.parse(await getItem('oldContacts'));
@@ -112,7 +114,7 @@ function renderOldContacts() {
         }
 
         renderContact.innerHTML += `    
-            <div onclick="showContact(${i})" class="name">
+            <div onclick="toggleContact(${i})" class="name">
                 <div class="initialCircle" style="background-color: ${bg};">${initials}</div>
                     <div class="contactWrapper">
                         <div class="fullName">${name}</div>
@@ -141,6 +143,17 @@ function showContact(i) {
     contact.classList.remove("d-none");
     contact.innerHTML = "";
     contact.innerHTML += generateHTML(name, mail, number, bg, initials, i);
+}
+
+function toggleContact(i) {
+    if (openContact && selectedContactIndex === i) {
+        document.getElementById("open-contact").classList.add("d-none");
+        openContact = false;
+    } else {
+        showContact(i);
+        openContact = true;
+        selectedContactIndex = i;
+    }
 }
 
 async function createContact() {

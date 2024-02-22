@@ -66,5 +66,5 @@ function showAmounts() {
     document.getElementById('earliest-due-date').innerHTML = earliestDueDate;
     document.getElementById('greet-time').innerHTML = getGreetingTime();
     if (user.name)
-        document.getElementById('greet-user').innerHTML = user.name;
+        document.getElementById('greet-user').innerHTML = user.name.split(' ').map(part => part[0].toUpperCase()).join('');
 }

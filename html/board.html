@@ -27,7 +27,7 @@
                             <h1 class="contactsHeadline">Board</h1>
                             <div class="searchbarButtonWrapper">
                                 <input class="searchbarBoard" type="search" placeholder="Find Task" oninput="handleSearchChange(this.value)" />
-                                <button onclick="openTask()">
+                                <button onclick="loadAddTaskTemplate()">
                                     Add Task
                                     <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <mask id="mask0_5_1027" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="33">
@@ -97,9 +97,7 @@
                 </div>
             </div>
             <div id="cardModalID"></div>
-            <div id="addTaskModal" class="modalBackground d-none">
-                <div class="ModalAddTask" w3-include-html="../template/addTaskOverlay.html"></div>
-            </div>
+            <div id="addTaskModalID"></div>
         </div>
     </body>
 </html>

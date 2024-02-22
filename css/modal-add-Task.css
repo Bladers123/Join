@@ -16,6 +16,12 @@ h1 {
     justify-content: center;
 }
 
+form {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+}
+
 .taskLeftSide,
 .taskRightSide {
     display: flex;
@@ -80,28 +86,26 @@ h1 {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-
 .prio-urgent.active {
-    background-color: #FF3D00;
+    background-color: #ff3d00;
     color: white;
 }
 
 .prio-medium.active {
-    background-color: #FFA800;
+    background-color: #ffa800;
     color: white;
 }
 
 .prio-low.active {
-    background-color: #7AE229;
+    background-color: #7ae229;
     color: white;
 }
 
 .prio-urgent.active svg path,
 .prio-medium.active svg path,
 .prio-low.active svg path {
-    fill: #FFFFFF;
+    fill: #ffffff;
 }
-
 
 .divider {
     background-color: rgba(95, 92, 92, 0.2);
@@ -240,7 +244,7 @@ footer p {
     gap: 10px;
 }
 
-.clearText{
+.clearText {
     color: black;
 }
 
@@ -307,8 +311,6 @@ footer button {
     color: white;
 }
 
-
-
 @keyframes slideAndFade {
     0% {
         transform: translateY(100%);
@@ -349,7 +351,6 @@ footer button {
     }
 }
 
-
 .subtasks-input-container {
     position: relative;
     display: flex;
@@ -364,11 +365,9 @@ footer button {
 }
 
 .new-subtask-text {
-
     margin-left: 32px;
     margin-top: 6px;
     margin-bottom: 6px;
-
 }
 
 .new-sub-task-container {
@@ -383,7 +382,7 @@ footer button {
 }
 
 .new-sub-task-container:hover {
-    background-color: #E5E5E5;
+    background-color: #e5e5e5;
 }
 
 .subtasks-container {
@@ -397,7 +396,7 @@ footer button {
 }
 
 .failure {
-    color: #FF4057;
+    color: #ff4057;
     font-size: 12px;
     padding: 8px;
 }
@@ -408,7 +407,6 @@ footer button {
     padding: 25px;
     border-radius: 10px;
 }
-
 
 .modalBackground {
     background-color: rgba(0, 0, 0, 0.268);

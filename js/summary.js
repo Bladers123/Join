@@ -12,13 +12,13 @@ function getGreetingTime() {
     let time = actualTime.getHours();
 
     if (time >= 5 && time < 11) {
-        return "Guten Morgen";
+        return "Good morning";
     } else if (time >= 11 && time < 17) {
-        return "Guten Mittag";
+        return "Good afternoon";
     } else if (time >= 17 && time < 23) {
-        return "Guten Abend";
+        return "Good evening";
     } else {
-        return "Gute Nacht";
+        return "Good night";
     }
 }
 

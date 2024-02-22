@@ -1,5 +1,5 @@
-
 let users = [];
+let user = [];
 
 async function initLogIn() {
     await loadUsers();
@@ -9,8 +9,10 @@ function navToSignIn() {
     window.location.href = '../../html/user-login/sign-in.html';
 }
 
-function guestLogIn() {
-    window.location.href = '../../html/add_task.html';
+async function guestLogIn() {
+    user = [];
+    await setItem('user', JSON.stringify(user));
+    window.location.href = '../../html/summary.html';
 }
 
 async function loadUsers() {
@@ -29,7 +31,7 @@ async function loadUsers() {
     }
 }
 
-let user = [];
+
 
 async function logIn() {
     let email = document.getElementById('emailInput').value;

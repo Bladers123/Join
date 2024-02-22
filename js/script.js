@@ -20,12 +20,11 @@ async function includeHTML() {
 async function setup() {
     await includeHTML();
     let button = document.getElementById('user-button-initials');
-    if (button){
-        let user = JSON.parse(await getItem('user'));
-        button.innerHTML =  user.name.split(' ').map(part => part[0].toUpperCase()).join('');
+    let user = JSON.parse(await getItem('user'));
+    if (button && (Array.isArray(user) && user.length > 0)){
+        console.log('User: ', user);
+        button.innerHTML =  user.name.split(' ').map(part => part[0].toUpperCase()).join('');  
     }  
-    else
-        console.log('Button nicht gefunden');
 }
 
 

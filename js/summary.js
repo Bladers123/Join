@@ -64,6 +64,7 @@ function showAmounts() {
     document.getElementById('tasks-amount').innerHTML = tasks.length;
     document.getElementById('font-urgent-number').innerHTML = prioUrgent.length;
     document.getElementById('earliest-due-date').innerHTML = earliestDueDate;
-    document.getElementById('greet-user').innerHTML = user.name;
     document.getElementById('greet-time').innerHTML = getGreetingTime();
+    if (user.length > 0)
+        document.getElementById('greet-user').innerHTML = user.name;
 }

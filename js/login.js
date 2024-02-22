@@ -29,14 +29,17 @@ async function loadUsers() {
     }
 }
 
-function logIn() {
+let user = [];
+
+async function logIn() {
     let email = document.getElementById('emailInput').value;
     let password = document.getElementById('passwordInput').value;
 
-    let user = users.find(user => user.email === email && user.password === password);
+     user = users.find(user => user.email === email && user.password === password);
 
     if (user) {
         console.log("Login erfolgreich für: ", user.name);
+        await setItem('user', JSON.stringify(user));
         window.location.href = '../../html/summary.html';
     } else {
         let failureText = document.getElementById('failureTextInLogin');

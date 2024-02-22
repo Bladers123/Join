@@ -298,24 +298,20 @@ h5 {
     color: white;
 }
 
+.greeting{
+    font-size: 56px;
+}
+
 /* respnsiveness */
 @media (max-width: 1600px) {
     h5 {
         font-size: 40px;
-    }
-
-    .light-blue {
-        font-size: 56px;
     }
 }
 
 @media (max-width: 1505px) {
     h5 {
         font-size: 32px;
-    }
-
-    .light-blue {
-        font-size: 48px;
     }
 
     .gap80 {
@@ -326,10 +322,6 @@ h5 {
 @media (max-width: 1450px) {
     h5 {
         font-size: 23px;
-    }
-
-    .light-blue {
-        font-size: 32px;
     }
 
     .gap80 {

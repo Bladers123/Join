@@ -1,32 +1,34 @@
 let tasks = [];
+let user = [];
 
 async function initSummary() {
     tasks = JSON.parse(await getItem('tasks') || '[]');
+    user = JSON.parse(await getItem('user') || '[]');
     showAmounts();
 }
 
-function greetingTime() {
-    let actualTime = new Date();
-    let time = actualTime.getHours();
+// function greetingTime() {
+//     let actualTime = new Date();
+//     let time = actualTime.getHours();
 
-    if (time >= 5 && time < 11) {
-        return "Guten Morgen";
-    } else if (time >= 11 && time < 17) {
-        return "Guten Mittag";
-    } else if (time >= 17 && time < 23) {
-        return "Guten Abend";
-    } else {
-        return "Gute Nacht";
-    }
+//     if (time >= 5 && time < 11) {
+//         return "Guten Morgen";
+//     } else if (time >= 11 && time < 17) {
+//         return "Guten Mittag";
+//     } else if (time >= 17 && time < 23) {
+//         return "Guten Abend";
+//     } else {
+//         return "Gute Nacht";
+//     }
 
-}
+// }
 
-function welcomeGreeting() {
-    let greet = document.getElementById('greet-time');
-    greet.innerHTML = '';
-    greet.innerHTML += greetingTime();
+// function welcomeGreeting() {
+//     let greet = document.getElementById('greet-time');
+//     greet.innerHTML = '';
+//     greet.innerHTML += greetingTime();
 
-}
+// }
 
 function showAmounts() {
     let toDos = [];
@@ -70,4 +72,5 @@ function showAmounts() {
     document.getElementById('tasks-amount').innerHTML = tasks.length;
     document.getElementById('font-urgent-number').innerHTML = prioUrgent.length;
     document.getElementById('earliest-due-date').innerHTML = earliestDueDate;
+    document.getElementById('greet-user').innerHTML = user.name;
 }

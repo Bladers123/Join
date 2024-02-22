@@ -28,12 +28,6 @@ function welcomeGreeting() {
 
 }
 
-function concat() {
-    let getAllArrays = tasks.concat(task);
-
-    console.log(getAllArrays)
-}
-
 function showAmounts() {
     let toDos = [];
     let feedbacks = [];

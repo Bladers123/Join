@@ -40,12 +40,18 @@ function showAmounts() {
     let dones = [];
     let inProgresses = [];
     let prioUrgent = [];
+    let earliestDueDate = null;
 
     for (let t = 0; t < tasks.length; t++) {
         const task = tasks[t];
 
-        if (task.priority === 'Urgent') {
+        if (task.priority === 'Urgent')
             prioUrgent.push(task.priority);
+
+         if (task.dueDate) {
+            if (!earliestDueDate || task.dueDate < earliestDueDate) {
+                earliestDueDate = task.dueDate;
+            }
         }
 
         switch (task.progress) {
@@ -72,5 +78,5 @@ function showAmounts() {
     document.getElementById('progress-amount').innerHTML = inProgresses.length;
     document.getElementById('tasks-amount').innerHTML = tasks.length;
     document.getElementById('font-urgent-number').innerHTML = prioUrgent.length;
+    document.getElementById('earliest-due-date').innerHTML = earliestDueDate;
 }
-

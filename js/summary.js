@@ -48,11 +48,8 @@ function showAmounts() {
         if (task.priority === 'Urgent')
             prioUrgent.push(task.priority);
 
-         if (task.dueDate) {
-            if (!earliestDueDate || task.dueDate < earliestDueDate) {
-                earliestDueDate = task.dueDate;
-            }
-        }
+        if (!earliestDueDate || task.dueDate < earliestDueDate)
+            earliestDueDate = task.dueDate;
 
         switch (task.progress) {
             case 'toDo':

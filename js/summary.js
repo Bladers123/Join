@@ -7,28 +7,20 @@ async function initSummary() {
     showAmounts();
 }
 
-// function greetingTime() {
-//     let actualTime = new Date();
-//     let time = actualTime.getHours();
+function getGreetingTime() {
+    let actualTime = new Date();
+    let time = actualTime.getHours();
 
-//     if (time >= 5 && time < 11) {
-//         return "Guten Morgen";
-//     } else if (time >= 11 && time < 17) {
-//         return "Guten Mittag";
-//     } else if (time >= 17 && time < 23) {
-//         return "Guten Abend";
-//     } else {
-//         return "Gute Nacht";
-//     }
-
-// }
-
-// function welcomeGreeting() {
-//     let greet = document.getElementById('greet-time');
-//     greet.innerHTML = '';
-//     greet.innerHTML += greetingTime();
-
-// }
+    if (time >= 5 && time < 11) {
+        return "Guten Morgen";
+    } else if (time >= 11 && time < 17) {
+        return "Guten Mittag";
+    } else if (time >= 17 && time < 23) {
+        return "Guten Abend";
+    } else {
+        return "Gute Nacht";
+    }
+}
 
 function showAmounts() {
     let toDos = [];
@@ -73,4 +65,5 @@ function showAmounts() {
     document.getElementById('font-urgent-number').innerHTML = prioUrgent.length;
     document.getElementById('earliest-due-date').innerHTML = earliestDueDate;
     document.getElementById('greet-user').innerHTML = user.name;
+    document.getElementById('greet-time').innerHTML = getGreetingTime();
 }

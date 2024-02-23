@@ -285,7 +285,7 @@ function getTaskTemplate(task) {
                             <img src="../img/delete.svg" alt="" />
                             <p class="delete">Delete</p>
                         </div>
-                        <div class="deleteWrapper">
+                        <div onclick="editTask(${task})" class="deleteWrapper">
                             <img src="../img/edit.svg" alt="" />
                             <p class="delete">Edit</p>
                         </div>
@@ -301,6 +301,10 @@ async function deleteTask(taskId) {
     tasks = tasks.filter(task => task.id !== taskId);
     await setItem("tasks", JSON.stringify(tasks));
     updateTasks();
+}
+
+async function editTask(task){
+
 }
 
 

@@ -19,7 +19,7 @@ let subtaskId = 0;
 
 let progress;
 
-function initTask(progress  = "toDo") {
+async function initTask(progress = "toDo") {
     this.progress = progress;
     rotateIcon('nav-image-assigned');
     rotateIcon('nav-image-category');
@@ -27,6 +27,7 @@ function initTask(progress  = "toDo") {
     if (urgentButton) {
         urgentButton.classList.add('active');
     }
+    assigneds = JSON.parse(await getItem('oldContacts') || '[]');
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -213,7 +214,7 @@ function getTaskData() {
         completed: false,
         id: Math.random()
     }));
-    
+
     let currentTask = {
         id,
         title,

@@ -3,73 +3,85 @@ let oldContacts = [
         name: "Barbara Müller",
         email: "baerbelchen@online.de",
         tel: "01629223027",
-        bg: "rgb(255,122,0)"
+        bg: "rgb(255,122,0)",
+        selected: false 
     },
     {
         name: "Tristan Gehring",
         email: "tristan@gmail.com",
         tel: "017612312333",
-        bg: "rgb(0,190,232)"
+        bg: "rgb(0,190,232)",
+        selected: false 
     },
     {
         name: "Julian Fichtl",
         email: "julian@gmail.com",
         tel: "01529483027",
-        bg: "rgb(70,47,138)"
+        bg: "rgb(70,47,138)",
+        selected: false 
     },
     {
         name: "Bulian Fichtl",
         email: "julian@gmail.com",
         tel: "01529483027",
-        bg: "rgb(252,113,255)"
+        bg: "rgb(252,113,255)",
+        selected: false 
     },
     {
         name: "Culian Fichtl",
         email: "julian@gmail.com",
         tel: "01529483027",
-        bg: "rgb(255,187,43)"
+        bg: "rgb(255,187,43)",
+        selected: false 
     },
     {
         name: "Rabia Ürkmez",
         email: "rabia@gmail.com",
         tel: "017612312333",
-        bg: "rgb(255,70,70)"
+        bg: "rgb(255,70,70)",
+        selected: false 
     },
     {
         name: "Agathe Bauer",
         email: "igotthe@bauer.com",
         tel: "071319991122",
-        bg: "rgb(31,215,193)"
+        bg: "rgb(31,215,193)",
+        selected: false 
     },
     {
         name: "Bertold Cislewitz",
         email: "familie@galgant.de",
         tel: "017612312333",
-        bg: "rgb(110,82,255)"
+        bg: "rgb(110,82,255)",
+        selected: false 
     },
     {
         name: "Christine Dorst",
         email: "hab@durst.com",
         tel: "017612312333",
-        bg: "rgb(70,47,138)"
+        bg: "rgb(70,47,138)",
+        selected: false 
     },
     {
         name: "Dominik Emmerich",
         email: "schimmelich@t-online.de",
         tel: "015112314027",
-        bg: "rgb(31,215,193)"
+        bg: "rgb(31,215,193)",
+        selected: false 
     },
     {
         name: "Frank Gül",
         email: "francis-gulle@yahoo.de",
         tel: "017612312333",
-        bg: "rgb(255,122,0)"
+        bg: "rgb(255,122,0)",
+        selected: false 
     },
     {
         name: "Gustav Holm",
         email: "hoelmchen@gmx.de",
         tel: "01744975233",
         bg: "rgb(252,113,255)",
+        selected: false 
     },
 ];
 let letters = [];
@@ -95,6 +107,7 @@ function renderOldContacts() {
         let name = oldContact["name"];
         let mail = oldContact["email"];
         let bg = oldContact["bg"];
+
         name = name.charAt(0).toUpperCase() + name.slice(1);
 
         let initials = name.split(" ").map((n) => n[0]).join("");
@@ -160,6 +173,7 @@ async function createContact() {
     let name = document.getElementById("contact-name").value;
     let mail = document.getElementById("contact-email").value;
     let tel = document.getElementById("contact-tel").value;
+    let selected = false;
     let x = Math.floor(Math.random() * 255) + 1;
     let y = Math.floor(Math.random() * 255) + 1;
     let z = Math.floor(Math.random() * 255) + 1;
@@ -169,6 +183,7 @@ async function createContact() {
         email: mail,
         tel: tel,
         bg: `rgb(${x},${y},${z})`,
+        selected 
     };
 
 

@@ -1,14 +1,4 @@
-let assigneds = [
-    { firstName: "Mike", lastName: "Spung", selected: false },
-    { firstName: "Sabine", lastName: "Rabs", selected: false },
-    { firstName: "Felix", lastName: "Goring", selected: false },
-    { firstName: "Lars", lastName: "Jabel", selected: false },
-    { firstName: "Charly", lastName: "Bauer", selected: false },
-    { firstName: "Ari", lastName: "Nasu", selected: false },
-    { firstName: "James", lastName: "Jamen", selected: false },
-    { firstName: "Sibi", lastName: "Oxin", selected: false },
-    { firstName: "Mia", lastName: "Jogo", selected: false },
-];
+let assigneds = [];
 
 let categories = [
     { label: "Technical Task" },

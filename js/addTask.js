@@ -75,10 +75,13 @@ function openOrCloseCheckBoxAreaForCategory() {
 
 function getCeckBoxAreaTemplateForAssigned() {
     return assigneds.map(assigned => {
+        let parts = assigned.name.split(" ");
+        let firstName = parts[0];
+        let lastName = parts.length > 1 ? parts[1] : '';
         return /*html*/`
             <div class="item assigned-item ${assigned.selected ? 'active' : ''}" onclick="toggleActiveAssignedItem(this)">
-                <div class="initialCircle margin-top">${assigned.firstName.charAt(0)}${assigned.lastName.charAt(0)}</div>
-                <label>${assigned.firstName} ${assigned.lastName}</label>
+                <div class="initialCircle margin-top">${firstName.charAt(0)}${lastName.charAt(0)}</div>
+                <label>${firstName} ${lastName}</label>
                 <input class="checkbox" type="checkbox" ${assigned.selected ? 'checked' : ''}>
             </div>
         `;
@@ -98,7 +101,7 @@ function getCeckBoxAreaTemplateForCategory() {
 function toggleActiveAssignedItem(element) {
     let checkbox = element.querySelector('.checkbox');
     let label = element.querySelector('label').textContent;
-    let assignedUser = assigneds.find(assigned => `${assigned.firstName} ${assigned.lastName}` === label);
+    let assignedUser = assigneds.find(assigned => `${assigned.name}` === label);
     if (assignedUser) {
         assignedUser.selected = !assignedUser.selected;
         checkbox.checked = assignedUser.selected;

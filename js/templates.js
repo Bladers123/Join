@@ -1,4 +1,4 @@
-function generateHTML(name, mail, number, bg, initials, i) {
+function generateHTMLshowContact(name, mail, number, bg, initials, i) {
     return ` 
     <div class="contanctsHeader">
     <div class="initialCircleXL" style="background-color: ${bg};">${initials}</div>

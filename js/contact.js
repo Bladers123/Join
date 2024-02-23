@@ -142,7 +142,7 @@ function showContact(i) {
     let contact = document.getElementById("open-contact");
     contact.classList.remove("d-none");
     contact.innerHTML = "";
-    contact.innerHTML += generateHTML(name, mail, number, bg, initials, i);
+    contact.innerHTML += generateHTMLshowContact(name, mail, number, bg, initials, i);
 }
 
 function toggleContact(i) {
@@ -234,19 +234,19 @@ function closePopUp() {
 }
 
 
-function openContactonResize() {
+// function openContactonResize() {
 
-    if (window.innerWidth >= 1300) {
-        console.log('Viel Spaß beim Resizen ;-)');
-        document.getElementById("resize-contact").classList.add("contentRightOverlay");
-    } else {
-        document.getElementById("resize-contact").classList.remove("d-none");
-    }
-}
+//     if (window.innerWidth >= 1300) {
+//         console.log('Viel Spaß beim Resizen ;-)');
+//         document.getElementById("resize-contact").classList.add("contentRightOverlay");
+//     } else {
+//         document.getElementById("resize-contact").classList.remove("d-none");
+//     }
+// }
 
 
-function closeContact() {
-    document.getElementById("resize-contact").classList.add("d-none");
-}
+// function closeContact() {
+//     document.getElementById("resize-contact").classList.add("d-none");
+// }
 
-window.onresize = openContactonResize;
+// window.onresize = openContactonResize;

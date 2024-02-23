@@ -17,7 +17,10 @@ let categories = [
 
 let subtaskId = 0;
 
-function initTask() {
+let progress;
+
+function initTask(progress  = "toDo") {
+    this.progress = progress;
     rotateIcon('nav-image-assigned');
     rotateIcon('nav-image-category');
     let urgentButton = document.getElementById('urgent-button-id');;
@@ -202,7 +205,7 @@ function getTaskData() {
     let priority = document.querySelector('.prioButtons button.active').innerText.trim();
     let category = document.getElementById('category-text').textContent;
     let selectedAssigneds = assigneds.filter(assigned => assigned.selected).map(assigned => `${assigned.firstName} ${assigned.lastName}`);
-    let progress = "toDo";
+    let progress = this.progress;
     let id = new Date().getTime();
     let subtasks = Array.from(document.querySelectorAll('.new-subtask-text')).map(subtask => subtask.innerText || subtask.textContent);
 

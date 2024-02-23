@@ -27,7 +27,7 @@
                             <h1 class="contactsHeadline">Board</h1>
                             <div class="searchbarButtonWrapper">
                                 <input class="searchbarBoard" type="search" placeholder="Find Task" oninput="handleSearchChange(this.value)" />
-                                <button class="add-task-button" onclick="loadAddTaskTemplate()">
+                                <button class="add-task-button" onclick="loadAddTaskTemplate('toDo')">
                                     Add Task
                                     <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <mask id="mask0_5_1027" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="33">
@@ -44,7 +44,7 @@
                             <div id="collumnStyling">
                                 <div class="collumnHeaderWrapper">
                                     <h2 class="collumnHeadline">To Do</h2>
-                                    <svg class="addIcon" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg onclick="loadAddTaskTemplate('toDo')" class="addIcon" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
                                         <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
                                         <path d="M16 12.5755L8 12.5755" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
@@ -55,7 +55,7 @@
                             <div id="collumnStyling">
                                 <div class="collumnHeaderWrapper">
                                     <h2 class="collumnHeadline">In progress</h2>
-                                    <svg class="addIcon" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg onclick="loadAddTaskTemplate('inProgress')" class="addIcon" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
                                         <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
                                         <path d="M16 12.5755L8 12.5755" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
@@ -73,7 +73,7 @@
                             <div id="collumnStyling">
                                 <div class="collumnHeaderWrapper">
                                     <h2 class="collumnHeadline">Await feedback</h2>
-                                    <svg class="addIcon" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg onclick="loadAddTaskTemplate('feedback')" class="addIcon" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
                                         <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
                                         <path d="M16 12.5755L8 12.5755" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
@@ -84,7 +84,7 @@
                             <div id="collumnStyling">
                                 <div class="collumnHeaderWrapper">
                                     <h2 class="collumnHeadline">Done</h2>
-                                    <svg class="addIcon" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg onclick="loadAddTaskTemplate('done')" class="addIcon" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
                                         <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
                                         <path d="M16 12.5755L8 12.5755" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />

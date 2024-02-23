@@ -282,9 +282,9 @@ function getTaskTemplate(task) {
     `;
 }
 
-function loadAddTaskTemplate() {
+function loadAddTaskTemplate(progress) {
     document.getElementById("addTaskModalIDDDD").innerHTML = addTaskTemplate();
-    initTask();
+    initTask(progress);
 }
 
 function addTaskTemplate() {

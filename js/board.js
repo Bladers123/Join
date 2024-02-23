@@ -284,6 +284,7 @@ function getTaskTemplate(task) {
 
 function loadAddTaskTemplate() {
     document.getElementById("addTaskModalIDDDD").innerHTML = addTaskTemplate();
+    initTask();
 }
 
 function addTaskTemplate() {

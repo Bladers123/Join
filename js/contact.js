@@ -75,7 +75,7 @@ let oldContacts = [
 let letters = [];
 let selectedName;
 let openContact = false;
-let selectedContactIndex; 
+let selectedContactIndex;
 
 async function initContacts() {
     oldContacts = JSON.parse(await getItem('oldContacts'));
@@ -171,10 +171,11 @@ async function createContact() {
         bg: `rgb(${x},${y},${z})`,
     };
 
-   
+
     oldContacts = oldContacts.concat(newContact);
     sendToBackend();
     renderOldContacts();
+    closePopUp();
 }
 
 async function sendToBackend() {
@@ -219,8 +220,6 @@ function deleteContact(i) {
     sendToBackend();
 }
 
-
-
 function openPopUp() {
     document.getElementById("pop-up").classList.remove("d-none");
     document.getElementById("pop-up").classList.add("d-flex");
@@ -231,6 +230,9 @@ function closePopUp() {
     document.getElementById("pop-up").classList.remove("d-flex");
     document.getElementById("edit-pop-up").classList.add("d-none");
     document.getElementById("edit-pop-up").classList.remove("d-flex");
+    document.getElementById('contact-name').value = "";
+    document.getElementById('contact-email').value = "";
+    document.getElementById('contact-tel').value = "";   
 }
 
 

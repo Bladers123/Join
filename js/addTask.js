@@ -207,8 +207,12 @@ function getTaskData() {
     let selectedAssigneds = assigneds.filter(assigned => assigned.selected).map(assigned => `${assigned.firstName} ${assigned.lastName}`);
     let progress = this.progress;
     let id = new Date().getTime();
-    let subtasks = Array.from(document.querySelectorAll('.new-subtask-text')).map(subtask => subtask.innerText || subtask.textContent);
-
+    let subtasksElements = Array.from(document.querySelectorAll('.new-subtask-text'));
+    let subtasks = subtasksElements.map(subtaskElement => ({
+        title: subtaskElement.innerText || subtaskElement.textContent,
+        completed: false,
+    }));
+    
     let currentTask = {
         id,
         title,

@@ -48,7 +48,7 @@ async function moveTo(category) {
 function generateTodoHTML(task) {
     let circleTemplate = getCircleTemplate(task);
     let prioSVG = getPrioSVG(task);
-    // task.subtasks[0].completed = true;
+   //  task.subtasks[0].completed = true;
     // task.subtasks[1].completed = true;
     let subtaskCompletedLength = task.subtasks.filter(subtask => subtask.completed === true).length;
     let progressValue = task.subtasks.reduce((acc, subtask) => subtask.completed ? acc + 50 : acc, 0);
@@ -56,7 +56,7 @@ function generateTodoHTML(task) {
     <div onclick="openCardModal(this.getAttribute('data-task-id'))" data-task-id="${task.id}" draggable="true" ondragstart="startDragging(${task.id})" class="toDoCard">
          <div class="toDoCardContent">
              <div class="badge">
-                 <p class="badgeText">${task.progress}</p>
+                 <p class="badgeText">${task.category}</p>
              </div>
              <div class="cardTextWrapper">
                  <p class="cardHeadline">${task.title}</p>
@@ -209,15 +209,18 @@ function getAssignedToTemplate(assignedTo) {
 function getSubtasksTemplate(subtasks) {
     return subtasks
         .map((subtask) => {
+            // Überprüfen, ob subtask.completed true ist und entsprechend das checked-Attribut setzen
+            const isChecked = subtask.completed ? 'checked' : '';
             return `
             <div class="subtask">
-                <input class="checkbox" type="checkbox"/>
+                <input class="checkbox" type="checkbox" ${isChecked}/>
                 <div class="checkboxDescription">${subtask.title}</div>
             </div>
-        `;
+            `;
         })
         .join("");
 }
+
 
 function getTaskTemplate(task) {
     let assignedToHtml = getAssignedToTemplate(task.assignedTo);

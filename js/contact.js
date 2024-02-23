@@ -173,8 +173,12 @@ async function createContact() {
 
    
     oldContacts = oldContacts.concat(newContact);
-    await setItem('oldContacts', JSON.stringify(oldContacts));
+    sendToBackend();
     renderOldContacts();
+}
+
+async function sendToBackend() {
+    await setItem('oldContacts', JSON.stringify(oldContacts));
 }
 
 
@@ -193,7 +197,7 @@ function saveContact(i) {
 
     showContact(i);
     renderOldContacts();
-
+    sendToBackend();
 }
 
 function editContact(name, mail, number, bg, initials, i) {
@@ -211,8 +215,8 @@ function deleteContact(i) {
 
     document.getElementById('open-contact').classList.add("d-none");
 
-
     renderOldContacts();
+    sendToBackend();
 }
 
 

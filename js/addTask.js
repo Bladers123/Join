@@ -61,7 +61,7 @@ function openOrCloseCheckBoxAreaForAssigned() {
     if (checkBoxItems.innerHTML.trim() !== '')
         checkBoxItems.innerHTML = '';
     else
-        checkBoxItems.innerHTML = getCeckBoxAreaTemplateForAssigned();
+        checkBoxItems.innerHTML = getCheckBoxAreaTemplateForAssigned();
 }
 
 function openOrCloseCheckBoxAreaForCategory() {
@@ -73,14 +73,14 @@ function openOrCloseCheckBoxAreaForCategory() {
         checkBoxItems.innerHTML = getCeckBoxAreaTemplateForCategory();
 }
 
-function getCeckBoxAreaTemplateForAssigned() {
+function getCheckBoxAreaTemplateForAssigned() {
     return assigneds.map(assigned => {
         let parts = assigned.name.split(" ");
         let firstName = parts[0];
         let lastName = parts.length > 1 ? parts[1] : '';
         return /*html*/`
             <div class="item assigned-item ${assigned.selected ? 'active' : ''}" onclick="toggleActiveAssignedItem(this)">
-                <div class="initialCircle margin-top">${firstName.charAt(0)}${lastName.charAt(0)}</div>
+                <div class="initialCircle margin-top" style="background-color: ${assigned.bg};">${firstName.charAt(0)}${lastName.charAt(0)}</div>
                 <label>${firstName} ${lastName}</label>
                 <input class="checkbox" type="checkbox" ${assigned.selected ? 'checked' : ''}>
             </div>

@@ -174,10 +174,7 @@ function removeHighlight(id) {
 
 function closeCardModal(id) {
     document.getElementById(id).classList.add("d-none");
-}
-
-function openAddTask() {
-    document.getElementById("addTaskModal").classList.remove("d-none");
+    console.log(id);
 }
 
 function openCardModal(taskId) {
@@ -224,13 +221,14 @@ function getTaskTemplate(task) {
     let subtasksHtml = getSubtasksTemplate(task.subtasks);
     let prioSVG = getPrioSVG(task);
     return /*html*/ `
+    <div id="cardModal-container">
         <div id="cardModal" class="openCardBackground">
                 <div class="openTask">
                     <div class="cardHeader">
                         <div class="cardType">
                             <p class="cardTypeDescription">${task.category}</p>
                         </div>
-                        <svg onclick="closeCardModal('cardModal')" class="closeIcon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg onclick="closeCardModal('cardModal-container')" class="closeIcon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <mask id="mask0_12_1578" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="4" y="4" width="24" height="24">
                                 <rect x="4" y="4" width="24" height="24" fill="#D9D9D9" />
                             </mask>
@@ -278,19 +276,20 @@ function getTaskTemplate(task) {
                         </div>
                     </div>
                 </div>
-            </div>
+        </div>
+    </div>
     `;
 }
 
 function loadAddTaskTemplate(progress) {
-    document.getElementById("addTaskModalIDDDD").innerHTML = addTaskTemplate();
+    document.getElementById("addTaskModalID").innerHTML = addTaskTemplate();
     initTask(progress);
 }
 
 function addTaskTemplate() {
     return /*html*/`
-    <div id="popup-container"></div>
-    <div id="addTaskModal" class="modalBackground">      
+<div id="popup-container"></div>
+<div id="addTaskModal" class="modalBackground"> 
     <div class="content">
             <form class="all" onsubmit="createTask(); return false;">
                 <div class="addTaskHeader">
@@ -441,5 +440,6 @@ function addTaskTemplate() {
                 </footer>
             </form>
         </div>
-    </div>`;
+    </div>
+</div>`;
 }

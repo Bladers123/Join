@@ -48,7 +48,10 @@ async function moveTo(category) {
 function generateTodoHTML(task) {
     let circleTemplate = getCircleTemplate(task);
     let prioSVG = getPrioSVG(task);
-    let progressValue = task.subtasks.length === 1 ? 50 : task.subtasks.length === 2 ? 100 : 0;
+    // task.subtasks[0].completed = true;
+    // task.subtasks[1].completed = true;
+    let subtaskCompletedLength = task.subtasks.filter(subtask => subtask.completed === true).length;
+    let progressValue = task.subtasks.reduce((acc, subtask) => subtask.completed ? acc + 50 : acc, 0);
     return /*html*/ `
     <div onclick="openCardModal(this.getAttribute('data-task-id'))" data-task-id="${task.id}" draggable="true" ondragstart="startDragging(${task.id})" class="toDoCard">
          <div class="toDoCardContent">
@@ -62,7 +65,7 @@ function generateTodoHTML(task) {
              <div class="subTaskWrapper">
                  <progress id="file" value="${progressValue}" max="100"></progress>
                  <div class="subtask">
-                     <p>${task.subtasks.length}/2</p>
+                     <p>${subtaskCompletedLength}/${task.subtasks.length}</p>
                      <p>Subtasks</p>
                  </div>
              </div>
@@ -209,7 +212,7 @@ function getSubtasksTemplate(subtasks) {
             return `
             <div class="subtask">
                 <input class="checkbox" type="checkbox"/>
-                <div class="checkboxDescription">${subtask}</div>
+                <div class="checkboxDescription">${subtask.title}</div>
             </div>
         `;
         })

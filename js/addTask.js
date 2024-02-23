@@ -211,6 +211,7 @@ function getTaskData() {
     let subtasks = subtasksElements.map(subtaskElement => ({
         title: subtaskElement.innerText || subtaskElement.textContent,
         completed: false,
+        id: Math.random()
     }));
     
     let currentTask = {

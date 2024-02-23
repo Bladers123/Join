@@ -7,7 +7,7 @@ async function initBoard() {
     updateTasks();
 }
 
-function updateTasks() {
+async function updateTasks() {
     let sections = {
         toDo: document.getElementById("toDo"),
         inProgress: document.getElementById("inProgress"),
@@ -48,10 +48,9 @@ async function moveTo(category) {
 function generateTodoHTML(task) {
     let circleTemplate = getCircleTemplate(task);
     let prioSVG = getPrioSVG(task);
-   //  task.subtasks[0].completed = true;
-    // task.subtasks[1].completed = true;
-    let subtaskCompletedLength = task.subtasks.filter(subtask => subtask.completed === true).length;
-    let progressValue = task.subtasks.reduce((acc, subtask) => subtask.completed ? acc + 50 : acc, 0);
+    let totalSubtasks = task.subtasks.length;
+    let completedSubtasks = task.subtasks.filter(subtask => subtask.completed).length;
+    let progressValue = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
     return /*html*/ `
     <div onclick="openCardModal(this.getAttribute('data-task-id'))" data-task-id="${task.id}" draggable="true" ondragstart="startDragging(${task.id})" class="toDoCard">
          <div class="toDoCardContent">
@@ -65,7 +64,7 @@ function generateTodoHTML(task) {
              <div class="subTaskWrapper">
                  <progress id="file" value="${progressValue}" max="100"></progress>
                  <div class="subtask">
-                     <p>${subtaskCompletedLength}/${task.subtasks.length}</p>
+                     <p>${completedSubtasks}/${totalSubtasks}</p>
                      <p>Subtasks</p>
                  </div>
              </div>
@@ -79,6 +78,7 @@ function generateTodoHTML(task) {
        </div>
     `;
 }
+
 
 function getCircleTemplate(task) {
     return task.assignedTo
@@ -177,7 +177,6 @@ function removeHighlight(id) {
 
 function closeCardModal(id) {
     document.getElementById(id).classList.add("d-none");
-    console.log(id);
 }
 
 function openCardModal(taskId) {
@@ -206,14 +205,13 @@ function getAssignedToTemplate(assignedTo) {
         .join("");
 }
 
-function getSubtasksTemplate(subtasks) {
+function getSubtasksTemplate(subtasks, taskId) {
     return subtasks
         .map((subtask) => {
-            // Überprüfen, ob subtask.completed true ist und entsprechend das checked-Attribut setzen
             const isChecked = subtask.completed ? 'checked' : '';
             return `
             <div class="subtask">
-                <input class="checkbox" type="checkbox" ${isChecked}/>
+                <input class="checkbox" type="checkbox" ${isChecked} onclick="toggleSubtaskCompleted(${taskId}, ${subtask.id})"/>
                 <div class="checkboxDescription">${subtask.title}</div>
             </div>
             `;
@@ -221,10 +219,21 @@ function getSubtasksTemplate(subtasks) {
         .join("");
 }
 
+async function toggleSubtaskCompleted(taskId, subtaskId) {
+    let taskIndex = tasks.findIndex(task => task.id === taskId);
+    if (taskIndex !== -1) {
+        let subtaskIndex = tasks[taskIndex].subtasks.findIndex(subtask => subtask.id === subtaskId);
+        if (subtaskIndex !== -1) {
+            tasks[taskIndex].subtasks[subtaskIndex].completed = !tasks[taskIndex].subtasks[subtaskIndex].completed;
+            await setItem("tasks", JSON.stringify(tasks));
+            updateTasks();
+        }
+    }
+}
 
 function getTaskTemplate(task) {
     let assignedToHtml = getAssignedToTemplate(task.assignedTo);
-    let subtasksHtml = getSubtasksTemplate(task.subtasks);
+    let subtasksHtml = getSubtasksTemplate(task.subtasks, task.id);
     let prioSVG = getPrioSVG(task);
     return /*html*/ `
     <div id="cardModal-container">
@@ -272,7 +281,7 @@ function getTaskTemplate(task) {
                         </div>
                     </div>
                     <div class="footerWrapper">
-                        <div class="deleteWrapper">
+                        <div onclick="deleteTask(${task.id})" class="deleteWrapper">
                             <img src="../img/delete.svg" alt="" />
                             <p class="delete">Delete</p>
                         </div>
@@ -286,6 +295,14 @@ function getTaskTemplate(task) {
     </div>
     `;
 }
+
+async function deleteTask(taskId) {
+    closeCardModal('cardModal-container');
+    tasks = tasks.filter(task => task.id !== taskId);
+    await setItem("tasks", JSON.stringify(tasks));
+    updateTasks();
+}
+
 
 function loadAddTaskTemplate(progress) {
     document.getElementById("addTaskModalID").innerHTML = addTaskTemplate();

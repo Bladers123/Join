@@ -338,7 +338,7 @@ function addTaskTemplate() {
                         <div class="margin-bot">
                             <p>Prio</p>
                             <div class="prioButtons">
-                                <button type="button" class="prio-urgent">
+                                <button id="urgent-button-id" type="button" class="prio-urgent">
                                     Urgent
                                     <div class="prio-button-svg-container">
                                         <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">

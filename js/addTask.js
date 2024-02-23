@@ -17,7 +17,14 @@ let categories = [
 
 let subtaskId = 0;
 
-
+function initTask() {
+    rotateIcon('nav-image-assigned');
+    rotateIcon('nav-image-category');
+    let urgentButton = document.getElementById('urgent-button-id');;
+    if (urgentButton) {
+        urgentButton.classList.add('active');
+    }
+}
 
 document.addEventListener('DOMContentLoaded', function () {
     document.body.addEventListener('click', function (event) {
@@ -43,12 +50,6 @@ document.addEventListener('click', function (event) {
     if (!withinCategoryCheckboxArea)
         closeCheckBoxAreaForCategory();
 });
-
-function initTask() {
-    rotateIcon('nav-image-assigned');
-    rotateIcon('nav-image-category');
-    document.querySelector('.prio-urgent').classList.add('active');
-}
 
 function openOrCloseCheckBoxAreaForAssigned() {
     let checkBoxItems = document.getElementById('checkBoxItemsAssigned');

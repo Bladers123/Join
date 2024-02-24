@@ -54,7 +54,7 @@ function generateTodoHTML(task) {
     return /*html*/ `
     <div onclick="openCardModal(this.getAttribute('data-task-id'))" data-task-id="${task.id}" draggable="true" ondragstart="startDragging(${task.id})" class="toDoCard">
          <div class="toDoCardContent">
-             <div class="badge">
+         <div class="badge" style="background-color: ${task.category === 'User Story' ? '#0038ff' : task.category === 'Technical Task' ? '#1FD7C1' : 'defaultBackgroundColor'};">
                  <p class="badgeText">${task.category}</p>
              </div>
              <div class="cardTextWrapper">
@@ -197,17 +197,15 @@ function getAssignedToTemplate(assignedTo) {
 }
 
 function getSubtasksTemplate(subtasks, taskId) {
-    return subtasks
-        .map((subtask) => {
+    return subtasks.map((subtask) => {
             const isChecked = subtask.completed ? 'checked' : '';
-            return `
+            return /*html*/`
             <div class="subtask">
                 <input class="checkbox" type="checkbox" ${isChecked} onclick="toggleSubtaskCompleted(${taskId}, ${subtask.id})"/>
                 <div class="checkboxDescription">${subtask.title}</div>
             </div>
             `;
-        })
-        .join("");
+        }).join("");
 }
 
 async function toggleSubtaskCompleted(taskId, subtaskId) {
@@ -231,7 +229,8 @@ function getTaskTemplate(task) {
         <div id="cardModal" class="openCardBackground">
                 <div class="openTask">
                     <div class="cardHeader">
-                        <div class="cardType">
+                    <div class="cardType" style="background-color: ${task.category === 'User Story' ? '#0038ff' : task.category === 'Technical Task' ? '#1FD7C1' : 'defaultBackgroundColor'};">
+
                             <p class="cardTypeDescription">${task.category}</p>
                         </div>
                         <svg onclick="closeCardModal('cardModal-container')" class="closeIcon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

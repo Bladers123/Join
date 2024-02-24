@@ -64,6 +64,7 @@ function openOrCloseCheckBoxAreaForCategory() {
 }
 
 function getCheckBoxAreaTemplateForAssigned() {
+    assigneds.sort((a, b) => a.name.localeCompare(b.name));
     return assigneds.map(assigned => {
         let parts = assigned.name.split(" ");
         let firstName = parts[0];

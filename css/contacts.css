@@ -626,3 +626,27 @@ button img {
         margin-top: -60px;
     }
 }
+
+@media (max-width: 820px) {
+    .contanctsHeader {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 30px;
+        flex-direction: column;
+    }
+
+    .devider {
+        display: none;
+    }
+
+    .pointer {
+        position: absolute;
+        top: 50px;
+        right: 50px;
+    }
+
+    .contactsHeadline {
+        font-size: 2rem;
+    }
+}

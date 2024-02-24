@@ -146,10 +146,7 @@ function showContact(i) {
     let mail = selectedName["email"];
     let number = selectedName["tel"];
     let bg = selectedName["bg"];
-    let initials = name
-        .split(" ")
-        .map((n) => n[0])
-        .join("");
+    let initials = name.split(" ").map((n) => n[0]).join("");
     let letter = name.charAt(0);
 
     letters.push(letter);
@@ -227,9 +224,7 @@ function editContact(name, mail, number, bg, initials, i) {
 function deleteContact(i) {
     oldContacts.splice(i, 1);
     letters.splice(i, 1);
-
     document.getElementById("open-contact").classList.add("d-none");
-
     renderOldContacts();
     sendToBackend();
 }

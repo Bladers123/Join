@@ -271,7 +271,7 @@ function getTaskTemplate(task) {
                         </div>
                     </div>
                     <div class="subtasksWrapper">
-                        <p class="subtaskTitle">Subtask</p>
+                        <p class="subtaskTitle">Subtasks:</p>
                         <div class="subtaskCheckboxWrapper">
                            ${subtasksHtml}
                         </div>

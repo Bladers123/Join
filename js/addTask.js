@@ -199,7 +199,7 @@ function getTaskData() {
     let dueDate = document.getElementById('input-due-date').value;
     let priority = document.querySelector('.prioButtons button.active').innerText.trim();
     let category = document.getElementById('category-text').textContent;
-    let selectedAssigneds = assigneds.filter(assigned => assigned.selected).map(assigned => `${assigned.firstName} ${assigned.lastName}`);
+    let selectedAssigneds = assigneds.filter(assigned => assigned.selected).map(assigned => assigned.name);
     let progress = this.progress;
     let id = new Date().getTime();
     let subtasksElements = Array.from(document.querySelectorAll('.new-subtask-text'));

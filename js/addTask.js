@@ -182,7 +182,7 @@ async function createTask() {
     let currentTask = getTaskData();
     let validate = isCategoryValidated(currentTask.category);
     if (validate) {
-        let tasks = JSON.parse(await getItem('tasks') || '[]');
+        let tasks = JSON.parse(await getItem('tasks') || '[]');   
         tasks = tasks.concat(currentTask);
         await setItem('tasks', JSON.stringify(tasks));
         document.getElementById('popup-container').innerHTML = getPopUpTemplate();
@@ -199,7 +199,10 @@ function getTaskData() {
     let dueDate = document.getElementById('input-due-date').value;
     let priority = document.querySelector('.prioButtons button.active').innerText.trim();
     let category = document.getElementById('category-text').textContent;
-    let selectedAssigneds = assigneds.filter(assigned => assigned.selected).map(assigned => assigned.name);
+    let selectedAssigneds = assigneds.filter(assigned => assigned.selected).map(assigned => ({
+        name: assigned.name,
+        bg: assigned.bg
+    }));
     let progress = this.progress;
     let id = new Date().getTime();
     let subtasksElements = Array.from(document.querySelectorAll('.new-subtask-text'));

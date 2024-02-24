@@ -81,16 +81,13 @@ function generateTodoHTML(task) {
 
 
 function getCircleTemplate(task) {
-    return task.assignedTo
-        .map((person) => {
-            let initials = person
-                .split(" ")
-                .map((namePart) => namePart.charAt(0))
-                .join("");
-            return `<div class="profileBadge">${initials}</div>`;
-        })
-        .join("");
+    return task.assignedTo.map(person => {
+        let initials = person.name.split(" ").map(namePart => namePart.charAt(0)).join("");
+        let backgroundColor = person.bg ? ` style="background-color: ${person.bg};"` : '';
+        return `<div class="profileBadge"${backgroundColor}>${initials}</div>`;
+    }).join("");
 }
+
 
 function getPrioSVG(task) {
     switch (task.priority) {
@@ -187,22 +184,16 @@ function openCardModal(taskId) {
 }
 
 function getAssignedToTemplate(assignedTo) {
-    return assignedTo
-        .map((person) => {
-            let initials = person
-                .split(" ")
-                .map((name) => name[0])
-                .join("");
-            return `
+    return assignedTo.map(person => {
+            let initials = person.name.split(" ").map(name => name[0]).join("");
+            return /*html*/`   
             <div class="assignedContact">
                 <div class="nameCircleWrapper">
-                    <div class="nameCircle">${initials}</div>
-                    <p class="assignedName">${person}</p>
+                    <div class="nameCircle" style="background-color: ${person.bg};">${initials}</div>
+                    <p class="assignedName">${person.name}</p>
                 </div>
             </div>
-        `;
-        })
-        .join("");
+        `}).join("");
 }
 
 function getSubtasksTemplate(subtasks, taskId) {
@@ -303,7 +294,7 @@ async function deleteTask(taskId) {
     updateTasks();
 }
 
-async function editTask(task){
+async function editTask(task) {
 
 }
 

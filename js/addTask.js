@@ -90,8 +90,8 @@ function getCeckBoxAreaTemplateForCategory() {
 
 function toggleActiveAssignedItem(element) {
     let checkbox = element.querySelector('.checkbox');
-    let label = element.querySelector('label').textContent;
-    let assignedUser = assigneds.find(assigned => `${assigned.name}` === label);
+    let label = element.querySelector('label').textContent.trim();
+    let assignedUser = assigneds.find(assigned => assigned.name.trim() === label);
     if (assignedUser) {
         assignedUser.selected = !assignedUser.selected;
         checkbox.checked = assignedUser.selected;

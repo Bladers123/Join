@@ -51,23 +51,28 @@ function generateTodoHTML(task) {
     let totalSubtasks = task.subtasks.length;
     let completedSubtasks = task.subtasks.filter(subtask => subtask.completed).length;
     let progressValue = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
+
+    let subTaskWrapperHTML = totalSubtasks > 0 ?
+        /*html*/`     
+        <div class="subTaskWrapper">
+            <progress id="file" value="${progressValue}" max="100"></progress>
+            <div class="subtask">
+                <p>${completedSubtasks}/${totalSubtasks}</p>
+                <p>Subtasks</p>
+            </div>
+         </div>` : '';
+
     return /*html*/ `
     <div onclick="openCardModal(this.getAttribute('data-task-id'))" data-task-id="${task.id}" draggable="true" ondragstart="startDragging(${task.id})" class="toDoCard">
          <div class="toDoCardContent">
-         <div class="badge" style="background-color: ${task.category === 'User Story' ? '#0038ff' : task.category === 'Technical Task' ? '#1FD7C1' : 'defaultBackgroundColor'};">
+             <div class="badge" style="background-color: ${task.category === 'User Story' ? '#0038ff' : task.category === 'Technical Task' ? '#1FD7C1' : 'defaultBackgroundColor'};">
                  <p class="badgeText">${task.category}</p>
              </div>
              <div class="cardTextWrapper">
                  <p class="cardHeadline">${task.title}</p>
                  <p class="cardDescription">${task.description}</p>
              </div>
-             <div class="subTaskWrapper">
-                 <progress id="file" value="${progressValue}" max="100"></progress>
-                 <div class="subtask">
-                     <p>${completedSubtasks}/${totalSubtasks}</p>
-                     <p>Subtasks</p>
-                 </div>
-             </div>
+             ${subTaskWrapperHTML} 
              <div class="cardFooter">
                  <div id="userCircle" class="avatarWrapper">
                     ${circleTemplate}
@@ -78,6 +83,7 @@ function generateTodoHTML(task) {
        </div>
     `;
 }
+
 
 
 function getCircleTemplate(task) {
@@ -185,8 +191,8 @@ function openCardModal(taskId) {
 
 function getAssignedToTemplate(assignedTo) {
     return assignedTo.map(person => {
-            let initials = person.name.split(" ").map(name => name[0]).join("");
-            return /*html*/`   
+        let initials = person.name.split(" ").map(name => name[0]).join("");
+        return /*html*/`   
             <div class="assignedContact">
                 <div class="nameCircleWrapper">
                     <div class="nameCircle" style="background-color: ${person.bg};">${initials}</div>
@@ -198,14 +204,14 @@ function getAssignedToTemplate(assignedTo) {
 
 function getSubtasksTemplate(subtasks, taskId) {
     return subtasks.map((subtask) => {
-            const isChecked = subtask.completed ? 'checked' : '';
-            return /*html*/`
+        const isChecked = subtask.completed ? 'checked' : '';
+        return /*html*/`
             <div class="subtask">
                 <input class="checkbox" type="checkbox" ${isChecked} onclick="toggleSubtaskCompleted(${taskId}, ${subtask.id})"/>
                 <div class="checkboxDescription">${subtask.title}</div>
             </div>
             `;
-        }).join("");
+    }).join("");
 }
 
 async function toggleSubtaskCompleted(taskId, subtaskId) {
@@ -294,7 +300,7 @@ async function deleteTask(taskId) {
 }
 
 async function editTask(task) {
-
+    console.log('todo');
 }
 
 

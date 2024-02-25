@@ -553,12 +553,6 @@ button img {
 }
 
 @media (max-width: 1050px) {
-    #addContactButton {
-        position: absolute;
-        bottom: 90px;
-        right: 10px;
-    }
-
     .wholePop {
         flex-direction: column;
         width: 396px;
@@ -627,6 +621,13 @@ button img {
     }
 }
 
+@media (max-width: 900px) {
+    #addContactButton {
+        position: absolute;
+        bottom: 90px;
+        right: 10px;
+    }
+}
 @media (max-width: 820px) {
     .contanctsHeader {
         display: flex;

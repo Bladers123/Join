@@ -300,7 +300,10 @@ async function saveEditTask() {
     currentTaskModal.title = newTitle;
     currentTaskModal.description = newDescription;
     currentTaskModal.dueDate = newDate;
-
+    // kleiner Tipp: 
+    // Verlgleich die ID von currentTaskModal und den ID's in tasks. Die Eigenschaften von dem gefundenen task dann mit deinen neuen Eigenschaften überschreiben.
+    // Da currentTaskModal keine Referenz zu tasks hat, musst du currentTaskModal in tasks pushen (concat Funktion)
+    // Dann hast du die Veränderungen in tasks drinne und kannst tasks auf den server speichern. 
     updateTasks();
     await setItem("tasks", JSON.stringify(tasks));
 }

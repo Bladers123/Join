@@ -663,6 +663,10 @@ button img {
     cursor: pointer;
 }
 
+.d-column {
+    flex-direction: column;
+}
+
 @media (max-width: 1300px) {
     .buttonName {
         display: none;

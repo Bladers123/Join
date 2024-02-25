@@ -308,17 +308,60 @@ function loadAddTaskTemplate(progress) {
 let currentTaskModal = [];
 
 async function editTask() {
-   document.getElementById('cardModal-container').innerHTML = editTaskTemplate();  
+    let editTitle = currentTaskModal['title'];
+    let editDescription = currentTaskModal['description'];
+    let editDate = currentTaskModal['dueDate'];
+    let editPrio = currentTaskModal['priority'];
+    let assigns = currentTaskModal['assignedTo'];
+
+    console.log(currentTaskModal);
+
+    for (let a = 0; a < assigns.length; a++) {
+        const assign = assigns[a];
+        let editAssign = assign['name']
+        console.log(editAssign);
+
+
+        document.getElementById('cardModal-container').innerHTML = editTaskTemplate(editTitle, editDescription, editDate, editPrio, editAssign);
+        editSubtasksArray();
+    }
 }
 
-function editTaskTemplate() {
+
+
+function editSubtasksArray() {
+    let subtasks = currentTaskModal['subtasks'];
+    let uniqueId = `subtask-${subtaskId++}`;
+
+    let subtaskContainer = document.getElementById('edit-subtasks');
+    subtaskContainer.innerHTML = '';
+
+
+    for (let s = 0; s < subtasks.length; s++) {
+        const subtask = subtasks[s];
+        let editSubtask = subtask['title']
+
+
+        subtaskContainer.innerHTML += `
+        <div onclick="editSubTask('${uniqueId}')" class="new-sub-task-container" id="${uniqueId}">
+        <li class="new-subtask-text">${editSubtask}</li>
+        <div class="new-subtask-image-container">
+            <img onclick="editSubTask('${uniqueId}')" src="../img/edit.png" alt="edit">
+            <img onclick="deleteSubTask('${uniqueId}')" src="../img/trash.png" alt="delete">
+        </div>
+    </div>`;
+    }
+}
+
+function editTaskTemplate(editTitle, editDescription, editDate, editPrio, editAssign) {
+
+
     return /*html*/`
 <div id="popup-container"></div>
 <div id="addTaskModal" class="modalBackground"> 
     <div class="content">
             <form class="all" onsubmit="createTask(); return false;">
                 <div class="addTaskHeader">
-                    <h1 class="addTaskHeadline">Add Task</h1>
                     <svg onclick="closeCardModal('addTaskModal')" class="closeIcon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <mask id="mask0_12_1578" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="4" y="4" width="24" height="24">
                             <rect x="4" y="4" width="24" height="24" fill="#D9D9D9" />
@@ -331,33 +374,22 @@ function editTaskTemplate() {
                         </g>
                     </svg>
                 </div>
-                <div class="task">
+                <div class="task d-column">
                     <div class="taskLeftSide">
                         <div class="margin-bot">
                             <p>Title<span class="colored-star">*</span></p>
-                            <input id="input-title" placeholder="Enter a title" class="inputs" type="text" required />
+                            <input id="input-title" placeholder="${editTitle}" value="${editTitle}" class="inputs" type="text" required />
                         </div>
                         <div class="margin-bot">
                             <p>Description</p>
-                            <textarea id="textArea-description" placeholder="Enter a Description" class="textarea"></textarea>
+                            <textarea id="textArea-description" placeholder="${editDescription}" value="${editDescription}" class="textarea"></textarea>
                         </div>
-                        <div class="margin-bot">
-                            <p>Assigned to</p>
-                            <div class="combobox" onclick="openOrCloseCheckBoxAreaForAssigned()">
-                                <p id="assigned-text">Select contacts to assigned</p>
-                                <img id="nav-image-assigned" src="../img/navigation.png" alt="navLogo" />
-                            </div>
-                            <div class="position-context">
-                                <div id="checkBoxItemsAssigned" class="items"></div>
-                            </div>
-                            <div id="selectedUserCircle" class="selected-user-circle"></div>
-                        </div>
+                        
                     </div>
-                    <div class="divider"></div>
                     <div class="taskRightSide">
                         <div class="margin-bot">
                             <p>Due date<span class="colored-star">*</span></p>
-                            <input id="input-due-date" placeholder="dd/mm/yyyy" class="inputs" type="date" required />
+                            <input id="input-due-date" placeholder="${editDate}" value="${editDate}" class="inputs" type="date" required />
                         </div>
                         <div class="margin-bot">
                             <p>Prio</p>
@@ -424,20 +456,22 @@ function editTaskTemplate() {
                             </div>
                         </div>
                         <div class="margin-bot">
-                            <p>Category<span class="colored-star">*</span></p>
-                            <div id="combobox-category" class="combobox" onclick="openOrCloseCheckBoxAreaForCategory()">
-                                <p id="category-text">Select task category</p>
-                                <img id="nav-image-category" src="../img/navigation.png" alt="navLogo" />
+                            <p>Assigned to</p>
+                            <div class="combobox" onclick="openOrCloseCheckBoxAreaForAssigned()">
+                                <p id="assigned-text">Select contacts to assigned</p>
+                                <img id="nav-image-assigned" src="../img/navigation.png" alt="navLogo" />
                             </div>
                             <div class="position-context">
-                                <div id="itemsCategory" class="items"></div>
+                                <div id="checkBoxItemsAssigned" class="items"></div>
                             </div>
-                            <div id="failureCategory" class="failure"></div>
+                            <div id="selectedUserCircle" class="selected-user-circle">
+                            ${editAssign}
+                            </div>
                         </div>
                         <div class="margin-bot">
                             <p>Subtasks</p>
                             <div class="subtasks-input-container">
-                                <input id="newSubtask" placeholder="Add new subtask" class="inputs" type="text" />
+                                <input id="newSubtask" placeholder="Lala" class="inputs" type="text" />
                                 <svg onclick="addSubtask()" width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M6.24854 8H1.24854C0.965202 8 0.727702 7.90417 0.536035 7.7125C0.344368 7.52083 0.248535 7.28333 0.248535 7C0.248535 6.71667 0.344368 6.47917 0.536035 6.2875C0.727702 6.09583 0.965202 6 1.24854 6H6.24854V1C6.24854 0.716667 6.34437 0.479167 6.53604 0.2875C6.7277 0.0958333 6.9652 0 7.24854 0C7.53187 0 7.76937 0.0958333 7.96104 0.2875C8.1527 0.479167 8.24854 0.716667 8.24854 1V6H13.2485C13.5319 6 13.7694 6.09583 13.961 6.2875C14.1527 6.47917 14.2485 6.71667 14.2485 7C14.2485 7.28333 14.1527 7.52083 13.961 7.7125C13.7694 7.90417 13.5319 8 13.2485 8H8.24854V13C8.24854 13.2833 8.1527 13.5208 7.96104 13.7125C7.76937 13.9042 7.53187 14 7.24854 14C6.9652 14 6.7277 13.9042 6.53604 13.7125C6.34437 13.5208 6.24854 13.2833 6.24854 13V8Z"
@@ -445,7 +479,8 @@ function editTaskTemplate() {
                                     />
                                 </svg>
                             </div>
-                            <ul id="subtasks" class="subtasks-container"></ul>
+                            <ul id="edit-subtasks">
+                             </ul>
                             <div id="subtasks-error-message" class="failure"></div>
                         </div>
                     </div>
@@ -453,12 +488,8 @@ function editTaskTemplate() {
                 <footer>
                     <p><span class="colored-star">*</span>This field is required</p>
                     <div class="clear-and-create-button-container">
-                        <button class="clear-button" type="button" onclick="clearTask()">
-                            <span class="clearText">Clear</span>
-                            <img class="clear-image" src="../img/close.svg" />
-                        </button>
                         <button class="create-button" type="submit">
-                            Create Task
+                            Ok
                             <img class="create-image" src="../img/check.png" />
                         </button>
                     </div>
@@ -468,14 +499,6 @@ function editTaskTemplate() {
     </div>
 </div>`;
 }
-
-
-
-
-
-
-
-
 
 
 function addTaskTemplate() {

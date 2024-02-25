@@ -180,7 +180,6 @@ function removeHighlight(id) {
 
 function closeCardModal(id) {
     document.getElementById(id).classList.add("d-none");
-    console.log("ausgeführt?");
     window.location.href = "../html/board.html";
 }
 

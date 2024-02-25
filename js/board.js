@@ -180,6 +180,8 @@ function removeHighlight(id) {
 
 function closeCardModal(id) {
     document.getElementById(id).classList.add("d-none");
+    console.log("ausgeführt?");
+    window.location.href = "../html/board.html";
 }
 
 function openCardModal(taskId) {
@@ -300,35 +302,60 @@ async function deleteTask(taskId) {
     updateTasks();
 }
 
-function loadAddTaskTemplate(progress) {
+async function loadAddTaskTemplate(progress) {
     document.getElementById("addTaskModalID").innerHTML = addTaskTemplate();
-    initTask(progress);
+    await initTask(progress);
 }
 
 let currentTaskModal = [];
 
 async function editTask() {
-    let editTitle = currentTaskModal['title'];
-    let editDescription = currentTaskModal['description'];
-    let editDate = currentTaskModal['dueDate'];
-    let editPrio = currentTaskModal['priority'];
-
-
     console.log(currentTaskModal);
+    await initTask('noProgress');
+    document.getElementById('cardModal-container').innerHTML = editTaskTemplate();
+    setEditValuesOfTaskModal();   
+}
 
+function setEditValuesOfTaskModal(){
+    document.getElementById('input-title').value = currentTaskModal.title;
+    document.getElementById('textArea-description').value = currentTaskModal.description;
+    document.getElementById('input-due-date').value = currentTaskModal.dueDate;
+    selectAssignedPersons();
+    updateAssignedItemsUI(); 
+    editAssignsArray();
+    editSubtasksArray();
+    document.getElementById('urgent-button-id').classList.add('active');
+}
 
+function selectAssignedPersons() {
+      if (currentTaskModal.assignedTo && currentTaskModal.assignedTo.length > 0) {
+        currentTaskModal.assignedTo.forEach(assignedContact => {
+            let found = assigneds.find(assigned => assigned.name.trim() === assignedContact.name.trim());
+            if (found) {
+                found.selected = true;
+            }
+        });
+    }
+}
 
-        document.getElementById('cardModal-container').innerHTML = editTaskTemplate(editTitle, editDescription, editDate, editPrio);
-        editSubtasksArray();
-        editAssignsArray();
+function updateAssignedItemsUI() {
+    assigneds.forEach(assigned => {
+        if (assigned.selected) {
+            let element = document.querySelector(`.assigned-item[data-name="${assigned.name}"]`);
+            if (element) {
+                let checkbox = element.querySelector('.checkbox');
+                checkbox.checked = true;
+                element.classList.add('active');
+            }
+        }
+    });
+
+    updateActiveInitialCircles();
 }
 
 function editAssignsArray() {
-
     let assigns = currentTaskModal['assignedTo'];
-
-
-    let assignsContainer = document.getElementById('edit-selectedUserCircle');
+    let assignsContainer = document.getElementById('selectedUserCircle');
     assignsContainer.innerHTML = '';
 
     for (let a = 0; a < assigns.length; a++) {
@@ -341,7 +368,6 @@ function editAssignsArray() {
         <div class="editprofileBadge" style="background-color:${editColor}">${initials}</div>
         `
     }
-
 }
 
 function editSubtasksArray() {
@@ -368,9 +394,7 @@ function editSubtasksArray() {
     }
 }
 
-function editTaskTemplate(editTitle, editDescription, editDate, editPrio) {
-
-
+function editTaskTemplate() {
     return /*html*/`
 <div id="popup-container"></div>
 <div id="addTaskModal" class="modalBackground">
@@ -393,18 +417,18 @@ function editTaskTemplate(editTitle, editDescription, editDate, editPrio) {
                     <div class="taskLeftSide">
                         <div class="margin-bot">
                             <p>Title<span class="colored-star">*</span></p>
-                            <input id="input-title" placeholder="${editTitle}" value="${editTitle}" class="inputs" type="text" required />
+                            <input id="input-title" class="inputs" type="text" required />
                         </div>
                         <div class="margin-bot">
                             <p>Description</p>
-                            <textarea id="textArea-description" placeholder="${editDescription}" value="${editDescription}" class="textarea"></textarea>
+                            <textarea id="textArea-description"  class="textarea"></textarea>
                         </div>
 
                     </div>
                     <div class="taskRightSide">
                         <div class="margin-bot">
                             <p>Due date<span class="colored-star">*</span></p>
-                            <input id="input-due-date" placeholder="${editDate}" value="${editDate}" class="inputs" type="date" required />
+                            <input id="input-due-date" class="inputs" type="date" required />
                         </div>
                         <div class="margin-bot">
                             <p>Prio</p>
@@ -479,7 +503,7 @@ function editTaskTemplate(editTitle, editDescription, editDate, editPrio) {
                             <div class="position-context">
                                 <div id="checkBoxItemsAssigned" class="items"></div>
                             </div>
-                            <div id="edit-selectedUserCircle" class="selected-user-circle">
+                            <div id="selectedUserCircle" class="selected-user-circle">
                             </div>
                         </div>
                         <div class="margin-bot">

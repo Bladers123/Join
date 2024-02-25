@@ -11,8 +11,10 @@ let progress;
 
 async function initTask(progress = "toDo") {
     this.progress = progress;
-    rotateIcon('nav-image-assigned');
-    rotateIcon('nav-image-category');
+    if (progress !== 'noProgress') {
+        rotateIcon('nav-image-assigned');
+        rotateIcon('nav-image-category');
+    }
     let urgentButton = document.getElementById('urgent-button-id');;
     if (urgentButton) {
         urgentButton.classList.add('active');
@@ -47,9 +49,11 @@ document.addEventListener('click', function (event) {
 
 function openOrCloseCheckBoxAreaForAssigned() {
     let checkBoxItems = document.getElementById('checkBoxItemsAssigned');
+    console.log(checkBoxItems);
     rotateIcon('nav-image-assigned');
-    if (checkBoxItems.innerHTML.trim() !== '')
+    if (checkBoxItems.innerHTML.trim() !== ''){   
         checkBoxItems.innerHTML = '';
+     }
     else
         checkBoxItems.innerHTML = getCheckBoxAreaTemplateForAssigned();
 }

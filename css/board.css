@@ -261,6 +261,30 @@ progress {
     line-height: 120%;
 }
 
+.editCircleStyle {
+    margin-top: 8px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.editprofileBadge {
+    color: white;
+    display: flex;
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 45px;
+    background-color: #ff7a00;
+    text-align: center;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    border: 1px solid;
+    border-color: #fff;
+}
+
 .profileBadge {
     color: white;
     display: flex;

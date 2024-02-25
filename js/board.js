@@ -53,7 +53,7 @@ function generateTodoHTML(task) {
     let progressValue = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
 
     let subTaskWrapperHTML = totalSubtasks > 0 ?
-        /*html*/`     
+        /*html*/`
         <div class="subTaskWrapper">
             <progress id="file" value="${progressValue}" max="100"></progress>
             <div class="subtask">
@@ -72,7 +72,7 @@ function generateTodoHTML(task) {
                  <p class="cardHeadline">${task.title}</p>
                  <p class="cardDescription">${task.description}</p>
              </div>
-             ${subTaskWrapperHTML} 
+             ${subTaskWrapperHTML}
              <div class="cardFooter">
                  <div id="userCircle" class="avatarWrapper">
                     ${circleTemplate}
@@ -192,7 +192,7 @@ function openCardModal(taskId) {
 function getAssignedToTemplate(assignedTo) {
     return assignedTo.map(person => {
         let initials = person.name.split(" ").map(name => name[0]).join("");
-        return /*html*/`   
+        return /*html*/`
             <div class="assignedContact">
                 <div class="nameCircleWrapper">
                     <div class="nameCircle" style="background-color: ${person.bg};">${initials}</div>
@@ -312,22 +312,37 @@ async function editTask() {
     let editDescription = currentTaskModal['description'];
     let editDate = currentTaskModal['dueDate'];
     let editPrio = currentTaskModal['priority'];
-    let assigns = currentTaskModal['assignedTo'];
+
 
     console.log(currentTaskModal);
 
-    for (let a = 0; a < assigns.length; a++) {
-        const assign = assigns[a];
-        let editAssign = assign['name']
-        console.log(editAssign);
 
 
-        document.getElementById('cardModal-container').innerHTML = editTaskTemplate(editTitle, editDescription, editDate, editPrio, editAssign);
+        document.getElementById('cardModal-container').innerHTML = editTaskTemplate(editTitle, editDescription, editDate, editPrio);
         editSubtasksArray();
-    }
+        editAssignsArray();
 }
 
+function editAssignsArray() {
 
+    let assigns = currentTaskModal['assignedTo'];
+
+
+    let assignsContainer = document.getElementById('edit-selectedUserCircle');
+    assignsContainer.innerHTML = '';
+
+    for (let a = 0; a < assigns.length; a++) {
+        const assign = assigns[a];
+        let editAssign = assign['name'];
+        let editColor = assign['bg'];
+        let initials = editAssign.split(" ").map(editAssign => editAssign[0]).join("");
+
+        assignsContainer.innerHTML += `<div class="editCircleStyle">
+        <div class="editprofileBadge" style="background-color:${editColor}">${initials}</div>
+        `
+    }
+
+}
 
 function editSubtasksArray() {
     let subtasks = currentTaskModal['subtasks'];
@@ -353,19 +368,19 @@ function editSubtasksArray() {
     }
 }
 
-function editTaskTemplate(editTitle, editDescription, editDate, editPrio, editAssign) {
+function editTaskTemplate(editTitle, editDescription, editDate, editPrio) {
 
 
     return /*html*/`
 <div id="popup-container"></div>
-<div id="addTaskModal" class="modalBackground"> 
+<div id="addTaskModal" class="modalBackground">
     <div class="content">
             <form class="all" onsubmit="createTask(); return false;">
                 <div class="addTaskHeader">
                     <svg onclick="closeCardModal('addTaskModal')" class="closeIcon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <mask id="mask0_12_1578" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="4" y="4" width="24" height="24">
                             <rect x="4" y="4" width="24" height="24" fill="#D9D9D9" />
-                        </mask>                 
+                        </mask>
                         <g mask="url(#mask0_12_1578)">
                             <path
                                 d="M16 17.4L11.1 22.3C10.9167 22.4833 10.6834 22.575 10.4 22.575C10.1167 22.575 9.88338 22.4833 9.70005 22.3C9.51672 22.1167 9.42505 21.8833 9.42505 21.6C9.42505 21.3167 9.51672 21.0833 9.70005 20.9L14.6 16L9.70005 11.1C9.51672 10.9167 9.42505 10.6833 9.42505 10.4C9.42505 10.1167 9.51672 9.88332 9.70005 9.69999C9.88338 9.51665 10.1167 9.42499 10.4 9.42499C10.6834 9.42499 10.9167 9.51665 11.1 9.69999L16 14.6L20.9 9.69999C21.0834 9.51665 21.3167 9.42499 21.6 9.42499C21.8834 9.42499 22.1167 9.51665 22.3 9.69999C22.4834 9.88332 22.575 10.1167 22.575 10.4C22.575 10.6833 22.4834 10.9167 22.3 11.1L17.4 16L22.3 20.9C22.4834 21.0833 22.575 21.3167 22.575 21.6C22.575 21.8833 22.4834 22.1167 22.3 22.3C22.1167 22.4833 21.8834 22.575 21.6 22.575C21.3167 22.575 21.0834 22.4833 20.9 22.3L16 17.4Z"
@@ -384,7 +399,7 @@ function editTaskTemplate(editTitle, editDescription, editDate, editPrio, editAs
                             <p>Description</p>
                             <textarea id="textArea-description" placeholder="${editDescription}" value="${editDescription}" class="textarea"></textarea>
                         </div>
-                        
+
                     </div>
                     <div class="taskRightSide">
                         <div class="margin-bot">
@@ -464,8 +479,7 @@ function editTaskTemplate(editTitle, editDescription, editDate, editPrio, editAs
                             <div class="position-context">
                                 <div id="checkBoxItemsAssigned" class="items"></div>
                             </div>
-                            <div id="selectedUserCircle" class="selected-user-circle">
-                            ${editAssign}
+                            <div id="edit-selectedUserCircle" class="selected-user-circle">
                             </div>
                         </div>
                         <div class="margin-bot">
@@ -504,7 +518,7 @@ function editTaskTemplate(editTitle, editDescription, editDate, editPrio, editAs
 function addTaskTemplate() {
     return /*html*/`
 <div id="popup-container"></div>
-<div id="addTaskModal" class="modalBackground"> 
+<div id="addTaskModal" class="modalBackground">
     <div class="content">
             <form class="all" onsubmit="createTask(); return false;">
                 <div class="addTaskHeader">
@@ -512,7 +526,7 @@ function addTaskTemplate() {
                     <svg onclick="closeCardModal('addTaskModal')" class="closeIcon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <mask id="mask0_12_1578" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="4" y="4" width="24" height="24">
                             <rect x="4" y="4" width="24" height="24" fill="#D9D9D9" />
-                        </mask>                 
+                        </mask>
                         <g mask="url(#mask0_12_1578)">
                             <path
                                 d="M16 17.4L11.1 22.3C10.9167 22.4833 10.6834 22.575 10.4 22.575C10.1167 22.575 9.88338 22.4833 9.70005 22.3C9.51672 22.1167 9.42505 21.8833 9.42505 21.6C9.42505 21.3167 9.51672 21.0833 9.70005 20.9L14.6 16L9.70005 11.1C9.51672 10.9167 9.42505 10.6833 9.42505 10.4C9.42505 10.1167 9.51672 9.88332 9.70005 9.69999C9.88338 9.51665 10.1167 9.42499 10.4 9.42499C10.6834 9.42499 10.9167 9.51665 11.1 9.69999L16 14.6L20.9 9.69999C21.0834 9.51665 21.3167 9.42499 21.6 9.42499C21.8834 9.42499 22.1167 9.51665 22.3 9.69999C22.4834 9.88332 22.575 10.1167 22.575 10.4C22.575 10.6833 22.4834 10.9167 22.3 11.1L17.4 16L22.3 20.9C22.4834 21.0833 22.575 21.3167 22.575 21.6C22.575 21.8833 22.4834 22.1167 22.3 22.3C22.1167 22.4833 21.8834 22.575 21.6 22.575C21.3167 22.575 21.0834 22.4833 20.9 22.3L16 17.4Z"

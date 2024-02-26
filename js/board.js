@@ -292,26 +292,19 @@ function setEditValuesOfTaskModal() {
     document.getElementById('urgent-button-id').classList.add('active');
 }
 
-
-// kleiner Tipp: 
-// Verlgleich die ID von currentTaskModal und den ID's in tasks. 
-// Die Eigenschaften von dem gefundenen task dann mit deinen neuen Eigenschaften überschreiben.
-// Da currentTaskModal keine Referenz zu tasks hat, musst du currentTaskModal in tasks pushen (concat Funktion)
-// Dann hast du die Veränderungen in tasks drinne und kannst tasks auf den server speichern. 
 async function saveEditTask() {
 
     for (let i = 0; i < tasks.length; i++) {
         const task = tasks[i]; // sucht in Tasks nach der einen Task
 
         if (task.id === currentTaskModal.id) { // vergleicht beide ID's
-            console.log('ist gleich');
-        } else {
-            task.id = currentTaskModal.id; // überschreibt die alte version
-
-        }
+            console.log('IDs stimmen überein \n task id: ', task.id , " currenTaskModal id:", currentTaskModal.id);
+            task.title = document.getElementById('input-title').value
+            task.description = document.getElementById('textArea-description').value
+            task.dueDate = document.getElementById('input-due-date').value
+        } 
     }
 
-    tasks = tasks.concat(currentTaskModal);
     updateTasks();
     await setItem("tasks", JSON.stringify(tasks));
     closeCardModal('cardModal-container');

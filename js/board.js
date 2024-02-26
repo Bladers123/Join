@@ -275,43 +275,54 @@ async function loadAddTaskTemplate(progress) {
 let currentTaskModal = [];
 
 async function editTask() {
-    console.log(currentTaskModal);
+
     await initTask('noProgress');
     document.getElementById('cardModal-container').innerHTML = editTaskTemplate();
-    setEditValuesOfTaskModal();   
+    setEditValuesOfTaskModal();
 }
 
-function setEditValuesOfTaskModal(){
+function setEditValuesOfTaskModal() {
     document.getElementById('input-title').value = currentTaskModal.title;
     document.getElementById('textArea-description').value = currentTaskModal.description;
     document.getElementById('input-due-date').value = currentTaskModal.dueDate;
     selectAssignedPersons();
-    updateAssignedItemsUI(); 
+    updateAssignedItemsUI();
     editAssignsArray();
     editSubtasksArray();
     document.getElementById('urgent-button-id').classList.add('active');
 }
 
+
+// kleiner Tipp: 
+// Verlgleich die ID von currentTaskModal und den ID's in tasks. 
+// Die Eigenschaften von dem gefundenen task dann mit deinen neuen Eigenschaften überschreiben.
+// Da currentTaskModal keine Referenz zu tasks hat, musst du currentTaskModal in tasks pushen (concat Funktion)
+// Dann hast du die Veränderungen in tasks drinne und kannst tasks auf den server speichern. 
 async function saveEditTask() {
-    let newTitle = document.getElementById('input-title').value;
-    let newDescription = document.getElementById('textArea-description').value;
-    let newDate = document.getElementById('input-due-date').value;
-    
-    currentTaskModal.title = newTitle;
-    currentTaskModal.description = newDescription;
-    currentTaskModal.dueDate = newDate;
-    // kleiner Tipp: 
-    // Verlgleich die ID von currentTaskModal und den ID's in tasks. Die Eigenschaften von dem gefundenen task dann mit deinen neuen Eigenschaften überschreiben.
-    // Da currentTaskModal keine Referenz zu tasks hat, musst du currentTaskModal in tasks pushen (concat Funktion)
-    // Dann hast du die Veränderungen in tasks drinne und kannst tasks auf den server speichern. 
+
+    for (let i = 0; i < tasks.length; i++) {
+        const task = tasks[i]; // sucht in Tasks nach der einen Task
+
+        if (task.id === currentTaskModal.id) { // vergleicht beide ID's
+            console.log('ist gleich');
+        } else {
+            task.id = currentTaskModal.id; // überschreibt die alte version
+
+        }
+    }
+
+    tasks = tasks.concat(currentTaskModal);
     updateTasks();
     await setItem("tasks", JSON.stringify(tasks));
+    closeCardModal('cardModal-container');
 }
 
 
 
+
+
 function selectAssignedPersons() {
-      if (currentTaskModal.assignedTo && currentTaskModal.assignedTo.length > 0) {
+    if (currentTaskModal.assignedTo && currentTaskModal.assignedTo.length > 0) {
         currentTaskModal.assignedTo.forEach(assignedContact => {
             let found = assigneds.find(assigned => assigned.name.trim() === assignedContact.name.trim());
             if (found) {

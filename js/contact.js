@@ -92,6 +92,7 @@ let selectedContactIndex;
 async function initContacts() {
     oldContacts = JSON.parse(await getItem("oldContacts"));
     renderOldContacts();
+    document.getElementById('Contacts').classList.add('navButtonBackGroundActive');
 }
 
 function renderOldContacts() {

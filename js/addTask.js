@@ -20,6 +20,7 @@ async function initTask(progress = "toDo") {
         urgentButton.classList.add('active');
     }
     assigneds = JSON.parse(await getItem('oldContacts') || '[]');
+    document.getElementById('addTask').classList.add('navButtonBackGroundActive');
 }
 
 document.addEventListener('DOMContentLoaded', function () {

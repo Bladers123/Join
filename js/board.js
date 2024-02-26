@@ -5,6 +5,7 @@ let currentDraggedElement;
 async function initBoard() {
     tasks = JSON.parse((await getItem("tasks")) || "[]");
     updateTasks();
+    document.getElementById('Board').classList.add('navButtonBackGroundActive');
 }
 
 async function updateTasks() {
@@ -275,7 +276,6 @@ async function loadAddTaskTemplate(progress) {
 let currentTaskModal = [];
 
 async function editTask() {
-
     await initTask('noProgress');
     document.getElementById('cardModal-container').innerHTML = editTaskTemplate();
     setEditValuesOfTaskModal();

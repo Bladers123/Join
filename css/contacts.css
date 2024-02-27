@@ -544,6 +544,11 @@ button img {
         line-height: 120%;
     }
 
+    .addNewContact:hover {
+        background-color: #29abe2;
+        box-shadow: 0px 4px 4px 0px #00000040;
+    }
+
     .buttonText {
         display: none;
     }

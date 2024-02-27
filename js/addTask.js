@@ -50,7 +50,6 @@ document.addEventListener('click', function (event) {
 
 function openOrCloseCheckBoxAreaForAssigned() {
     let checkBoxItems = document.getElementById('checkBoxItemsAssigned');
-    console.log(checkBoxItems);
     rotateIcon('nav-image-assigned');
     if (checkBoxItems.innerHTML.trim() !== '') {
         checkBoxItems.innerHTML = '';
@@ -236,7 +235,6 @@ function addSubtask() {
     let newSubtask = document.getElementById('newSubtask');
     let displayedSubtasks = document.getElementById('subtasks');
     if (!displayedSubtasks) {
-        console.log(displayedSubtasks);
         return;
     }
 

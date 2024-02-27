@@ -76,7 +76,6 @@ function getPrioSVG(task) {
         case "Urgent":
             return getPrioUrgentSVG();
         default:
-            console.log("Unbekannte Priorität:", task.priority);
             return "";
     }
 }
@@ -195,6 +194,7 @@ async function editTask() {
     await initTask('noProgress');
     document.getElementById('cardModal-container').innerHTML = editTaskTemplate();
     setEditValuesOfTaskModal();
+    rotateIcon('nav-image-assigned');
 }
 
 function setEditValuesOfTaskModal() {

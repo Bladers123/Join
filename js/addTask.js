@@ -147,15 +147,11 @@ function rotateIcon(id) {
 function clearTask() {
     let inputs = document.getElementsByClassName('inputs');
     let textAreas = document.getElementsByClassName('textarea');
-    let mediumPriorityButton = document.querySelector('.prio-medium');
-    let priorityButtons = document.querySelectorAll('.prioButtons button');
     for (let i = 0; i < inputs.length; i++)
         inputs[i].value = '';
     for (let i = 0; i < textAreas.length; i++)
         textAreas[i].value = '';
     document.getElementById('category-text').innerHTML = 'Select task category';
-    priorityButtons.forEach(button => button.classList.remove('active'));
-    mediumPriorityButton.classList.add('active');
     document.getElementById('selectedUserCircle').innerHTML = '';
     assigneds.forEach(assigned => assigned.selected = false);
 }

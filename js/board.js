@@ -210,7 +210,7 @@ function setEditValuesOfTaskModal() {
 
 async function saveEditTask() {
     for (let i = 0; i < tasks.length; i++) {
-        let task = tasks[i];
+        var task = tasks[i];
         if (task.id === currentTaskModal.id) {
             task.title = document.getElementById('input-title').value;
             task.description = document.getElementById('textArea-description').value;
@@ -223,7 +223,7 @@ async function saveEditTask() {
 
     await setItem("tasks", JSON.stringify(tasks));
     updateTasks();
-    closeCardModal('cardModal-container');
+    document.getElementById("cardModalID").innerHTML = getTaskTemplate(task);
 }
 
 function getSelectedAssigneds() {

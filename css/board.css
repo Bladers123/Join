@@ -798,6 +798,10 @@ button img {
     button {
         width: 100%;
     }
+
+    .contentRightWrapper{
+        padding-bottom: 100px;
+    }
 }
 
 @media (max-width: 380px) {

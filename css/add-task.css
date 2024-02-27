@@ -352,6 +352,7 @@ footer button {
 
 .new-sub-task-container:hover {
     background-color: #E5E5E5;
+    border-radius: 8px;
 }
 
 .subtasks-container {

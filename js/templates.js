@@ -345,7 +345,7 @@ function addTaskTemplate() {
                     <p><span class="colored-star">*</span>This field is required</p>
                     <div class="clear-and-create-button-container">
                         <button class="clear-button" type="button" onclick="clearTask()">
-                            <span class="clearText">Clear</span>
+                            <span>Clear</span>
                             <img class="clear-image" src="../img/close.svg" />
                         </button>
                         <button class="create-button" type="submit">

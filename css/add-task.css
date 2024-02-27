@@ -48,6 +48,8 @@ textarea {
     font-size: 16px;
     box-sizing: border-box;
     border-radius: 10px;
+    padding-right: 16px;
+    padding-left: 16px;
 }
 
 .margin-bot {
@@ -267,12 +269,27 @@ footer button {
 .clear-button {
     background-color: rgb(246, 247, 248);
     border: 1px solid black;
+    transition: transform 100ms ease-in-out;
+}
+
+.clear-button:hover {
+    cursor: pointer;
+    color: #29ABE2;
+    border: 2px solid #29ABE2;
+    box-shadow: 0px 4px 4px 0px #00000040;
 }
 
 .create-button {
     background-color: #2A3647;
     color: white;
     border: none;
+    transition: transform 100ms ease-in-out;
+}
+
+.create-button:hover {
+    background-color: #29abe2;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px 0px #00000040;
 }
 
 .clear-image {
@@ -329,6 +346,13 @@ footer button {
     right: 5px;
     top: 44%;
     cursor: pointer;
+    margin-right: 8px;
+}
+
+.subtasks-input-container:hover svg {
+    background-color: lightgray;
+    border-radius: 100%;
+    transform: scale(1.1);
 }
 
 .new-subtask-text {

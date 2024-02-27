@@ -145,6 +145,10 @@ nav {
     cursor: pointer;
 }
 
+.question:hover {
+    transform: scale(1.1);
+}
+
 .dropbtn {
     color: #29abe2;
     font-weight: 700;

@@ -790,6 +790,12 @@ button img {
     }
 }
 
+@media (max-width: 770px){
+    .dragDropGlobalWrapper{
+        padding-bottom: 100px;
+    }
+}
+
 @media (max-width: 550px) {
     .searchbarBoard {
         width: 100%;

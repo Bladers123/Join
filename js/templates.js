@@ -316,7 +316,7 @@ function addTaskTemplate() {
                                 <p id="category-text">Select task category</p>
                                 <img id="nav-image-category" src="../img/navigation.png" alt="navLogo" />
                             </div>
-                            <div class="position-context">
+                            <div id="position-context" class="position-context">
                                 <div id="itemsCategory" class="items"></div>
                             </div>
                             <div id="failureCategory" class="failure"></div>

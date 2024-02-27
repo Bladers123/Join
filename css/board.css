@@ -24,6 +24,11 @@ input {
     gap: 4px;
 }
 
+.add-task-button:hover {
+    background-color: #29abe2;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
 .searchbarBoard {
     display: flex;
     width: 312px;

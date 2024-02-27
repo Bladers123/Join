@@ -62,10 +62,14 @@ function openOrCloseCheckBoxAreaForAssigned() {
 function openOrCloseCheckBoxAreaForCategory() {
     let checkBoxItems = document.getElementById('itemsCategory');
     rotateIcon('nav-image-category');
-    if (checkBoxItems.innerHTML.trim() !== '')
+    if (checkBoxItems.innerHTML.trim() !== '') {
+        document.getElementById('position-context').classList.add('d-none');
         checkBoxItems.innerHTML = '';
-    else
+    }
+    else {
+        document.getElementById('position-context').classList.remove('d-none');
         checkBoxItems.innerHTML = getCeckBoxAreaTemplateForCategory();
+    }
 }
 
 function getCheckBoxAreaTemplateForAssigned() {
@@ -271,6 +275,6 @@ function saveEditedSubTask(id, newText) {
 }
 
 function deleteSubTask(id) {
-     let subtaskToRemove = document.getElementById(id);
-     subtaskToRemove.remove();
+    let subtaskToRemove = document.getElementById(id);
+    subtaskToRemove.remove();
 }

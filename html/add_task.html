@@ -121,7 +121,7 @@
                                     <p id="category-text">Select task category</p>
                                     <img id="nav-image-category" src="../img/navigation.png" alt="navLogo">
                                 </div>
-                                <div class="position-context">
+                                <div id="position-context" class="position-context d-none">
                                     <div id="itemsCategory" class="items"></div>
                                 </div>
                                 <div id="failureCategory" class="failure"></div>
@@ -129,7 +129,7 @@
                             <div class="margin-bot">
                                 <p>Subtasks</p>
                                 <div class="subtasks-input-container">
-                                    <input id="newSubtask" placeholder="Add new subtask" class="inputs" type="text">
+                                    <input id="newSubtask" placeholder="Add new subtask" class="inputs subtask-input" type="text">
                                     <svg onclick="addSubtask()" width="15" height="14" viewBox="0 0 15 14" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path

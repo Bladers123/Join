@@ -136,7 +136,6 @@ textarea {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: none;
     background-color: white;
     cursor: pointer;
 }
@@ -148,6 +147,10 @@ textarea {
 
 .position-context {
     position: relative;
+}
+
+.d-none{
+    display: none;
 }
 
 .items {
@@ -336,15 +339,20 @@ footer button {
 }
 
 .subtasks-input-container {
-    position: relative;
+    margin-top: 8px;
     display: flex;
+    align-items: center;
     margin-bottom: 6px;
+    border: 1px solid rgba(95, 92, 92, 0.2);
+    border-radius: 10px;
+}
+
+.subtask-input{
+    border: none;
+    margin: 0px;
 }
 
 .subtasks-input-container svg {
-    position: absolute;
-    right: 5px;
-    top: 44%;
     cursor: pointer;
     margin-right: 8px;
 }
@@ -356,11 +364,9 @@ footer button {
 }
 
 .new-subtask-text {
-
     margin-left: 32px;
     margin-top: 6px;
     margin-bottom: 6px;
-
 }
 
 .new-sub-task-container {

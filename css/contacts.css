@@ -497,6 +497,15 @@ button img {
     display: none;
 }
 
+.w113 {
+    width: 113px !important;
+    justify-content: center !important;
+}
+
+.w111 {
+    width: 111px !important;
+}
+
 @media (max-width: 1300px) {
     .resize-d-none {
         display: block;

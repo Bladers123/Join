@@ -208,6 +208,9 @@ function setEditValuesOfTaskModal() {
 }
 
 async function saveEditTask() {
+    let taskUpdated = false;
+    let updatedTask = null;
+
     for (let i = 0; i < tasks.length; i++) {
         var task = tasks[i];
         if (task.id === currentTaskModal.id) {
@@ -217,13 +220,20 @@ async function saveEditTask() {
             task.priority = document.querySelector('.prioButtons button.active').innerText.trim();
             task.subtasks = getUpdatedSubtasks();
             task.assignedTo = getSelectedAssigneds();
+            taskUpdated = true;
+            updatedTask = task;
+            break;
         }
     }
 
-    await setItem("tasks", JSON.stringify(tasks));
-    updateTasks();
-    document.getElementById("cardModalID").innerHTML = getTaskTemplate(task);
+    if (taskUpdated) {
+        await setItem("tasks", JSON.stringify(tasks));
+        updateTasks();
+        document.getElementById("cardModalID").innerHTML = getTaskTemplate(updatedTask);
+        console.log(updatedTask);
+    }
 }
+
 
 function getSelectedAssigneds() {
     return assigneds.filter(assigned => assigned.selected).map(assigned => {

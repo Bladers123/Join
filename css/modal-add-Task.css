@@ -22,6 +22,31 @@ form {
     border-radius: 25px;
 }
 
+.edit-form-style {
+    height: 80vh;
+    overflow-y: scroll;
+    border: 8px solid white;
+    background-clip: padding-box;
+    padding-right: 40px;
+    padding-left: 32px;
+    padding-top: 24px;
+}
+
+.edit-form-style::-webkit-scrollbar {
+    width: 12px;
+}
+
+.edit-form-style::-webkit-scrollbar-thumb {
+    background-color: darkgray;
+    border-radius: 10px;
+}
+
+.edit-form-style::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 12px;
+}
+
+
 .taskLeftSide,
 .taskRightSide {
     display: flex;
@@ -236,7 +261,7 @@ form {
 footer {
     display: flex;
     justify-content: space-between;
-    margin-top: 64px;
+    margin-top: 32px;
     align-items: flex-end;
 }
 

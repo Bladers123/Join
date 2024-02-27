@@ -274,17 +274,15 @@ function editAssignsArray() {
 }
 
 function editSubtasksArray() {
-    let subtasks = currentTaskModal['subtasks'];
-    let uniqueId = `subtask-${subtaskId++}`;
-
+    let subtasks = currentTaskModal.subtasks;
+   
     let subtaskContainer = document.getElementById('edit-subtasks');
     subtaskContainer.innerHTML = '';
 
+    for (let i = 0; i < subtasks.length; i++) {
+        let subtask = subtasks[i];
+        let editSubtask = subtask.title;
 
-    for (let s = 0; s < subtasks.length; s++) {
-        const subtask = subtasks[s];
-        let editSubtask = subtask['title']
-
-        subtaskContainer.innerHTML += generateEditSubtasksHTML(uniqueId, editSubtask);
+        subtaskContainer.innerHTML += generateEditSubtasksHTML(subtask.id, editSubtask);
     }
 }

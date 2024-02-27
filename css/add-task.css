@@ -415,3 +415,11 @@ footer button {
         text-align: center;
     }
 }
+
+
+@media (max-width: 500px) {
+   .content{
+    margin: 20px;
+   }
+}
+

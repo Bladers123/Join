@@ -423,7 +423,7 @@ footer button {
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
     .task {
         flex-direction: column;
     }
@@ -441,10 +441,15 @@ footer button {
     }
 }
 
-
-@media (max-width: 500px) {
-   .content{
-    margin: 20px;
-   }
+@media (max-width: 900px) {
+  footer{
+    padding-bottom: 100px;
+  }
 }
 
+
+@media (max-width: 500px) {
+    .content {
+        margin: 20px;
+    }
+}

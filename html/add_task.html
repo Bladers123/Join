@@ -40,7 +40,9 @@
                                 <p>Assigned to</p>
                                 <div class="combobox" onclick="openOrCloseCheckBoxAreaForAssigned()">
                                     <p id="assigned-text">Select contacts to assigned</p>
-                                    <img id="nav-image-assigned" src="../img/navigation.png" alt="navLogo">
+                                    <div class="hover-style">
+                                        <img id="nav-image-assigned" src="../img/navigation.png" alt="navLogo">
+                                    </div>
                                 </div>
                                 <div class="position-context">
                                     <div id="checkBoxItemsAssigned" class="items"></div>
@@ -119,7 +121,9 @@
                                 <div id="combobox-category" class="combobox"
                                     onclick="openOrCloseCheckBoxAreaForCategory()">
                                     <p id="category-text">Select task category</p>
-                                    <img id="nav-image-category" src="../img/navigation.png" alt="navLogo">
+                                    <div class="hover-style">
+                                        <img id="nav-image-category" src="../img/navigation.png" alt="navLogo">
+                                    </div>
                                 </div>
                                 <div id="position-context" class="position-context d-none">
                                     <div id="itemsCategory" class="items"></div>
@@ -129,7 +133,8 @@
                             <div class="margin-bot">
                                 <p>Subtasks</p>
                                 <div class="subtasks-input-container">
-                                    <input id="newSubtask" placeholder="Add new subtask" class="inputs subtask-input" type="text">
+                                    <input id="newSubtask" placeholder="Add new subtask" class="inputs subtask-input"
+                                        type="text">
                                     <svg onclick="addSubtask()" width="15" height="14" viewBox="0 0 15 14" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path

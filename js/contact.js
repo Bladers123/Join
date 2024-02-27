@@ -207,6 +207,7 @@ function deleteContact(i) {
     oldContacts.splice(i, 1);
     letters.splice(i, 1);
     document.getElementById("open-contact").classList.add("d-none");
+    closePopUp();
     renderOldContacts();
     sendToBackend();
 }

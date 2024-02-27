@@ -53,6 +53,25 @@ button {
     cursor: pointer;
 }
 
+
+.addNewContact:hover {
+    background-color: #29abe2;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    border: none;
+}
+
+.createBtn:hover {
+    background-color: #29abe2;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.cancelBtn:hover {
+    cursor: pointer;
+    color: #29ABE2;
+    border: 2px solid #29ABE2;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
 .name {
     display: flex;
     padding: 15px 24px;
@@ -544,10 +563,6 @@ button img {
         line-height: 120%;
     }
 
-    .addNewContact:hover {
-        background-color: #29abe2;
-        box-shadow: 0px 4px 4px 0px #00000040;
-    }
 
     .buttonText {
         display: none;

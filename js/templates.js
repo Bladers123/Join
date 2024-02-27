@@ -94,7 +94,7 @@ function generateEditContactHTML(bg, initials, name, mail, number, i) {
                 </div>
             </div>
             <div class="styleBtn">
-                <button type="button" onclick="closePopUp()" class="cancelBtn">Delete</button>
+                <button type="button" onclick="deleteContact(${i})" class="cancelBtn">Delete</button>
                 <button type="submit" class="createBtn">Save <img src="../img/check.svg"></button>
             </div>
         </form>

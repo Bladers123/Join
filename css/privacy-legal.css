@@ -49,9 +49,10 @@ p, ul, li {
     color: #28abe2;
 }
 
-a:hover {
+.blue:hover {
     text-decoration: underline;
 }
+
 
 .imprint {
     display: flex;

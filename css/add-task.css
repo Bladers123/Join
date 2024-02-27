@@ -347,6 +347,7 @@ footer button {
     border: 1px solid rgba(95, 92, 92, 0.2);
     border-radius: 10px;
     padding-right: 8px;
+    background-color: white;
 }
 
 .subtask-input{
@@ -359,7 +360,7 @@ footer button {
     margin-right: 8px;
 }
 
-.subtasks-input-container:hover svg {
+.subtasks-input-container svg:hover {
     background-color: lightgray;
     border-radius: 100%;
     transform: scale(1.1);
@@ -402,11 +403,13 @@ footer button {
     font-size: 12px;
     padding: 8px;
 }
+
 .hover-style {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 8px;
+    transition: all 100ms ease-in-out;
 }
 
 .hover-style:hover {

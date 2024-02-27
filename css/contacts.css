@@ -186,8 +186,16 @@ button {
     cursor: pointer;
 }
 
+.delete:hover {
+    filter: brightness(0) saturate(100%) invert(52%) sepia(98%) saturate(407%) hue-rotate(155deg) brightness(93%) contrast(90%);
+}
+
 .edit {
     cursor: pointer;
+}
+
+.edit:hover {
+    filter: brightness(0) saturate(100%) invert(52%) sepia(98%) saturate(407%) hue-rotate(155deg) brightness(93%) contrast(90%);
 }
 
 .settings {

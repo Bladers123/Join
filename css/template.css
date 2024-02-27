@@ -96,6 +96,7 @@ a {
 
 .legalLink:hover {
     color: #29abe2;
+    font-weight: bold;
 }
 
 .legal {

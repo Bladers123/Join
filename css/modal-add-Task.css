@@ -297,6 +297,7 @@ footer button {
     margin-left: 8px;
     height: 12px;
     filter: brightness(0) invert(1);
+    width: 12px;
 }
 
 .selected-user-circle {
@@ -346,7 +347,7 @@ footer button {
     margin-right: 8px;
 }
 
-.subtasks-input-container:hover svg {
+.subtasks-input-container svg:hover {
     background-color: #d1d1d1;
     border-radius: 100%;
 }

@@ -1,5 +1,6 @@
 let tasks = [];
 let currentDraggedElement;
+let currentTaskModal = [];
 
 async function initBoard() {
     tasks = JSON.parse((await getItem("tasks")) || "[]");
@@ -187,8 +188,6 @@ async function loadAddTaskTemplate(progress) {
     document.getElementById("addTaskModalID").innerHTML = addTaskTemplate();
     await initTask(progress);
 }
-
-let currentTaskModal = [];
 
 async function editTask() {
     await initTask('noProgress');

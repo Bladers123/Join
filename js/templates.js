@@ -232,7 +232,9 @@ function addTaskTemplate() {
                             <p>Assigned to</p>
                             <div class="combobox" onclick="openOrCloseCheckBoxAreaForAssigned()">
                                 <p id="assigned-text">Select contacts to assigned</p>
-                                <img id="nav-image-assigned" src="../img/navigation.png" alt="navLogo" />
+                                <div class="hover-style">
+                                    <img id="nav-image-assigned" src="../img/navigation.png" alt="navLogo" />
+                                </div>
                             </div>
                             <div class="position-context">
                                 <div id="checkBoxItemsAssigned" class="items"></div>
@@ -314,7 +316,9 @@ function addTaskTemplate() {
                             <p>Category<span class="colored-star">*</span></p>
                             <div id="combobox-category" class="combobox" onclick="openOrCloseCheckBoxAreaForCategory()">
                                 <p id="category-text">Select task category</p>
-                                <img id="nav-image-category" src="../img/navigation.png" alt="navLogo" />
+                                <div class="hover-style">
+                                    <img id="nav-image-category" src="../img/navigation.png" alt="navLogo" />
+                                </div>
                             </div>
                             <div id="position-context" class="position-context">
                                 <div id="itemsCategory" class="items"></div>
@@ -461,7 +465,9 @@ function editTaskTemplate() {
                             <p>Assigned to</p>
                             <div class="combobox" onclick="openOrCloseCheckBoxAreaForAssigned()">
                                 <p id="assigned-text">Select contacts to assigned</p>
-                                <img id="nav-image-assigned" src="../img/navigation.png" alt="navLogo" />
+                                <div class="hover-style">
+                                    <img id="nav-image-assigned" src="../img/navigation.png" alt="navLogo" />
+                                </div>
                             </div>
                             <div class="position-context">
                                 <div id="checkBoxItemsAssigned" class="items"></div>

@@ -59,7 +59,6 @@ function generateHTMLshowContact(name, mail, number, bg, initials, i) {
     `;
 }
 
-
 function generateEditContactHTML(bg, initials, name, mail, number, i) {
     return `
     <div class="wholePop">
@@ -133,6 +132,69 @@ function getPrioLowSVG() {
         <path d="M10.2485 9.50589C10.0139 9.5063 9.7854 9.43145 9.59655 9.29238L0.693448 2.72264C0.57761 2.63708 0.47977 2.52957 0.405515 2.40623C0.33126 2.28289 0.282043 2.14614 0.260675 2.00379C0.217521 1.71631 0.290421 1.42347 0.463337 1.1897C0.636253 0.955928 0.895022 0.800371 1.18272 0.757248C1.47041 0.714126 1.76347 0.786972 1.99741 0.95976L10.2485 7.04224L18.4997 0.95976C18.6155 0.874204 18.7471 0.812285 18.8869 0.777538C19.0266 0.742791 19.1719 0.735896 19.3144 0.757248C19.4568 0.7786 19.5937 0.82778 19.7171 0.901981C19.8405 0.976181 19.9481 1.07395 20.0337 1.1897C20.1194 1.30545 20.1813 1.43692 20.2161 1.57661C20.2509 1.71629 20.2578 1.86145 20.2364 2.00379C20.215 2.14614 20.1658 2.28289 20.0916 2.40623C20.0173 2.52957 19.9195 2.63708 19.8036 2.72264L10.9005 9.29238C10.7117 9.43145 10.4831 9.5063 10.2485 9.50589Z" fill="#7AE229"/>
         <path d="M10.2485 15.2544C10.0139 15.2548 9.7854 15.18 9.59655 15.0409L0.693448 8.47117C0.459502 8.29839 0.30383 8.03981 0.260675 7.75233C0.217521 7.46485 0.290421 7.17201 0.463337 6.93824C0.636253 6.70446 0.895021 6.54891 1.18272 6.50578C1.47041 6.46266 1.76347 6.53551 1.99741 6.7083L10.2485 12.7908L18.4997 6.7083C18.7336 6.53551 19.0267 6.46266 19.3144 6.50578C19.602 6.54891 19.8608 6.70446 20.0337 6.93824C20.2066 7.17201 20.2795 7.46485 20.2364 7.75233C20.1932 8.03981 20.0376 8.29839 19.8036 8.47117L10.9005 15.0409C10.7117 15.18 10.4831 15.2548 10.2485 15.2544Z" fill="#7AE229"/>
         </svg>
+    `;
+}
+
+function generateTaskTemplateHTML(task, assignedToHtml, subtasksHtml, prioSVG) {
+    return /*html*/ `
+    <div id="cardModal-container">
+        <div id="cardModal" class="openCardBackground">
+                <div class="openTask">
+                    <div class="cardHeader">
+                    <div class="cardType" style="background-color: ${task.category === 'User Story' ? '#0038ff' : task.category === 'Technical Task' ? '#1FD7C1' : 'defaultBackgroundColor'};">
+
+                            <p class="cardTypeDescription">${task.category}</p>
+                        </div>
+                        <svg onclick="closeCardModal('cardModal-container')" class="closeIcon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <mask id="mask0_12_1578" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="4" y="4" width="24" height="24">
+                                <rect x="4" y="4" width="24" height="24" fill="#D9D9D9" />
+                            </mask>
+                            <g mask="url(#mask0_12_1578)">
+                                <path
+                                    d="M16 17.4L11.1 22.3C10.9167 22.4833 10.6834 22.575 10.4 22.575C10.1167 22.575 9.88338 22.4833 9.70005 22.3C9.51672 22.1167 9.42505 21.8833 9.42505 21.6C9.42505 21.3167 9.51672 21.0833 9.70005 20.9L14.6 16L9.70005 11.1C9.51672 10.9167 9.42505 10.6833 9.42505 10.4C9.42505 10.1167 9.51672 9.88332 9.70005 9.69999C9.88338 9.51665 10.1167 9.42499 10.4 9.42499C10.6834 9.42499 10.9167 9.51665 11.1 9.69999L16 14.6L20.9 9.69999C21.0834 9.51665 21.3167 9.42499 21.6 9.42499C21.8834 9.42499 22.1167 9.51665 22.3 9.69999C22.4834 9.88332 22.575 10.1167 22.575 10.4C22.575 10.6833 22.4834 10.9167 22.3 11.1L17.4 16L22.3 20.9C22.4834 21.0833 22.575 21.3167 22.575 21.6C22.575 21.8833 22.4834 22.1167 22.3 22.3C22.1167 22.4833 21.8834 22.575 21.6 22.575C21.3167 22.575 21.0834 22.4833 20.9 22.3L16 17.4Z"
+                                    fill="#2A3647"
+                                />
+                            </g>
+                        </svg>
+                    </div>
+                    <h1 class="cardHeadlineOverlay">${task.title}</h1>
+                    <p class="cardSubheadline">${task.description}</p>
+                    <div class="dateWrapper">
+                        <p class="dateDescription">Due date:</p>
+                        <p class="date">${task.dueDate}</p>
+                    </div>
+                    <div class="priorityWrapper">
+                        <p class="priorityDescription">Priority:</p>
+                        <div class="priority">
+                            <p class="priorityGrade">${task.priority}</p>
+                            ${prioSVG}
+                        </div>
+                    </div>
+                    <div class="assignedToWrapper">
+                        <p class="assignedToHeadline">Assigned To:</p>
+                        <div class="assignedToNameWrapper">
+                            ${assignedToHtml}
+                        </div>
+                    </div>
+                    <div class="subtasksWrapper">
+                        <p class="subtaskTitle">Subtasks:</p>
+                        <div class="subtaskCheckboxWrapper">
+                           ${subtasksHtml}
+                        </div>
+                    </div>
+                    <div class="footerWrapper">
+                        <div onclick="deleteTask(${task.id})" class="deleteWrapper">
+                            <img src="../img/delete.svg" alt="" />
+                            <p class="delete">Delete</p>
+                        </div>
+                        <div onclick="editTask()" class="deleteWrapper">
+                            <img src="../img/edit.svg" alt="" />
+                            <p class="delete">Edit</p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
     `;
 }
 
@@ -436,4 +498,46 @@ function editTaskTemplate() {
         </div>
     </div>
 </div>`;
+}
+
+function generateEditSubtasksHTML(uniqueId, editSubtask) {
+    return `<div onclick="editSubTask('${uniqueId}')" class="new-sub-task-container" id="${uniqueId}">
+    <li class="new-subtask-text">${editSubtask}</li>
+    <div class="new-subtask-image-container">
+        <img onclick="editSubTask('${uniqueId}')" src="../img/edit.png" alt="edit">
+        <img onclick="deleteSubTask('${uniqueId}')" src="../img/trash.png" alt="delete">
+    </div>
+</div>`;
+}
+
+function getPopUpTemplate() {
+    return /*html*/`
+    <div class="overlay">
+       <div id="popup" class="popup">
+           <div class="popup-content">
+              <span>Task added to board</span>
+           </div>
+       </div>
+   </div> 
+`;
+}
+
+function generateRegisterHTML(sortedByLetter) {
+    return `
+    <div class="letterWrapper">
+        <div class="Buchstabe">${sortedByLetter}</div>
+        <div class="divider"></div>
+    </div>
+    `;
+}
+
+function renderContactToRegister(i, bg, initials, name, mail) {
+    return `    
+    <div onclick="toggleContact(${i}); openMobileName()" class="name">
+        <div class="initialCircle" style="background-color: ${bg};">${initials}</div>
+            <div class="contactWrapper">
+                <div class="fullName">${name}</div>
+            <div class="email">${mail}</div>
+        </div>
+    </div>`;
 }

@@ -1,5 +1,4 @@
 let tasks = [];
-
 let currentDraggedElement;
 
 async function initBoard() {
@@ -199,66 +198,8 @@ function getTaskTemplate(task) {
     let subtasksHtml = getSubtasksTemplate(task.subtasks, task.id);
     let prioSVG = getPrioSVG(task);
     currentTaskModal = task;
-    return /*html*/ `
-    <div id="cardModal-container">
-        <div id="cardModal" class="openCardBackground">
-                <div class="openTask">
-                    <div class="cardHeader">
-                    <div class="cardType" style="background-color: ${task.category === 'User Story' ? '#0038ff' : task.category === 'Technical Task' ? '#1FD7C1' : 'defaultBackgroundColor'};">
+    return generateTaskTemplateHTML(task, assignedToHtml, subtasksHtml, prioSVG);
 
-                            <p class="cardTypeDescription">${task.category}</p>
-                        </div>
-                        <svg onclick="closeCardModal('cardModal-container')" class="closeIcon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <mask id="mask0_12_1578" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="4" y="4" width="24" height="24">
-                                <rect x="4" y="4" width="24" height="24" fill="#D9D9D9" />
-                            </mask>
-                            <g mask="url(#mask0_12_1578)">
-                                <path
-                                    d="M16 17.4L11.1 22.3C10.9167 22.4833 10.6834 22.575 10.4 22.575C10.1167 22.575 9.88338 22.4833 9.70005 22.3C9.51672 22.1167 9.42505 21.8833 9.42505 21.6C9.42505 21.3167 9.51672 21.0833 9.70005 20.9L14.6 16L9.70005 11.1C9.51672 10.9167 9.42505 10.6833 9.42505 10.4C9.42505 10.1167 9.51672 9.88332 9.70005 9.69999C9.88338 9.51665 10.1167 9.42499 10.4 9.42499C10.6834 9.42499 10.9167 9.51665 11.1 9.69999L16 14.6L20.9 9.69999C21.0834 9.51665 21.3167 9.42499 21.6 9.42499C21.8834 9.42499 22.1167 9.51665 22.3 9.69999C22.4834 9.88332 22.575 10.1167 22.575 10.4C22.575 10.6833 22.4834 10.9167 22.3 11.1L17.4 16L22.3 20.9C22.4834 21.0833 22.575 21.3167 22.575 21.6C22.575 21.8833 22.4834 22.1167 22.3 22.3C22.1167 22.4833 21.8834 22.575 21.6 22.575C21.3167 22.575 21.0834 22.4833 20.9 22.3L16 17.4Z"
-                                    fill="#2A3647"
-                                />
-                            </g>
-                        </svg>
-                    </div>
-                    <h1 class="cardHeadlineOverlay">${task.title}</h1>
-                    <p class="cardSubheadline">${task.description}</p>
-                    <div class="dateWrapper">
-                        <p class="dateDescription">Due date:</p>
-                        <p class="date">${task.dueDate}</p>
-                    </div>
-                    <div class="priorityWrapper">
-                        <p class="priorityDescription">Priority:</p>
-                        <div class="priority">
-                            <p class="priorityGrade">${task.priority}</p>
-                            ${prioSVG}
-                        </div>
-                    </div>
-                    <div class="assignedToWrapper">
-                        <p class="assignedToHeadline">Assigned To:</p>
-                        <div class="assignedToNameWrapper">
-                            ${assignedToHtml}
-                        </div>
-                    </div>
-                    <div class="subtasksWrapper">
-                        <p class="subtaskTitle">Subtasks:</p>
-                        <div class="subtaskCheckboxWrapper">
-                           ${subtasksHtml}
-                        </div>
-                    </div>
-                    <div class="footerWrapper">
-                        <div onclick="deleteTask(${task.id})" class="deleteWrapper">
-                            <img src="../img/delete.svg" alt="" />
-                            <p class="delete">Delete</p>
-                        </div>
-                        <div onclick="editTask()" class="deleteWrapper">
-                            <img src="../img/edit.svg" alt="" />
-                            <p class="delete">Edit</p>
-                        </div>
-                    </div>
-                </div>
-        </div>
-    </div>
-    `;
 }
 
 async function deleteTask(taskId) {
@@ -309,8 +250,6 @@ async function saveEditTask() {
     await setItem("tasks", JSON.stringify(tasks));
     closeCardModal('cardModal-container');
 }
-
-
 
 
 
@@ -371,14 +310,6 @@ function editSubtasksArray() {
         const subtask = subtasks[s];
         let editSubtask = subtask['title']
 
-
-        subtaskContainer.innerHTML += `
-        <div onclick="editSubTask('${uniqueId}')" class="new-sub-task-container" id="${uniqueId}">
-        <li class="new-subtask-text">${editSubtask}</li>
-        <div class="new-subtask-image-container">
-            <img onclick="editSubTask('${uniqueId}')" src="../img/edit.png" alt="edit">
-            <img onclick="deleteSubTask('${uniqueId}')" src="../img/trash.png" alt="delete">
-        </div>
-    </div>`;
+        subtaskContainer.innerHTML += generateEditSubtasksHTML(uniqueId, editSubtask);
     }
 }

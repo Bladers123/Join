@@ -110,33 +110,17 @@ function renderOldContacts() {
 
         name = name.charAt(0).toUpperCase() + name.slice(1);
 
-        let initials = name
-            .split(" ")
-            .map((n) => n[0])
-            .join("");
-
+        let initials = name.split(" ").map((n) => n[0]).join("");
         let sortedByLetter = name.charAt(0);
 
         if (sortedByLetter !== currentLetter) {
             currentLetter = sortedByLetter;
-            renderContact.innerHTML += `
-            <div class="letterWrapper">
-                <div class="Buchstabe">${sortedByLetter}</div>
-                <div class="divider"></div>
-            </div>
-            `;
+            renderContact.innerHTML += generateRegisterHTML(sortedByLetter);
         } else {
             console.log("versuchs nochmal");
         }
 
-        renderContact.innerHTML += `    
-            <div onclick="toggleContact(${i}); openMobileName()" class="name">
-                <div class="initialCircle" style="background-color: ${bg};">${initials}</div>
-                    <div class="contactWrapper">
-                        <div class="fullName">${name}</div>
-                    <div class="email">${mail}</div>
-                </div>
-            </div>`;
+        renderContact.innerHTML += renderContactToRegister(i, bg, initials, name, mail);
     }
 }
 
@@ -245,19 +229,6 @@ function closePopUp() {
     document.getElementById("contact-tel").value = "";
 }
 
-// function openContactonResize() {
-
-//     if (window.innerWidth >= 1300) {
-//         console.log('Viel Spaß beim Resizen ;-)');
-//         document.getElementById("resize-contact").classList.add("contentRightOverlay");
-//     } else {
-//         document.getElementById("resize-contact").classList.remove("d-none");
-//     }
-// }
-
-//
-
-// window.onresize = openContactonResize;
 
 function openMobileName() {
     document.getElementById("resize-contact").classList.remove("d-none-1300");

@@ -232,17 +232,6 @@ function getTaskData() {
     return currentTask;
 }
 
-function getPopUpTemplate() {
-    return /*html*/`
-    <div class="overlay">
-       <div id="popup" class="popup">
-           <div class="popup-content">
-              <span>Task added to board</span>
-           </div>
-       </div>
-   </div> 
-`;
-}
 
 function addSubtask() {
     let newSubtask = document.getElementById('newSubtask');
@@ -257,15 +246,7 @@ function addSubtask() {
     let uniqueId = `subtask-${subtaskId++}`;
 
     if (newSubtask.value.length > 0) {
-        displayedSubtasks.innerHTML += `
-        <div onclick="editSubTask('${uniqueId}')" class="new-sub-task-container" id="${uniqueId}">
-            <li class="new-subtask-text">${newSubtask.value}</li>
-            <div class="new-subtask-image-container">
-                <img onclick="editSubTask('${uniqueId}')" src="../img/edit.png" alt="edit">
-                <img onclick="deleteSubTask('${uniqueId}')" src="../img/trash.png" alt="delete">
-            </div>
-        </div>      
-        `;
+        displayedSubtasks.innerHTML += generateEditSubtasksHTML(uniqueId, newSubtask.value);
         newSubtask.value = "";
     }
 }

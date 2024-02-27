@@ -318,6 +318,8 @@ footer button {
     z-index: 9999999999;
     animation: slideAndFade 1s ease forwards;
     display: block;
+    top: 50%;
+    left: 50%;
 }
 
 .popup {

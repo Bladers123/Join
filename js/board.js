@@ -53,35 +53,10 @@ function generateTodoHTML(task) {
     let progressValue = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
 
     let subTaskWrapperHTML = totalSubtasks > 0 ?
-        /*html*/`
-        <div class="subTaskWrapper">
-            <progress id="file" value="${progressValue}" max="100"></progress>
-            <div class="subtask">
-                <p>${completedSubtasks}/${totalSubtasks}</p>
-                <p>Subtasks</p>
-            </div>
-         </div>` : '';
 
-    return /*html*/ `
-    <div onclick="openCardModal(this.getAttribute('data-task-id'))" data-task-id="${task.id}" draggable="true" ondragstart="startDragging(${task.id})" class="toDoCard">
-         <div class="toDoCardContent">
-             <div class="badge" style="background-color: ${task.category === 'User Story' ? '#0038ff' : task.category === 'Technical Task' ? '#1FD7C1' : 'defaultBackgroundColor'};">
-                 <p class="badgeText">${task.category}</p>
-             </div>
-             <div class="cardTextWrapper">
-                 <p class="cardHeadline">${task.title}</p>
-                 <p class="cardDescription">${task.description}</p>
-             </div>
-             ${subTaskWrapperHTML}
-             <div class="cardFooter">
-                 <div id="userCircle" class="avatarWrapper">
-                    ${circleTemplate}
-                 </div>
-                 ${prioSVG}
-             </div>
-         </div>
-       </div>
-    `;
+    generateTodoSubtask(progressValue, completedSubtasks, totalSubtasks): '';
+    return generateTodoCardModal(task, subTaskWrapperHTML, circleTemplate, prioSVG);
+
 }
 
 function getCircleTemplate(task) {

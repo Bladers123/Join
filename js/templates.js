@@ -541,3 +541,37 @@ function renderContactToRegister(i, bg, initials, name, mail) {
         </div>
     </div>`;
 }
+
+function generateTodoSubtask(progressValue, completedSubtasks, totalSubtasks) {
+    return  `
+    <div class="subTaskWrapper">
+        <progress id="file" value="${progressValue}" max="100"></progress>
+        <div class="subtask">
+            <p>${completedSubtasks}/${totalSubtasks}</p>
+            <p>Subtasks</p>
+        </div>
+     </div>`
+}
+
+function generateTodoCardModal(task, subTaskWrapperHTML, circleTemplate, prioSVG) {
+    return  `
+    <div onclick="openCardModal(this.getAttribute('data-task-id'))" data-task-id="${task.id}" draggable="true" ondragstart="startDragging(${task.id})" class="toDoCard">
+         <div class="toDoCardContent">
+             <div class="badge" style="background-color: ${task.category === 'User Story' ? '#0038ff' : task.category === 'Technical Task' ? '#1FD7C1' : 'defaultBackgroundColor'};">
+                 <p class="badgeText">${task.category}</p>
+             </div>
+             <div class="cardTextWrapper">
+                 <p class="cardHeadline">${task.title}</p>
+                 <p class="cardDescription">${task.description}</p>
+             </div>
+             ${subTaskWrapperHTML}
+             <div class="cardFooter">
+                 <div id="userCircle" class="avatarWrapper">
+                    ${circleTemplate}
+                 </div>
+                 ${prioSVG}
+             </div>
+         </div>
+       </div>
+    `;
+}

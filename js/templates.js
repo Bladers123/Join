@@ -496,7 +496,7 @@ function editTaskTemplate() {
                     <p><span class="colored-star">*</span>This field is required</p>
                     <div class="clear-and-create-button-container">
                         <button class="create-button" type="submit">
-                            Save
+                            OK
                             <img class="create-image save-edit-button" src="../img/check.png" />
                         </button>
                     </div>

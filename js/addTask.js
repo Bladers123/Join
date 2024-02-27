@@ -232,7 +232,6 @@ function getTaskData() {
     return currentTask;
 }
 
-
 function addSubtask() {
     let newSubtask = document.getElementById('newSubtask');
     let displayedSubtasks = document.getElementById('subtasks');
@@ -255,7 +254,6 @@ function addSubtask() {
     }
 }
 
-
 function editSubTask(id) {
     let subtaskContainer = document.getElementById(id);
     if (!subtaskContainer) {
@@ -273,7 +271,6 @@ function saveEditedSubTask(id, newText) {
 }
 
 function deleteSubTask(id) {
-     console.log(id);
      let subtaskToRemove = document.getElementById(id);
      subtaskToRemove.remove();
 }

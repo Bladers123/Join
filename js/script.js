@@ -21,10 +21,8 @@ async function setup() {
     await includeHTML();
     let button = document.getElementById('user-button-initials');
     let user = JSON.parse(await getItem('user'));
-    if (button && user.name){
+    if (button && user.name) {
         console.log('User: ', user);
-        button.innerHTML =  user.name.split(' ').map(part => part[0].toUpperCase()).join('');  
-    }  
+        button.innerHTML = user.name.split(' ').map(part => part[0].toUpperCase()).join('');
+    }
 }
-
-

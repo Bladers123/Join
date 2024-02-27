@@ -116,10 +116,7 @@ function renderOldContacts() {
         if (sortedByLetter !== currentLetter) {
             currentLetter = sortedByLetter;
             renderContact.innerHTML += generateRegisterHTML(sortedByLetter);
-        } else {
-            console.log("versuchs nochmal");
         }
-
         renderContact.innerHTML += renderContactToRegister(i, bg, initials, name, mail);
     }
 }

@@ -54,7 +54,7 @@ function generateTodoHTML(task) {
 
     let subTaskWrapperHTML = totalSubtasks > 0 ?
 
-    generateTodoSubtask(progressValue, completedSubtasks, totalSubtasks): '';
+        generateTodoSubtask(progressValue, completedSubtasks, totalSubtasks) : '';
     return generateTodoCardModal(task, subTaskWrapperHTML, circleTemplate, prioSVG);
 
 }
@@ -211,16 +211,16 @@ function setEditValuesOfTaskModal() {
 async function saveEditTask() {
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
-        if (task.id === currentTaskModal.id) { 
+        if (task.id === currentTaskModal.id) {
             task.title = document.getElementById('input-title').value;
             task.description = document.getElementById('textArea-description').value;
             task.dueDate = document.getElementById('input-due-date').value;
             task.priority = document.querySelector('.prioButtons button.active').innerText.trim();
             task.subtasks = getUpdatedSubtasks();
             task.assignedTo = getSelectedAssigneds();
-        } 
+        }
     }
- 
+
     await setItem("tasks", JSON.stringify(tasks));
     updateTasks();
     closeCardModal('cardModal-container');
@@ -271,8 +271,6 @@ function updateAssignedItemsUI() {
     updateActiveInitialCircles();
 }
 
-
-
 function editAssignsArray() {
     let assigns = currentTaskModal['assignedTo'];
     let assignsContainer = document.getElementById('selectedUserCircle');
@@ -292,10 +290,8 @@ function editAssignsArray() {
 
 function editSubtasksArray() {
     let subtasks = currentTaskModal.subtasks;
-   
     let subtaskContainer = document.getElementById('subtasks');
     subtaskContainer.innerHTML = '';
-
     for (let i = 0; i < subtasks.length; i++) {
         let subtask = subtasks[i];
         let editSubtask = subtask.title;

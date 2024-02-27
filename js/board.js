@@ -212,11 +212,12 @@ async function saveEditTask() {
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
         if (task.id === currentTaskModal.id) { 
-            console.log('IDs stimmen überein \n task id: ', task.id , " currenTaskModal id:", currentTaskModal.id);
-            task.title = document.getElementById('input-title').value
-            task.description = document.getElementById('textArea-description').value
-            task.dueDate = document.getElementById('input-due-date').value
-            updateSubtaskTitlesFromHTML(task);
+            task.title = document.getElementById('input-title').value;
+            task.description = document.getElementById('textArea-description').value;
+            task.dueDate = document.getElementById('input-due-date').value;
+            task.priority = document.querySelector('.prioButtons button.active').innerText.trim();
+            task.subtasks = getUpdatedSubtasks();
+            task.assignedTo = getSelectedAssigneds();
         } 
     }
  
@@ -225,24 +226,23 @@ async function saveEditTask() {
     closeCardModal('cardModal-container');
 }
 
-
-function updateSubtaskTitlesFromHTML(task) {
-    let subtaskElements = document.querySelectorAll('.new-subtask-text');
-    subtaskElements.forEach((element, index) => {
-        if (task.subtasks[index]) {
-            task.subtasks[index].title = element.textContent;
-        }
+function getSelectedAssigneds() {
+    return assigneds.filter(assigned => assigned.selected).map(assigned => {
+        return {
+            name: assigned.name,
+            bg: assigned.bg
+        };
     });
 }
 
-
-
-
-
-
-
-
-
+function getUpdatedSubtasks() {
+    let updatedSubtasks = [];
+    let subtaskElements = document.querySelectorAll('.new-subtask-text');
+    subtaskElements.forEach((element, index) => {
+        updatedSubtasks.push({ id: index + 1, title: element.textContent, completed: false });
+    });
+    return updatedSubtasks;
+}
 
 
 function selectAssignedPersons() {

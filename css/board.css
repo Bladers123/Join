@@ -683,6 +683,10 @@ button img {
     cursor: pointer;
 }
 
+.save-edit-button{
+    width: 16px;
+}
+
 .pointer {
     cursor: pointer;
 }

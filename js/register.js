@@ -13,11 +13,9 @@ async function register() {
         };
         let userExists = users.find(user => user.email === newUser.email && user.name === newUser.name);
         if (userExists) {
-            console.log("Benutzer existiert bereits:", userExists.name);
             let failureText = document.getElementById('failureText');
             failureText.innerHTML = 'User already exists';
         } else {
-            console.log("Kein Benutzer mit diesen Daten gefunden.\nNeuer Nutzer wird angelegt: ", newUser.name);
             users.push(newUser);
             await setItem('users', JSON.stringify(users));
             document.getElementById('popup-container').innerHTML = getPopUpTemplate();
@@ -40,15 +38,12 @@ async function loadUsers() {
         if (Array.isArray(loadedUsers)) {
             users = loadedUsers;
         } else {
-            console.log("Keine Benutzer gefunden, Initialisierung mit einem leeren Array.");
             users = [];
         }
     } catch (error) {
         console.error("Fehler beim Laden der Benutzer: ", error);
         users = [];
     }
-
-    console.log("Alle geladenen Benutzer: ", users);
 }
 
 function getPopUpTemplate() {

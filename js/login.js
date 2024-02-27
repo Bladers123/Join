@@ -20,7 +20,6 @@ async function loadUsers() {
         let loadedUsers = JSON.parse(await getItem('users'));
         if (Array.isArray(loadedUsers)) {
             users = loadedUsers;
-            console.log("Alle geladenen Benutzer: ", users);
         } else {
             console.log("Keine Benutzer gefunden, Initialisierung mit einem leeren Array.");
             users = [];
@@ -40,7 +39,6 @@ async function logIn() {
      user = users.find(user => user.email === email && user.password === password);
 
     if (user) {
-        console.log("Login erfolgreich für: ", user.name);
         await setItem('user', JSON.stringify(user));
         window.location.href = '../../html/summary.html';
     } else {

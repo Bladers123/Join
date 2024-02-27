@@ -265,6 +265,11 @@ progress {
     line-height: 120%;
 }
 
+.subtask:hover {
+    background-color: #E5E5E5;
+    border-radius: 8px;
+}
+
 .editCircleStyle {
     margin-top: 8px;
     margin-right: 8px;

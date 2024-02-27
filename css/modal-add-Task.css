@@ -49,6 +49,7 @@ form {
 .textarea {
     height: 120px;
     resize: none;
+    outline: none;
 }
 
 .prioButtons {
@@ -384,6 +385,7 @@ footer button {
 
 .new-sub-task-container:hover {
     background-color: #e5e5e5;
+    border-radius: 8px;
 }
 
 .subtasks-container {

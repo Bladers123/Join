@@ -459,3 +459,9 @@ footer button {
         margin: 20px;
     }
 }
+
+@media (max-width: 350px){
+    .content {
+        margin: 4px;
+    }
+}

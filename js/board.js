@@ -209,22 +209,39 @@ function setEditValuesOfTaskModal() {
 }
 
 async function saveEditTask() {
-
     for (let i = 0; i < tasks.length; i++) {
-        const task = tasks[i]; // sucht in Tasks nach der einen Task
-
-        if (task.id === currentTaskModal.id) { // vergleicht beide ID's
+        let task = tasks[i];
+        if (task.id === currentTaskModal.id) { 
             console.log('IDs stimmen überein \n task id: ', task.id , " currenTaskModal id:", currentTaskModal.id);
             task.title = document.getElementById('input-title').value
             task.description = document.getElementById('textArea-description').value
             task.dueDate = document.getElementById('input-due-date').value
+            updateSubtaskTitlesFromHTML(task);
         } 
     }
-
-    updateTasks();
+ 
     await setItem("tasks", JSON.stringify(tasks));
+    updateTasks();
     closeCardModal('cardModal-container');
 }
+
+
+function updateSubtaskTitlesFromHTML(task) {
+    let subtaskElements = document.querySelectorAll('.new-subtask-text');
+    subtaskElements.forEach((element, index) => {
+        if (task.subtasks[index]) {
+            task.subtasks[index].title = element.textContent;
+        }
+    });
+}
+
+
+
+
+
+
+
+
 
 
 

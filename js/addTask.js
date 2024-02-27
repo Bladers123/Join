@@ -52,9 +52,9 @@ function openOrCloseCheckBoxAreaForAssigned() {
     let checkBoxItems = document.getElementById('checkBoxItemsAssigned');
     console.log(checkBoxItems);
     rotateIcon('nav-image-assigned');
-    if (checkBoxItems.innerHTML.trim() !== ''){   
+    if (checkBoxItems.innerHTML.trim() !== '') {
         checkBoxItems.innerHTML = '';
-     }
+    }
     else
         checkBoxItems.innerHTML = getCheckBoxAreaTemplateForAssigned();
 }
@@ -187,7 +187,7 @@ async function createTask() {
     let currentTask = getTaskData();
     let validate = isCategoryValidated(currentTask.category);
     if (validate) {
-        let tasks = JSON.parse(await getItem('tasks') || '[]');   
+        let tasks = JSON.parse(await getItem('tasks') || '[]');
         tasks = tasks.concat(currentTask);
         await setItem('tasks', JSON.stringify(tasks));
         document.getElementById('popup-container').innerHTML = getPopUpTemplate();
@@ -236,8 +236,12 @@ function getTaskData() {
 function addSubtask() {
     let newSubtask = document.getElementById('newSubtask');
     let displayedSubtasks = document.getElementById('subtasks');
-    let subtaskCount = displayedSubtasks.getElementsByClassName('new-sub-task-container').length;
+    if (!displayedSubtasks) {
+        console.log(displayedSubtasks);
+        return;
+    }
 
+    let subtaskCount = displayedSubtasks.getElementsByClassName('new-sub-task-container').length;
     if (subtaskCount >= 2) {
         document.getElementById('subtasks-error-message').innerHTML = "Sie können maximal 2 Subtasks erstellen";
         return;
@@ -254,6 +258,9 @@ function addSubtask() {
 
 function editSubTask(id) {
     let subtaskContainer = document.getElementById(id);
+    if (!subtaskContainer) {
+        return;
+    }
     let subtaskTextElement = subtaskContainer.querySelector('.new-subtask-text');
     let currentText = subtaskTextElement.innerText;
     subtaskTextElement.innerHTML = `<input class="subtask-edit-field" type="text" value="${currentText}" onblur="saveEditedSubTask('${id}', this.value)">`;
@@ -266,6 +273,7 @@ function saveEditedSubTask(id, newText) {
 }
 
 function deleteSubTask(id) {
-    let subtaskToRemove = document.getElementById(id);
-    subtaskToRemove.remove();
+     console.log(id);
+     let subtaskToRemove = document.getElementById(id);
+     subtaskToRemove.remove();
 }

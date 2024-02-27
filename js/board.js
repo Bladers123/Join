@@ -293,13 +293,12 @@ function editAssignsArray() {
 function editSubtasksArray() {
     let subtasks = currentTaskModal.subtasks;
    
-    let subtaskContainer = document.getElementById('edit-subtasks');
+    let subtaskContainer = document.getElementById('subtasks');
     subtaskContainer.innerHTML = '';
 
     for (let i = 0; i < subtasks.length; i++) {
         let subtask = subtasks[i];
         let editSubtask = subtask.title;
-
         subtaskContainer.innerHTML += generateEditSubtasksHTML(subtask.id, editSubtask);
     }
 }

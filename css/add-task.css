@@ -11,6 +11,14 @@ h1 {
     padding-bottom: 48px;
 }
 
+input {
+    outline: none;
+}
+
+textarea {
+    outline: none;
+}
+
 .content {
     max-width: 1250px;
     margin: 80px;

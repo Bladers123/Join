@@ -2,6 +2,10 @@ body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+input {
+    outline: none;
+}
+
 .add-task-button {
     display: flex;
     align-items: center;

@@ -508,15 +508,14 @@ function editTaskTemplate() {
 }
 
 function generateEditSubtasksHTML(uniqueId, editSubtask) {
-    return /*html*/`    
+    return /*html*/`
     <div onclick="editSubTask('${uniqueId}')" class="new-sub-task-container" id="${uniqueId}">
-        <li class="new-subtask-text">${editSubtask}</li>
-        <div class="new-subtask-image-container">
-            <img onclick="editSubTask('${uniqueId}')" src="../img/edit.png" alt="edit">
-            <img onclick="deleteSubTask('${uniqueId}')" src="../img/trash.png" alt="delete">
-        </div>
+    <li class="new-subtask-text">${editSubtask}</li>
+    <div class="new-subtask-image-container">
+        <img onclick="editSubTaskClick('${uniqueId}', event)" src="../img/edit.png" alt="edit">
+        <img onclick="deleteSubTask('${uniqueId}')" src="../img/trash.png" alt="delete">
     </div>
-`;
+</div>`;
 }
 
 function getPopUpTemplate() {

@@ -249,6 +249,11 @@ function addSubtask() {
     }
 }
 
+function editSubTaskClick(uniqueId, event) {
+    event.stopPropagation();
+    editSubTask(uniqueId);
+}
+
 function editSubTask(id) {
     let subtaskContainer = document.getElementById(id);
     if (!subtaskContainer) {

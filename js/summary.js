@@ -30,6 +30,7 @@ function showAmounts() {
     let inProgresses = [];
     let prioUrgent = [];
     let earliestDueDate = null;
+    let newDate = null;
 
     for (let t = 0; t < tasks.length; t++) {
         const task = tasks[t];
@@ -38,18 +39,20 @@ function showAmounts() {
 
         if (!earliestDueDate || task.dueDate < earliestDueDate)
             earliestDueDate = task.dueDate;
-        formattedDate(earliestDueDate);
+
+         newDate = getFormattedDate(earliestDueDate);
         pushProgress(task, toDos, feedbacks, dones, inProgresses);
     }
-    renderAllData(toDos, dones, feedbacks, inProgresses, prioUrgent, earliestDueDate);
+    renderAllData(toDos, dones, feedbacks, inProgresses, prioUrgent, newDate);
 }
 
-function formattedDate(earliestDueDate) {
+function getFormattedDate(earliestDueDate) {
     let date = new Date(earliestDueDate);
     let formattedMonth = date.toLocaleString('default', { month: 'long' });
     let year = date.getFullYear();
     let day = date.getDate();
-    console.log(day, formattedMonth, year);
+    let newDate = day + ' '+ formattedMonth + ', ' + year;
+    return newDate;
 }
 
 

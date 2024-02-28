@@ -39,7 +39,7 @@ function showAmounts() {
         if (!earliestDueDate || task.dueDate < earliestDueDate)
             earliestDueDate = task.dueDate;
 
-         newDate = getFormattedDate(earliestDueDate);
+        newDate = getFormattedDate(earliestDueDate);
         pushProgress(task, toDos, feedbacks, dones, inProgresses);
     }
     renderAllData(toDos, dones, feedbacks, inProgresses, prioUrgent, newDate);
@@ -50,7 +50,7 @@ function getFormattedDate(earliestDueDate) {
     let formattedMonth = date.toLocaleString('default', { month: 'long' });
     let year = date.getFullYear();
     let day = date.getDate();
-    let newDate = formattedMonth + ' '+ day + ', ' + year;
+    let newDate = formattedMonth + ' ' + day + ', ' + year;
     return newDate;
 }
 

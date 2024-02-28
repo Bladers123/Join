@@ -40,24 +40,34 @@ function showAmounts() {
         if (!earliestDueDate || task.dueDate < earliestDueDate)
             earliestDueDate = task.dueDate;
 
-        switch (task.progress) {
-            case 'toDo':
-                toDos.push(task.progress);
-                break;
-            case 'feedback':
-                feedbacks.push(task.progress);
-                break;
-            case 'done':
-                dones.push(task.progress);
-                break;
-            case 'inProgress':
-                inProgresses.push(task.progress);
-                break;
-            default:
-                break;
-        }
-    }
+        pushProgress(task, toDos, feedbacks, dones, inProgresses);
 
+    }
+    renderAllData(toDos, dones, feedbacks, inProgresses, prioUrgent, earliestDueDate);
+
+}
+
+
+function pushProgress(task, toDos, feedbacks, dones, inProgresses) {
+    switch (task.progress) {
+        case 'toDo':
+            toDos.push(task.progress);
+            break;
+        case 'feedback':
+            feedbacks.push(task.progress);
+            break;
+        case 'done':
+            dones.push(task.progress);
+            break;
+        case 'inProgress':
+            inProgresses.push(task.progress);
+            break;
+        default:
+            break;
+    }
+}
+
+function renderAllData(toDos, dones, feedbacks, inProgresses, prioUrgent, earliestDueDate) {
     document.getElementById('to-do-amount').innerHTML = toDos.length;
     document.getElementById('done-amount').innerHTML = dones.length;
     document.getElementById('feedback-amount').innerHTML = feedbacks.length;

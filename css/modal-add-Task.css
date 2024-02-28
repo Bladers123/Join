@@ -23,7 +23,7 @@ form {
 }
 
 .edit-form-style {
-    height: 80vh;
+    height: 70vh;
     overflow-y: scroll;
     border: 8px solid white;
     background-clip: padding-box;

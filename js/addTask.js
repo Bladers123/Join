@@ -191,9 +191,6 @@ async function createTask() {
         await setItem('tasks', JSON.stringify(tasks));
         document.getElementById('popup-container').innerHTML = getPopUpTemplate();
         clearTask();
-        setTimeout(function () {
-            window.location.href = '../../html/board.html';
-        }, 1000);
     }
 }
 

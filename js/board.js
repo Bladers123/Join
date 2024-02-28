@@ -121,7 +121,6 @@ function removeHighlight(id) {
 
 function closeCardModal(id) {
     document.getElementById(id).classList.add("d-none");
-    window.location.href = "../html/board.html";
 }
 
 function openCardModal(taskId) {

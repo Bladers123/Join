@@ -46,17 +46,6 @@ async function loadUsers() {
     }
 }
 
-function getPopUpTemplate() {
-    return /*html*/`
-    <div class="overlay">
-       <div id="popup" class="popup">
-           <div class="popup-content">
-              <span>Your Signed Up successfully</span>
-           </div>
-       </div>
-   </div> 
-`;
-}
 
 function isPasswordConfirmed() {
     let password = document.getElementById("inputPassword");

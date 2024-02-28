@@ -31,13 +31,15 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function setActiveButton(activeButtonSelector) {
-    document.querySelectorAll('.prioButtons button').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    let activeButton = document.querySelector(activeButtonSelector);
-    if (activeButton)
+    const activeButton = document.querySelector(activeButtonSelector);
+    if (activeButton && !activeButton.classList.contains('active')) {
+        document.querySelectorAll('.prioButtons button').forEach(btn => {
+            btn.classList.remove('active');
+        });
         activeButton.classList.add('active');
+    }
 }
+
 
 document.addEventListener('click', function (event) {
     let withinAssignedCheckboxArea = event.target.closest('.combobox') !== null ||
@@ -195,6 +197,9 @@ async function createTask() {
         tasks = tasks.concat(currentTask);
         await setItem('tasks', JSON.stringify(tasks));
         document.getElementById('popup-container').innerHTML = getPopUpTemplate();
+        setTimeout(function () {
+            window.location.href = '../../html/summary.html';
+        }, 1000);
     }
 }
 

@@ -1,5 +1,5 @@
 function generateHTMLshowContact(name, mail, number, bg, initials, i) {
-    return ` 
+    return /*html*/` 
     <div class="contanctsHeader">
     <div class="initialCircleXL" style="background-color: ${bg};">${initials}</div>
     <div class="contactWrapper">
@@ -60,7 +60,7 @@ function generateHTMLshowContact(name, mail, number, bg, initials, i) {
 }
 
 function generateEditContactHTML(bg, initials, name, mail, number, i) {
-    return `
+    return /*html*/`
     <div class="wholePop">
     <div class="close">
         <img onclick="closePopUp()" src="../img/close.svg">
@@ -508,13 +508,15 @@ function editTaskTemplate() {
 }
 
 function generateEditSubtasksHTML(uniqueId, editSubtask) {
-    return `<div onclick="editSubTask('${uniqueId}')" class="new-sub-task-container" id="${uniqueId}">
-    <li class="new-subtask-text">${editSubtask}</li>
-    <div class="new-subtask-image-container">
-        <img onclick="editSubTask('${uniqueId}')" src="../img/edit.png" alt="edit">
-        <img onclick="deleteSubTask('${uniqueId}')" src="../img/trash.png" alt="delete">
+    return /*html*/`    
+    <div onclick="editSubTask('${uniqueId}')" class="new-sub-task-container" id="${uniqueId}">
+        <li class="new-subtask-text">${editSubtask}</li>
+        <div class="new-subtask-image-container">
+            <img onclick="editSubTask('${uniqueId}')" src="../img/edit.png" alt="edit">
+            <img onclick="deleteSubTask('${uniqueId}')" src="../img/trash.png" alt="delete">
+        </div>
     </div>
-</div>`;
+`;
 }
 
 function getPopUpTemplate() {
@@ -525,12 +527,12 @@ function getPopUpTemplate() {
               <span>Task added to board</span>
            </div>
        </div>
-   </div> 
-`;
+    </div> 
+    `;
 }
 
 function generateRegisterHTML(sortedByLetter) {
-    return `
+    return /*html*/`
     <div class="letterWrapper">
         <div class="Buchstabe">${sortedByLetter}</div>
         <div class="divider"></div>
@@ -539,7 +541,7 @@ function generateRegisterHTML(sortedByLetter) {
 }
 
 function renderContactToRegister(i, bg, initials, name, mail) {
-    return `    
+    return /*html*/`    
     <div onclick="toggleContact(${i}); openMobileName()" class="name">
         <div class="initialCircle" style="background-color: ${bg};">${initials}</div>
             <div class="contactWrapper">
@@ -550,7 +552,7 @@ function renderContactToRegister(i, bg, initials, name, mail) {
 }
 
 function generateTodoSubtask(progressValue, completedSubtasks, totalSubtasks) {
-    return  `
+    return /*html*/`
     <div class="subTaskWrapper">
         <progress id="file" value="${progressValue}" max="100"></progress>
         <div class="subtask">
@@ -561,7 +563,7 @@ function generateTodoSubtask(progressValue, completedSubtasks, totalSubtasks) {
 }
 
 function generateTodoCardModal(task, subTaskWrapperHTML, circleTemplate, prioSVG) {
-    return  `
+    return /*html*/`
     <div onclick="openCardModal(this.getAttribute('data-task-id'))" data-task-id="${task.id}" draggable="true" ondragstart="startDragging(${task.id})" class="toDoCard">
          <div class="toDoCardContent">
              <div class="badge" style="background-color: ${task.category === 'User Story' ? '#0038ff' : task.category === 'Technical Task' ? '#1FD7C1' : 'defaultBackgroundColor'};">

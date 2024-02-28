@@ -240,18 +240,9 @@ function getTaskData() {
 function addSubtask() {
     let newSubtask = document.getElementById('newSubtask');
     let displayedSubtasks = document.getElementById('subtasks');
-    if (!displayedSubtasks) {
+    if (!displayedSubtasks)
         return;
-    }
-
-    let subtaskCount = displayedSubtasks.getElementsByClassName('new-sub-task-container').length;
-    if (subtaskCount >= 2) {
-        document.getElementById('subtasks-error-message').innerHTML = "Sie können maximal 2 Subtasks erstellen";
-        return;
-    }
-
     let uniqueId = `subtask-${subtaskId++}`;
-
     if (newSubtask.value.length > 0) {
         displayedSubtasks.innerHTML += generateEditSubtasksHTML(uniqueId, newSubtask.value);
         newSubtask.value = "";

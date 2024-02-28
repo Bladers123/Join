@@ -39,7 +39,8 @@ p, ul, li {
 .container-position {
     gap: 30px;
     margin: 56px;
-
+    margin-top: 120px;
+    height: 100vh;
 }
 
 .curs-pointer {

@@ -365,7 +365,7 @@ function editTaskTemplate() {
 <div id="popup-container"></div>
 <div id="addTaskModal" class="modalBackground">
     <div class="content">
-            <form class="all edit-form-style" onsubmit="saveEditTask(); return false;">
+            <form class="edit-form-style" onsubmit="saveEditTask(); return false;">
                 <div class="addTaskHeader">
                     <div></div>
                     <svg onclick="closeCardModal('addTaskModal')" class="closeIcon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

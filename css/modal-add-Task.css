@@ -23,6 +23,7 @@ form {
 }
 
 .edit-form-style {
+    width: 525px;
     height: 70vh;
     overflow-y: scroll;
     border: 8px solid white;
@@ -328,6 +329,7 @@ footer button {
 .selected-user-circle {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .margin-top {

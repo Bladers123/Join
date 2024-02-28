@@ -541,7 +541,7 @@ function generateRegisterHTML(sortedByLetter) {
 
 function renderContactToRegister(i, bg, initials, name, mail) {
     return /*html*/`    
-    <div onclick="toggleContact(${i}); openMobileName()" class="name">
+    <div id="contact${i}" onclick="toggleContact(${i}); openMobileName()" class="name contact-item">
         <div class="initialCircle" style="background-color: ${bg};">${initials}</div>
             <div class="contactWrapper">
                 <div class="fullName">${name}</div>

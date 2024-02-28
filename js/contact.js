@@ -124,7 +124,12 @@ function getVariablesToRender(renderContact, currentLetter) {
 }
 
 function showContact(i) {
+    document.querySelectorAll('.contact-item').forEach(item => {
+        item.classList.remove('setUserActiveBackground');
+    });
+    document.getElementById('contact' + i).classList.add('setUserActiveBackground');  
     document.getElementById("resize-contact").classList.remove("d-none");
+    console.log(i);
     selectedName = oldContacts[i];
     let name = selectedName["name"];
     let mail = selectedName["email"];
@@ -132,14 +137,13 @@ function showContact(i) {
     let bg = selectedName["bg"];
     let initials = name.split(" ").map((n) => n[0]).join("");
     let letter = name.charAt(0);
-
     letters.push(letter);
-
     let contact = document.getElementById("open-contact");
     contact.classList.remove("d-none");
     contact.innerHTML = "";
     contact.innerHTML += generateHTMLshowContact(name, mail, number, bg, initials, i);
 }
+
 
 function toggleContact(i) {
     if (openContact && selectedContactIndex === i) {

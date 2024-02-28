@@ -252,6 +252,10 @@ button {
     animation: slideIn 0.2s ease-in-out;
 }
 
+.setUserActiveBackground{
+    background-color: #2a3647;
+}
+
 .Phone {
     display: flex;
     flex-direction: column;

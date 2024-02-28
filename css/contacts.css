@@ -95,9 +95,8 @@ button {
 
 .contacts {
     overflow-y: scroll;
-    height: 100px;
     height: calc(100vh - 192px);
-    padding: 0 24px;
+    padding: 0 24px 40px 24px;
     background-color: white;
 }
 

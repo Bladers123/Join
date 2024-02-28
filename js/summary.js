@@ -39,12 +39,20 @@ function showAmounts() {
 
         if (!earliestDueDate || task.dueDate < earliestDueDate)
             earliestDueDate = task.dueDate;
-
+        formattedDate(earliestDueDate);
         pushProgress(task, toDos, feedbacks, dones, inProgresses);
 
     }
     renderAllData(toDos, dones, feedbacks, inProgresses, prioUrgent, earliestDueDate);
 
+}
+
+function formattedDate(earliestDueDate) {
+    let date = new Date(earliestDueDate);
+    let formattedMonth = date.toLocaleString('default', { month: 'long' });
+    let year = date.getFullYear();
+    let day = date.getDate();
+    console.log(day, formattedMonth, year);
 }
 
 

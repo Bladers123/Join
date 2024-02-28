@@ -15,9 +15,9 @@ async function initTask(progress = "toDo") {
         rotateIcon('nav-image-assigned');
         rotateIcon('nav-image-category');
     }
-    let urgentButton = document.getElementById('urgent-button-id');;
-    if (urgentButton) {
-        urgentButton.classList.add('active');
+    let mediumButton = document.getElementById('medium-button-id');;
+    if (mediumButton) {
+        mediumButton.classList.add('active');
     }
     assigneds = JSON.parse(await getItem('oldContacts') || '[]');
     document.getElementById('addTask').classList.add('navButtonBackGroundActive');

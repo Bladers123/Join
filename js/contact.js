@@ -99,10 +99,8 @@ function renderOldContacts() {
     let renderContact = document.getElementById("contactName");
     let currentLetter = null;
     renderContact.innerHTML = "";
-
     oldContacts.sort((a, b) => a.name.localeCompare(b.name));
     getVariablesToRender(renderContact, currentLetter)
-
 }
 
 function getVariablesToRender(renderContact, currentLetter) {
@@ -127,7 +125,7 @@ function showContact(i) {
     document.querySelectorAll('.contact-item').forEach(item => {
         item.classList.remove('setUserproperty');
     });
-    document.getElementById('contact' + i).classList.add('setUserproperty');  
+    document.getElementById('contact' + i).classList.add('setUserproperty');
     document.getElementById("resize-contact").classList.remove("d-none");
     console.log(i);
     selectedName = oldContacts[i];

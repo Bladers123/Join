@@ -1,7 +1,7 @@
 function generateHTMLshowContact(name, mail, number, bg, initials, i) {
     return /*html*/` 
     <div class="contanctsHeader">
-    <div class="initialCircleXL" style="background-color: ${bg};">${initials}</div>
+    <div class="initialCircleXL" style="border: 6px solid white; background-color: ${bg};">${initials}</div>
     <div class="contactWrapper">
         <div class="fullNameSelectedWrapper">
             <p class="fullNameSelected">${name}</p>
@@ -72,7 +72,7 @@ function generateEditContactHTML(bg, initials, name, mail, number, i) {
         <img class="blueUnderline" src="../img/blueUnderline.svg">
     </div>
 
-    <div class="initialCircleXL" style="background-color: ${bg};">${initials}</div>
+    <div class="initialCircleXL" style="border: 4px solid white; background-color: ${bg};">${initials}</div>
 
     <div class="whitee">
         <form onsubmit="saveContact(${i}); return false;">
@@ -141,7 +141,7 @@ function generateTaskTemplateHTML(task, assignedToHtml, subtasksHtml, prioSVG) {
         <div id="cardModal" class="openCardBackground">
                 <div class="openTask edit-form-style">
                     <div class="cardHeader">
-                    <div class="cardType" style="background-color: ${task.category === 'User Story' ? '#0038ff' : task.category === 'Technical Task' ? '#1FD7C1' : 'defaultBackgroundColor'};">
+                    <div class="cardType" style="border: 2px solid white; background-color: ${task.category === 'User Story' ? '#0038ff' : task.category === 'Technical Task' ? '#1FD7C1' : 'defaultBackgroundColor'};">
 
                             <p class="cardTypeDescription">${task.category}</p>
                         </div>
@@ -542,7 +542,7 @@ function generateRegisterHTML(sortedByLetter) {
 function renderContactToRegister(i, bg, initials, name, mail) {
     return /*html*/`    
     <div id="contact${i}" onclick="toggleContact(${i}); openMobileName()" class="name contact-item">
-        <div class="initialCircle" style="background-color: ${bg};">${initials}</div>
+        <div class="initialCircle" style="border: 1px solid white; background-color: ${bg};">${initials}</div>
             <div class="contactWrapper">
                 <div class="fullName">${name}</div>
             <div class="email">${mail}</div>
@@ -565,7 +565,7 @@ function generateTodoCardModal(task, subTaskWrapperHTML, circleTemplate, prioSVG
     return /*html*/`
     <div onclick="openCardModal(this.getAttribute('data-task-id'))" data-task-id="${task.id}" draggable="true" ondragstart="startDragging(${task.id})" class="toDoCard">
          <div class="toDoCardContent">
-             <div class="badge" style="background-color: ${task.category === 'User Story' ? '#0038ff' : task.category === 'Technical Task' ? '#1FD7C1' : 'defaultBackgroundColor'};">
+             <div class="badge" style="border: 2px solid white; background-color: ${task.category === 'User Story' ? '#0038ff' : task.category === 'Technical Task' ? '#1FD7C1' : 'defaultBackgroundColor'};">
                  <p class="badgeText">${task.category}</p>
              </div>
              <div class="cardTextWrapper">

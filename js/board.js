@@ -85,10 +85,14 @@ function handleSearchChange(searchText) {
     if (searchText.trim() === "") {
         updateTasks();
     } else {
-        let filteredTasks = tasks.filter((task) => task.title.toLowerCase().includes(searchText.toLowerCase()));
+        let filteredTasks = tasks.filter((task) =>
+            task.title.toLowerCase().includes(searchText.toLowerCase()) ||
+            task.description.toLowerCase().includes(searchText.toLowerCase())
+        );
         updateFilteredTasks(filteredTasks);
     }
 }
+
 
 function updateFilteredTasks(filteredTasks) {
     let sections = {

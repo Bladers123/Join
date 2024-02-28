@@ -296,3 +296,62 @@
 .closeIcon {
     cursor: pointer;
 }
+
+@media (max-width: 650px) {
+    .openTask {
+        max-width: 70vw;
+    }
+
+    .cardHeadlineOverlay {
+        font-size: 48px;
+    }
+
+    form {
+        margin-right: 0;
+    }
+
+    .edit-form-style {
+        max-width: 70vw;
+    }
+
+    .prioButtons {
+        flex-direction: column;
+    }
+
+    #assigned-text {
+        font-size: 12px;
+    }
+
+    #newSubtask {
+        font-size: 12px;
+    }
+
+    #input-due-date {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+    .priority {
+        padding: 0;
+    }
+}
+
+@media (max-width: 350px) {
+    .openTask {
+        text-align: center;
+    }
+
+    .edit-form-style {
+        padding: 12px;
+    }
+
+    .dateWrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .priorityWrapper {
+        flex-direction: column;
+    }
+}

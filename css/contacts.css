@@ -53,7 +53,6 @@ button {
     cursor: pointer;
 }
 
-
 .addNewContact:hover {
     background-color: #29abe2;
     box-shadow: 0px 4px 4px 0px #00000040;
@@ -67,8 +66,8 @@ button {
 
 .cancelBtn:hover {
     cursor: pointer;
-    color: #29ABE2;
-    border: 2px solid #29ABE2;
+    color: #29abe2;
+    border: 2px solid #29abe2;
     box-shadow: 0px 4px 4px 0px #00000040;
 }
 
@@ -526,10 +525,10 @@ button img {
 
     .contentRight {
         position: fixed;
-        background-color: #F6F7F8;
-        top: 0;
+        background-color: #f6f7f8;
+        top: 96px;
         bottom: 0;
-        left: 0;
+        left: 232px;
         right: 0;
     }
 
@@ -571,7 +570,6 @@ button img {
         font-weight: 700;
         line-height: 120%;
     }
-
 
     .buttonText {
         display: none;
@@ -664,6 +662,15 @@ button img {
         bottom: 90px;
         right: 10px;
     }
+
+    .contentRight {
+        position: fixed;
+        background-color: #f6f7f8;
+        top: 96px;
+        bottom: 80px;
+        left: 0;
+        right: 0;
+    }
 }
 @media (max-width: 820px) {
     .contanctsHeader {
@@ -698,7 +705,6 @@ button img {
     .fullNameSelected {
         font-size: 40px;
     }
-    
 }
 
 @media (max-width: 450px) {
@@ -710,5 +716,4 @@ button img {
     .fullNameSelected {
         font-size: 32px;
     }
-    
 }

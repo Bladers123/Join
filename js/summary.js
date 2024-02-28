@@ -51,7 +51,7 @@ function getFormattedDate(earliestDueDate) {
     let formattedMonth = date.toLocaleString('default', { month: 'long' });
     let year = date.getFullYear();
     let day = date.getDate();
-    let newDate = day + ' '+ formattedMonth + ', ' + year;
+    let newDate = formattedMonth + ' '+ day + ', ' + year;
     return newDate;
 }
 

@@ -7,6 +7,24 @@ async function initBoard() {
     updateTasks();
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    document.body.addEventListener('click', function (event) {
+        if (event.target.id === 'cardModal' || event.target.closest('#cardModal')) {
+            let isClickOnOpenTask = event.target.classList.contains('openTask') || event.target.closest('.openTask') !== null;
+            if (!isClickOnOpenTask) {
+                closeCardModal('cardModal-container');
+            }
+        }
+
+        if (event.target.id === 'addTaskModal' || event.target.closest('#addTaskModal')) {
+            let isClickInsideAddTaskTemplateContent = event.target.id === 'addTaskTemplateContent' || event.target.closest('#addTaskTemplateContent') !== null;
+            if (!isClickInsideAddTaskTemplateContent) {
+                closeCardModal('addTaskModal');
+            }
+        }
+    });
+});
+
 async function updateTasks() {
     let sections = {
         toDo: document.getElementById("toDo"),

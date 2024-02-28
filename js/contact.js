@@ -127,7 +127,6 @@ function showContact(i) {
     });
     document.getElementById('contact' + i).classList.add('setUserproperty');
     document.getElementById("resize-contact").classList.remove("d-none");
-    console.log(i);
     selectedName = oldContacts[i];
     let name = selectedName["name"];
     let mail = selectedName["email"];
@@ -147,6 +146,9 @@ function toggleContact(i) {
     if (openContact && selectedContactIndex === i) {
         document.getElementById("open-contact").classList.add("d-none");
         openContact = false;
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.classList.remove('setUserproperty');
+        });
     } else {
         showContact(i);
         openContact = true;

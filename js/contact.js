@@ -98,7 +98,6 @@ async function initContacts() {
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('contact-tel').addEventListener('input', function () {
         this.value = this.value.replace(/[^0-9]/g, '');
-        console.log('sjdlfjldsjfld');
     });
 });
 

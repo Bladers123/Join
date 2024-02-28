@@ -11,6 +11,7 @@ button {
 }
 
 .contentGrid {
+    height: 90vh;
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: 1fr;
@@ -93,7 +94,7 @@ button {
 }
 
 .contacts {
-    overflow: scroll;
+    overflow-y: scroll;
     height: 100px;
     height: calc(100vh - 192px);
     padding: 0 24px;
@@ -549,7 +550,6 @@ button img {
     }
 
     .contacts {
-        overflow: scroll;
         height: 100px;
         height: calc(100vh - 92px);
         padding: 0 24px;

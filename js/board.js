@@ -140,12 +140,14 @@ function removeHighlight(id) {
 
 function closeCardModal(id) {
     document.getElementById(id).classList.add("d-none");
+    document.body.style.overflow = '';
 }
 
 function openCardModal(taskId) {
     let task = tasks.find((task) => task.id.toString() === taskId.toString());
     if (task) {
         document.getElementById("cardModalID").innerHTML = getTaskTemplate(task);
+        document.body.style.overflow = 'hidden';
     } else console.error("Task nicht gefunden");
 }
 
@@ -203,6 +205,7 @@ async function deleteTask(taskId) {
 }
 
 async function loadAddTaskTemplate(progress) {
+    document.body.style.overflow = 'hidden';
     document.getElementById("addTaskModalID").innerHTML = addTaskTemplate();
     await initTask(progress);
     createdFromBoard = true;

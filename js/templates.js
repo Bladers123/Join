@@ -139,7 +139,7 @@ function generateTaskTemplateHTML(task, assignedToHtml, subtasksHtml, prioSVG) {
     return /*html*/ `
     <div id="cardModal-container">
         <div id="cardModal" class="openCardBackground">
-                <div class="openTask">
+                <div class="openTask edit-form-style">
                     <div class="cardHeader">
                     <div class="cardType" style="background-color: ${task.category === 'User Story' ? '#0038ff' : task.category === 'Technical Task' ? '#1FD7C1' : 'defaultBackgroundColor'};">
 

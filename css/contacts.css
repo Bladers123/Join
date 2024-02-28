@@ -688,3 +688,27 @@ button img {
         font-size: 2rem;
     }
 }
+
+@media (max-width: 600px) {
+    .contentRightWrapper {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+
+    .fullNameSelected {
+        font-size: 40px;
+    }
+    
+}
+
+@media (max-width: 450px) {
+    .contentRightWrapper {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .fullNameSelected {
+        font-size: 32px;
+    }
+    
+}

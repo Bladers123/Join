@@ -25,13 +25,19 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.addEventListener('click', function (event) {
         if (event.target.closest('.prioButtons button')) {
             let button = event.target.closest('.prioButtons button');
-            document.querySelectorAll('.prioButtons button').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            button.classList.add('active');
+            setActiveButton(`.${button.className.split(' ').join('.')}`);
         }
     });
 });
+
+function setActiveButton(activeButtonSelector) {
+    document.querySelectorAll('.prioButtons button').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    let activeButton = document.querySelector(activeButtonSelector);
+    if (activeButton)
+        activeButton.classList.add('active');
+}
 
 document.addEventListener('click', function (event) {
     let withinAssignedCheckboxArea = event.target.closest('.combobox') !== null ||
@@ -151,6 +157,7 @@ function clearTask() {
     document.getElementById('category-text').innerHTML = 'Select task category';
     document.getElementById('selectedUserCircle').innerHTML = '';
     assigneds.forEach(assigned => assigned.selected = false);
+    setActiveButton('#medium-button-id');
 }
 
 //#region Nur für das Click-Event
@@ -188,7 +195,6 @@ async function createTask() {
         tasks = tasks.concat(currentTask);
         await setItem('tasks', JSON.stringify(tasks));
         document.getElementById('popup-container').innerHTML = getPopUpTemplate();
-        clearTask();
     }
 }
 

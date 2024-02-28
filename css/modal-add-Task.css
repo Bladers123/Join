@@ -329,7 +329,6 @@ footer button {
 .selected-user-circle {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
 }
 
 .margin-top {

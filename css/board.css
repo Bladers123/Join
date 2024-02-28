@@ -324,6 +324,7 @@ progress {
 .avatarWrapper {
     display: flex;
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .cardFooter {

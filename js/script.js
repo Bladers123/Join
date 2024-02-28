@@ -1,6 +1,8 @@
 
-async function init() {
-    await setup();
+async function init(sideBarId) {
+    await includeHTML();
+    await setUserInitialsInHeaderTemplateButton();
+    await setBackgroundToActiveSideBar(sideBarId);
 }
 
 async function includeHTML() {
@@ -17,11 +19,30 @@ async function includeHTML() {
     }
 }
 
-async function setup() {
-    await includeHTML();
+async function setUserInitialsInHeaderTemplateButton() {
     let button = document.getElementById('user-button-initials');
     let user = JSON.parse(await getItem('user'));
     if (button && user.name) {
         button.innerHTML = user.name.split(' ').map(part => part[0].toUpperCase()).join('');
+    }
+}
+
+async function setBackgroundToActiveSideBar(sideBarId) {
+    if (sideBarId.trim() !== '') {
+        switch (sideBarId) {
+            case 'summary':
+                document.getElementById('summary').classList.add('navButtonBackGroundActive');
+                break;
+            case 'Contacts':
+                document.getElementById('Contacts').classList.add('navButtonBackGroundActive');
+                break;
+            case 'addTask':
+                document.getElementById('addTask').classList.add('navButtonBackGroundActive');
+                break;
+            case 'Board':
+                document.getElementById('Board').classList.add('navButtonBackGroundActive');
+            default:
+                break;
+        }
     }
 }

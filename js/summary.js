@@ -5,7 +5,6 @@ async function initSummary() {
     tasks = JSON.parse(await getItem('tasks') || '[]');
     user = JSON.parse(await getItem('user') || '[]');
     showAmounts();
-    document.getElementById('summary').classList.add('navButtonBackGroundActive');
 }
 
 function getGreetingTime() {

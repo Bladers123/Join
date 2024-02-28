@@ -5,7 +5,6 @@ let currentTaskModal = [];
 async function initBoard() {
     tasks = JSON.parse((await getItem("tasks")) || "[]");
     updateTasks();
-    document.getElementById('Board').classList.add('navButtonBackGroundActive');
 }
 
 async function updateTasks() {

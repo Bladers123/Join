@@ -6,7 +6,6 @@ let categories = [
 ];
 
 let subtaskId = 0;
-
 let progress;
 
 async function initTask(progress = "toDo") {

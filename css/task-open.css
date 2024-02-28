@@ -343,7 +343,7 @@
     }
 
     .edit-form-style {
-        padding: 12px;
+        padding: 12px !important;
     }
 
     .dateWrapper {
@@ -353,5 +353,9 @@
 
     .priorityWrapper {
         flex-direction: column;
+    }
+
+    .cardHeadlineOverlay {
+        font-size: 32px;
     }
 }

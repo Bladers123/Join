@@ -95,6 +95,13 @@ async function initContacts() {
     renderOldContacts();
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('contact-tel').addEventListener('input', function () {
+        this.value = this.value.replace(/[^0-9]/g, '');
+        console.log('sjdlfjldsjfld');
+    });
+});
+
 function renderOldContacts() {
     let renderContact = document.getElementById("contactName");
     let currentLetter = null;

@@ -80,7 +80,6 @@ function getPrioSVG(task) {
     }
 }
 
-
 function handleSearchChange(searchText) {
     if (searchText.trim() === "") {
         updateTasks();
@@ -92,7 +91,6 @@ function handleSearchChange(searchText) {
         updateFilteredTasks(filteredTasks);
     }
 }
-
 
 function updateFilteredTasks(filteredTasks) {
     let sections = {

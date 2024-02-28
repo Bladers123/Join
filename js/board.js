@@ -185,6 +185,8 @@ async function deleteTask(taskId) {
 async function loadAddTaskTemplate(progress) {
     document.getElementById("addTaskModalID").innerHTML = addTaskTemplate();
     await initTask(progress);
+    createdFromBoard = true;
+    console.log(createdFromBoard);
 }
 
 async function editTask() {
@@ -202,7 +204,7 @@ function setEditValuesOfTaskModal() {
     updateAssignedItemsUI();
     editAssignsArray();
     editSubtasksArray();
-    document.getElementById('urgent-button-id').classList.add('active');
+    document.getElementById('medium-button-id').classList.add('active');
 }
 
 async function saveEditTask() {

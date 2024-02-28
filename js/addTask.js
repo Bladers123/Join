@@ -7,9 +7,11 @@ let categories = [
 
 let subtaskId = 0;
 let progress;
+let createdFromBoard = false;
 
 async function initTask(progress = "toDo") {
     this.progress = progress;
+    createdFromBoard = false;
     if (progress !== 'noProgress') {
         rotateIcon('nav-image-assigned');
         rotateIcon('nav-image-category');
@@ -39,7 +41,6 @@ function setActiveButton(activeButtonSelector) {
         activeButton.classList.add('active');
     }
 }
-
 
 document.addEventListener('click', function (event) {
     let withinAssignedCheckboxArea = event.target.closest('.combobox') !== null ||
@@ -197,9 +198,15 @@ async function createTask() {
         tasks = tasks.concat(currentTask);
         await setItem('tasks', JSON.stringify(tasks));
         document.getElementById('popup-container').innerHTML = getPopUpTemplate();
-        setTimeout(function () {
-            window.location.href = '../../html/summary.html';
-        }, 1000);
+        if (!createdFromBoard) {
+            setTimeout(function () {
+                window.location.href = '../../html/summary.html';
+            }, 1000);
+        }
+        else if (createdFromBoard) {
+            closeCardModal('addTaskModal');
+            initBoard();
+        }
     }
 }
 

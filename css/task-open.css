@@ -304,6 +304,7 @@
 
     .cardHeadlineOverlay {
         font-size: 48px;
+        word-break: break-all;
     }
 
     form {

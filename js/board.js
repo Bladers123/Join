@@ -211,7 +211,7 @@ async function saveEditTask() {
     let updatedTask = null;
 
     for (let i = 0; i < tasks.length; i++) {
-        var task = tasks[i];
+        let task = tasks[i];
         if (task.id === currentTaskModal.id) {
             task.title = document.getElementById('input-title').value;
             task.description = document.getElementById('textArea-description').value;

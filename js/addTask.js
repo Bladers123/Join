@@ -15,12 +15,11 @@ async function initTask(progress = "toDo") {
         rotateIcon('nav-image-assigned');
         rotateIcon('nav-image-category');
     }
-    let urgentButton = document.getElementById('urgent-button-id');;
+    let urgentButton = document.getElementById('medium-button-id');;
     if (urgentButton) {
         urgentButton.classList.add('active');
     }
     assigneds = JSON.parse(await getItem('oldContacts') || '[]');
-    document.getElementById('addTask').classList.add('navButtonBackGroundActive');
 }
 
 document.addEventListener('DOMContentLoaded', function () {

@@ -173,6 +173,7 @@ footer {
     transform: translate(-50%);
     display: flex;
     gap: 32px;
+    text-align: center;
 }
 
 a {
@@ -382,10 +383,10 @@ a:hover {
     }
 
     footer {
-        top: 869px;
+        /* top: 869px; */
         gap: 8px;
         position: fixed;
-        bottom: 0px;
+        bottom: 16px;
     }
 
     .sign-header {
@@ -421,6 +422,10 @@ a:hover {
 @media (max-width: 300px) {
     span {
         font-size: 16px;
+    }
+
+    footer {
+        font-size: 12px;
     }
 }
 

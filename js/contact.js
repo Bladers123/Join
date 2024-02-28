@@ -102,15 +102,17 @@ function renderOldContacts() {
     renderContact.innerHTML = "";
 
     oldContacts.sort((a, b) => a.name.localeCompare(b.name));
+    getVariablesToRender(renderContact, currentLetter)
 
+}
+
+function getVariablesToRender(renderContact, currentLetter) {
     for (let i = 0; i < oldContacts.length; i++) {
         const oldContact = oldContacts[i];
         let name = oldContact["name"];
         let mail = oldContact["email"];
         let bg = oldContact["bg"];
-
         name = name.charAt(0).toUpperCase() + name.slice(1);
-
         let initials = name.split(" ").map((n) => n[0]).join("");
         let sortedByLetter = name.charAt(0);
 
@@ -173,6 +175,7 @@ async function createContact() {
     renderOldContacts();
     closePopUp();
 }
+
 
 async function sendToBackend() {
     await setItem("oldContacts", JSON.stringify(oldContacts));

@@ -31,16 +31,16 @@ async function setBackgroundToActiveSideBar(sideBarId) {
     if (sideBarId.trim() !== '') {
         switch (sideBarId) {
             case 'summary':
-                document.getElementById('summary').classList.add('navButtonBackGroundActive');
+                document.getElementById(sideBarId).classList.add('navButtonBackGroundActive');
                 break;
             case 'Contacts':
-                document.getElementById('Contacts').classList.add('navButtonBackGroundActive');
+                document.getElementById(sideBarId).classList.add('navButtonBackGroundActive');
                 break;
             case 'addTask':
-                document.getElementById('addTask').classList.add('navButtonBackGroundActive');
+                document.getElementById(sideBarId).classList.add('navButtonBackGroundActive');
                 break;
             case 'Board':
-                document.getElementById('Board').classList.add('navButtonBackGroundActive');
+                document.getElementById(sideBarId).classList.add('navButtonBackGroundActive');
             default:
                 break;
         }

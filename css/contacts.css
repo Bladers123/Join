@@ -252,8 +252,9 @@ button {
     animation: slideIn 0.2s ease-in-out;
 }
 
-.setUserActiveBackground{
+.setUserproperty{
     background-color: #2a3647;
+    color: white;
 }
 
 .Phone {

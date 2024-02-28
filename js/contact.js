@@ -125,9 +125,9 @@ function getVariablesToRender(renderContact, currentLetter) {
 
 function showContact(i) {
     document.querySelectorAll('.contact-item').forEach(item => {
-        item.classList.remove('setUserActiveBackground');
+        item.classList.remove('setUserproperty');
     });
-    document.getElementById('contact' + i).classList.add('setUserActiveBackground');  
+    document.getElementById('contact' + i).classList.add('setUserproperty');  
     document.getElementById("resize-contact").classList.remove("d-none");
     console.log(i);
     selectedName = oldContacts[i];

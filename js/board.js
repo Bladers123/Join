@@ -70,9 +70,8 @@ async function updateTasks() {
     document.getElementById("feedback").innerHTML = "";
     document.getElementById("done").innerHTML = "";
 
-    tasks.forEach((task) => {
-        let taskTemplate = generateTodoHTML(task);
-        sections[task.progress].innerHTML += taskTemplate;
+    tasks.forEach((taskData) => {
+        sections[taskData.progress].innerHTML += getCardModal(taskData);
     });
 }
 
@@ -113,15 +112,14 @@ async function moveTo(category) {
  * @param {Object} task - The task object to generate HTML for.
  * @returns {string} The generated HTML string for the task card.
  */
-function generateTodoHTML(task) {
+function getCardModal(task) {
     let circleTemplate = getCircleTemplate(task);
     let prioSVG = getPrioSVG(task);
     let totalSubtasks = task.subtasks.length;
     let completedSubtasks = task.subtasks.filter((subtask) => subtask.completed).length;
     let progressValue = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
-
     let subTaskWrapperHTML = totalSubtasks > 0 ? generateTodoSubtask(progressValue, completedSubtasks, totalSubtasks) : "";
-    return generateTodoCardModal(task, subTaskWrapperHTML, circleTemplate, prioSVG);
+    return getTaskCardTemplate(task, subTaskWrapperHTML, circleTemplate, prioSVG);
 }
 
 /**
@@ -130,16 +128,11 @@ function generateTodoHTML(task) {
  * @returns {string} HTML string representing circles with initials of assigned users.
  */
 function getCircleTemplate(task) {
-    return task.assignedTo
-        .map((person) => {
-            let initials = person.name
-                .split(" ")
-                .map((namePart) => namePart.charAt(0))
-                .join("");
-            let backgroundColor = person.bg ? ` style="background-color: ${person.bg};"` : "";
-            return `<div class="profileBadge"${backgroundColor}>${initials}</div>`;
-        })
-        .join("");
+    return task.assignedTo.map((person) => {
+        let initials = person.name.split(" ").map((namePart) => namePart.charAt(0)).join("");
+        let backgroundColor = person.bg ? ` style="background-color: ${person.bg};"` : "";
+        return `<div class="profileBadge"${backgroundColor}>${initials}</div>`;
+    }).join("");
 }
 
 /**
@@ -190,7 +183,7 @@ function updateFilteredTasks(filteredTasks) {
     });
 
     filteredTasks.forEach((task) => {
-        let taskTemplate = generateTodoHTML(task);
+        let taskTemplate = getCardModal(task);
         if (sections[task.progress]) {
             sections[task.progress].innerHTML += taskTemplate;
         }
@@ -327,14 +320,14 @@ async function deleteTask(taskId) {
  * @async
  */
 async function loadAddTaskTemplate(progress) {
-    document.body.style.overflow = "hidden";    
+    document.body.style.overflow = "hidden";
     document.getElementById("addTaskModalID").innerHTML = addTaskTemplate();
     await initTask(progress);
     createdFromBoard = true;
     document.getElementById("medium-button-id").classList.add("active");
 }
 
-function closeEditCardModal(id){
+function closeEditCardModal(id) {
     document.body.style.overflow = "";
     openCardModal(id);
     document.getElementById('cardModal-container').classList.add("d-none");
@@ -370,10 +363,10 @@ function setEditValuesOfTaskModal() {
  * @async
  */
 async function saveEditTask() {
-     let taskUpdated = false;
-     let updatedTask = null;
+    let taskUpdated = false;
+    let updatedTask = null;
 
-     for (let i = 0; i < tasks.length; i++) {
+    for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
         if (task.id === currentTaskModal.id) {
             task.title = document.getElementById("input-title").value;
@@ -386,12 +379,12 @@ async function saveEditTask() {
             updatedTask = task;
             break;
         }
-     }
+    }
 
     if (taskUpdated) {
-         await setItem("tasks", JSON.stringify(tasks));
-         updateTasks();
-        
+        await setItem("tasks", JSON.stringify(tasks));
+        updateTasks();
+
     }
     document.getElementById("cardModalID").innerHTML = getTaskTemplate(updatedTask);
 }

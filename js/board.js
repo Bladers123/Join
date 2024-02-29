@@ -224,9 +224,8 @@ function openCardModal(taskId) {
     let task = tasks.find((task) => task.id.toString() === taskId.toString());
     if (task) {
         document.getElementById("cardModalID").innerHTML = getTaskTemplate(task);
-        document.getElementById('hidden-overflow').classList.add('height100')
-        
-    } else console.error("Task nicht gefunden");
+        document.getElementById('hidden-overflow').classList.add('height100');
+    } 
 }
 
 /**
@@ -235,22 +234,15 @@ function openCardModal(taskId) {
  * @returns {string} HTML string for displaying assigned users.
  */
 function getAssignedToTemplate(assignedTo) {
-    return assignedTo
-        .map((person) => {
-            let initials = person.name
-                .split(" ")
-                .map((name) => name[0])
-                .join("");
+    return assignedTo.map((person) => {
+            let initials = person.name.split(" ").map((name) => name[0]).join("");
             return /*html*/ `
             <div class="assignedContact">
                 <div class="nameCircleWrapper">
                     <div class="nameCircle" style="background-color: ${person.bg};">${initials}</div>
                     <p class="assignedName">${person.name}</p>
                 </div>
-            </div>
-        `;
-        })
-        .join("");
+            </div>`;}).join("");
 }
 
 /**
@@ -260,17 +252,13 @@ function getAssignedToTemplate(assignedTo) {
  * @returns {string} HTML string for displaying subtasks.
  */
 function getSubtasksTemplate(subtasks, taskId) {
-    return subtasks
-        .map((subtask) => {
+    return subtasks.map((subtask) => {
             const isChecked = subtask.completed ? "checked" : "";
             return /*html*/ `
             <div class="subtask">
                 <input class="checkbox" type="checkbox" ${isChecked} onclick="toggleSubtaskCompleted(${taskId}, ${subtask.id})"/>
                 <div class="checkboxDescription">${subtask.title}</div>
-            </div>
-            `;
-        })
-        .join("");
+            </div>`;}).join("");
 }
 
 /**
@@ -368,7 +356,6 @@ function setEditValuesOfTaskModal() {
 async function saveEditTask() {
     let taskUpdated = false;
     let updatedTask = null;
-
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
         if (task.id === currentTaskModal.id) {
@@ -383,27 +370,20 @@ async function saveEditTask() {
             break;
         }
     }
-
     if (taskUpdated) {
         await setItem("tasks", JSON.stringify(tasks));
         updateTasks();
-
     }
     document.getElementById("cardModalID").innerHTML = getTaskTemplate(updatedTask);
 }
-
 
 /**
  * Returns an array of selected (assigned) users based on the user selection in the UI.
  * @returns {Array<Object>} Array of selected users with their name and background color.
  */
 function getSelectedAssigneds() {
-    return assigneds
-        .filter((assigned) => assigned.selected)
-        .map((assigned) => {
-            return {
-                name: assigned.name,
-                bg: assigned.bg,
+    return assigneds.filter((assigned) => assigned.selected).map((assigned) => {
+            return { name: assigned.name, bg: assigned.bg,
             };
         });
 }
@@ -449,7 +429,6 @@ function updateAssignedItemsUI() {
             }
         }
     });
-
     updateActiveInitialCircles();
 }
 

@@ -201,18 +201,24 @@ function showContact(i) {
  * @param {number} i - The index of the contact in the oldContacts array to toggle.
  */
 function toggleContact(i) {
-    if (openContact && selectedContactIndex === i) {
-        document.getElementById("open-contact").classList.add("d-none");
-        openContact = false;
-        document.querySelectorAll(".contact-item").forEach((item) => {
-            item.classList.remove("setUserproperty");
-        });
+    if (window.innerWidth >= 1350) {
+        if (openContact && selectedContactIndex === i) {
+            document.getElementById("open-contact").classList.add("d-none");
+            openContact = false;
+            document.querySelectorAll(".contact-item").forEach((item) => {
+                item.classList.remove("setUserproperty");
+            });
+        } else {
+            showContact(i);
+            openContact = true;
+            selectedContactIndex = i;
+        }
     } else {
         showContact(i);
-        openContact = true;
-        selectedContactIndex = i;
     }
 }
+
+window.onresize = toggleContact;
 
 /**
  * Creates a new contact and adds it to the contact list.

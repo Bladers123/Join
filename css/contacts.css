@@ -722,3 +722,14 @@ button img {
         font-size: 32px;
     }
 }
+
+@media (max-height: 750px) {
+    .contentRight {
+        overflow-y: scroll;
+        top: 79px;
+    }
+
+    .Phone {
+        padding-bottom: 20px;
+    }
+}

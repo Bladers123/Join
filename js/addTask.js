@@ -74,11 +74,17 @@ document.addEventListener("click", function (event) {
  * Toggles the checkbox area for assigned tasks.
  */
 function openOrCloseCheckBoxAreaForAssigned() {
+
     let checkBoxItems = document.getElementById("checkBoxItemsAssigned");
     rotateIcon("nav-image-assigned");
     if (checkBoxItems.innerHTML.trim() !== "") {
         checkBoxItems.innerHTML = "";
-    } else checkBoxItems.innerHTML = getCheckBoxAreaTemplateForAssigned();
+        document.body.style.overflow = "";
+    }
+    else {
+        document.body.style.overflow = "hidden";
+        checkBoxItems.innerHTML = getCheckBoxAreaTemplateForAssigned();
+    }
 }
 
 /**
@@ -255,7 +261,7 @@ document.addEventListener("DOMContentLoaded", function () {
 async function createTask() {
     let currentTask = getTaskData();
     let validate = isCategoryValidated(currentTask.category);
-    let message  ='Task added to board';
+    let message = 'Task added to board';
     if (validate) {
         let tasks = JSON.parse((await getItem("tasks")) || "[]");
         tasks = tasks.concat(currentTask);

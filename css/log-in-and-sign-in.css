@@ -214,7 +214,7 @@ a:hover {
     right: 0;
     left: 0;
     opacity: 0;
-    animation: 3s animate-opa ease-out;
+    animation: 1s animate-opa ease-out;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -227,7 +227,7 @@ a:hover {
     width: 100px;
     top: 50%;
     transform: translate(-50%, -50%);
-    animation: moveAndFreeze 6s forwards;
+    animation: moveAndFreeze 2s forwards;
     margin-left: 50px;
     margin-top: 61px;
     z-index: 2;
@@ -345,7 +345,6 @@ a:hover {
         transform: translate(-50%, -50%);
         animation: light-to-dark 2s forwards; 
         z-index: 2;
-        /* animation-delay: 2s; */
     }
 
     .container {

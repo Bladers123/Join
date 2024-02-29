@@ -6,18 +6,18 @@ async function initLogIn() {
 }
 
 function navToSignIn() {
-    window.location.href = '../../html/user-login/sign-in.html';
+    window.location.href = "../../html/user-login/sign-in.html";
 }
 
 async function guestLogIn() {
     user = [];
-    await setItem('user', JSON.stringify(user));
-    window.location.href = '../../html/summary.html';
+    await setItem("user", JSON.stringify(user));
+    window.location.href = "../../html/summary.html";
 }
 
 async function loadUsers() {
     try {
-        let loadedUsers = JSON.parse(await getItem('users'));
+        let loadedUsers = JSON.parse(await getItem("users"));
         if (Array.isArray(loadedUsers)) {
             users = loadedUsers;
         } else {
@@ -30,29 +30,27 @@ async function loadUsers() {
     }
 }
 
-
-
 async function logIn() {
-    let email = document.getElementById('emailInput').value;
-    let password = document.getElementById('passwordInput').value;
+    let email = document.getElementById("emailInput").value;
+    let password = document.getElementById("passwordInput").value;
 
-     user = users.find(user => user.email === email && user.password === password);
+    user = users.find((user) => user.email === email && user.password === password);
 
     if (user) {
-        await setItem('user', JSON.stringify(user));
-        window.location.href = '../../html/summary.html';
+        await setItem("user", JSON.stringify(user));
+        window.location.href = "../../html/summary.html";
     } else {
-        let failureText = document.getElementById('failureTextInLogin');
-        failureText.innerHTML = 'Email or password are incorrect';
+        let failureText = document.getElementById("failureTextInLogin");
+        failureText.innerHTML = "Email or password are incorrect";
         console.log("Falsche E-Mail oder Passwort.");
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    let inputs = document.getElementsByClassName('input');
+document.addEventListener("DOMContentLoaded", function () {
+    let inputs = document.getElementsByClassName("input");
     for (let i = 0; i < inputs.length; i++) {
-        inputs[i].addEventListener('click', function () {
-            document.getElementById('failureTextInLogin').innerHTML = "";
+        inputs[i].addEventListener("click", function () {
+            document.getElementById("failureTextInLogin").innerHTML = "";
         });
     }
 });

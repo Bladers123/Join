@@ -212,6 +212,7 @@ function removeHighlight(id) {
  */
 function closeCardModal(id) {
     document.getElementById(id).classList.add("d-none");
+    document.getElementById('hidden-overflow').classList.remove('height100');
     document.body.style.overflow = "";
 }
 
@@ -223,7 +224,8 @@ function openCardModal(taskId) {
     let task = tasks.find((task) => task.id.toString() === taskId.toString());
     if (task) {
         document.getElementById("cardModalID").innerHTML = getTaskTemplate(task);
-        document.body.style.overflow = "hidden";
+        document.getElementById('hidden-overflow').classList.add('height100')
+        
     } else console.error("Task nicht gefunden");
 }
 
@@ -325,6 +327,7 @@ async function loadAddTaskTemplate(progress) {
     await initTask(progress);
     createdFromBoard = true;
     document.getElementById("medium-button-id").classList.add("active");
+    document.getElementById('hidden-overflow').classList.add('height100');
 }
 
 function closeEditCardModal(id) {

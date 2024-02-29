@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: script.js</title>
+    <title>JSDoc: Source: storage.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: script.js</h1>
+    <h1 class="page-title">Source: storage.js</h1>
 
     
 
@@ -27,71 +27,55 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Initializes the webpage by including HTML content, setting user initials, and highlighting the active sidebar item.
- * @param {string} sideBarId - The ID of the sidebar item to highlight as active.
- * @async
+ * Constant token for storage access authorization.
+ * @type {string}
  */
-async function init(sideBarId) {
-    await includeHTML();
-    await setUserInitialsInHeaderTemplateButton();
-    await setBackgroundToActiveSideBar(sideBarId);
-}
+const STORAGE_TOKEN = "HEBY7BJY7CQ0IQVYI4ONXU7EY6B8UWVM7BGO8RTP";
 
 /**
- * Includes external HTML into elements with the "w3-include-html" attribute, fetching the content from the specified file.
- * @async
+ * Base URL of the remote storage API.
+ * @type {string}
  */
-async function includeHTML() {
-    let includeElements = document.querySelectorAll("[w3-include-html]");
-    for (let i = 0; i &lt; includeElements.length; i++) {
-        const element = includeElements[i];
-        file = element.getAttribute("w3-include-html"); // "includes/header.html"
-        let resp = await fetch(file);
-        if (resp.ok) {
-            element.innerHTML = await resp.text();
-        } else {
-            element.innerHTML = "Page not found";
-        }
+const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
+
+/**
+ * Asynchronously stores a key-value pair in remote storage.
+ * The data is sent as a JSON payload in a POST request to the storage API.
+ *
+ * @param {string} key - The key under which the value is stored.
+ * @param {string|object} value - The value to store, which can be a string or any object (object must be serializable to JSON).
+ * @returns {Promise&lt;object>} A promise that resolves with the response from the storage API.
+ * @async
+ * @example
+ * await setItem('user', JSON.stringify({ name: 'Jane Doe', email: 'jane.doe@example.com' }));
+ */
+async function setItem(key, value) {
+    const payload = { key, value, token: STORAGE_TOKEN };
+    try {
+        return fetch(STORAGE_URL, { method: "POST", body: JSON.stringify(payload) }).then((response) => response.json());
+    } catch (error) {
+        console.error("Fehler beim Setzen des Items:", error);
     }
 }
 
 /**
- * Sets the user's initials on a specific button element intended for displaying user information.
- * The initials are extracted from the user's name stored in a web storage item named 'user'.
+ * Asynchronously retrieves the value associated with a given key from remote storage.
+ * The request is made by appending the key and token as query parameters to the GET request.
+ *
+ * @param {string} key - The key for which to retrieve the associated value.
+ * @returns {Promise&lt;string|object>} A promise that resolves with the value associated with the specified key.
  * @async
+ * @example
+ * const user = await getItem('user');
  */
-async function setUserInitialsInHeaderTemplateButton() {
-    let button = document.getElementById("user-button-initials");
-    let user = JSON.parse(await getItem("user"));
-    if (button &amp;&amp; user.name) {
-        button.innerHTML = user.name
-            .split(" ")
-            .map((part) => part[0].toUpperCase())
-            .join("");
-    }
-}
-
-/**
- * Applies a background style to the active sidebar item based on the provided ID.
- * @param {string} sideBarId - The ID of the sidebar item to activate.
- */
-async function setBackgroundToActiveSideBar(sideBarId) {
-    if (sideBarId.trim() !== "") {
-        switch (sideBarId) {
-            case "summary":
-                document.getElementById(sideBarId).classList.add("navButtonBackGroundActive");
-                break;
-            case "Contacts":
-                document.getElementById(sideBarId).classList.add("navButtonBackGroundActive");
-                break;
-            case "addTask":
-                document.getElementById(sideBarId).classList.add("navButtonBackGroundActive");
-                break;
-            case "Board":
-                document.getElementById(sideBarId).classList.add("navButtonBackGroundActive");
-            default:
-                break;
-        }
+async function getItem(key) {
+    const url = `${STORAGE_URL}?key=${key}&amp;token=${STORAGE_TOKEN}`;
+    try {
+        return fetch(url)
+            .then((response) => response.json())
+            .then((responseAsJson) => responseAsJson.data.value);
+    } catch (error) {
+        console.error("Fehler beim Abrufen des Items:", error);
     }
 }
 </code></pre>

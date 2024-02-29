@@ -130,6 +130,9 @@ function toggleContact(i) {
         }
     } else {
         showContact(i);
+        document.querySelectorAll(".contact-item").forEach((item) => {
+            item.classList.remove("setUserproperty");
+        });
     }
 }
 

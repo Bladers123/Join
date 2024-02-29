@@ -28,23 +28,23 @@ async function initBoard() {
 /**
  * Sets up event listeners after the DOM content is fully loaded.
  */
-document.addEventListener("DOMContentLoaded", function () {
-    document.body.addEventListener("click", function (event) {
-        if (event.target.id === "cardModal" || event.target.closest("#cardModal")) {
-            let isClickOnOpenTask = event.target.classList.contains("openTask") || event.target.closest(".openTask") !== null;
-            if (!isClickOnOpenTask) {
-                closeCardModal("cardModal-container");
-            }
-        }
+// document.addEventListener("DOMContentLoaded", function () {
+//     document.body.addEventListener("click", function (event) {
+//         if (event.target.id === "cardModal" || event.target.closest("#cardModal")) {
+//             let isClickOnOpenTask = event.target.classList.contains("openTask") || event.target.closest(".openTask") !== null;
+//             if (!isClickOnOpenTask) {
+//                 closeCardModal("cardModal-container");
+//             }
+//         }
 
-        if (event.target.id === "addTaskModal" || event.target.closest("#addTaskModal")) {
-            let isClickInsideAddTaskTemplateContent = event.target.id === "addTaskTemplateContent" || event.target.closest("#addTaskTemplateContent") !== null;
-            if (!isClickInsideAddTaskTemplateContent) {
-                closeCardModal("addTaskModal");
-            }
-        }
-    });
-});
+//         if (event.target.id === "addTaskModal" || event.target.closest("#addTaskModal")) {
+//             let isClickInsideAddTaskTemplateContent = event.target.id === "addTaskTemplateContent" || event.target.closest("#addTaskTemplateContent") !== null;
+//             if (!isClickInsideAddTaskTemplateContent) {
+//                 closeCardModal("addTaskModal");
+//             }
+//         }
+//     });
+// });
 
 /**
  * Updates the tasks displayed on the board.
@@ -320,11 +320,10 @@ async function deleteTask(taskId) {
  * @async
  */
 async function loadAddTaskTemplate(progress) {
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";    
     document.getElementById("addTaskModalID").innerHTML = addTaskTemplate();
     await initTask(progress);
     createdFromBoard = true;
-    console.log(createdFromBoard);
 }
 
 /**
@@ -357,10 +356,10 @@ function setEditValuesOfTaskModal() {
  * @async
  */
 async function saveEditTask() {
-    let taskUpdated = false;
-    let updatedTask = null;
+     let taskUpdated = false;
+     let updatedTask = null;
 
-    for (let i = 0; i < tasks.length; i++) {
+     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
         if (task.id === currentTaskModal.id) {
             task.title = document.getElementById("input-title").value;
@@ -373,19 +372,16 @@ async function saveEditTask() {
             updatedTask = task;
             break;
         }
-    }
+     }
 
     if (taskUpdated) {
-        await setItem("tasks", JSON.stringify(tasks));
-        updateTasks();
-        document.getElementById("cardModalID").innerHTML = getTaskTemplate(updatedTask);
-        console.log(updatedTask);
+         await setItem("tasks", JSON.stringify(tasks));
+         updateTasks();
+        
     }
+    document.getElementById("cardModalID").innerHTML = getTaskTemplate(updatedTask);
 }
 
-function doNotClose(event) {
-    event.stopPropagation();
-}
 
 /**
  * Returns an array of selected (assigned) users based on the user selection in the UI.

@@ -48,31 +48,17 @@ async function initTask(progress = "toDo") {
     assigneds = JSON.parse((await getItem("oldContacts")) || "[]");
 }
 
-/**
- * Sets up event listeners once the DOM content is fully loaded.
- */
 document.addEventListener("DOMContentLoaded", function () {
     document.body.addEventListener("click", function (event) {
         if (event.target.closest(".prioButtons button")) {
             let button = event.target.closest(".prioButtons button");
-            setActiveButton(`.${button.className.split(" ").join(".")}`);
+            document.querySelectorAll(".prioButtons button").forEach((btn) => {
+                btn.classList.remove("active");
+            });
+            button.classList.add("active");
         }
     });
 });
-
-/**
- * Activates the specified button and deactivates others in the same group.
- * @param {string} activeButtonSelector - CSS selector for the active button.
- */
-function setActiveButton(activeButtonSelector) {
-    const activeButton = document.querySelector(activeButtonSelector);
-    if (activeButton && !activeButton.classList.contains("active")) {
-        document.querySelectorAll(".prioButtons button").forEach((btn) => {
-            btn.classList.remove("active");
-        });
-        activeButton.classList.add("active");
-    }
-}
 
 /**
  * Listens for click events to manage checkbox areas for assigned tasks and categories.
@@ -222,7 +208,7 @@ function clearTask() {
     document.getElementById("category-text").innerHTML = "Select task category";
     document.getElementById("selectedUserCircle").innerHTML = "";
     assigneds.forEach((assigned) => (assigned.selected = false));
-    setActiveButton("#medium-button-id");
+    document.getElementById("medium-button-id").classList.add("active");
 }
 
 // Region-specific functions for handling click events

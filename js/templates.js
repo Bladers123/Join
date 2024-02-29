@@ -245,8 +245,8 @@ function generateTaskTemplateHTML(task, assignedToHtml, subtasksHtml, prioSVG) {
 function addTaskTemplate() {
     return /*html*/ `
 <div id="popup-container"></div>
-<div id="addTaskModal" onclick="closeCardModal('addTaskModal')" class="modalBackground">
-    <div onclick="doNotClose(event)" id="addTaskTemplateContent" class="content">
+<div id="addTaskModal" class="modalBackground">
+    <div id="addTaskTemplateContent" class="content">
             <form class="all" onsubmit="createTask(); return false;">
                 <div class="addTaskHeader">
                     <h1 class="addTaskHeadline">Add Task</h1>
@@ -411,12 +411,12 @@ function addTaskTemplate() {
 function editTaskTemplate() {
     return /*html*/ `
 <div id="popup-container"></div>
-<div id="addTaskModal" class="modalBackground">
-    <div onclick="doNotClose(event)" class="content">
+<div id="card-modal-id" class="modalBackground">
+    <div class="content">
             <form class="edit-form-style" onsubmit="saveEditTask(); return false;">
                 <div class="addTaskHeader">
                     <div></div>
-                    <svg onclick="closeCardModal('addTaskModal')" class="closeIcon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg onclick="closeCardModal('card-modal-id')" class="closeIcon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <mask id="mask0_12_1578" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="4" y="4" width="24" height="24">
                             <rect x="4" y="4" width="24" height="24" fill="#D9D9D9" />
                         </mask>

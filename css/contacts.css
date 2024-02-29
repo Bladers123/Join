@@ -733,3 +733,10 @@ button img {
         padding-bottom: 20px;
     }
 }
+
+@media (max-width: 400px) {
+   .contacts{
+    padding: 8px !important;
+   }
+}
+

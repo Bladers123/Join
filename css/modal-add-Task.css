@@ -23,9 +23,6 @@ form {
 }
 
 .edit-form-style {
-    width: 525px;
-    height: 70vh;
-    overflow-y: scroll;
     border: 8px solid white;
     background-clip: padding-box;
     padding-right: 40px;

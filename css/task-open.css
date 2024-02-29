@@ -16,7 +16,6 @@
 
 .openTask {
     display: flex;
-    width: 525px;
     padding: 48px 40px;
     flex-direction: column;
     align-items: flex-end;
@@ -159,6 +158,22 @@
     align-items: flex-end;
     gap: 4px;
     align-self: stretch;
+    height: 180px;
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: darkgray;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 12px;
 }
 
 .assignedContact {
@@ -236,7 +251,15 @@
     align-items: flex-start;
     gap: 4px;
     align-self: stretch;
+    height: 88px;
+    overflow-y: scroll;
 }
+
+#subtasks {
+    height: 88px;
+    overflow-y: scroll; 
+}
+
 
 .checkbox {
     cursor: pointer;
@@ -296,6 +319,11 @@
 
 .closeIcon {
     cursor: pointer;
+}
+
+.overflow40px {
+    overflow-y: scroll;
+    height: 40px;
 }
 
 @media (max-width: 650px) {

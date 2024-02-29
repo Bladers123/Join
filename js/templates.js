@@ -648,7 +648,7 @@ function generateTodoSubtask(progressValue, completedSubtasks, totalSubtasks) {
  * @param {string} prioSVG - HTML content for the priority indicator SVG.
  * @returns {string} HTML content for the task card modal.
  */
-function generateTodoCardModal(task, subTaskWrapperHTML, circleTemplate, prioSVG) {
+function getTaskCardTemplate(task, subTaskWrapperHTML, circleTemplate, prioSVG) {
     return /*html*/ `
     <div onclick="openCardModal(this.getAttribute('data-task-id'))" data-task-id="${task.id}" draggable="true" ondragstart="startDragging(${task.id})" class="toDoCard">
          <div class="toDoCardContent">

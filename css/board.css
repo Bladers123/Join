@@ -800,7 +800,15 @@ button img {
     }
 }
 
-@media (max-width: 1000px) {
+
+@media (max-width: 770px){
+    .dragDropGlobalWrapper{
+        padding-bottom: 100px;
+    }
+}
+
+@media (max-width: 550px) {
+    
     form {
         overflow-y: scroll;
         height: 45vh;
@@ -819,15 +827,7 @@ button img {
         background-color: white;
         border-radius: 12px;
     }
-}
-
-@media (max-width: 770px){
-    .dragDropGlobalWrapper{
-        padding-bottom: 100px;
-    }
-}
-
-@media (max-width: 550px) {
+    
     .searchbarBoard {
         width: 100%;
     }

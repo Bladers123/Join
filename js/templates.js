@@ -412,7 +412,7 @@ function editTaskTemplate() {
     return /*html*/ `
 <div id="popup-container"></div>
 <div id="addTaskModal" class="modalBackground">
-    <div onclick="doNotClose(event)" class="content">
+    <div class="content">
             <form class="edit-form-style" onsubmit="saveEditTask(); return false;">
                 <div class="addTaskHeader">
                     <div></div>

@@ -383,10 +383,6 @@ async function saveEditTask() {
     }
 }
 
-function doNotClose(event) {
-    event.stopPropagation();
-}
-
 /**
  * Returns an array of selected (assigned) users based on the user selection in the UI.
  * @returns {Array<Object>} Array of selected users with their name and background color.

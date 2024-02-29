@@ -98,3 +98,32 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".togglePasswordVisibility").forEach(toggleIcon => {
+        toggleIcon.addEventListener("click", function () {
+            let passwordInput = document.getElementById("inputPassword");
+            let confirmPasswordInput = document.getElementById("inputConfirmPassword");
+            let newType = passwordInput.type === "password" ? "text" : "password";
+            let newImagePath = newType === "text" ? "../../img/visibility.png" : "../../img/visibility-off.png";
+            passwordInput.type = newType;
+            confirmPasswordInput.type = newType;
+            document.querySelectorAll(".togglePasswordVisibility").forEach(icon => {
+                icon.src = newImagePath;
+            });
+        });
+    });
+
+    let passwordFields = [document.getElementById("inputPassword"), document.getElementById("inputConfirmPassword")];
+    passwordFields.forEach(field => {
+        field.addEventListener("input", function () {
+            if (field.value === "") {
+                document.querySelectorAll(".togglePasswordVisibility").forEach(icon => {
+                    icon.src = "../../img/lock.svg";
+                });
+                field.type = "password";
+            }
+        });
+    });
+});
+

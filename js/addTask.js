@@ -64,14 +64,13 @@ document.addEventListener("DOMContentLoaded", function () {
  * Listens for click events to manage checkbox areas for assigned tasks and categories.
  */
 document.addEventListener("click", function (event) {
-    
     let withinAssignedCheckboxArea = event.target.closest(".combobox") !== null || event.target.closest("#checkBoxItemsAssigned") !== null || event.target.id === "assigned-text";
     let withinCategoryCheckboxArea = event.target.closest(".combobox") !== null || event.target.closest("#itemsCategory") !== null || event.target.id === "category-text";
-    if (!withinAssignedCheckboxArea){
+    if (!withinAssignedCheckboxArea) {
         closeCheckBoxAreaForAssigned();
-     document.body.style.overflow = "";
+        document.body.style.overflow = "";
     }
-    
+
     if (!withinCategoryCheckboxArea) closeCheckBoxAreaForCategory();
 });
 
@@ -352,9 +351,8 @@ function editSubTaskClick(uniqueId, event) {
  */
 function editSubTask(id) {
     let subtaskContainer = document.getElementById(id);
-    if (!subtaskContainer) {
+    if (!subtaskContainer)
         return;
-    }
     let subtaskTextElement = subtaskContainer.querySelector(".new-subtask-text");
     let currentText = subtaskTextElement.innerText;
     subtaskTextElement.innerHTML = `<input class="subtask-edit-field" type="text" value="${currentText}" onblur="saveEditedSubTask('${id}', this.value)">`;

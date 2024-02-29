@@ -136,8 +136,6 @@ function toggleContact(i) {
     }
 }
 
-
-
 /**
  * Creates a new contact and adds it to the contact list.
  * @async

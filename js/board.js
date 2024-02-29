@@ -129,9 +129,9 @@ function getCardModal(task) {
  */
 function getCircleTemplate(task) {
     return task.assignedTo.map((person) => {
-            let initials = person.name.split(" ").map((namePart) => namePart.charAt(0)).join("");
-            let backgroundColor = person.bg ? ` style="background-color: ${person.bg};"` : "";
-            return `<div class="profileBadge"${backgroundColor}>${initials}</div>`;
+        let initials = person.name.split(" ").map((namePart) => namePart.charAt(0)).join("");
+        let backgroundColor = person.bg ? ` style="background-color: ${person.bg};"` : "";
+        return `<div class="profileBadge"${backgroundColor}>${initials}</div>`;
     }).join("");
 }
 

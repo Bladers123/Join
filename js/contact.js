@@ -133,7 +133,7 @@ function toggleContact(i) {
     }
 }
 
-window.onresize = toggleContact;
+
 
 /**
  * Creates a new contact and adds it to the contact list.

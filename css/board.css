@@ -623,6 +623,7 @@ form {
     padding-right: 40px;
     padding-left: 32px;
     padding-top: 24px;
+    overflow-y: scroll;
 }
 
 .inputFields {
@@ -702,7 +703,7 @@ button img {
     cursor: pointer;
 }
 
-.save-edit-button{
+.save-edit-button {
     width: 16px;
 }
 
@@ -793,41 +794,27 @@ button img {
     }
 }
 
-@media (max-width: 1050px) {
-    .contentRightWrapper {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-}
-
-
-@media (max-width: 770px){
-    .dragDropGlobalWrapper{
+@media (max-width: 770px) {
+    .dragDropGlobalWrapper {
         padding-bottom: 100px;
     }
 }
 
 @media (max-width: 550px) {
-    
-    form {
-        overflow-y: scroll;
-        height: 45vh;
-    }
-
     form::-webkit-scrollbar {
         width: 12px;
     }
-    
+
     form::-webkit-scrollbar-thumb {
         background-color: darkgray;
         border-radius: 10px;
     }
-    
+
     form::-webkit-scrollbar-track {
         background-color: white;
         border-radius: 12px;
     }
-    
+
     .searchbarBoard {
         width: 100%;
     }
@@ -836,7 +823,7 @@ button img {
         width: 100%;
     }
 
-    .contentRightWrapper{
+    .contentRightWrapper {
         padding-bottom: 100px;
     }
 }

@@ -28,23 +28,30 @@ async function initBoard() {
 /**
  * Sets up event listeners after the DOM content is fully loaded.
  */
-// document.addEventListener("DOMContentLoaded", function () {
-//     document.body.addEventListener("click", function (event) {
-//         if (event.target.id === "cardModal" || event.target.closest("#cardModal")) {
-//             let isClickOnOpenTask = event.target.classList.contains("openTask") || event.target.closest(".openTask") !== null;
-//             if (!isClickOnOpenTask) {
-//                 closeCardModal("cardModal-container");
-//             }
-//         }
+document.addEventListener("DOMContentLoaded", function () {
+    document.body.addEventListener("click", function (event) {
+        if (event.target.id === "cardModal" || event.target.closest("#cardModal")) {
+            let isClickOnOpenTask = event.target.classList.contains("openTask") || event.target.closest(".openTask") !== null;
+            if (!isClickOnOpenTask) {
+                closeCardModal("cardModal-container");
+            }
+        }
 
-//         if (event.target.id === "addTaskModal" || event.target.closest("#addTaskModal")) {
-//             let isClickInsideAddTaskTemplateContent = event.target.id === "addTaskTemplateContent" || event.target.closest("#addTaskTemplateContent") !== null;
-//             if (!isClickInsideAddTaskTemplateContent) {
-//                 closeCardModal("addTaskModal");
-//             }
-//         }
-//     });
-// });
+        if (event.target.id === "addTaskModal" || event.target.closest("#addTaskModal")) {
+            let isClickInsideAddTaskTemplateContent = event.target.id === "addTaskTemplateContent" || event.target.closest("#addTaskTemplateContent") !== null;
+            if (!isClickInsideAddTaskTemplateContent) {
+                closeCardModal("addTaskModal");
+            }
+        }
+
+        if (event.target.id === "card-modal-id" || event.target.closest("#card-modal-id")) {
+            let isClickInsideInEditTaskModal = event.target.id === "card-modal-content" || event.target.closest("#card-modal-content") !== null;
+            if (!isClickInsideInEditTaskModal) {
+                closeEditCardModal(currentTaskModal.id);
+            }
+        }
+    });
+});
 
 /**
  * Updates the tasks displayed on the board.

@@ -473,6 +473,10 @@ footer button {
   footer{
     padding-bottom: 100px;
   }
+
+  .content {
+    margin: 60px;
+  }
 }
 
 

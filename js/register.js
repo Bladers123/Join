@@ -98,3 +98,18 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("togglePasswordVisibility").addEventListener("click", function () {
+        const passwordInput = document.getElementById("inputConfirmPassword");
+        const toggleIcon = document.getElementById("togglePasswordVisibility");
+        
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            toggleIcon.src = "../../img/unlock.svg"; // Pfad zum 'Sichtbar'-Bild
+        } else {
+            passwordInput.type = "password";
+            toggleIcon.src = "../../img/lock.svg"; // Pfad zum 'Versteckt'-Bild
+        }
+    });
+});

@@ -629,7 +629,7 @@ form {
     padding-right: 40px;
     padding-left: 32px;
     padding-top: 24px;
-    overflow-y: scroll;
+
 }
 
 .inputFields {
@@ -800,13 +800,10 @@ button img {
     }
 }
 
-@media (max-width: 770px) {
-    .dragDropGlobalWrapper {
-        padding-bottom: 100px;
+@media (max-width: 1000px) {
+    form {
+        overflow-y: scroll;
     }
-}
-
-@media (max-width: 550px) {
     form::-webkit-scrollbar {
         width: 12px;
     }
@@ -820,6 +817,16 @@ button img {
         background-color: white;
         border-radius: 12px;
     }
+}
+
+@media (max-width: 770px) {
+    .dragDropGlobalWrapper {
+        padding-bottom: 100px;
+    }
+}
+
+@media (max-width: 550px) {
+
 
     .searchbarBoard {
         width: 100%;

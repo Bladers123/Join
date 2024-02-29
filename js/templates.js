@@ -576,12 +576,12 @@ function generateEditSubtasksHTML(uniqueId, editSubtask) {
  * Generates HTML content for a popup notification template.
  * @returns {string} HTML content for the popup notification.
  */
-function getPopUpTemplate() {
+function getPopUpTemplate(popupMessage) {
     return /*html*/ `
     <div class="overlay">
        <div id="popup" class="popup">
            <div class="popup-content">
-              <span>Task added to board</span>
+              <span>${popupMessage}</span>
            </div>
        </div>
     </div> 

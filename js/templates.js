@@ -246,7 +246,7 @@ function addTaskTemplate() {
     return /*html*/ `
 <div id="popup-container"></div>
 <div id="addTaskModal" onclick="closeCardModal('addTaskModal')" class="modalBackground">
-    <div id="addTaskTemplateContent" class="content">
+    <div onclick="doNotClose(event)" id="addTaskTemplateContent" class="content">
             <form class="all" onsubmit="createTask(); return false;">
                 <div class="addTaskHeader">
                     <h1 class="addTaskHeadline">Add Task</h1>

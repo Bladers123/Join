@@ -87,3 +87,23 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    let passwordInput = document.getElementById("passwordInput");
+    let toggleIcon = document.getElementById("togglePasswordVisibility");
+    toggleIcon.addEventListener("click", function () {
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            toggleIcon.src = "../../img/visibility.png"; 
+        } else {
+            passwordInput.type = "password";
+            toggleIcon.src = "../../img/visibility-off.png"; 
+        }
+    });
+    passwordInput.addEventListener("input", function () {
+        if (passwordInput.value === "") {
+            toggleIcon.src = "../../img/lock.svg"; 
+            passwordInput.type = "password";
+        }
+    });
+});

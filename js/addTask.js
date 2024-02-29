@@ -64,9 +64,14 @@ document.addEventListener("DOMContentLoaded", function () {
  * Listens for click events to manage checkbox areas for assigned tasks and categories.
  */
 document.addEventListener("click", function (event) {
+    
     let withinAssignedCheckboxArea = event.target.closest(".combobox") !== null || event.target.closest("#checkBoxItemsAssigned") !== null || event.target.id === "assigned-text";
     let withinCategoryCheckboxArea = event.target.closest(".combobox") !== null || event.target.closest("#itemsCategory") !== null || event.target.id === "category-text";
-    if (!withinAssignedCheckboxArea) closeCheckBoxAreaForAssigned();
+    if (!withinAssignedCheckboxArea){
+        closeCheckBoxAreaForAssigned();
+     document.body.style.overflow = "";
+    }
+    
     if (!withinCategoryCheckboxArea) closeCheckBoxAreaForCategory();
 });
 
@@ -74,7 +79,6 @@ document.addEventListener("click", function (event) {
  * Toggles the checkbox area for assigned tasks.
  */
 function openOrCloseCheckBoxAreaForAssigned() {
-
     let checkBoxItems = document.getElementById("checkBoxItemsAssigned");
     rotateIcon("nav-image-assigned");
     if (checkBoxItems.innerHTML.trim() !== "") {

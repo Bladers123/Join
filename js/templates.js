@@ -245,7 +245,7 @@ function generateTaskTemplateHTML(task, assignedToHtml, subtasksHtml, prioSVG) {
 function addTaskTemplate() {
     return /*html*/ `
 <div id="popup-container"></div>
-<div id="addTaskModal" class="modalBackground">
+<div id="addTaskModal" onclick="closeCardModal('addTaskModal')" class="modalBackground">
     <div id="addTaskTemplateContent" class="content">
             <form class="all" onsubmit="createTask(); return false;">
                 <div class="addTaskHeader">

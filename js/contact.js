@@ -2,92 +2,7 @@
  * Array to store old contact information.
  * @type {Array<{name: string, email: string, tel: string, bg: string, selected: boolean}>}
  */
-let oldContacts = [
-    {
-        name: "Barbara Müller",
-        email: "baerbelchen@online.de",
-        tel: "01629223027",
-        bg: "rgb(255,122,0)",
-        selected: false,
-    },
-    {
-        name: "Tristan Gehring",
-        email: "tristan@gmail.com",
-        tel: "017612312333",
-        bg: "rgb(0,190,232)",
-        selected: false,
-    },
-    {
-        name: "Julian Fichtl",
-        email: "julian@gmail.com",
-        tel: "01529483027",
-        bg: "rgb(70,47,138)",
-        selected: false,
-    },
-    {
-        name: "Bulian Fichtl",
-        email: "julian@gmail.com",
-        tel: "01529483027",
-        bg: "rgb(252,113,255)",
-        selected: false,
-    },
-    {
-        name: "Culian Fichtl",
-        email: "julian@gmail.com",
-        tel: "01529483027",
-        bg: "rgb(255,187,43)",
-        selected: false,
-    },
-    {
-        name: "Rabia Ürkmez",
-        email: "rabia@gmail.com",
-        tel: "017612312333",
-        bg: "rgb(255,70,70)",
-        selected: false,
-    },
-    {
-        name: "Agathe Bauer",
-        email: "igotthe@bauer.com",
-        tel: "071319991122",
-        bg: "rgb(31,215,193)",
-        selected: false,
-    },
-    {
-        name: "Bertold Cislewitz",
-        email: "familie@galgant.de",
-        tel: "017612312333",
-        bg: "rgb(110,82,255)",
-        selected: false,
-    },
-    {
-        name: "Christine Dorst",
-        email: "hab@durst.com",
-        tel: "017612312333",
-        bg: "rgb(70,47,138)",
-        selected: false,
-    },
-    {
-        name: "Dominik Emmerich",
-        email: "schimmelich@t-online.de",
-        tel: "015112314027",
-        bg: "rgb(31,215,193)",
-        selected: false,
-    },
-    {
-        name: "Frank Gül",
-        email: "francis-gulle@yahoo.de",
-        tel: "017612312333",
-        bg: "rgb(255,122,0)",
-        selected: false,
-    },
-    {
-        name: "Gustav Holm",
-        email: "hoelmchen@gmx.de",
-        tel: "01744975233",
-        bg: "rgb(252,113,255)",
-        selected: false,
-    },
-];
+let oldContacts = [];
 
 /**
  * Stores letters for contact sorting or other operations.
@@ -242,24 +157,16 @@ async function createContact() {
     };
 
     oldContacts = oldContacts.concat(newContact);
-    sendToBackend();
+    await setItem("oldContacts", JSON.stringify(oldContacts));
     renderOldContacts();
     closePopUp();
-}
-
-/**
- * Sends the updated contacts list to the backend for storage.
- * @async
- */
-async function sendToBackend() {
-    await setItem("oldContacts", JSON.stringify(oldContacts));
 }
 
 /**
  * Saves changes to an existing contact.
  * @param {number} i - The index of the contact in the oldContacts array to save.
  */
-function saveContact(i) {
+async function saveContact(i) {
     document.getElementById("edit-pop-up").classList.add("d-none");
     document.getElementById("edit-pop-up").classList.remove("d-flex");
 
@@ -273,7 +180,7 @@ function saveContact(i) {
 
     showContact(i);
     renderOldContacts();
-    sendToBackend();
+    await setItem("oldContacts", JSON.stringify(oldContacts));
 }
 
 /**
@@ -298,12 +205,12 @@ function editContact(name, mail, number, bg, initials, i) {
  * Deletes a contact from the contact list.
  * @param {number} i - The index of the contact in the oldContacts array to delete.
  */
-function deleteContact(i) {
+async function deleteContact(i) {
     oldContacts.splice(i, 1);
     letters.splice(i, 1);
     document.getElementById("open-contact").classList.add("d-none");
     renderOldContacts();
-    sendToBackend();
+    await setItem("oldContacts", JSON.stringify(oldContacts));
 }
 
 /**

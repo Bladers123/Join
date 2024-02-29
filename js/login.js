@@ -1,20 +1,46 @@
+/**
+ * Array to store user objects.
+ * @type {Array<{email: string, password: string}>}
+ */
 let users = [];
+
+/**
+ * The current user object.
+ * @type {Array}
+ */
 let user = [];
 
+/**
+ * Initializes the login process by loading users.
+ * @async
+ */
 async function initLogIn() {
     await loadUsers();
 }
 
+/**
+ * Navigates to the sign-in page.
+ */
 function navToSignIn() {
     window.location.href = "../../html/user-login/sign-in.html";
 }
 
+/**
+ * Handles guest login by clearing the current user and redirecting to the summary page.
+ * @async
+ */
 async function guestLogIn() {
     user = [];
     await setItem("user", JSON.stringify(user));
     window.location.href = "../../html/summary.html";
 }
 
+/**
+ * Loads users from storage.
+ * Tries to parse the "users" item from storage. If it exists and is an array, it sets the users variable.
+ * Otherwise, initializes users with an empty array.
+ * @async
+ */
 async function loadUsers() {
     try {
         let loadedUsers = JSON.parse(await getItem("users"));
@@ -30,6 +56,12 @@ async function loadUsers() {
     }
 }
 
+/**
+ * Performs the login by validating the entered email and password against the loaded users.
+ * If the user is found, it saves the user to storage and navigates to the summary page.
+ * Otherwise, it displays an error message.
+ * @async
+ */
 async function logIn() {
     let email = document.getElementById("emailInput").value;
     let password = document.getElementById("passwordInput").value;
@@ -46,6 +78,9 @@ async function logIn() {
     }
 }
 
+/**
+ * Sets up event listeners on DOMContentLoaded event to clear failure messages upon input field interaction.
+ */
 document.addEventListener("DOMContentLoaded", function () {
     let inputs = document.getElementsByClassName("input");
     for (let i = 0; i < inputs.length; i++) {

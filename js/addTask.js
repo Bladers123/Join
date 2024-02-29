@@ -208,6 +208,9 @@ function clearTask() {
     document.getElementById("category-text").innerHTML = "Select task category";
     document.getElementById("selectedUserCircle").innerHTML = "";
     assigneds.forEach((assigned) => (assigned.selected = false));
+    document.querySelectorAll(".prioButtons button").forEach((btn) => {
+        btn.classList.remove("active");
+    });
     document.getElementById("medium-button-id").classList.add("active");
 }
 

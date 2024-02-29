@@ -47,7 +47,6 @@ async function loadUsers() {
         if (Array.isArray(loadedUsers)) {
             users = loadedUsers;
         } else {
-            console.log("Keine Benutzer gefunden, Initialisierung mit einem leeren Array.");
             users = [];
         }
     } catch (error) {
@@ -74,7 +73,6 @@ async function logIn() {
     } else {
         let failureText = document.getElementById("failureTextInLogin");
         failureText.innerHTML = "Email or password are incorrect";
-        console.log("Falsche E-Mail oder Passwort.");
     }
 }
 

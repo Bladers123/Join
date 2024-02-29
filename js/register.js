@@ -20,6 +20,7 @@ async function initRegister() {
  */
 async function register() {
     if (isPasswordConfirmed()) {
+        let message = 'You Signed Up successfully';
         let newUser = {
             name: inputName.value,
             email: inputEmail.value,
@@ -32,7 +33,7 @@ async function register() {
         } else {
             users.push(newUser);
             await setItem("users", JSON.stringify(users));
-            document.getElementById("popup-container").innerHTML = getPopUpTemplate();
+            document.getElementById("popup-container").innerHTML = getPopUpTemplate(message);
             setTimeout(function () {
                 window.location.href = "../../html/user-login/log-in.html";
             }, 1000);

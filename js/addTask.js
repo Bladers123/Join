@@ -255,14 +255,15 @@ document.addEventListener("DOMContentLoaded", function () {
 async function createTask() {
     let currentTask = getTaskData();
     let validate = isCategoryValidated(currentTask.category);
+    let message  ='Task added to board';
     if (validate) {
         let tasks = JSON.parse((await getItem("tasks")) || "[]");
         tasks = tasks.concat(currentTask);
         await setItem("tasks", JSON.stringify(tasks));
-        document.getElementById("popup-container").innerHTML = getPopUpTemplate();
+        document.getElementById("popup-container").innerHTML = getPopUpTemplate(message);
         if (!createdFromBoard) {
             setTimeout(function () {
-                window.location.href = "../../html/summary.html";
+                window.location.href = "../../html/board.html";
             }, 1000);
         } else if (createdFromBoard) {
             closeCardModal("addTaskModal");

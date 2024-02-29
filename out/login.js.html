@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: login.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,109 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: login.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Array to store user objects.
+ * @type {Array&lt;{email: string, password: string}>}
+ */
+let users = [];
 
+/**
+ * The current user object.
+ * @type {Array}
+ */
+let user = [];
 
-    <h3> </h3>
+/**
+ * Initializes the login process by loading users.
+ * @async
+ */
+async function initLogIn() {
+    await loadUsers();
+}
 
+/**
+ * Navigates to the sign-in page.
+ */
+function navToSignIn() {
+    window.location.href = "../../html/user-login/sign-in.html";
+}
 
+/**
+ * Handles guest login by clearing the current user and redirecting to the summary page.
+ * @async
+ */
+async function guestLogIn() {
+    user = [];
+    await setItem("user", JSON.stringify(user));
+    window.location.href = "../../html/summary.html";
+}
 
+/**
+ * Loads users from storage.
+ * Tries to parse the "users" item from storage. If it exists and is an array, it sets the users variable.
+ * Otherwise, initializes users with an empty array.
+ * @async
+ */
+async function loadUsers() {
+    try {
+        let loadedUsers = JSON.parse(await getItem("users"));
+        if (Array.isArray(loadedUsers)) {
+            users = loadedUsers;
+        } else {
+            console.log("Keine Benutzer gefunden, Initialisierung mit einem leeren Array.");
+            users = [];
+        }
+    } catch (error) {
+        console.error("Fehler beim Laden der Benutzer: ", error);
+        users = [];
+    }
+}
 
+/**
+ * Performs the login by validating the entered email and password against the loaded users.
+ * If the user is found, it saves the user to storage and navigates to the summary page.
+ * Otherwise, it displays an error message.
+ * @async
+ */
+async function logIn() {
+    let email = document.getElementById("emailInput").value;
+    let password = document.getElementById("passwordInput").value;
 
+    user = users.find((user) => user.email === email &amp;&amp; user.password === password);
 
+    if (user) {
+        await setItem("user", JSON.stringify(user));
+        window.location.href = "../../html/summary.html";
+    } else {
+        let failureText = document.getElementById("failureTextInLogin");
+        failureText.innerHTML = "Email or password are incorrect";
+        console.log("Falsche E-Mail oder Passwort.");
+    }
+}
 
-
-
-
-    
-
-
-
-
-
+/**
+ * Sets up event listeners on DOMContentLoaded event to clear failure messages upon input field interaction.
+ */
+document.addEventListener("DOMContentLoaded", function () {
+    let inputs = document.getElementsByClassName("input");
+    for (let i = 0; i &lt; inputs.length; i++) {
+        inputs[i].addEventListener("click", function () {
+            document.getElementById("failureTextInLogin").innerHTML = "";
+        });
+    }
+});
+</code></pre>
+        </article>
+    </section>
 
 
 

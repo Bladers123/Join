@@ -48,6 +48,10 @@
     cursor: pointer;
 }
 
+.content{
+    max-width: 500px;
+}
+
 .cardTypeDescription {
     color: #fff;
     font-size: 23px;

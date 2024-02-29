@@ -618,10 +618,6 @@ form {
     flex-direction: column;
     top: 137px;
     margin-right: 32px;
-    width: 422px;
-    width: 525px;
-    height: 70vh;
-
     border: 8px solid white;
     background-clip: padding-box;
     padding-right: 40px;
@@ -807,6 +803,7 @@ button img {
 @media (max-width: 1000px) {
     form {
         overflow-y: scroll;
+        height: 45vh;
     }
 
     form::-webkit-scrollbar {

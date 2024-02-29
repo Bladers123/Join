@@ -144,9 +144,9 @@ async function createContact() {
     let mail = document.getElementById("contact-email").value;
     let tel = document.getElementById("contact-tel").value;
     let selected = false;
-    let x = Math.floor(Math.random() * 255) + 1;
-    let y = Math.floor(Math.random() * 255) + 1;
-    let z = Math.floor(Math.random() * 255) + 1;
+    let x = Math.floor(Math.random() * 255);
+    let y = Math.floor(Math.random() * 255);
+    let z = Math.floor(Math.random() * 255);
 
     let newContact = {
         name: name,

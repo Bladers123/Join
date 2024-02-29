@@ -333,9 +333,13 @@
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
     .priority {
         padding: 0;
+    }
+
+    .priorityWrapper {
+        flex-direction: column;
     }
 }
 
@@ -353,9 +357,6 @@
         align-items: center;
     }
 
-    .priorityWrapper {
-        flex-direction: column;
-    }
 
     .cardHeadlineOverlay {
         font-size: 32px;

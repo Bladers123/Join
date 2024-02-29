@@ -416,7 +416,7 @@ function editTaskTemplate() {
             <form class="edit-form-style" onsubmit="saveEditTask(); return false;">
                 <div class="addTaskHeader">
                     <div></div>
-                    <svg onclick="closeCardModal('card-modal-id')" class="closeIcon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg onclick="closeEditCardModal(${currentTaskModal.id})" class="closeIcon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <mask id="mask0_12_1578" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="4" y="4" width="24" height="24">
                             <rect x="4" y="4" width="24" height="24" fill="#D9D9D9" />
                         </mask>

@@ -324,6 +324,13 @@ async function loadAddTaskTemplate(progress) {
     document.getElementById("addTaskModalID").innerHTML = addTaskTemplate();
     await initTask(progress);
     createdFromBoard = true;
+    document.getElementById("medium-button-id").classList.add("active");
+}
+
+function closeEditCardModal(id){
+    document.body.style.overflow = "";
+    openCardModal(id);
+    document.getElementById('cardModal-container').classList.add("d-none");
 }
 
 /**

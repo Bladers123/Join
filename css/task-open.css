@@ -337,6 +337,7 @@
 @media (max-width: 650px) {
     .openTask {
         max-width: 70vw;
+        padding: 16px 8px !important;
     }
 
     .cardHeadlineOverlay {

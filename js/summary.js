@@ -117,6 +117,6 @@ function renderAllData(toDos, dones, feedbacks, inProgresses, prioUrgent, earlie
     if (user.name) {
         document.getElementById("greet-user").innerHTML = user.name;
     } else {
-        document.getElementById("greet-user").innerHTML = "Guest";
+        document.getElementById("greet-user").innerHTML = "Dear Guest";
     }
 }

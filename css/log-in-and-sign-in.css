@@ -82,6 +82,11 @@ input {
     outline: none;
 }
 
+input:-webkit-autofill {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: #2A3647 !important;
+}
+
 ::placeholder {
     color: #d1d1d1;
 }
@@ -115,6 +120,7 @@ input {
 }
 
 button {
+    font-family: 'Inter', sans-serif;
     text-align: center;
     border-radius: 8px;
     height: 48px;

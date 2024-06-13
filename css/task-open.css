@@ -10,6 +10,11 @@
     align-items: center;
 }
 
+input:-webkit-autofill {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: #2A3647 !important;
+}
+
 .addTaskHeadline {
     padding-bottom: 0;
 }
@@ -26,8 +31,6 @@
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
     width: 500px;
     max-width: 500px;
-    height: 80vh;
-    overflow: scroll;
 }
 
 .cardHeader {
@@ -48,11 +51,6 @@
 
 .closeIcon {
     cursor: pointer;
-}
-
-.content{
-    width: 500px;
-    max-width: 500px;
 }
 
 .cardTypeDescription {
@@ -399,5 +397,12 @@
 
     .cardHeadlineOverlay {
         font-size: 32px;
+    }
+}
+
+@media (max-height: 1200px) {
+    .openTask {
+        max-height: 80vh;
+        overflow-y: scroll;
     }
 }

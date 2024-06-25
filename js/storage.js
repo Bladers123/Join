@@ -2,7 +2,7 @@
  * Constant token for storage access authorization.
  * @type {string}
  */
-const STORAGE_TOKEN = "HEBY7BJY7CQ0IQVYI4ONXU7EY6B8UWVM7BGO8RTPU";
+const STORAGE_TOKEN = "HEBY7BJY7CQ0IQVYI4ONXU7EY6B8UWVM7BGO8RTP";
 
 /**
  * Base URL of the remote storage API.

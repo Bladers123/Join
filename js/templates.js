@@ -182,7 +182,6 @@ function generateTaskTemplateHTML(task, assignedToHtml, subtasksHtml, prioSVG) {
                 <div class="openTask edit-form-style">
                     <div class="cardHeader">
                     <div class="cardType" style="border: 2px solid white; background-color: ${task.category === "User Story" ? "#0038ff" : task.category === "Technical Task" ? "#1FD7C1" : "defaultBackgroundColor"};">
-
                             <p class="cardTypeDescription">${task.category}</p>
                         </div>
                         <svg onclick="closeCardModal('cardModal-container')" class="closeIcon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

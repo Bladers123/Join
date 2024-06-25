@@ -20,6 +20,8 @@ form {
     background-color: white;
     padding: 50px;
     border-radius: 25px;
+    height: 95vh;
+    overflow-y: scroll;
 }
 
 .edit-form-style {
@@ -500,9 +502,6 @@ footer button {
         text-align: center;
     }
 
-    form {
-        height: 80vh;
-    }
 }
 
 @media (max-width: 650px) {

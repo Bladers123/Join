@@ -204,6 +204,8 @@ function removeHighlight(id) {
     document.getElementById(id).classList.remove("contentContainerHover");
 }
 
+let doc;
+
 /**
  * Closes a card modal by adding a CSS class to hide it.
  * @param {string} id - The ID of the modal to close.
@@ -211,7 +213,24 @@ function removeHighlight(id) {
 function closeCardModal(id) {
     document.getElementById(id).classList.add("d-none");
     document.getElementById('hidden-overflow').classList.remove('height100');
-    document.body.style.overflow = "";
+    document.getElementById("hidden-overflow").style.overflow = "scroll";
+}
+
+function closeEditCardModal(id) {
+    openCardModal(id);
+    document.getElementById('cardModal-container').classList.add("d-none");
+    document.getElementById("hidden-overflow").style.overflow = "scroll";
+}
+
+/**
+ * Prepares and displays the edit task template in a modal.
+ * @async
+ */
+async function editTask() {
+    await initTask("noProgress");
+    document.getElementById("cardModal-container").innerHTML = editTaskTemplate();
+    setEditValuesOfTaskModal();
+    rotateIcon("nav-image-assigned");
 }
 
 /**
@@ -223,7 +242,7 @@ function openCardModal(taskId) {
     if (task) {
         document.getElementById("cardModalID").innerHTML = getTaskTemplate(task);
         document.getElementById('hidden-overflow').classList.add('height100');
-    } 
+    }
 }
 
 /**
@@ -233,14 +252,15 @@ function openCardModal(taskId) {
  */
 function getAssignedToTemplate(assignedTo) {
     return assignedTo.map((person) => {
-            let initials = person.name.split(" ").map((name) => name[0]).join("");
-            return /*html*/ `
+        let initials = person.name.split(" ").map((name) => name[0]).join("");
+        return /*html*/ `
             <div class="assignedContact">
                 <div class="nameCircleWrapper">
                     <div class="nameCircle" style="background-color: ${person.bg};">${initials}</div>
                     <p class="assignedName">${person.name}</p>
                 </div>
-            </div>`;}).join("");
+            </div>`;
+    }).join("");
 }
 
 /**
@@ -251,12 +271,13 @@ function getAssignedToTemplate(assignedTo) {
  */
 function getSubtasksTemplate(subtasks, taskId) {
     return subtasks.map((subtask) => {
-            const isChecked = subtask.completed ? "checked" : "";
-            return /*html*/ `
+        const isChecked = subtask.completed ? "checked" : "";
+        return /*html*/ `
             <div class="subtask">
                 <input class="checkbox" type="checkbox" ${isChecked} onclick="toggleSubtaskCompleted(${taskId}, ${subtask.id})"/>
                 <div class="checkboxDescription">${subtask.title}</div>
-            </div>`;}).join("");
+            </div>`;
+    }).join("");
 }
 
 /**
@@ -316,30 +337,133 @@ async function loadAddTaskTemplate(progress) {
     document.getElementById('hidden-overflow').classList.add('height100');
 }
 
-function closeEditCardModal(id) {
-    document.body.style.overflow = "";
-    openCardModal(id);
-    document.getElementById('cardModal-container').classList.add("d-none");
-}
-
-/**
- * Prepares and displays the edit task template in a modal.
- * @async
- */
-async function editTask() {
-    await initTask("noProgress");
-    document.getElementById("cardModal-container").innerHTML = editTaskTemplate();
-    setEditValuesOfTaskModal();
-    rotateIcon("nav-image-assigned");
-}
-
 /**
  * Returns an array of selected (assigned) users based on the user selection in the UI.
  * @returns {Array<Object>} Array of selected users with their name and background color.
  */
 function getSelectedAssigneds() {
     return assigneds.filter((assigned) => assigned.selected).map((assigned) => {
-            return { name: assigned.name, bg: assigned.bg,
-            };
-        });
+        return {
+            name: assigned.name, bg: assigned.bg,
+        };
+    });
 }
+
+/**
+ * Sets the input fields in the edit task modal with the current task's data.
+ */
+function setEditValuesOfTaskModal() {
+    document.getElementById("input-title").value = currentTaskModal.title;
+    document.getElementById("textArea-description").value = currentTaskModal.description;
+    document.getElementById("input-due-date").value = currentTaskModal.dueDate;
+    selectAssignedPersons();
+    updateAssignedItemsUI();
+    editAssignsArray();
+    editSubtasksArray();
+    document.getElementById("medium-button-id").classList.add("active");
+}
+
+/**
+ * Saves the edited task details to storage and updates the task board UI.
+ * @async
+ */
+async function saveEditTask() {
+    let taskUpdated = false;
+    let updatedTask = null;
+    for (let i = 0; i < tasks.length; i++) {
+        let task = tasks[i];
+        if (task.id === currentTaskModal.id) {
+            task.title = document.getElementById("input-title").value;
+            task.description = document.getElementById("textArea-description").value;
+            task.dueDate = document.getElementById("input-due-date").value;
+            task.priority = document.querySelector(".prioButtons button.active").innerText.trim();
+            task.subtasks = getUpdatedSubtasks();
+            task.assignedTo = getSelectedAssigneds();
+            taskUpdated = true;
+            updatedTask = task;
+            break;
+        }
+    }
+    if (taskUpdated) {
+        await setItem("tasks", JSON.stringify(tasks));
+        updateTasks();
+    }
+    document.getElementById("cardModalID").innerHTML = getTaskTemplate(updatedTask);
+}
+
+/**
+ * Prepares the assigns array for editing, reflecting the current task's assigned users.
+ */
+function editAssignsArray() {
+    let assigns = currentTaskModal["assignedTo"];
+    let assignsContainer = document.getElementById("selectedUserCircle");
+    assignsContainer.innerHTML = "";
+
+    for (let a = 0; a < assigns.length; a++) {
+        const assign = assigns[a];
+        let editAssign = assign["name"];
+        let editColor = assign["bg"];
+        let initials = editAssign.split(" ").map((editAssign) => editAssign[0]).join("");
+        assignsContainer.innerHTML += `<div class="editCircleStyle">
+        <div class="editprofileBadge" style="background-color:${editColor}">${initials}</div>
+        `;
+    }
+}
+
+/**
+ * Prepares the subtasks array for editing, reflecting the current task's subtasks.
+ */
+function editSubtasksArray() {
+    let subtasks = currentTaskModal.subtasks;
+    let subtaskContainer = document.getElementById("subtasks");
+    subtaskContainer.innerHTML = "";
+    for (let i = 0; i < subtasks.length; i++) {
+        let subtask = subtasks[i];
+        let editSubtask = subtask.title;
+        subtaskContainer.innerHTML += generateEditSubtasksHTML(subtask.id, editSubtask);
+    }
+}
+
+/**
+ * Returns an array of updated subtasks based on user input in the UI.
+ * @returns {Array<Object>} Array of updated subtasks.
+ */
+function getUpdatedSubtasks() {
+    let updatedSubtasks = [];
+    let subtaskElements = document.querySelectorAll(".new-subtask-text");
+    subtaskElements.forEach((element, index) => {
+        updatedSubtasks.push({ id: index + 1, title: element.textContent, completed: false });
+    });
+    return updatedSubtasks;
+}
+
+/**
+ * Selects assigned persons based on the current task modal's assignedTo data.
+ */
+function selectAssignedPersons() {
+    if (currentTaskModal.assignedTo && currentTaskModal.assignedTo.length > 0) {
+        currentTaskModal.assignedTo.forEach((assignedContact) => {
+            let found = assigneds.find((assigned) => assigned.name.trim() === assignedContact.name.trim());
+            if (found)
+                found.selected = true;
+        });
+    }
+}
+
+/**
+ * Updates the UI to reflect the current task's assigned users.
+ */
+function updateAssignedItemsUI() {
+    assigneds.forEach((assigned) => {
+        if (assigned.selected) {
+            let element = document.querySelector(`.assigned-item[data-name="${assigned.name}"]`);
+            if (element) {
+                let checkbox = element.querySelector(".checkbox");
+                checkbox.checked = true;
+                element.classList.add("active");
+            }
+        }
+    });
+    updateActiveInitialCircles();
+}
+

@@ -272,7 +272,7 @@ async function createTask() {
         document.getElementById("popup-container").innerHTML = getPopUpTemplate(message);
         if (!createdFromBoard) {
             setTimeout(function () {
-                window.location.href = "../../html/board.html";
+                window.location.href = "../html/board.html";
             }, 1000);
         } else if (createdFromBoard) {
             closeCardModal("addTaskModal");
